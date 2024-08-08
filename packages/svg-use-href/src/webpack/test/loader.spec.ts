@@ -2,7 +2,7 @@
  * @vitest-environment node
  */
 import path from 'node:path';
-import { test, expect } from 'vitest';
+import { describe, test, expect } from 'vitest';
 
 import { compile } from './compiler.js';
 
@@ -27,6 +27,7 @@ test('converts *.svg import into valid React component with svg[use], using defa
     export const Component = createThemedExternalSvg({url, id, viewBox});"
   `);
 
+  // TODO: Factor this out into a helper (findAsset)
   const emittedSvgAsset = statsJson.assets?.find(
     (asset) =>
       asset.type === 'asset' &&
@@ -49,71 +50,76 @@ test('converts *.svg import into valid React component with svg[use], using defa
   );
 });
 
-test('accepts a custom function to configure a theme', async () => {
-  const { stats, filesystem, outputPath } = await compile(svgFixturePath, {
-    getThemeSubstitutions: ({ fills, strokes }) => {
-      if (fills.size > 1 || strokes.size > 1) {
-        throw new Error('Only one fill and stroke are supported');
-      }
-      return {
-        fills: new Map(
-          Array.from(fills.entries()).map(([k]) => [k, 'var(--color-primary)']),
-        ),
-        strokes: new Map(
-          Array.from(strokes.entries()).map(([k]) => [
-            k,
-            'var(--color-primary)',
-          ]),
-        ),
-      };
-    },
+describe('plugin options', () => {
+  test('accepts a custom function to configure a theme', async () => {
+    const { stats, filesystem, outputPath } = await compile(svgFixturePath, {
+      getThemeSubstitutions: ({ fills, strokes }) => {
+        if (fills.size > 1 || strokes.size > 1) {
+          throw new Error('Only one fill and stroke are supported');
+        }
+        return {
+          fills: new Map(
+            Array.from(fills.entries()).map(([k]) => [
+              k,
+              'var(--color-primary)',
+            ]),
+          ),
+          strokes: new Map(
+            Array.from(strokes.entries()).map(([k]) => [
+              k,
+              'var(--color-primary)',
+            ]),
+          ),
+        };
+      },
+    });
+
+    const statsJson = stats.toJson({ source: true, assets: true });
+
+    const emittedSvgAsset = statsJson.assets?.find(
+      (asset) =>
+        asset.type === 'asset' &&
+        asset.emitted &&
+        asset.info.sourceFilename === svgFixturePath,
+    );
+
+    expect(emittedSvgAsset).toBeDefined();
+
+    const emittedSvgContent = filesystem.readFileSync(
+      path.join(outputPath, emittedSvgAsset!.name),
+      'utf8',
+    );
+
+    expect(emittedSvgContent).toMatchInlineSnapshot(
+      `"<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="use-href-target"><path fill="none" d="M0 0h24v24H0z"/><path fill="var(--color-primary)" d="M22 11.5a.5.5 0 01-.5.5H3.706l6.148 6.146a.502.502 0 01-.708.708l-7-7a.502.502 0 010-.708l7-7a.502.502 0 01.708.708L3.707 11H21.5a.5.5 0 01.5.5"/></svg>"`,
+    );
   });
 
-  const statsJson = stats.toJson({ source: true, assets: true });
+  test('accepts a custom id option', async () => {
+    const { stats, filesystem, outputPath } = await compile(svgFixturePath, {
+      getSvgIdAttribute: () => 'my-id',
+    });
 
-  const emittedSvgAsset = statsJson.assets?.find(
-    (asset) =>
-      asset.type === 'asset' &&
-      asset.emitted &&
-      asset.info.sourceFilename === svgFixturePath,
-  );
+    const statsJson = stats.toJson({ source: true, assets: true });
 
-  expect(emittedSvgAsset).toBeDefined();
+    const emittedSvgAsset = statsJson.assets?.find(
+      (asset) =>
+        asset.type === 'asset' &&
+        asset.emitted &&
+        asset.info.sourceFilename === svgFixturePath,
+    );
 
-  const emittedSvgContent = filesystem.readFileSync(
-    path.join(outputPath, emittedSvgAsset!.name),
-    'utf8',
-  );
+    expect(emittedSvgAsset).toBeDefined();
 
-  expect(emittedSvgContent).toMatchInlineSnapshot(
-    `"<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="use-href-target"><path fill="none" d="M0 0h24v24H0z"/><path fill="var(--color-primary)" d="M22 11.5a.5.5 0 01-.5.5H3.706l6.148 6.146a.502.502 0 01-.708.708l-7-7a.502.502 0 010-.708l7-7a.502.502 0 01.708.708L3.707 11H21.5a.5.5 0 01.5.5"/></svg>"`,
-  );
-});
+    const emittedSvgContent = filesystem.readFileSync(
+      path.join(outputPath, emittedSvgAsset!.name),
+      'utf8',
+    );
 
-test('accepts a custom id option', async () => {
-  const { stats, filesystem, outputPath } = await compile(svgFixturePath, {
-    getSvgIdAttribute: () => 'my-id',
+    expect(emittedSvgContent).toMatchInlineSnapshot(
+      `"<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="my-id"><path fill="none" d="M0 0h24v24H0z"/><path fill="var(--use-href-fill-primary, var(--color-text))" d="M22 11.5a.5.5 0 01-.5.5H3.706l6.148 6.146a.502.502 0 01-.708.708l-7-7a.502.502 0 010-.708l7-7a.502.502 0 01.708.708L3.707 11H21.5a.5.5 0 01.5.5"/></svg>"`,
+    );
   });
-
-  const statsJson = stats.toJson({ source: true, assets: true });
-
-  const emittedSvgAsset = statsJson.assets?.find(
-    (asset) =>
-      asset.type === 'asset' &&
-      asset.emitted &&
-      asset.info.sourceFilename === svgFixturePath,
-  );
-
-  expect(emittedSvgAsset).toBeDefined();
-
-  const emittedSvgContent = filesystem.readFileSync(
-    path.join(outputPath, emittedSvgAsset!.name),
-    'utf8',
-  );
-
-  expect(emittedSvgContent).toMatchInlineSnapshot(
-    `"<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="my-id"><path fill="none" d="M0 0h24v24H0z"/><path fill="var(--use-href-fill-primary, var(--color-text))" d="M22 11.5a.5.5 0 01-.5.5H3.706l6.148 6.146a.502.502 0 01-.708.708l-7-7a.502.502 0 010-.708l7-7a.502.502 0 01.708.708L3.707 11H21.5a.5.5 0 01.5.5"/></svg>"`,
-  );
 });
 
 // TODO: Add a test that is even more integration-y, checking usage in a JS/TS file

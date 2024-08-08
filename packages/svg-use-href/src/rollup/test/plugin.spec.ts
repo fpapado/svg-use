@@ -136,4 +136,27 @@ describe('plugin options', () => {
       `"<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="use-href-target"><path fill="none" d="M0 0h24v24H0z"/><path fill="var(--color-primary)" d="M22 11.5a.5.5 0 01-.5.5H3.706l6.148 6.146a.502.502 0 01-.708.708l-7-7a.502.502 0 010-.708l7-7a.502.502 0 01.708.708L3.707 11H21.5a.5.5 0 01.5.5"/></svg>"`,
     );
   });
+
+  test('can customise the component factory', async () => {
+    const output = await build(svgFixturePathWithPrefix, {
+      componentFactory: {
+        functionName: 'createMyThemedSvg',
+        importFrom: 'my-library/svg',
+      },
+    });
+
+    const jsChunk = findEntryChunk(output);
+    expect(jsChunk.code).toMatchInlineSnapshot(`
+      "import { createMyThemedSvg } from 'my-library/svg';
+
+      const url = new URL('assets/arrow-TcJD63D9.svg', import.meta.url).href;
+      const id = "use-href-target";
+      const viewBox = "0 0 24 24";
+
+      const Component = createMyThemedSvg({url, id, viewBox});
+
+      export { Component, id, url, viewBox };
+      "
+    `);
+  });
 });
