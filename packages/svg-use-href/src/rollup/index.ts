@@ -81,6 +81,7 @@ function svgUseHrefPlugin(userOptions: PluginOptions): Plugin {
         url: `import.meta.ROLLUP_FILE_URL_${referenceId}`,
         id: JSON.stringify(transformedSvg.id),
         viewBox: JSON.stringify(transformedSvg.viewBox),
+        componentFactory: options.componentFactory,
       });
 
       return jsModuleContent;

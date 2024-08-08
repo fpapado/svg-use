@@ -18,8 +18,8 @@ test('converts *.svg import into valid React component with svg[use], using defa
   const output = statsJson.modules?.[0].source;
 
   expect(String(output)).toMatchInlineSnapshot(`
-    "import {createThemedExternalSvg} from 'svg-use-href/react';
-
+    "import {createThemedExternalSvg} from "svg-use-href/react";
+      
     export const url = __webpack_public_path__ + "images/arrow-8685472f952d45ad.svg";
     export const id = "use-href-target";
     export const viewBox = "0 0 24 24";

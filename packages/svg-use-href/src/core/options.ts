@@ -1,4 +1,8 @@
 import type { IdCreationFunction } from './idCreationFunction.js';
+import {
+  defaultComponentFactory,
+  type ComponentFactory,
+} from './createJsModule.js';
 import { defaultThemeSubstitution, ThemeSubstitutionFn } from './theme.js';
 
 export interface Options {
@@ -41,7 +45,11 @@ export interface Options {
    * @default {@link defaultThemeSubstitution}
    */
   getThemeSubstitutions?: ThemeSubstitutionFn | null;
-  // TODO: Allow customising the factory function
+  /**
+   * Configuration for the "Component" export. Pass null to skip the factory
+   * altogether.
+   */
+  componentFactory?: ComponentFactory | null;
 }
 
 export const defaultGetSvgIdAttribute: IdCreationFunction = () =>
@@ -50,4 +58,5 @@ export const defaultGetSvgIdAttribute: IdCreationFunction = () =>
 export const defaultOptions = {
   getSvgIdAttribute: defaultGetSvgIdAttribute,
   getThemeSubstitutions: defaultThemeSubstitution,
+  componentFactory: defaultComponentFactory,
 } satisfies Options;

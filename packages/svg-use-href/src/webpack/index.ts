@@ -82,13 +82,10 @@ export default async function svgUseHrefLoader(
   });
 
   const jsModuleContent = createJsModule({
-    // FIXME: For some reason, assetFilename does not work, but basename works
-    // just fine! With basename, the original asset is used. We should make this
-    // work the new one.
-    // url: `new URL(${JSON.stringify(assetFilename)}, import.meta.url).href`,
     url: `__webpack_public_path__ + ${JSON.stringify(assetFilename)}`,
     id: JSON.stringify(transformedSvg.id),
     viewBox: JSON.stringify(transformedSvg.viewBox),
+    componentFactory: options.componentFactory,
   });
 
   callback(null, jsModuleContent);
