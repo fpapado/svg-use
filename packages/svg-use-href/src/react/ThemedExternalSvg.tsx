@@ -17,7 +17,7 @@ export interface BaseProps {
    * must be on the same origin as the site, otherwise no SVG will be displayed.
    * There is no mechanism for cross-origin svg[use].
    */
-  href: string;
+  iconUrl: string;
   /** The id of the referent icon, in the destination SVG. */
   iconId: string;
   /** The viewBox of the referent SVG; used to ensure the same scaling. */
@@ -29,23 +29,23 @@ export type Props = BaseProps & ThemeProps & HTMLAttributes<SVGSVGElement>;
 export const ThemedSvg = forwardRef<SVGSVGElement, Props>(
   (
     {
-      href,
-      stroke: stroke,
+      iconUrl,
+      iconId,
+      viewBox,
+      stroke,
       strokeSecondary: strokeSecondary,
       strokeTertiary: strokeTertiary,
       fill,
       fillSecondary,
       fillTertiary,
       style,
-      iconId,
-      viewBox,
       ...rest
     },
     ref,
   ) => {
-    runtimeChecks(href);
+    runtimeChecks(iconUrl);
 
-    const hrefWithId = `${href}#${iconId}`;
+    const hrefWithId = `${iconUrl}#${iconId}`;
 
     /**
      * These are all tied to the default theme. It might be beneficial to define
@@ -69,12 +69,14 @@ export const ThemedSvg = forwardRef<SVGSVGElement, Props>(
   },
 );
 
+export type FactoryProps = { url: string; id: string; viewBox: string };
+
 /**
  * Component factory for ThemedExternalSvg. You can use this to organise
  * modules.
  */
 export const createThemedExternalSvg =
-  (baseProps: BaseProps) =>
+  ({ url, id, viewBox }: FactoryProps) =>
   (props: ThemeProps & HTMLAttributes<SVGSVGElement>) => (
-    <ThemedSvg {...baseProps} {...props} />
+    <ThemedSvg {...props} iconUrl={url} iconId={id} viewBox={viewBox} />
   );

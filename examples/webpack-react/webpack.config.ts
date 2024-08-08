@@ -42,7 +42,7 @@ const config: Configuration = {
             loader: 'svg-use-href/webpack',
             options: {
               // customize to your heart's content
-              svgAssetFilename: '/svgAssets/[name]-[contenthash].[ext]',
+              svgAssetFilename: 'svgAssets/[name]-[contenthash].[ext]',
             } satisfies SvgUseHrefOptions,
           },
         ],

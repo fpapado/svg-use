@@ -3,8 +3,8 @@ import { createRoot } from 'react-dom/client';
 import { createThemedExternalSvg } from 'svg-use-href/react';
 
 const ArrowSvg = createThemedExternalSvg({
-  iconId: arrowSvg.id,
-  href: arrowSvg.url,
+  id: arrowSvg.id,
+  url: arrowSvg.url,
   viewBox: arrowSvg.viewBox,
 });
 
@@ -12,7 +12,9 @@ const rootEl = document.createElement('div');
 document.body.appendChild(rootEl);
 
 createRoot(rootEl).render(
-  <button>
+  <div>
     <ArrowSvg />
-  </button>,
+    {/* FIXME: add types for this */}
+    {/* <arrowSvg.Component /> */}
+  </div>,
 );
