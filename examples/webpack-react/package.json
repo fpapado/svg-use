@@ -1,0 +1,35 @@
+{
+  "private": "true",
+  "name": "webpack-react",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack",
+    "dev": "webpack serve --open"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@swc-node/register": "1.10.9",
+    "@swc/core": "^1.7.6",
+    "@types/node": "20.14.14",
+    "@types/react": "18.3.3",
+    "@types/react-dom": "18.3.0",
+    "@types/webpack": "^5.28.5",
+    "html-webpack-plugin": "5.6.0",
+    "shared-library": "workspace:*",
+    "svg-use-href": "workspace:*",
+    "swc-loader": "^0.2.6",
+    "ts-node": "10.9.2",
+    "typescript": "5.5.4",
+    "webpack": "5.93.0",
+    "webpack-cli": "5.1.4",
+    "webpack-dev-server": "5.0.4"
+  },
+  "keywords": []
+}

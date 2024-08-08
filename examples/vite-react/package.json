@@ -1,0 +1,24 @@
+{
+  "private": true,
+  "name": "vite-react",
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "build": "tsc -b && vite build",
+    "dev": "vite",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "@vitejs/plugin-react": "^4.3.1",
+    "svg-use-href": "workspace:",
+    "typescript": "^5.2.2",
+    "vite": "^5.3.4",
+    "vite-plugin-inspect": "0.8.5"
+  }
+}

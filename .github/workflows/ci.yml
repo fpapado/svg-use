@@ -1,0 +1,33 @@
+name: CI
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches:
+      - "**"
+
+jobs:
+  checks:
+    name: Checks
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        command: ["check-types", "lint", "test"]
+      # We want a comprehensive view of checks, so let them all run even if one fails
+      fail-fast: false
+    steps:
+      - uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+      - name: Setup node
+        uses: actions/setup-node@1e60f620b9541d16bece96c5465dc8ee9832be0b # v4
+        with:
+          cache: "pnpm"
+          node-version-file: ".nvmrc"
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+      - name: Build all
+        # pnpm runs in topological order
+        run: pnpm run -r build
+      - run: pnpm ${{ matrix.command }}

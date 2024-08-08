@@ -1,0 +1,22 @@
+{
+  "private": "true",
+  "name": "shared-library",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "",
+  "exports": {
+    ".": {
+      "module": "./index.js",
+      "import": "./index.js",
+      "default": "./index.js"
+    }
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "svg-use-href": "workspace:"
+  },
+  "keywords": []
+}

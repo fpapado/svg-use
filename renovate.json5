@@ -1,0 +1,55 @@
+{
+  // NOTE: VS Code does not support json5. You should change the file
+  // association to jsonc:
+  // Cmd+Shift+P -> "Configure file association for .json5" -> "JSON with Comments"
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    // Like config:base/config:recommended, but with defaults to pin digests for
+    // actions and docker. Leans on the Renovate team's best practices.
+    // https://docs.renovatebot.com/upgrade-best-practices/#whats-in-the-configbest-practices-preset
+    "config:best-practices",
+    // This matches our style of pinning devDependencies, but keeping unpinned
+    // for JS libraries. All packages in this monorepo are libraries, so this
+    // keeps it simple https://docs.renovatebot.com/presets-config/#configjs-app
+    "config:js-lib",
+    // We want a slower cadence for this repository
+    "schedule:weekly"
+  ],
+  "timezone": "Europe/Helsinki",
+  "labels": ["dependencies", "dependencybot"],
+  "prConcurrentLimit": 5,
+  "postUpdateOptions": ["pnpmDedupe"],
+  // Regenerate the lockfile; this ensures that locked transitive
+  // versions stay up-to-date, and in our version range. See
+  // https://docs.renovatebot.com/configuration-options/#lockfilemaintenance
+  "lockFileMaintenance": {
+    "enabled": true,
+    "postUpdateOptions": ["pnpmDedupe"],
+    "automerge": true
+  },
+  "packageRules": [
+    {
+      "groupName": "semver-compatible dependencies and peerDependencies",
+      "matchManagers": ["npm"],
+      "matchDepTypes": ["dependencies", "peerDependencies"],
+      "matchUpdateTypes": ["minor", "patch"],
+      // 0.x versions can have breaking changes in minor versions
+      "matchCurrentVersion": ">=1.0.0",
+      "automerge": true
+    },
+    {
+      // Group all semver-compatible dependencies together.
+      "groupName": "semver-compatible dependencies",
+      "matchManagers": ["npm"],
+      "matchDepTypes": ["devDependencies"],
+      "matchUpdateTypes": ["minor", "patch"],
+      // 0.x versions can have breaking changes in minor versions
+      "matchCurrentVersion": ">=1.0.0",
+      "automerge": true
+    }
+    // major versions are left ungrouped
+  ],
+  "vulnerabilityAlerts": {
+    "labels": ["security"]
+  }
+}

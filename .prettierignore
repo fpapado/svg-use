@@ -1,0 +1,3 @@
+*.ohm-bundle.*
+pnpm-lock.yaml
+package.json

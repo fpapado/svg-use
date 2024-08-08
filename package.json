@@ -1,0 +1,72 @@
+{
+  "private": true,
+  "name": "svg-use-href-root",
+  "version": "0.1.0",
+  "description": "Tools and bundler plugins for loading SVG images via use[href], for use in components.",
+  "license": "MIT",
+  "author": "Fotis Papadogeorgopoulos <fotis@fpapado.com> (https://fotis.xyz)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fpapado/svg-use-href.git"
+  },
+  "bugs": {
+    "url": "https://github.com/fpapado/svg-use-href/issues"
+  },
+  "type": "module",
+  "scripts": {
+    "build": "pnpm --recursive run build",
+    "check-types": "pnpm --recursive run check-types",
+    "preinstall": "npx only-allow pnpm",
+    "lint": "pnpm --recursive lint",
+    "prepare": "husky",
+    "release": "pnpm --recursive publish",
+    "test": "vitest",
+    "test:coverage": "vitest --coverage"
+  },
+  "devDependencies": {
+    "@arethetypeswrong/cli": "0.15.3",
+    "@changesets/cli": "2.27.7",
+    "@eslint/js": "9.6.0",
+    "@testing-library/jest-dom": "6.4.6",
+    "@testing-library/react": "16.0.0",
+    "@testing-library/user-event": "14.5.2",
+    "@tsconfig/node20": "20.1.4",
+    "@types/eslint__js": "8.42.3",
+    "@vitejs/plugin-react": "4.3.1",
+    "@vitest/coverage-v8": "2.0.4",
+    "eslint": "9.6.0",
+    "eslint-plugin-vitest": "0.5.4",
+    "happy-dom": "14.12.3",
+    "husky": "9.0.11",
+    "lint-staged": "15.2.7",
+    "markdownlint-cli2": "0.13.0",
+    "npm-run-all2": "6.2.2",
+    "prettier": "3.3.2",
+    "prettier-package-json": "2.8.0",
+    "publint": "0.2.9",
+    "rimraf": "6.0.1",
+    "tshy": "3.0.2",
+    "typescript": "5.5.4",
+    "typescript-eslint": "8.0.0",
+    "vitest": "2.0.4"
+  },
+  "keywords": [
+    "loader",
+    "performance",
+    "plugin",
+    "rollup",
+    "svg",
+    "vite",
+    "webpack"
+  ],
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
+  "lint-staged": {
+    "*.{js,jsx,mjs,cjs,ts,tsx,mts,cts}": "eslint --fix",
+    "!(.changeset)/*.md": "markdownlint-cli2 --fix",
+    "*": "prettier --write --ignore-unknown",
+    "package.json": "prettier-package-json --write"
+  },
+  "packageManager": "pnpm@9.6.0"
+}

@@ -1,0 +1,8 @@
+{
+  "config": {
+    // line length is handled by prettier
+    "line-length": false,
+  },
+  "gitignore": true,
+  "ignores": [".changeset"],
+}
