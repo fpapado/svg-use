@@ -52,7 +52,9 @@ function svgUseHrefPlugin(userOptions: PluginOptions): Plugin {
 
       // transformSvg uses ESM-only imports, so it is ESM itself. To work in CJS (at
       // the time of writing), we must use import()
-      const { transformSvg } = await import('../core/transformSvg.mjs');
+      const { transformSvgForUseHref: transformSvg } = await import(
+        '../core/transformSvg.mjs'
+      );
 
       const res = transformSvg(source, {
         idCreationFunction: (existingId) =>

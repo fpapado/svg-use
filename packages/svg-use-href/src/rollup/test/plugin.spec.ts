@@ -25,18 +25,15 @@ test('converts *.svg import into valid React component with svg[use], using defa
   const output = await build(svgFixturePathWithPrefix, {});
 
   const svgAsset = findAsset(output, svgFixturePath);
-  expect(svgAsset?.source).toMatchInlineSnapshot(`
-    "<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="use-href-target">
-      <path fill="none" d="M0 0h24v24H0z" />
-      <path fill="var(--use-href-fill-primary, var(--color-text))" d="M22 11.5a.5.5 0 01-.5.5H3.706l6.148 6.146a.502.502 0 01-.708.708l-7-7a.502.502 0 010-.708l7-7a.502.502 0 01.708.708L3.707 11H21.5a.5.5 0 01.5.5" />
-    </svg>"
-  `);
+  expect(svgAsset?.source).toMatchInlineSnapshot(
+    `"<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="use-href-target"><path fill="none" d="M0 0h24v24H0z"/><path fill="var(--use-href-fill-primary, var(--color-text))" d="M22 11.5a.5.5 0 01-.5.5H3.706l6.148 6.146a.502.502 0 01-.708.708l-7-7a.502.502 0 010-.708l7-7a.502.502 0 01.708.708L3.707 11H21.5a.5.5 0 01.5.5"/></svg>"`,
+  );
 
   const jsChunk = findEntryChunk(output);
   expect(jsChunk.code).toMatchInlineSnapshot(`
     "import { createThemedExternalSvg } from 'svg-use-href/react';
 
-    const url = new URL('assets/arrow-BO-qJAR1.svg', import.meta.url).href;
+    const url = new URL('assets/arrow-TcJD63D9.svg', import.meta.url).href;
     const id = "use-href-target";
     const viewBox = "0 0 24 24";
 
@@ -51,18 +48,15 @@ test('converts *.svg import when imported from JS', async () => {
   const output = await build('__fixtures__/input.js', {});
 
   const svgAsset = findAsset(output, svgFixturePath);
-  expect(svgAsset?.source).toMatchInlineSnapshot(`
-    "<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="use-href-target">
-      <path fill="none" d="M0 0h24v24H0z" />
-      <path fill="var(--use-href-fill-primary, var(--color-text))" d="M22 11.5a.5.5 0 01-.5.5H3.706l6.148 6.146a.502.502 0 01-.708.708l-7-7a.502.502 0 010-.708l7-7a.502.502 0 01.708.708L3.707 11H21.5a.5.5 0 01.5.5" />
-    </svg>"
-  `);
+  expect(svgAsset?.source).toMatchInlineSnapshot(
+    `"<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="use-href-target"><path fill="none" d="M0 0h24v24H0z"/><path fill="var(--use-href-fill-primary, var(--color-text))" d="M22 11.5a.5.5 0 01-.5.5H3.706l6.148 6.146a.502.502 0 01-.708.708l-7-7a.502.502 0 010-.708l7-7a.502.502 0 01.708.708L3.707 11H21.5a.5.5 0 01.5.5"/></svg>"`,
+  );
 
   const jsChunk = findEntryChunk(output);
   expect(jsChunk.code).toMatchInlineSnapshot(`
     "import { createThemedExternalSvg } from 'svg-use-href/react';
 
-    const url = new URL('assets/arrow-BO-qJAR1.svg', import.meta.url).href;
+    const url = new URL('assets/arrow-TcJD63D9.svg', import.meta.url).href;
     const id = "use-href-target";
     const viewBox = "0 0 24 24";
 
@@ -95,18 +89,15 @@ describe('plugin options', () => {
     });
 
     const svgAsset = findAsset(output, svgFixturePath);
-    expect(svgAsset?.source).toMatchInlineSnapshot(`
-      "<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="my-id">
-        <path fill="none" d="M0 0h24v24H0z" />
-        <path fill="var(--use-href-fill-primary, var(--color-text))" d="M22 11.5a.5.5 0 01-.5.5H3.706l6.148 6.146a.502.502 0 01-.708.708l-7-7a.502.502 0 010-.708l7-7a.502.502 0 01.708.708L3.707 11H21.5a.5.5 0 01.5.5" />
-      </svg>"
-    `);
+    expect(svgAsset?.source).toMatchInlineSnapshot(
+      `"<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="my-id"><path fill="none" d="M0 0h24v24H0z"/><path fill="var(--use-href-fill-primary, var(--color-text))" d="M22 11.5a.5.5 0 01-.5.5H3.706l6.148 6.146a.502.502 0 01-.708.708l-7-7a.502.502 0 010-.708l7-7a.502.502 0 01.708.708L3.707 11H21.5a.5.5 0 01.5.5"/></svg>"`,
+    );
 
     const jsChunk = findEntryChunk(output);
     expect(jsChunk.code).toMatchInlineSnapshot(`
       "import { createThemedExternalSvg } from 'svg-use-href/react';
 
-      const url = new URL('assets/arrow-DmbI12_z.svg', import.meta.url).href;
+      const url = new URL('assets/arrow-BmBT1YU4.svg', import.meta.url).href;
       const id = "my-id";
       const viewBox = "0 0 24 24";
 
@@ -141,11 +132,8 @@ describe('plugin options', () => {
     });
 
     const svgAsset = findAsset(output, svgFixturePath);
-    expect(svgAsset?.source).toMatchInlineSnapshot(`
-    "<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="use-href-target">
-      <path fill="none" d="M0 0h24v24H0z" />
-      <path fill="var(--color-primary)" d="M22 11.5a.5.5 0 01-.5.5H3.706l6.148 6.146a.502.502 0 01-.708.708l-7-7a.502.502 0 010-.708l7-7a.502.502 0 01.708.708L3.707 11H21.5a.5.5 0 01.5.5" />
-    </svg>"
-  `);
+    expect(svgAsset?.source).toMatchInlineSnapshot(
+      `"<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="use-href-target"><path fill="none" d="M0 0h24v24H0z"/><path fill="var(--color-primary)" d="M22 11.5a.5.5 0 01-.5.5H3.706l6.148 6.146a.502.502 0 01-.708.708l-7-7a.502.502 0 010-.708l7-7a.502.502 0 01.708.708L3.707 11H21.5a.5.5 0 01.5.5"/></svg>"`,
+    );
   });
 });

@@ -86,9 +86,9 @@ importers:
 
   examples/shared-library:
     dependencies:
-      'svg-use-href':
+      svg-use-href:
         specifier: 'workspace:'
-        version: link:../../packages/svg-use-href-loader
+        version: link:../../packages/svg-use-href
 
   examples/vite-react:
     dependencies:
@@ -99,9 +99,6 @@ importers:
         specifier: ^18.3.1
         version: 18.3.1(react@18.3.1)
     devDependencies:
-      'svg-use-href':
-        specifier: 'workspace:'
-        version: link:../../packages/svg-use-href-loader
       '@types/react':
         specifier: ^18.3.3
         version: 18.3.3
@@ -111,6 +108,9 @@ importers:
       '@vitejs/plugin-react':
         specifier: ^4.3.1
         version: 4.3.1(vite@5.3.5(@types/node@22.1.0)(terser@5.31.3))
+      svg-use-href:
+        specifier: 'workspace:'
+        version: link:../../packages/svg-use-href
       typescript:
         specifier: ^5.2.2
         version: 5.5.4
@@ -130,9 +130,6 @@ importers:
         specifier: ^18.3.1
         version: 18.3.1(react@18.3.1)
     devDependencies:
-      'svg-use-href':
-        specifier: workspace:*
-        version: link:../../packages/svg-use-href-loader
       '@swc-node/register':
         specifier: 1.10.9
         version: 1.10.9(@swc/core@1.7.6)(@swc/types@0.1.12)(typescript@5.5.4)
@@ -157,6 +154,9 @@ importers:
       shared-library:
         specifier: workspace:*
         version: link:../shared-library
+      svg-use-href:
+        specifier: workspace:*
+        version: link:../../packages/svg-use-href
       swc-loader:
         specifier: ^0.2.6
         version: 0.2.6(@swc/core@1.7.6)(webpack@5.93.0(@swc/core@1.7.6)(webpack-cli@5.1.4))
@@ -176,7 +176,7 @@ importers:
         specifier: 5.0.4
         version: 5.0.4(webpack-cli@5.1.4)(webpack@5.93.0)
 
-  packages/svg-use-href-loader:
+  packages/svg-use-href:
     dependencies:
       '@rollup/pluginutils':
         specifier: ^5.1.0

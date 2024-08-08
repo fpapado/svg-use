@@ -1,4 +1,8 @@
-import dedent from 'dedent';
+export interface ModuleFactoryOptions {
+  url: string;
+  id: string;
+  viewBox: string;
+}
 
 /**
  * Creates a JS module (as a string), that exposes all relevant information to
@@ -9,13 +13,8 @@ export const createJsModule = ({
   url,
   id,
   viewBox,
-}: {
-  url: string;
-  id: string;
-  viewBox: string;
-}): string => {
-  return dedent`
-import {createThemedExternalSvg} from 'svg-use-href/react';
+}: ModuleFactoryOptions): string => {
+  return `import {createThemedExternalSvg} from 'svg-use-href/react';
 
 export const url = ${url};
 export const id = ${id};

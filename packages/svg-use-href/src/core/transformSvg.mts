@@ -1,69 +1,54 @@
 import { fromXml } from 'xast-util-from-xml';
-import { toXml } from 'xast-util-to-xml';
 import { visit, CONTINUE } from 'unist-util-visit';
+import svgo, { type CustomPlugin, type PluginConfig } from 'svgo';
 
-import { Result } from './result.js';
-import { ThemeSubstitutionFn } from './theme.js';
+import type { Result } from './result.js';
+import type { ThemeSubstitutionFn } from './theme.js';
 
 type Root = ReturnType<typeof fromXml>;
 
-/**
- * In order to be compatible with use[href], an SVG needs to have an id. A
- * viewBox is also important, to allow the internal SVG to scale together with
- * the outer one. This function ensures just that.
- */
-function makeCompatibleWithUseHref(
-  root: Root,
-  {
-    idCreationFunction,
-  }: { idCreationFunction: (existingId?: string) => string },
-): Result<{ id: string; viewBox: string; root: Root }, string> {
-  const svgRoot = root.children[0];
+/** An ad-hoc SVGO plugin, to ensure that the root SVG element has an id. */
+const ensureRootId = (params: {
+  idCreationFunction: (existingId?: string) => string;
+}): CustomPlugin => ({
+  name: 'ensure-root-id',
+  fn: () => ({
+    element: {
+      enter: (element) => {
+        if (element.name !== 'svg') {
+          return;
+        }
 
-  if (svgRoot.type !== 'element' || svgRoot.name !== 'svg') {
-    return {
-      type: 'failure',
-      error: 'Could not find root svg element',
-    };
-  }
-
-  const viewBox = svgRoot.attributes.viewBox;
-
-  if (!viewBox) {
-    return {
-      type: 'failure',
-      error:
-        'No viewBox attribute was found on the root svg element. A valid viewBox is required for the svg to render consistently.',
-    };
-  }
-
-  svgRoot.attributes.id = idCreationFunction(
-    svgRoot.attributes.id ?? undefined,
-  );
-
-  const id = svgRoot.attributes.id;
-
-  return {
-    type: 'success',
-    data: {
-      id,
-      viewBox,
-      root,
+        element.attributes.id = params.idCreationFunction(
+          element.attributes.id ?? undefined,
+        );
+      },
     },
-  };
-}
+  }),
+});
+
+const makeThemeable = ({
+  themeSubstitutionFunction,
+}: {
+  themeSubstitutionFunction: ThemeSubstitutionFn;
+}): CustomPlugin => ({
+  name: 'make-themeable',
+  fn: (root) => {
+    // XastRoot does not line up with Root in the types, but they are both xast
+    // roots, so the cast seems safe. makeThemeable does its own visiting of the
+    // tree (in two passes), so we do not use SVGO's visitor.
+    xastMakeThemeable(root as Root, themeSubstitutionFunction);
+    return null;
+  },
+});
 
 /**
- * Traverse an SVG, and substitute hardcoded color values with other ones
- * (usually custom properties).
+ * Traverse an SVG as xast, and substitute hardcoded color values with other
+ * ones (usually custom properties).
  */
-function makeThemed(
+function xastMakeThemeable(
   root: Root,
-  {
-    themeSubstitutionFunction,
-  }: {
-    themeSubstitutionFunction: ThemeSubstitutionFn;
-  },
+  themeSubstitutionFunction: ThemeSubstitutionFn,
 ): Root {
   const fixedFillRefs = new Map<string, number>();
   const fixedStrokeRefs = new Map<string, number>();
@@ -126,10 +111,57 @@ function makeThemed(
   return root;
 }
 
-// TODO: Split into `makeCompatibleWithUseHref` and `makeThemed`
-// TODO: Offer this as a CLI as well; the CLI could
-// be an SVGO plugin, so we can reuse some of their infrastructure
-export function transformSvg(
+type UseHrefInfo = {
+  id: string;
+  viewBox: string;
+};
+
+/**
+ * In order to be compatible with use[href], an SVG needs to have an id. A
+ * viewBox is also important, to allow the internal SVG to scale together with
+ * the outer one. This function extracts that information, for downstream use.
+ */
+function extractDataForUseHref(root: Root): Result<UseHrefInfo, string> {
+  let id, viewBox;
+
+  visit(root, (svgRoot) => {
+    if (
+      svgRoot.type !== 'element' ||
+      (svgRoot.type === 'element' && svgRoot.name !== 'svg')
+    ) {
+      return;
+    }
+
+    id = svgRoot.attributes.id;
+    viewBox = svgRoot.attributes.viewBox;
+  });
+
+  if (!id) {
+    return {
+      type: 'failure',
+      error:
+        'No id was found on the svg root. An id is required to reference the element.',
+    };
+  }
+
+  if (!viewBox) {
+    return {
+      type: 'failure',
+      error:
+        'No viewBox attribute was found on the root svg element. A valid viewBox is required for the svg to render consistently.',
+    };
+  }
+
+  return {
+    type: 'success',
+    data: {
+      id,
+      viewBox,
+    },
+  };
+}
+
+export function transformSvgForUseHref(
   contents: string,
   {
     idCreationFunction,
@@ -138,55 +170,34 @@ export function transformSvg(
     idCreationFunction: (existingId?: string) => string;
     themeSubstitutionFunction: ThemeSubstitutionFn | null;
   },
-): Result<
-  { id: string; viewBox: string; content: string; warnings?: Array<string> },
-  string
-> {
-  // TODO: ensure viewBox, style to attributes (for themeing, if themeSubstitutionFunction)
-  // const initialPass = svgo.optimize(contents, {
-  //   plugins: [''],
-  // });
-
-  const initialRoot = fromXml(contents);
-
-  const res = makeCompatibleWithUseHref(initialRoot, {
-    idCreationFunction,
+): Result<UseHrefInfo & { content: string }, string> {
+  const transformed = svgo.optimize(contents, {
+    plugins: [
+      // convert width/height in the root to viewBox. This ensures better scaling.
+      // TODO: Keep our ears open, in case this causes issues for some users.
+      'removeDimensions',
+      ensureRootId({ idCreationFunction }),
+      // convert inline styles to attributes; useful as a setup for the themeing
+      // transform, which only looks at attributes
+      themeSubstitutionFunction !== null ? 'convertStyleToAttrs' : undefined,
+      themeSubstitutionFunction !== null
+        ? makeThemeable({ themeSubstitutionFunction })
+        : undefined,
+    ].filter((a) => a !== undefined) as PluginConfig[],
   });
+
+  const res = extractDataForUseHref(fromXml(transformed.data));
 
   if (res.type === 'failure') {
     return res;
   }
 
-  const {
-    data: { root, id, viewBox },
-  } = res;
-
-  if (!themeSubstitutionFunction) {
-    // short-circuit if we have no theme function
-    return {
-      type: 'success',
-      data: {
-        id,
-        viewBox,
-        content: toXml(root, {
-          closeEmptyElements: true,
-          tightClose: false,
-        }),
-      },
-    };
-  }
-
-  const themedRoot = makeThemed(root, { themeSubstitutionFunction });
-
   return {
     type: 'success',
     data: {
-      id,
-      viewBox,
-      content: toXml(themedRoot, {
-        closeEmptyElements: true,
-        tightClose: false,
-      }),
+      id: res.data.id,
+      viewBox: res.data.viewBox,
+      content: transformed.data,
     },
   };
 }
