@@ -6,3 +6,8 @@ declare module '*?svgUseHref' {
   // TODO: figure out how to type this
   // export const Component: string;
 }
+
+// TODO: Remember the extends ... trick from the DOM types
+// interface Config {
+//   componentFactory:
+// }

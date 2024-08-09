@@ -121,3 +121,9 @@ code/build setup), but in other ways it requires more documentation and support.
 This approach seems more error-prone, compared to just consuming an SVG.
 However, it is workable. Let us know if you find any significant benefits to
 this approach, that we might have missed!
+
+## TODO
+
+- [] Perhaps recommend the `new URL` pattern
+  https://web.dev/articles/bundling-non-js-resources, though note that it is
+  unsupported in esbuild bundling
