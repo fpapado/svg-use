@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { id, url, viewBox } from 'svg-use:./assets/react.svg';
+import { id, url, viewBox } from './assets/react.svg?svgUse';
 import { ThemedSvg } from '@svg-use/react';
 import viteLogoUrl from '/vite.svg';
 import reactLogoUrl from './assets/react.svg';

@@ -11,7 +11,7 @@ import type { OutputAsset, OutputChunk, RollupOutput } from 'rollup';
 process.chdir(import.meta.dirname);
 
 const svgFixturePath = '__fixtures__/arrow.svg';
-const svgFixturePathWithPrefix = `svg-use:${svgFixturePath}`;
+const svgFixturePathWithSuffix = `${svgFixturePath}?svgUse`;
 
 const findEntryChunk = (output: RollupOutput['output']) =>
   output.find((v) => v.type === 'chunk' && v.isEntry) as OutputChunk;
@@ -22,7 +22,7 @@ const findAsset = (output: RollupOutput['output'], originalFileName: string) =>
   ) as OutputAsset | undefined;
 
 test('converts *.svg import into valid React component with svg[use], using defaults', async () => {
-  const output = await build(svgFixturePathWithPrefix, {});
+  const output = await build(svgFixturePathWithSuffix, {});
 
   const svgAsset = findAsset(output, svgFixturePath);
   expect(svgAsset?.source).toMatchInlineSnapshot(
@@ -69,7 +69,7 @@ test('converts *.svg import when imported from JS', async () => {
 
 test('works with the default rollup assetFileNames option', async () => {
   const output = await build(
-    svgFixturePathWithPrefix,
+    svgFixturePathWithSuffix,
     {},
     {
       assetFileNames: 'my-assets/[name]-[hash:10][extname]',
@@ -84,7 +84,7 @@ test('works with the default rollup assetFileNames option', async () => {
 
 describe('plugin options', () => {
   test('can provide a custom id for the SVG root', async () => {
-    const output = await build(svgFixturePathWithPrefix, {
+    const output = await build(svgFixturePathWithSuffix, {
       getSvgIdAttribute: () => 'my-id',
     });
 
@@ -109,7 +109,7 @@ describe('plugin options', () => {
   });
 
   test('can customise the theme substitution', async () => {
-    const output = await build(svgFixturePathWithPrefix, {
+    const output = await build(svgFixturePathWithSuffix, {
       getThemeSubstitutions: ({ fills, strokes }) => {
         if (fills.size > 1 || strokes.size > 1) {
           throw new Error('Only one fill and stroke are supported');
@@ -138,7 +138,7 @@ describe('plugin options', () => {
   });
 
   test('can customise the component factory', async () => {
-    const output = await build(svgFixturePathWithPrefix, {
+    const output = await build(svgFixturePathWithSuffix, {
       componentFactory: {
         functionName: 'createMyThemedSvg',
         importFrom: 'my-library/svg',

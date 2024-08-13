@@ -1,3 +1,3 @@
-import { Component, id, url, viewBox } from 'svg-use:./arrow.svg';
+import { Component, id, url, viewBox } from './arrow.svg?svgUse';
 
 export default Component;

@@ -11,14 +11,11 @@ import fs from 'node:fs/promises';
 
 export type PluginOptions = Options;
 
-const SVG_USE_PREFIX = 'svg-use:';
+const splitQuery = (str: string) => str.split('?');
 
 const isRelevant = (id: string) => {
-  if (!id) {
-    return false;
-  }
-
-  return id.startsWith(SVG_USE_PREFIX) && id.endsWith('.svg');
+  const [originalPath, query] = splitQuery(id);
+  return originalPath.endsWith('.svg') && query.split('&').includes('svgUse');
 };
 
 function svgUsePlugin(userOptions: PluginOptions): Plugin {
@@ -35,21 +32,21 @@ function svgUsePlugin(userOptions: PluginOptions): Plugin {
         return null;
       }
 
-      const withoutPrefix = source.slice(SVG_USE_PREFIX.length);
+      const [withoutQuery, originalQuery] = splitQuery(source);
 
       const resolvedId =
         importer !== undefined
-          ? path.resolve(path.dirname(importer), withoutPrefix)
-          : withoutPrefix;
+          ? path.resolve(path.dirname(importer), withoutQuery)
+          : withoutQuery;
 
-      return SVG_USE_PREFIX + resolvedId;
+      return resolvedId + `?${originalQuery}`;
     },
     async load(id) {
       if (!isRelevant(id)) {
         return;
       }
 
-      const filepath = id.slice(SVG_USE_PREFIX.length);
+      const [filepath] = splitQuery(id);
       const basename = path.basename(filepath);
       const absolutePath = path.resolve(process.cwd(), filepath);
       const source = await fs.readFile(filepath, 'utf-8');
