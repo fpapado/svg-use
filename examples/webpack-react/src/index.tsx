@@ -1,6 +1,6 @@
 import * as arrowSvg from './arrow.svg?svgUseHref';
 import { createRoot } from 'react-dom/client';
-import { createThemedExternalSvg } from 'svg-use-href/react';
+import { createThemedExternalSvg } from '@svg-use/react';
 
 const ArrowSvg = createThemedExternalSvg({
   id: arrowSvg.id,

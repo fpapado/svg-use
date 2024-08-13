@@ -1,16 +1,16 @@
 {
   "private": true,
-  "name": "svg-use-href-root",
+  "name": "@svg-use/monorepo-root",
   "version": "0.1.0",
   "description": "Tools and bundler plugins for loading SVG images via use[href], for use in components.",
   "license": "MIT",
   "author": "Fotis Papadogeorgopoulos <fotis@fpapado.com> (https://fotis.xyz)",
   "repository": {
     "type": "git",
-    "url": "https://github.com/fpapado/svg-use-href.git"
+    "url": "https://github.com/fpapado/svg-use.git"
   },
   "bugs": {
-    "url": "https://github.com/fpapado/svg-use-href/issues"
+    "url": "https://github.com/fpapado/svg-use/issues"
   },
   "type": "module",
   "scripts": {
@@ -27,16 +27,12 @@
     "@arethetypeswrong/cli": "0.15.3",
     "@changesets/cli": "2.27.7",
     "@eslint/js": "9.6.0",
-    "@testing-library/jest-dom": "6.4.6",
-    "@testing-library/react": "16.0.0",
-    "@testing-library/user-event": "14.5.2",
     "@tsconfig/node20": "20.1.4",
     "@types/eslint__js": "8.42.3",
     "@vitejs/plugin-react": "4.3.1",
     "@vitest/coverage-v8": "2.0.4",
     "eslint": "9.6.0",
     "eslint-plugin-vitest": "0.5.4",
-    "happy-dom": "14.12.3",
     "husky": "9.0.11",
     "lint-staged": "15.2.7",
     "markdownlint-cli2": "0.13.0",

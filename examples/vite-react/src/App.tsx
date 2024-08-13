@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { id, url, viewBox } from 'svg-use-href:./assets/react.svg';
-import { ThemedSvg } from 'svg-use-href/react';
+import { id, url, viewBox } from 'svg-use:./assets/react.svg';
+import { ThemedSvg } from '@svg-use/react';
 import viteLogoUrl from '/vite.svg';
 import reactLogoUrl from './assets/react.svg';
 import './App.css';
@@ -20,7 +20,7 @@ function App() {
         <a href="https://react.dev" target="_blank">
           <ThemedSvg
             iconId={id}
-            href={url}
+            iconUrl={url}
             viewBox={viewBox}
             fill="red"
             className="logo react"

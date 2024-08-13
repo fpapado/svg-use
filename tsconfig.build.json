@@ -1,0 +1,11 @@
+{
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    "noEmit": false,
+    "declaration": true,
+    "incremental": true,
+    "outDir": "${configDir}/dist"
+  },
+  "include": ["${configDir}/src"],
+  "exclude": ["${configDir}/**/*.spec.ts", "${configDir}/**/test"]
+}

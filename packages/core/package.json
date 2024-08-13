@@ -1,0 +1,72 @@
+{
+  "name": "@svg-use/core",
+  "version": "0.3.0",
+  "description": "Tools and bundler plugins for loading SVG images via use[href], for use in components.",
+  "license": "MIT",
+  "author": "Fotis Papadogeorgopoulos <fotis@fpapado.com> (https://fotis.xyz)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fpapado/svg-use.git",
+    "directory": "packages/core"
+  },
+  "bugs": {
+    "url": "https://github.com/fpapado/svg-use/issues"
+  },
+  "type": "module",
+  "exports": {
+    ".": {
+      "module": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "default": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      }
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist/**/*"
+  ],
+  "scripts": {
+    "build": "pnpm build:lib",
+    "build:lib": "tsc -p tsconfig.build.json",
+    "build:lib:watch": "tsc --watch -p tsconfig.build.json",
+    "check-types": "tsc --noEmit",
+    "check-types:watch": "tsc --noEmit --watch",
+    "dev": "npm-run-all --parallel build:lib:watch test",
+    "lint": "npm-run-all \"lint:*\"",
+    "lint:prettier": "pnpm prettier --check .",
+    "lint:scripts": "eslint src --report-unused-disable-directives --no-warn-ignored --max-warnings 0",
+    "prepublishOnly": "pnpm install && pnpm build",
+    "prepublish": "publint && attw --config-path ./.attw.json --pack",
+    "test": "vitest"
+  },
+  "dependencies": {
+    "svgo": "^3.3.2",
+    "unist-util-visit": "^5.0.0",
+    "xast-util-from-xml": "^4.0.0"
+  },
+  "peerDependencies": {
+    "react": "^18"
+  },
+  "peerDependenciesMeta": {
+    "react": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@types/node": "20.14.14"
+  },
+  "keywords": [
+    "loader",
+    "performance",
+    "plugin",
+    "svg"
+  ]
+}

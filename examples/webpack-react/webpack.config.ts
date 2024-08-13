@@ -1,7 +1,8 @@
 import type { Configuration } from 'webpack';
 import HTMLWebpackPlugin from 'html-webpack-plugin';
 import * as path from 'node:path';
-import type { LoaderOptions as SvgUseHrefOptions } from 'svg-use-href/webpack';
+// FIXME: This does not work atm, due to being in CJS instead of ESM
+// import type { LoaderOptions as SvgUseOptions } from '@svg-use/webpack';
 import { Config } from '@swc/core';
 
 const swcOptions: Config = {
@@ -35,15 +36,15 @@ const config: Configuration = {
         // This ultimately returns JS code, and emits an asset
         type: 'javascript/auto',
         use: [
-          // svg-use-href-loader emits an asset and returns a JS module;
-          // we still need to specify how to load JS
+          // The loader emits an asset and returns a JS module; we still need to
+          // specify how to load JS
           { loader: 'swc-loader', options: swcOptions },
           {
-            loader: 'svg-use-href/webpack',
+            loader: '@svg-use/webpack',
             options: {
               // customize to your heart's content
               svgAssetFilename: 'svgAssets/[name]-[contenthash].[ext]',
-            } satisfies SvgUseHrefOptions,
+            },
           },
         ],
       },

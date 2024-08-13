@@ -1,11 +1,4 @@
 {
-  "extends": "@tsconfig/node20/tsconfig.json",
-  "compilerOptions": {
-    "noEmit": true,
-    // These are better covered by typescript-eslint, with auto-fix
-    "noUnusedLocals": false,
-    "noUnusedParameters": false,
-    "allowJs": true
-  },
+  "extends": "./tsconfig.base.json",
   "include": ["eslint.config.mjs", "prettier.config.mjs", "vitest.workspace.ts"]
 }

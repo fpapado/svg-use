@@ -1,0 +1,80 @@
+{
+  "name": "@svg-use/react",
+  "version": "0.3.0",
+  "description": "Tools and bundler plugins for loading SVG images via use[href], for use in components.",
+  "license": "MIT",
+  "author": "Fotis Papadogeorgopoulos <fotis@fpapado.com> (https://fotis.xyz)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fpapado/svg-use.git",
+    "directory": "packages/react"
+  },
+  "bugs": {
+    "url": "https://github.com/fpapado/svg-use/issues"
+  },
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/esm/index.d.ts",
+        "default": "./dist/esm/index.js"
+      },
+      "require": {
+        "types": "./dist/commonjs/index.d.ts",
+        "default": "./dist/commonjs/index.js"
+      }
+    },
+    "./package.json": "./package.json"
+  },
+  "main": "./dist/commonjs/index.js",
+  "module": "./dist/esm/index.js",
+  "files": [
+    "dist/**/*",
+    "env.rollup.d.ts",
+    "env.webpack.d.ts"
+  ],
+  "scripts": {
+    "build": "pnpm build:lib",
+    "build:lib": "tshy",
+    "build:lib:watch": "tshy --watch",
+    "check-types": "tsc --noEmit",
+    "check-types:watch": "tsc --noEmit --watch",
+    "dev": "npm-run-all --parallel build:lib:watch test",
+    "lint": "npm-run-all \"lint:*\"",
+    "lint:prettier": "pnpm prettier --check .",
+    "lint:scripts": "eslint src --report-unused-disable-directives --no-warn-ignored --max-warnings 0",
+    "prepublishOnly": "pnpm install && pnpm build",
+    "prepublish": "publint && attw --config-path ./.attw.json --pack",
+    "test": "vitest"
+  },
+  "types": "./dist/commonjs/index.d.ts",
+  "dependencies": {},
+  "peerDependencies": {
+    "react": "^18"
+  },
+  "peerDependenciesMeta": {
+    "react": {
+      "optional": true
+    }
+  },
+  "devDependencies": {},
+  "keywords": [
+    "loader",
+    "performance",
+    "plugin",
+    "rollup",
+    "svg",
+    "vite",
+    "webpack"
+  ],
+  "tshy": {
+    "exclude": [
+      "src/**/*.spec.*",
+      "src/**/test/"
+    ],
+    "exports": {
+      ".": "./src/index.ts",
+      "./package.json": "./package.json"
+    }
+  }
+}

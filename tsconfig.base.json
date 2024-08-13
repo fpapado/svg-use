@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "moduleResolution": "NodeNext",
+    "module": "NodeNext",
+    "target": "ES2022",
+    "esModuleInterop": true,
+    "allowJs": true,
+
+    "isolatedModules": true,
+    "strict": true,
+    "skipLibCheck": true,
+
+    // The base does not emit by default
+    "noEmit": true,
+    "incremental": true,
+
+    // These are better covered by typescript-eslint, with auto-fix
+    "noUnusedLocals": false,
+    "noUnusedParameters": false
+  }
+}

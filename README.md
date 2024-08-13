@@ -1,4 +1,4 @@
-# svg-use-href
+# @svg-use
 
 Tools and bundler plugins, to load SVG files via `svg > use[href]`, instead of
 inlining them as React components.
@@ -59,9 +59,9 @@ The loader does the following steps:
 The ad-hoc JS module is the equivalent of this:
 
 ```tsx
-import { createThemedExternalSvg } from 'svg-use-href/react';
+import { createThemedExternalSvg } from '@svg-use/react';
 
-export const id = 'svg-use-href';
+export const id = 'use-href-target';
 export const href = new URL('/assets/some-icon-1234.svg', import.meta.url).href;
 export const viewBox = "0 0 32 32'
 
@@ -101,8 +101,8 @@ const MyComponent = () => {
 This lacks some of the convenience of the top-level `Component` export, but
 should be workable.
 
-Note that `svg-use-href-loader/react` provides a handful of utilities and types
-for implementing custom components. You can use those either directly, or as
+Note that `@svg-use/react` provides a handful of utilities and types for
+implementing custom components. You can use those either directly, or as
 inspiration for your own API design.
 
 If you want to modularise your icons further, we recommend creating a component
@@ -216,8 +216,8 @@ another application.
 
 This section uses the following example:
 
-- The relevant package is `svg-use-href`
-- The source repository path is `/Users/user/svg-use-href`
+- The relevant package is `@svg-use/core`
+- The source repository path is `/Users/user/svg-use`
 - The target application path is `/Users/user/my-app`
 
 ### Using the `file:` protocol
@@ -236,7 +236,7 @@ In your target application `package.json`, add:
 ```json
 {
   "dependencies": {
-    "svg-use-href": "file:/Users/user/svg-use-href/packages/svg-use-href"
+    "@svg-use/core": "file:/Users/user/svg-use/packages/core"
   }
 }
 ```
@@ -260,10 +260,10 @@ In the **source** repository, run the `dev` command for the relevant package,
 and its dependencies:
 
 ```shell
-pnpm --filter "svg-use-href..." run dev
+pnpm --filter "core..." run dev
 ```
 
-(Note that `--filter "svg-use-href..."` is
+(Note that `--filter "core..."` is
 [pnpm's syntax for running a command in a workspace package, as well as its dependencies](https://pnpm.io/filtering))
 
 #### One-off builds
@@ -272,5 +272,5 @@ You can alternatively run a production build for the relevant package and its
 dependencies:
 
 ```shell
-pnpm --filter "svg-use-href..." run build
+pnpm --filter "core..." run build
 ```

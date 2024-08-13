@@ -1,1 +1,1 @@
-/// <reference types="svg-use-href/env.webpack" />
+/// <reference types="@svg-use/webpack/client" />

@@ -39,8 +39,7 @@ advance, when building the library.
 
 This is thus the recommended approach.
 
-- Use `svg-use-href` and/or the CLI, to make SVGs themeable and ensure ids
-  statically.
+- Use `@svg-use/core`, to make SVGs themeable and ensure ids statically.
   - You can use the same id for all SVGs, to simplify the setup.
   - You will run the CLI statically, and/or in CI
 - Create a "wrapper" component, similar to the default `ThemedExternalSvg` or
@@ -82,7 +81,7 @@ static transforms might be simpler.
 ## Option 2: Defer everything to the caller
 
 This is similar to the approach above, but instead of calculating things
-statically, you ship just `.svg` and let the caller configure `svg-use-href` for
+statically, you ship just `.svg` and let the caller configure `@svg-use` for
 their bundler.
 
 In some ways, this is simpler for the author of the library (in terms of
@@ -108,15 +107,13 @@ code/build setup), but in other ways it requires more documentation and support.
   // etc. for other components
   ```
 
-- You would create a subpath export, such as
-  `my-icon-library/svg-use-href-config`, that exports the expected theme and id
-  options, as envisioned by your library.
+- You would create a subpath export, such as `my-icon-library/svg-use-config`,
+  that exports the expected theme and id options, as envisioned by your library.
 - You will have to configure your library's bundler or transpiler to externalise
   `.svg` files, so that they are not resolved when you build your library.
 - You will have to give instructions to users, for how to configure their
-  bundler to load `.svg?svgUseHref` assets with `svg-use-href`. You will
-  instruct them to use your exported options, for assets related to your
-  library.
+  bundler to load `.svg?svgUseHref` assets with `svg-use`. You will instruct
+  them to use your exported options, for assets related to your library.
 
 This approach seems more error-prone, compared to just consuming an SVG.
 However, it is workable. Let us know if you find any significant benefits to
@@ -125,5 +122,5 @@ this approach, that we might have missed!
 ## TODO
 
 - [] Perhaps recommend the `new URL` pattern
-  https://web.dev/articles/bundling-non-js-resources, though note that it is
+  <https://web.dev/articles/bundling-non-js-resources>, though note that it is
   unsupported in esbuild bundling
