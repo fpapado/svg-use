@@ -100,6 +100,7 @@ async function main() {
   );
 
   console.log(`Wrote index file at ${INDEX_FILEPATH}.`);
+  // TODO: Prettier
 }
 
 main();
