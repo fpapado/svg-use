@@ -12,17 +12,18 @@ function App() {
     <>
       <div>
         <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogoUrl} className="logo" alt="Vite logo" />
+          <img src={viteLogoUrl} className="logo" alt="Vite" />
         </a>
         <a href="https://react.dev" target="_blank">
-          <img src={reactLogoUrl} className="logo" alt="Vite logo" />
+          <img src={reactLogoUrl} className="logo react" alt="React" />
         </a>
         <a href="https://react.dev" target="_blank">
           <ThemedSvg
+            role="img"
+            aria-label="React"
             iconId={id}
             iconUrl={url}
             viewBox={viewBox}
-            fill="red"
             className="logo react"
           />
         </a>

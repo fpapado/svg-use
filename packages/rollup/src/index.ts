@@ -15,7 +15,7 @@ const splitQuery = (str: string) => str.split('?');
 
 const isRelevant = (id: string) => {
   const [originalPath, query] = splitQuery(id);
-  return originalPath.endsWith('.svg') && query.split('&').includes('svgUse');
+  return originalPath.endsWith('.svg') && query?.split('&').includes('svgUse');
 };
 
 function svgUsePlugin(userOptions: PluginOptions): Plugin {
@@ -51,7 +51,7 @@ function svgUsePlugin(userOptions: PluginOptions): Plugin {
       const absolutePath = path.resolve(process.cwd(), filepath);
       const source = await fs.readFile(filepath, 'utf-8');
 
-      const res = await transformSvg(source, {
+      const res = transformSvg(source, {
         idCreationFunction: (existingId) =>
           options.getSvgIdAttribute({ filename: basename, existingId }),
         themeSubstitutionFunction: options.getThemeSubstitutions,
