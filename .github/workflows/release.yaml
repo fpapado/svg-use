@@ -37,8 +37,10 @@ jobs:
         id: changesets
         uses: changesets/action@v1
         with:
-          # This expects you to have a script called release which does a build for your packages and calls changeset publish
-          publish: pnpm changeset:publish
+          # We use a recursive pnpm script under the hood, to ensure that
+          # publishing runs topologically. Changesets does not do this out of
+          # the box. @see: https://github.com/changesets/changesets/issues/238
+          publish: pnpm release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_CONFIG_PROVENANCE: true
