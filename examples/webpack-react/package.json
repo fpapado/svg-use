@@ -3,8 +3,8 @@
   "name": "webpack-react",
   "version": "1.0.0",
   "description": "",
-  "license": "ISC",
-  "author": "",
+  "license": "MIT",
+  "author": "Fotis Papadogeorgopoulos <fotis@fpapado.com> (https://fotis.xyz)",
   "main": "index.js",
   "scripts": {
     "build": "webpack",
