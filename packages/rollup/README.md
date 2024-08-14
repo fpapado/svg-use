@@ -66,8 +66,8 @@ const MyComponent = () => (
 );
 ```
 
-You can also create your own SVG `use[href]` wrappers, using the other exports.
-This is how the default Component factory works under the hood:
+You can also create your own SVG `use[href]` wrappers, using the other named
+exports. This is how the default Component factory works under the hood:
 
 ```tsx
 import { url, id } from './arrow.svg?svgUse';

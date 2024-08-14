@@ -92,7 +92,7 @@ code/build setup), but in other ways it requires more documentation and support.
 
   ```tsx
   // src/ArrowEnd.tsx
-  import {url, id} from './arrowEnd.svg?svgUseHref';
+  import {url, id} from './arrowEnd.svg?svgUse';
   import createThemedExternalSvg from './some-path-to-wrapper';
 
   // this could also be extracted/inserted statically, or baked-in to
@@ -112,8 +112,8 @@ code/build setup), but in other ways it requires more documentation and support.
 - You will have to configure your library's bundler or transpiler to externalise
   `.svg` files, so that they are not resolved when you build your library.
 - You will have to give instructions to users, for how to configure their
-  bundler to load `.svg?svgUseHref` assets with `svg-use`. You will instruct
-  them to use your exported options, for assets related to your library.
+  bundler to load `.svg?svgUse` assets with `svg-use`. You will instruct them to
+  use your exported options, for assets related to your library.
 
 This approach seems more error-prone, compared to just consuming an SVG.
 However, it is workable. Let us know if you find any significant benefits to

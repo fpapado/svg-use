@@ -1,5 +1,5 @@
 import { type OutputOptions, rollup } from 'rollup';
-import svgUseHref from '../../dist/index.js';
+import svgUse from '../../dist/index.js';
 
 import type { PluginOptions } from '../index.js';
 
@@ -10,7 +10,7 @@ export async function build(
 ) {
   const bundle = await rollup({
     input: fixturePath,
-    plugins: [svgUseHref(pluginOptions)],
+    plugins: [svgUse(pluginOptions)],
     // This is added by the plugin, but for simplicity we do not resolve it here
     external: ['@svg-use/react'],
   });

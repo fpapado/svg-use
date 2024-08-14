@@ -1,4 +1,4 @@
-import * as arrowSvg from './arrow.svg?svgUseHref';
+import * as arrowSvg from './arrow.svg?svgUse';
 import { createRoot } from 'react-dom/client';
 import { createThemedExternalSvg } from '@svg-use/react';
 

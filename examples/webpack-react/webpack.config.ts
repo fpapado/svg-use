@@ -29,16 +29,14 @@ const config: Configuration = {
   module: {
     rules: [
       {
+        // Make assets such as `arrow.svg?svgUse` compatible with `svg >
+        // use[href]`. Emit an the transformed asset, and returned a JS module
+        // with all the relevant information.
         test: /\.svg$/i,
-        // Only process assets with ?svgUseHref; leave the rest up to webpack's
-        // defaults
-        resourceQuery: /svgUseHref/,
-        // This ultimately returns JS code, and emits an asset
+        resourceQuery: /svgUse/,
+        // This loader chain ultimately returns JS code, and emits an asset
         type: 'javascript/auto',
         use: [
-          // The loader emits an asset and returns a JS module; we still need to
-          // specify how to load JS
-          { loader: 'swc-loader', options: swcOptions },
           {
             loader: '@svg-use/webpack',
             options: {

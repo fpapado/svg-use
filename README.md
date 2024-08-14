@@ -34,7 +34,7 @@ Assuming the default configuration.
 When you write this:
 
 ```tsx
-import { href, id, Component as ArrowIcon } from './some-icon.svg?svgUseHref';
+import { href, id, Component as ArrowIcon } from './some-icon.svg?svgUse';
 
 const MyComponent = () => {
   return (
@@ -85,7 +85,7 @@ properties from the loader. You will then pass them to your own component, which
 you can import.
 
 ```tsx
-import { href, id } from './some-icon.svg?svgUseHref';
+import { href, id } from './some-icon.svg?svgUse';
 import { CustomSvgComponent } from './CustomSvgComponent';
 
 const MyComponent = () => {
@@ -114,7 +114,7 @@ You could then write code like this:
 ```tsx
 /* ArrowIcon.tsx */
 import { createCustomSvgComponent } from 'path-to-custom-svg-component';
-import { href, id } from './arrow-icon.svg?svgUseHref';
+import { href, id } from './arrow-icon.svg?svgUse';
 
 // This creates a react component, that has its own types,
 // perhaps tailored to your theme or usage patterns

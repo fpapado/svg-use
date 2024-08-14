@@ -32,9 +32,9 @@ export interface LoaderOptions extends Options {
 // could be an easy way to make a "flag sprite sheet" bundle, a "UI icons sheet"
 // bundle and so on. These could get loaded in parallel, or preloaded/prefetched
 // at their own pace.
-// A syntax could be import {Component, url, id} from './myIcon.svg?svgUseHref' with {svgUseHrefBundle: 'my-bundle'}
+// A syntax could be import {Component, url, id} from './myIcon.svg?svgUse' with {svgUseBundle: 'my-bundle'}
 
-export default async function svgUseHrefLoader(
+export default async function svgUseLoader(
   this: LoaderContext<LoaderOptions>,
   contents: string,
 ): Promise<void> {

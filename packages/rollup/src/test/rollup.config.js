@@ -1,8 +1,8 @@
-import svgUseHref from '../../dist/index.js';
+import svgUse from '../../dist/index.js';
 
 export default {
   input: '__fixtures__/input.js',
-  plugins: [svgUseHref()],
+  plugins: [svgUse()],
   output: [
     {
       file: 'bundle.js',

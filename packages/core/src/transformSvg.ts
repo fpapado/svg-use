@@ -59,11 +59,7 @@ function xastMakeThemeable(
 
     const fill = node.attributes.fill;
 
-    // TODO: Consider making this an SVGO plugin, that:
-    // - converts <style> to attributes, so they can be picked up/substituted
-    // - converts colors (e.g. based on https://svgo.dev/docs/plugins/convert-colors/)
     if (fill && fill !== 'none') {
-      // TODO: Decide what to do with other static values
       // TODO: We should parse var(), to check fallbacks
       // For now, we should have a simplistic "value or var()" parser; using a full-blown CSS value parser might be better, but...
       fixedFillRefs.set(fill, (fixedFillRefs.get(fill) ?? 0) + 1);
