@@ -34,10 +34,10 @@ export interface LoaderOptions extends Options {
 // at their own pace.
 // A syntax could be import {Component, url, id} from './myIcon.svg?svgUse' with {svgUseBundle: 'my-bundle'}
 
-export default async function svgUseLoader(
+export default function svgUseLoader(
   this: LoaderContext<LoaderOptions>,
   contents: string,
-): Promise<void> {
+): void {
   const callback = this.async();
 
   // TODO: validate options with schema-utils
@@ -49,7 +49,7 @@ export default async function svgUseLoader(
 
   const basename = path.basename(this.resourcePath);
 
-  const res = await transformSvg(contents, {
+  const res = transformSvg(contents, {
     idCreationFunction: (existingId) =>
       options.getSvgIdAttribute({ filename: basename, existingId }),
     themeSubstitutionFunction: options.getThemeSubstitutions,
