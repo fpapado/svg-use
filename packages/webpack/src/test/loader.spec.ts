@@ -20,7 +20,7 @@ test('converts *.svg import into valid React component with svg[use], using defa
   expect(String(output)).toMatchInlineSnapshot(`
     "import {createThemedExternalSvg} from "@svg-use/react";
       
-    export const url = __webpack_public_path__ + "images/arrow-8685472f952d45ad.svg";
+    export const url = __webpack_public_path__ + "images/arrow-03e4b7303260c576.svg";
     export const id = "use-href-target";
     export const viewBox = "0 0 24 24";
 
@@ -37,7 +37,7 @@ test('converts *.svg import into valid React component with svg[use], using defa
 
   expect(emittedSvgAsset).toBeDefined();
   expect(emittedSvgAsset!.name).toMatchInlineSnapshot(
-    `"images/arrow-8685472f952d45ad.svg"`,
+    `"images/arrow-03e4b7303260c576.svg"`,
   );
 
   const emittedSvgContent = filesystem.readFileSync(
@@ -46,12 +46,12 @@ test('converts *.svg import into valid React component with svg[use], using defa
   );
 
   expect(emittedSvgContent).toMatchInlineSnapshot(
-    `"<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="use-href-target"><path fill="none" d="M0 0h24v24H0z"/><path fill="var(--use-href-fill-primary, var(--color-text))" d="M22 11.5a.5.5 0 01-.5.5H3.706l6.148 6.146a.502.502 0 01-.708.708l-7-7a.502.502 0 010-.708l7-7a.502.502 0 01.708.708L3.707 11H21.5a.5.5 0 01.5.5"/></svg>"`,
+    `"<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="var(--use-href-stroke-primary, currentColor)" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right" id="use-href-target"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>"`,
   );
 });
 
 describe('plugin options', () => {
-  test.only('accepts a custom function to configure a theme', async () => {
+  test('accepts a custom function to configure a theme', async () => {
     const { stats, filesystem, outputPath } = await compile(svgFixturePath, {
       getThemeSubstitutions: ({ fills, strokes }) => {
         if (fills.size > 1 || strokes.size > 1) {
@@ -117,7 +117,7 @@ describe('plugin options', () => {
     );
 
     expect(emittedSvgContent).toMatchInlineSnapshot(
-      `"<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="my-id"><path fill="none" d="M0 0h24v24H0z"/><path fill="var(--use-href-fill-primary, var(--color-text))" d="M22 11.5a.5.5 0 01-.5.5H3.706l6.148 6.146a.502.502 0 01-.708.708l-7-7a.502.502 0 010-.708l7-7a.502.502 0 01.708.708L3.707 11H21.5a.5.5 0 01.5.5"/></svg>"`,
+      `"<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="var(--use-href-stroke-primary, currentColor)" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right" id="my-id"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>"`,
     );
   });
 });
