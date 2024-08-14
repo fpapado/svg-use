@@ -26,14 +26,14 @@ test('converts *.svg import into valid React component with svg[use], using defa
 
   const svgAsset = findAsset(output, svgFixturePath);
   expect(svgAsset?.source).toMatchInlineSnapshot(
-    `"<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="use-href-target"><path fill="none" d="M0 0h24v24H0z"/><path fill="var(--use-href-fill-primary, var(--color-text))" d="M22 11.5a.5.5 0 01-.5.5H3.706l6.148 6.146a.502.502 0 01-.708.708l-7-7a.502.502 0 010-.708l7-7a.502.502 0 01.708.708L3.707 11H21.5a.5.5 0 01.5.5"/></svg>"`,
+    `"<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="var(--use-href-stroke-primary, currentColor)" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right" id="use-href-target"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>"`,
   );
 
   const jsChunk = findEntryChunk(output);
   expect(jsChunk.code).toMatchInlineSnapshot(`
     "import { createThemedExternalSvg } from '@svg-use/react';
 
-    const url = new URL('assets/arrow-TcJD63D9.svg', import.meta.url).href;
+    const url = new URL('assets/arrow-C5a107hs.svg', import.meta.url).href;
     const id = "use-href-target";
     const viewBox = "0 0 24 24";
 
@@ -49,14 +49,14 @@ test('converts *.svg import when imported from JS', async () => {
 
   const svgAsset = findAsset(output, svgFixturePath);
   expect(svgAsset?.source).toMatchInlineSnapshot(
-    `"<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="use-href-target"><path fill="none" d="M0 0h24v24H0z"/><path fill="var(--use-href-fill-primary, var(--color-text))" d="M22 11.5a.5.5 0 01-.5.5H3.706l6.148 6.146a.502.502 0 01-.708.708l-7-7a.502.502 0 010-.708l7-7a.502.502 0 01.708.708L3.707 11H21.5a.5.5 0 01.5.5"/></svg>"`,
+    `"<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="var(--use-href-stroke-primary, currentColor)" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right" id="use-href-target"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>"`,
   );
 
   const jsChunk = findEntryChunk(output);
   expect(jsChunk.code).toMatchInlineSnapshot(`
     "import { createThemedExternalSvg } from '@svg-use/react';
 
-    const url = new URL('assets/arrow-TcJD63D9.svg', import.meta.url).href;
+    const url = new URL('assets/arrow-C5a107hs.svg', import.meta.url).href;
     const id = "use-href-target";
     const viewBox = "0 0 24 24";
 
@@ -90,14 +90,14 @@ describe('plugin options', () => {
 
     const svgAsset = findAsset(output, svgFixturePath);
     expect(svgAsset?.source).toMatchInlineSnapshot(
-      `"<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="my-id"><path fill="none" d="M0 0h24v24H0z"/><path fill="var(--use-href-fill-primary, var(--color-text))" d="M22 11.5a.5.5 0 01-.5.5H3.706l6.148 6.146a.502.502 0 01-.708.708l-7-7a.502.502 0 010-.708l7-7a.502.502 0 01.708.708L3.707 11H21.5a.5.5 0 01.5.5"/></svg>"`,
+      `"<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="var(--use-href-stroke-primary, currentColor)" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right" id="my-id"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>"`,
     );
 
     const jsChunk = findEntryChunk(output);
     expect(jsChunk.code).toMatchInlineSnapshot(`
       "import { createThemedExternalSvg } from '@svg-use/react';
 
-      const url = new URL('assets/arrow-BmBT1YU4.svg', import.meta.url).href;
+      const url = new URL('assets/arrow-DP2kZD2T.svg', import.meta.url).href;
       const id = "my-id";
       const viewBox = "0 0 24 24";
 
@@ -133,7 +133,7 @@ describe('plugin options', () => {
 
     const svgAsset = findAsset(output, svgFixturePath);
     expect(svgAsset?.source).toMatchInlineSnapshot(
-      `"<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="use-href-target"><path fill="none" d="M0 0h24v24H0z"/><path fill="var(--color-primary)" d="M22 11.5a.5.5 0 01-.5.5H3.706l6.148 6.146a.502.502 0 01-.708.708l-7-7a.502.502 0 010-.708l7-7a.502.502 0 01.708.708L3.707 11H21.5a.5.5 0 01.5.5"/></svg>"`,
+      `"<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="var(--color-primary)" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right" id="use-href-target"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>"`,
     );
   });
 
@@ -149,7 +149,7 @@ describe('plugin options', () => {
     expect(jsChunk.code).toMatchInlineSnapshot(`
       "import { createMyThemedSvg } from 'my-library/svg';
 
-      const url = new URL('assets/arrow-TcJD63D9.svg', import.meta.url).href;
+      const url = new URL('assets/arrow-C5a107hs.svg', import.meta.url).href;
       const id = "use-href-target";
       const viewBox = "0 0 24 24";
 

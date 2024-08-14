@@ -4,6 +4,7 @@ import type { Result } from './result.js';
 import type { ThemeSubstitutionFn } from './theme.js';
 import { XastRoot } from 'svgo/lib/types.js';
 import { visit, CONTINUE } from 'unist-util-visit';
+import { fromXml } from 'xast-util-from-xml';
 
 /** An ad-hoc SVGO plugin, to ensure that the root SVG element has an id. */
 const ensureRootId = (params: {
@@ -92,13 +93,17 @@ function xastMakeThemeable(
     }
 
     const fill = node.attributes.fill;
-    if (fill && substitutions.fills.has(fill)) {
-      node.attributes.fill = substitutions.fills.get(fill)!;
+    const substitutionFill = substitutions.fills.get(fill);
+
+    if (fill && substitutionFill) {
+      node.attributes.fill = substitutionFill;
     }
 
     const stroke = node.attributes.stroke;
-    if (stroke && substitutions.strokes.has(stroke)) {
-      node.attributes.fill = substitutions.fills.get(stroke)!;
+    const substitutionStroke = substitutions.strokes.get(stroke);
+
+    if (stroke && substitutionStroke) {
+      node.attributes.fill = substitutionStroke;
     }
   });
 
@@ -155,7 +160,7 @@ function extractDataForUseHref(root: XastRoot): Result<UseHrefInfo, string> {
   };
 }
 
-export async function transformSvgForUseHref(
+export function transformSvgForUseHref(
   contents: string,
   {
     idCreationFunction,
@@ -164,9 +169,7 @@ export async function transformSvgForUseHref(
     idCreationFunction: (existingId?: string) => string;
     themeSubstitutionFunction: ThemeSubstitutionFn | null;
   },
-): Promise<Result<UseHrefInfo & { content: string }, string>> {
-  const { fromXml } = await import('xast-util-from-xml');
-
+): Result<UseHrefInfo & { content: string }, string> {
   const transformed = svgo.optimize(contents, {
     plugins: [
       // convert width/height in the root to viewBox. This ensures better scaling.

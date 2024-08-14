@@ -91,7 +91,7 @@ describe('plugin options', () => {
     );
 
     expect(emittedSvgContent).toMatchInlineSnapshot(
-      `"<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="use-href-target"><path fill="none" d="M0 0h24v24H0z"/><path fill="var(--my-color-primary)" d="M22 11.5a.5.5 0 01-.5.5H3.706l6.148 6.146a.502.502 0 01-.708.708l-7-7a.502.502 0 010-.708l7-7a.502.502 0 01.708.708L3.707 11H21.5a.5.5 0 01.5.5"/></svg>"`,
+      `"<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="var(--my-color-primary)" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right" id="use-href-target"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>"`,
     );
   });
 
