@@ -1,3 +1,4 @@
 {
-  "format": "ascii"
+  "format": "ascii",
+  "ignoreRules": ["no-resolution"]
 }
