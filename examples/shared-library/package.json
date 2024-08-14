@@ -3,8 +3,8 @@
   "name": "shared-library",
   "version": "1.0.0",
   "description": "",
-  "license": "ISC",
-  "author": "",
+  "license": "MIT",
+  "author": "Fotis Papadogeorgopoulos <fotis@fpapado.com> (https://fotis.xyz)",
   "exports": {
     ".": {
       "module": "./index.js",
