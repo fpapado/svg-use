@@ -15,6 +15,7 @@
   "type": "module",
   "scripts": {
     "build": "pnpm --recursive run build",
+    "changeset:publish": "changeset publish",
     "check-types": "pnpm --recursive run check-types",
     "preinstall": "npx only-allow pnpm",
     "lint": "pnpm --recursive lint",
