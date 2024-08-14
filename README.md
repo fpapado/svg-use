@@ -1,7 +1,7 @@
 # @svg-use
 
-Tools and bundler plugins, to load SVG files via `svg > use[href]`, instead of
-inlining them as React components.
+Tools and bundler plugins, to load SVG files as components via
+`svg > use[href]`, instead of inlining them as JS code.
 
 ## The core problem
 
@@ -20,41 +20,54 @@ TODO:
 
 ## The core solution
 
-- Need to enforce a few invariants:
-  - viewBox
-  - an id (and extract it)
-  - optionally: themeability
-- Need to extract the id, and link the props to the theme. We then provide the
-  href + id to the caller
+- `svg` provides the `use` element, which can reference same-origin external
+  SVGs via the `href` attribute.
+- To make that work, we need a few invariants:
+  - an `id` to reference the external SVG by (while SVG 2 allows referencing
+    without an id, that does not seem supported in browsers)
+  - a `viewBox`, to allow more flexible scaling
+- We also need a `theme` system, to allow us to customise the referenced SVG.
+  This is done via CSS properties, which can be inherited by the referenced SVG.
+- In other words, we need to transform an SVG, to make it themed and extract the
+  id. We pass those as props to a wrapper component, which does the
+  `svg > use[href]` dance.
+- Type safety and user convenience are key; this should be as (or nearly as)
+  convenient as just inlining the SVGs.
 
 ### In depth
 
-Assuming the default configuration.
+Assuming the default configuration and a given loader.
 
 When you write this:
 
 ```tsx
-import { href, id, Component as ArrowIcon } from './some-icon.svg?svgUse';
+import { href, id, Component as ArrowIcon } from './arrow.svg?svgUse';
 
 const MyComponent = () => {
   return (
     <button>
-      <ArrowIcon />
+      <ArrowIcon color="currentColor" />
     </button>
   );
 };
 ```
 
-The loader does the following steps:
+Then `@svg-use/core` does the following steps:
 
 - It parses `./some-icon.svg`, to ensure that it fulfills the invariants
 - It extracts the `id` of the top-level SVG element
-- It runs the [theme extractor]() (or the default one) to turn the SVG element's
-  fills and strokes into configurable CSS custom properties
-- It emits `./some-icon.svg` as an asset (using to the bundler's logic), which
+- It runs a `theme` function to turn the SVG element's fills and strokes into
+  configurable CSS custom properties
+- It returns the transformed SVG, as well as a JS module, that references the
+  extracted properties, and passes them to a "component factory", for
+  convenience.
+
+Additionally, a bundler-specific plugin or loader does the following:
+
+- It emits the transformed SVG as an asset (using to the bundler's logic), which
   writes it to disk under some URL. The loader stores that URL.
-- It creates an ad-hoc JS module, that exports the `href`, the `id`, as well as
-  a React component, for convenience. This is what our code ultimately sees.
+- It wires up the JS module to the bundler. This is what the userland code
+  ultimately sees.
 
 The ad-hoc JS module is the equivalent of this:
 
@@ -72,10 +85,6 @@ export const Component = createThemedExternalSvg({ href, id, viewBox });
 This approach combines convenience (being able to just use `Component`), with
 composition (being able to use `href` and `id` to build your own wrapper
 components).
-
-We do not currently allow customising the ad-hoc JS module (e.g. via
-templating), but we are interested to hear, if you have use-cases that are not
-solvable with composition.
 
 ## What if I need a different top-level SVG component?
 
@@ -107,7 +116,7 @@ inspiration for your own API design.
 
 If you want to modularise your icons further, we recommend creating a component
 factory function, similar to the `createSimpleExternalSvg` factory that is used
-internally ([consult the source here]()).
+internally.
 
 You could then write code like this:
 
@@ -121,14 +130,13 @@ import { href, id } from './arrow-icon.svg?svgUse';
 export const ArrowIcon = createCustomSvgComponent({ href, id });
 ```
 
-TODO: Instead of templating, we could allow customising the import path to the
-factory function! Then users could write their own. However, users should take
-care to customise their ambient types.
+To support this pattern, `@svg-use/core` provides the `componentFactory`
+configuration option.
 
 ## About the types
 
-The default types assume that you are using the [recommended config]() for the
-URL parameters and the top-level component.
+The default types assume that you are using the recommended config for the URL
+parameters and the top-level component.
 
 Under the hood, the types are ambient module declarations, which is the
 equivalent of telling TypeScript "trust me, if a module with this pattern
@@ -139,17 +147,20 @@ loaders, or if you do not wish to use the top-level component (TODO: create a
 glossary somewhere, so that we can define "top-level component"), then **you
 should not use the default types**.
 
-Instead, [consult how the default types are written](), and write the equivalent
-for your needs.
-
-Here is how you would write a declaration for path `?externalSvg` and with a
-different `Component` factory
+Instead, consult how the default types are written, and write the equivalent for
+your needs.
 
 ## Where to go from here
 
 This is the repository root. To get started, consult these packages:
 
-- Refer to [](./packages/) for the core loader and component
+- Refer to [@svg-use/core](./packages/core) for the core logic
+- Refer to [@svg-use/webpack](./packages/webpack) for the core logic
+- Refer to [@svg-use/rollup](./packages/rollup) for the core logic
+- Refer to [@svg-use/react](./packages/react) for the default React wrapper
+- Refer to [the examples directory](./examples/) for examples of usage with
+  various bundlers and frameworks, as well as
+  [thoughts about how to use this pattern in shared libraries](./examples/shared-library/)
 
 ## Contributing
 
