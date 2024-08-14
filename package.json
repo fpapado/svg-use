@@ -19,7 +19,7 @@
     "preinstall": "npx only-allow pnpm",
     "lint": "pnpm --recursive lint",
     "prepare": "husky",
-    "release": "pnpm --recursive publish --access",
+    "release": "pnpm --recursive publish --access public",
     "test": "vitest",
     "test:coverage": "vitest --coverage"
   },
