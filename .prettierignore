@@ -1,5 +1,8 @@
-*.ohm-bundle.*
 pnpm-lock.yaml
+
+# Handled by prettier-package-json
 package.json
+
+# Prevents conflicts with tshy's formatting
 .tshy/
 .tshy-build/
