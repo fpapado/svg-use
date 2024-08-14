@@ -43,21 +43,23 @@
     "lint": "npm-run-all \"lint:*\"",
     "lint:prettier": "pnpm prettier --check .",
     "lint:scripts": "eslint src --report-unused-disable-directives --no-warn-ignored --max-warnings 0",
-    "prepublish": "publint && attw --config-path ./.attw.json --pack",
     "prepublishOnly": "pnpm install && pnpm build",
+    "prepublish": "publint && attw --config-path ./.attw.json --pack",
     "test": "vitest"
   },
   "types": "./dist/commonjs/index.d.ts",
-  "dependencies": {},
   "peerDependencies": {
-    "react": "^18"
+    "react": "^18",
+    "react-dom": "^18"
   },
   "peerDependenciesMeta": {
     "react": {
       "optional": true
     }
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "@types/react": "18.3.3"
+  },
   "keywords": [
     "loader",
     "performance",
