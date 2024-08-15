@@ -6,18 +6,18 @@
   "extends": [
     // Like config:base/config:recommended, but with defaults to pin digests for
     // actions and docker. Leans on the Renovate team's best practices.
-    // https://docs.renovatebot.com/upgrade-best-practices/#whats-in-the-configbest-practices-preset
+    // @see https://docs.renovatebot.com/upgrade-best-practices/#whats-in-the-configbest-practices-preset
     "config:best-practices",
-    // This matches our style of pinning devDependencies, but keeping unpinned
-    // for JS libraries. All packages in this monorepo are libraries, so this
-    // keeps it simple https://docs.renovatebot.com/presets-config/#configjs-app
+    // This pins devDependencies, but keeps dependencies unpinned for JS
+    // libraries.
+    // @see https://docs.renovatebot.com/presets-config/#configjs-app
     "config:js-lib",
-    // We want a slower cadence for this repository
+    // No need for spam
     "schedule:weekly"
   ],
   "timezone": "Europe/Helsinki",
   "labels": ["dependencies", "dependencybot"],
-  "prConcurrentLimit": 5,
+  "prConcurrentLimit": 10,
   "postUpdateOptions": ["pnpmDedupe"],
   // Regenerate the lockfile; this ensures that locked transitive
   // versions stay up-to-date, and in our version range. See
@@ -38,8 +38,8 @@
       "automerge": true
     },
     {
-      // Group all semver-compatible dependencies together.
-      "groupName": "semver-compatible dependencies",
+      // Group all semver-compatible devDependencies together.
+      "groupName": "semver-compatible devDependencies",
       "matchManagers": ["npm"],
       "matchDepTypes": ["devDependencies"],
       "matchUpdateTypes": ["minor", "patch"],

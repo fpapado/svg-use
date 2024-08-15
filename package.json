@@ -24,27 +24,27 @@
     "test:coverage": "vitest --coverage"
   },
   "devDependencies": {
-    "@arethetypeswrong/cli": "0.15.3",
+    "@arethetypeswrong/cli": "0.15.4",
     "@changesets/cli": "2.27.7",
-    "@eslint/js": "9.6.0",
+    "@eslint/js": "9.9.0",
     "@tsconfig/node20": "20.1.4",
     "@types/eslint__js": "8.42.3",
     "@vitejs/plugin-react": "4.3.1",
-    "@vitest/coverage-v8": "2.0.4",
-    "eslint": "9.6.0",
+    "@vitest/coverage-v8": "2.0.5",
+    "eslint": "9.9.0",
     "eslint-plugin-vitest": "0.5.4",
-    "husky": "9.0.11",
-    "lint-staged": "15.2.7",
+    "husky": "9.1.4",
+    "lint-staged": "15.2.9",
     "markdownlint-cli2": "0.13.0",
     "npm-run-all2": "6.2.2",
-    "prettier": "3.3.2",
+    "prettier": "3.3.3",
     "prettier-package-json": "2.8.0",
-    "publint": "0.2.9",
+    "publint": "0.2.10",
     "rimraf": "6.0.1",
     "tshy": "3.0.2",
     "typescript": "5.5.4",
-    "typescript-eslint": "8.0.0",
-    "vitest": "2.0.4"
+    "typescript-eslint": "8.1.0",
+    "vitest": "2.0.5"
   },
   "keywords": [
     "loader",
@@ -64,5 +64,5 @@
     "*": "prettier --write --ignore-unknown",
     "package.json": "prettier-package-json --write"
   },
-  "packageManager": "pnpm@9.6.0"
+  "packageManager": "pnpm@9.7.1+sha512.faf344af2d6ca65c4c5c8c2224ea77a81a5e8859cbc4e06b1511ddce2f0151512431dd19e6aff31f2c6a8f5f2aced9bd2273e1fed7dd4de1868984059d2c4247"
 }
