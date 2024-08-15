@@ -1,6 +1,28 @@
 import type { CSSProperties, HTMLAttributes } from 'react';
-import { forwardRef } from 'react';
+import { createContext, forwardRef, useContext } from 'react';
 import { runtimeChecks } from './runtimeChecks.dev.js';
+
+type ConfigContextValue = {
+  /**
+   * Used to rewrite paths at runtime. This is most useful to account for
+   * hosting your assets on a CDN. Because svg[use] does not support CORS, it is
+   * not possible to reference external SVGs from a CDN. Hosting static assets
+   * and scripts separately from an application origin is relatively common. One
+   * possible workaround is to proxy the SVGs from your origin to the CDN. In
+   * order to achieve that, you need a way to rewrite the URLs.
+   *
+   * Note: This does not set up any proxying; your application/server code is
+   * responsible for that.
+   *
+   * TODO: Consider how different bundlers provide things here; can people rely
+   * on this to work?
+   */
+  rewritePath: (pathOrHref: string) => string;
+};
+
+export const configContext = createContext<ConfigContextValue | undefined>(
+  undefined,
+);
 
 export interface ThemeProps {
   stroke?: string;
@@ -43,7 +65,10 @@ export const ThemedSvg = forwardRef<SVGSVGElement, Props>(
     },
     ref,
   ) => {
-    runtimeChecks(iconUrl);
+    const config = useContext(configContext);
+
+    const transformedUrl = config?.rewritePath(iconUrl) ?? iconUrl;
+    runtimeChecks(transformedUrl);
 
     const hrefWithId = `${iconUrl}#${iconId}`;
 
