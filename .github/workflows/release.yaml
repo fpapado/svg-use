@@ -7,14 +7,16 @@ on:
 
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
+permissions: {}
+
 jobs:
   release:
     # do not run on forks
     if: github.repository == 'fpapado/svg-use'
     permissions:
+      pull-requests: write # to create a release pull request (changesets/action)
       contents: write # to create the release itself (changesets/action)
       id-token: write # OpenID Connect token needed for npm publish provenance
-      pull-requests: write # to create a release pull request (changesets/action)
     name: Release
     runs-on: ubuntu-latest
     steps:
