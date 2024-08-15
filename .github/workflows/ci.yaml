@@ -26,14 +26,15 @@ jobs:
           node-version-file: ".nvmrc"
       - run: corepack enable
       - run: pnpm install --frozen-lockfile
+        id: install
       - name: Build all
         run: pnpm run -r build
       - name: Check types
-        if: ${{!cancelled()}}
+        if: steps.install.conclusion == 'success' && !cancelled()
         run: pnpm check-types
       - name: Lint
-        if: ${{!cancelled()}}
+        if: steps.install.conclusion == 'success' && !cancelled()
         run: pnpm lint
       - name: Test
-        if: ${{!cancelled()}}
+        if: steps.install.conclusion == 'success' && !cancelled()
         run: pnpm test
