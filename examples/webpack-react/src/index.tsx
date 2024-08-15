@@ -1,8 +1,14 @@
 import * as arrowSvg from './arrow.svg?svgUse';
 import { createRoot } from 'react-dom/client';
 import { createThemedExternalSvg } from '@svg-use/react';
+import {
+  AlertCircle,
+  AlertTriangle,
+  Archive,
+  ArrowRight,
+} from 'shared-library';
 
-const ArrowSvg = createThemedExternalSvg({
+const InlineArrowSvg = createThemedExternalSvg({
   id: arrowSvg.id,
   url: arrowSvg.url,
   viewBox: arrowSvg.viewBox,
@@ -13,8 +19,15 @@ document.body.appendChild(rootEl);
 
 createRoot(rootEl).render(
   <div>
-    <ArrowSvg />
+    <InlineArrowSvg />
+    <InlineArrowSvg />
     {/* FIXME: add types for this */}
     {/* <arrowSvg.Component /> */}
+    {/* FIXME: add types for this */}
+    {/* <arrowSvg.Component /> */}
+    <AlertCircle />
+    <AlertTriangle />
+    <Archive />
+    <ArrowRight />
   </div>,
 );

@@ -20,7 +20,7 @@
     "dist"
   ],
   "scripts": {
-    "build": "tsx generate-icon-modules.mts && tshy"
+    "build": "tsx generate-icon-modules.mts && tshy && cp src/icons/*.svg dist/esm/icons"
   },
   "dependencies": {
     "@svg-use/core": "workspace:*",

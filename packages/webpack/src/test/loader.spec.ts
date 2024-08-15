@@ -20,7 +20,7 @@ test('converts *.svg import into valid React component with svg[use], using defa
   expect(String(output)).toMatchInlineSnapshot(`
     "import {createThemedExternalSvg} from "@svg-use/react";
       
-    export const url = __webpack_public_path__ + "images/arrow-03e4b7303260c576.svg";
+    export const url = __webpack_public_path__ + "images/arrow-f9d3f6e9582edb46.svg";
     export const id = "use-href-target";
     export const viewBox = "0 0 24 24";
 
@@ -37,7 +37,7 @@ test('converts *.svg import into valid React component with svg[use], using defa
 
   expect(emittedSvgAsset).toBeDefined();
   expect(emittedSvgAsset!.name).toMatchInlineSnapshot(
-    `"images/arrow-03e4b7303260c576.svg"`,
+    `"images/arrow-f9d3f6e9582edb46.svg"`,
   );
 
   const emittedSvgContent = filesystem.readFileSync(
@@ -46,7 +46,7 @@ test('converts *.svg import into valid React component with svg[use], using defa
   );
 
   expect(emittedSvgContent).toMatchInlineSnapshot(
-    `"<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="var(--use-href-stroke-primary, currentColor)" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right" id="use-href-target"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>"`,
+    `"<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="var(--use-href-stroke-primary, currentColor)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right" id="use-href-target"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>"`,
   );
 });
 
@@ -91,7 +91,7 @@ describe('plugin options', () => {
     );
 
     expect(emittedSvgContent).toMatchInlineSnapshot(
-      `"<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="var(--my-color-primary)" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right" id="use-href-target"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>"`,
+      `"<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="var(--my-color-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right" id="use-href-target"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>"`,
     );
   });
 
@@ -117,7 +117,7 @@ describe('plugin options', () => {
     );
 
     expect(emittedSvgContent).toMatchInlineSnapshot(
-      `"<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="var(--use-href-stroke-primary, currentColor)" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right" id="my-id"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>"`,
+      `"<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="var(--use-href-stroke-primary, currentColor)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right" id="my-id"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>"`,
     );
   });
 });
