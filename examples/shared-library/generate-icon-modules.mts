@@ -53,7 +53,7 @@ async function processFile(filePath: string) {
 
   const jsModule = createJsModule({
     // Current bundlers resolve this construct as syntax for asset references (as URLs)
-    url: `new URL(${JSON.stringify(pathFromJsToSvg)}, import.meta.url)`,
+    url: `new URL(${JSON.stringify(pathFromJsToSvg)}, import.meta.url).href`,
     id: JSON.stringify(id),
     viewBox: JSON.stringify(viewBox),
     componentFactory: defaultOptions.componentFactory,
@@ -81,8 +81,9 @@ async function writeIndexFile(indexPath: string, paths: Array<string>) {
       const pathFromIndexToComponent = ensureLeadingDotSlash(
         path.posix.relative(path.dirname(indexPath), p),
       );
+      const withJsExtension = pathFromIndexToComponent.replace(/\.ts/, '.js');
 
-      return `export {Component as ${parsedPath.name}} from ${JSON.stringify(pathFromIndexToComponent)}`;
+      return `export {Component as ${parsedPath.name}} from ${JSON.stringify(withJsExtension)}`;
     })
     .join('\n');
 

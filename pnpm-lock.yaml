@@ -84,12 +84,18 @@ importers:
       '@types/node':
         specifier: 20.14.14
         version: 20.14.14
+      '@types/react':
+        specifier: 18.3.3
+        version: 18.3.3
       change-case:
         specifier: 5.4.4
         version: 5.4.4
       globby:
         specifier: 14.0.2
         version: 14.0.2
+      react:
+        specifier: ^18.3.1
+        version: 18.3.1
       tsx:
         specifier: 4.17.0
         version: 4.17.0

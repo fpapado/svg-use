@@ -8,23 +8,46 @@
   "type": "module",
   "exports": {
     ".": {
-      "module": "./index.js",
-      "import": "./index.js",
-      "default": "./index.js"
-    }
+      "import": {
+        "types": "./dist/esm/index.d.ts",
+        "default": "./dist/esm/index.js"
+      },
+      "module": {
+        "types": "./dist/esm/index.d.ts",
+        "default": "./dist/esm/index.js"
+      }
+    },
+    "./package.json": "./package.json"
   },
+  "module": "./dist/esm/index.js",
+  "files": [
+    "dist"
+  ],
   "scripts": {
-    "build": "tsx generate-icon-modules.mts"
+    "build": "tsx generate-icon-modules.mts && tshy"
   },
   "dependencies": {
     "@svg-use/core": "workspace:*",
     "@svg-use/react": "^0.1.0"
   },
+  "peerDependencies": {
+    "react": "^18"
+  },
   "devDependencies": {
     "@types/node": "20.14.14",
+    "@types/react": "18.3.3",
     "change-case": "5.4.4",
     "globby": "14.0.2",
     "tsx": "4.17.0"
   },
-  "keywords": []
+  "keywords": [],
+  "tshy": {
+    "dialects": [
+      "esm"
+    ],
+    "exports": {
+      ".": "./src/index.ts",
+      "./package.json": "./package.json"
+    }
+  }
 }

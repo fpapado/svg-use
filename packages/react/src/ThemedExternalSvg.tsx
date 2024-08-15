@@ -77,6 +77,6 @@ export type FactoryProps = { url: string; id: string; viewBox: string };
  */
 export const createThemedExternalSvg =
   ({ url, id, viewBox }: FactoryProps) =>
-  (props: ThemeProps & HTMLAttributes<SVGSVGElement>) => (
+  (props: ThemeProps & HTMLAttributes<SVGSVGElement>): JSX.Element => (
     <ThemedSvg {...props} iconUrl={url} iconId={id} viewBox={viewBox} />
   );
