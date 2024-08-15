@@ -20,14 +20,11 @@ document.body.appendChild(rootEl);
 createRoot(rootEl).render(
   <div>
     <InlineArrowSvg />
-    <InlineArrowSvg />
     {/* FIXME: add types for this */}
     {/* <arrowSvg.Component /> */}
-    {/* FIXME: add types for this */}
-    {/* <arrowSvg.Component /> */}
+    <ArrowRight />
     <AlertCircle />
     <AlertTriangle />
     <Archive />
-    <ArrowRight />
   </div>,
 );
