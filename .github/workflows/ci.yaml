@@ -29,11 +29,11 @@ jobs:
       - name: Build all
         run: pnpm run -r build
       - name: Check types
+        if: ${{!cancelled()}}
         run: pnpm check-types
-        if: !cancelled()
       - name: Lint
+        if: ${{!cancelled()}}
         run: pnpm lint
-        if: !cancelled()
       - name: Test
+        if: ${{!cancelled()}}
         run: pnpm test
-        if: !cancelled()
