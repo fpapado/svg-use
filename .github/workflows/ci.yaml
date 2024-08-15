@@ -18,10 +18,6 @@ jobs:
   checks:
     name: Checks
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        command: ["check-types", "lint", "test"]
-      fail-fast: false
     steps:
       - uses: actions/checkout@v4
       - name: Setup node
@@ -30,7 +26,15 @@ jobs:
           node-version-file: ".nvmrc"
       - run: corepack enable
       - run: pnpm install --frozen-lockfile
+        id: install
       - name: Build all
-        # NOTE: pnpm runs scripts in topological order
         run: pnpm run -r build
-      - run: pnpm ${{ matrix.command }}
+      - name: Check types
+        if: steps.install.conclusion == 'success' && !cancelled()
+        run: pnpm check-types
+      - name: Lint
+        if: steps.install.conclusion == 'success' && !cancelled()
+        run: pnpm lint
+      - name: Test
+        if: steps.install.conclusion == 'success' && !cancelled()
+        run: pnpm test

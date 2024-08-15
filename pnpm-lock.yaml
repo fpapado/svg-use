@@ -80,10 +80,16 @@ importers:
       '@svg-use/react':
         specifier: ^0.1.0
         version: 0.1.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      react:
+        specifier: ^18
+        version: 18.3.1
     devDependencies:
       '@types/node':
         specifier: 20.14.14
         version: 20.14.14
+      '@types/react':
+        specifier: 18.3.3
+        version: 18.3.3
       change-case:
         specifier: 5.4.4
         version: 5.4.4

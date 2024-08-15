@@ -1,4 +1,7 @@
 {
-  "extends": "../../tsconfig.json",
+  "extends": "../../tsconfig.build.json",
+  "compilerOptions": {
+    "jsx": "react-jsx"
+  },
   "include": ["src", "generate-icon-modules.mts"]
 }

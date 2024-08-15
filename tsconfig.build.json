@@ -3,6 +3,7 @@
   "compilerOptions": {
     "noEmit": false,
     "declaration": true,
+    "declarationMap": true,
     "incremental": true,
     "outDir": "${configDir}/dist"
   },
