@@ -12,13 +12,15 @@ import path from 'node:path';
 import process from 'node:process';
 import fs from 'node:fs/promises';
 
-export type PluginOptions = Pick<TransformOptions, 'getThemeSubstitutions'> &
-  ModuleFactoryOptions & {
-    getSvgIdAttribute: (info: {
-      filename?: string;
-      existingId?: string;
-    }) => string;
-  };
+export type PluginOptions = Partial<
+  Pick<TransformOptions, 'getThemeSubstitutions'> &
+    ModuleFactoryOptions & {
+      getSvgIdAttribute: (info: {
+        filename?: string;
+        existingId?: string;
+      }) => string;
+    }
+>;
 
 const splitQuery = (str: string) => str.split('?');
 

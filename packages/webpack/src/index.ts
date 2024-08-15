@@ -11,25 +11,27 @@ import {
   defaultThemeSubstitution,
 } from '@svg-use/core';
 
-export type LoaderOptions = Pick<TransformOptions, 'getThemeSubstitutions'> &
-  ModuleFactoryOptions & {
-    /**
-     * The output filename for the .svg resource.
-     *
-     * Uses the same syntax/replacements as webpack's native assetModuleFilename
-     * and Rule.generator.filename.
-     *
-     * @default '[name]-[contenthash].[ext]' to the public directory
-     *
-     * @see https://webpack.js.org/guides/asset-modules/#custom-output-filename
-     * @see https://webpack.js.org/configuration/output/#outputassetmodulefilename
-     */
-    svgAssetFilename?: string;
-    getSvgIdAttribute: (info: {
-      filename?: string;
-      existingId?: string;
-    }) => string;
-  };
+export type LoaderOptions = Partial<
+  Pick<TransformOptions, 'getThemeSubstitutions'> &
+    ModuleFactoryOptions & {
+      /**
+       * The output filename for the .svg resource.
+       *
+       * Uses the same syntax/replacements as webpack's native assetModuleFilename
+       * and Rule.generator.filename.
+       *
+       * @default '[name]-[contenthash].[ext]' to the public directory
+       *
+       * @see https://webpack.js.org/guides/asset-modules/#custom-output-filename
+       * @see https://webpack.js.org/configuration/output/#outputassetmodulefilename
+       */
+      svgAssetFilename?: string;
+      getSvgIdAttribute: (info: {
+        filename?: string;
+        existingId?: string;
+      }) => string;
+    }
+>;
 
 const defaultOptions = {
   svgAssetFilename: '[name]-[contenthash].[ext]',
