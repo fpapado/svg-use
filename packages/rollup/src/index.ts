@@ -1,15 +1,26 @@
 import type { Plugin } from 'rollup';
 import {
-  defaultOptions,
-  Options,
   createJsModule,
   transformSvgForUseHref as transformSvg,
+  type TransformOptions,
+  type ModuleFactoryOptions,
+  defaultComponentFactory,
+  defaultGetSvgIdAttribute,
+  defaultThemeSubstitution,
 } from '@svg-use/core';
 import path from 'node:path';
 import process from 'node:process';
 import fs from 'node:fs/promises';
 
-export type PluginOptions = Options;
+export type PluginOptions = Partial<
+  Pick<TransformOptions, 'getThemeSubstitutions'> &
+    ModuleFactoryOptions & {
+      getSvgIdAttribute: (info: {
+        filename?: string;
+        existingId?: string;
+      }) => string;
+    }
+>;
 
 const splitQuery = (str: string) => str.split('?');
 
@@ -18,8 +29,14 @@ const isRelevant = (id: string) => {
   return originalPath.endsWith('.svg') && query?.split('&').includes('svgUse');
 };
 
+const defaultOptions = {
+  componentFactory: defaultComponentFactory,
+  getSvgIdAttribute: defaultGetSvgIdAttribute,
+  getThemeSubstitutions: defaultThemeSubstitution,
+} satisfies PluginOptions;
+
 function svgUsePlugin(userOptions: PluginOptions): Plugin {
-  const options = {
+  const options: Required<PluginOptions> = {
     ...defaultOptions,
     ...userOptions,
   };
@@ -52,9 +69,10 @@ function svgUsePlugin(userOptions: PluginOptions): Plugin {
       const source = await fs.readFile(filepath, 'utf-8');
 
       const res = transformSvg(source, {
-        idCreationFunction: (existingId) =>
-          options.getSvgIdAttribute({ filename: basename, existingId }),
-        themeSubstitutionFunction: options.getThemeSubstitutions,
+        // augment the existing function, with extra (filename) context
+        getSvgIdAttribute: ({ existingId }) =>
+          options.getSvgIdAttribute({ existingId, filename: basename }),
+        getThemeSubstitutions: options.getThemeSubstitutions,
       });
 
       if (res.type === 'failure') {
@@ -72,12 +90,16 @@ function svgUsePlugin(userOptions: PluginOptions): Plugin {
         originalFileName: absolutePath,
       });
 
-      const jsModuleContent = createJsModule({
-        url: `import.meta.ROLLUP_FILE_URL_${referenceId}`,
-        id: JSON.stringify(transformedSvg.id),
-        viewBox: JSON.stringify(transformedSvg.viewBox),
-        componentFactory: options.componentFactory,
-      });
+      const jsModuleContent = createJsModule(
+        {
+          url: `import.meta.ROLLUP_FILE_URL_${referenceId}`,
+          id: JSON.stringify(transformedSvg.id),
+          viewBox: JSON.stringify(transformedSvg.viewBox),
+        },
+        {
+          componentFactory: options.componentFactory,
+        },
+      );
 
       return jsModuleContent;
     },

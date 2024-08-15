@@ -43,8 +43,8 @@
     "lint": "npm-run-all \"lint:*\"",
     "lint:prettier": "pnpm prettier --check .",
     "lint:scripts": "eslint src --report-unused-disable-directives --no-warn-ignored --max-warnings 0",
-    "prepublish": "publint && attw --config-path ./.attw.json --pack",
     "prepublishOnly": "pnpm install && pnpm build",
+    "prepublish": "publint && attw --config-path ./.attw.json --pack",
     "test": "vitest"
   },
   "dependencies": {
@@ -61,7 +61,8 @@
     }
   },
   "devDependencies": {
-    "@types/node": "20.14.14"
+    "@types/node": "20.14.14",
+    "@types/xast": "2.0.4"
   },
   "keywords": [
     "loader",
