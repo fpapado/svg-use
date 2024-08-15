@@ -213,6 +213,9 @@ importers:
       '@types/node':
         specifier: 20.14.14
         version: 20.14.14
+      '@types/xast':
+        specifier: 2.0.4
+        version: 2.0.4
 
   packages/react:
     dependencies:

@@ -1,10 +1,12 @@
-import {
-  defaultOptions,
-  transformSvgForUseHref,
-  createJsModule,
-} from '@svg-use/core';
 import path from 'node:path';
 import fs from 'node:fs/promises';
+import {
+  createJsModule,
+  transformSvgForUseHref,
+  defaultComponentFactory,
+  defaultGetSvgIdAttribute,
+  defaultThemeSubstitution,
+} from '@svg-use/core';
 import { globby } from 'globby';
 import { pascalCase } from 'change-case';
 
@@ -35,12 +37,8 @@ async function processFile(filePath: string) {
   const initialContent = await fs.readFile(filePath, 'utf-8');
 
   const transformResult = transformSvgForUseHref(initialContent, {
-    idCreationFunction: (existingId) =>
-      defaultOptions.getSvgIdAttribute({
-        filename: parsedPath.base,
-        existingId,
-      }),
-    themeSubstitutionFunction: defaultOptions.getThemeSubstitutions,
+    getSvgIdAttribute: defaultGetSvgIdAttribute,
+    getThemeSubstitutions: defaultThemeSubstitution,
   });
 
   if (transformResult.type === 'failure') {
@@ -51,13 +49,17 @@ async function processFile(filePath: string) {
     data: { content: transformedSvg, id, viewBox },
   } = transformResult;
 
-  const jsModule = createJsModule({
-    // Current bundlers resolve this construct as syntax for asset references (as URLs)
-    url: `new URL(${JSON.stringify(pathFromJsToSvg)}, import.meta.url).href`,
-    id: JSON.stringify(id),
-    viewBox: JSON.stringify(viewBox),
-    componentFactory: defaultOptions.componentFactory,
-  });
+  const jsModule = createJsModule(
+    {
+      // Current bundlers resolve this construct as syntax for asset references (as URLs)
+      url: `new URL(${JSON.stringify(pathFromJsToSvg)}, import.meta.url).href`,
+      id: JSON.stringify(id),
+      viewBox: JSON.stringify(viewBox),
+    },
+    {
+      componentFactory: defaultComponentFactory,
+    },
+  );
 
   await Promise.all([
     fs.writeFile(jsOutputPath, jsModule),
@@ -101,7 +103,6 @@ async function main() {
   );
 
   console.log(`Wrote index file at ${INDEX_FILEPATH}.`);
-  // TODO: Prettier
 }
 
 main();

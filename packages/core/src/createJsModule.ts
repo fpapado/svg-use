@@ -1,7 +1,10 @@
-export interface ModuleFactoryOptions {
+export interface ModuleFactoryParams {
   url: string;
   id: string;
   viewBox: string;
+}
+
+export interface ModuleFactoryOptions {
   /**
    * Configuration for the "Component" export. Pass null to skip the factory
    * altogether.
@@ -43,15 +46,13 @@ export const defaultComponentFactory: ComponentFactory = {
 
 /**
  * Creates a JS module (as a string), that exposes all relevant information to
- * embed the SVG via use[href]. Also exposes a React component, for convenience.
- * This module is what our runtime eventually sees.
+ * embed the SVG via use[href]. Also exposes a component, for convenience. This
+ * module is what the runtime eventually sees.
  */
-export const createJsModule = ({
-  url,
-  id,
-  viewBox,
-  componentFactory: cf,
-}: ModuleFactoryOptions): string => {
+export const createJsModule = (
+  { url, id, viewBox }: ModuleFactoryParams,
+  { componentFactory: cf }: ModuleFactoryOptions,
+): string => {
   if (cf === null) {
     return `export const url = ${url};
 export const id = ${id};

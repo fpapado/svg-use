@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { defaultThemeSubstitution } from './theme.js';
+import { defaultThemeSubstitution } from './defaultTheme.js';
 
 describe('defaultThemeSubstitution', () => {
   it('returns the expected substitutions, in sorted order', () => {
