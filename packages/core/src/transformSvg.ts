@@ -103,7 +103,7 @@ function xastMakeThemeable(
     const substitutionStroke = substitutions.strokes.get(stroke);
 
     if (stroke && substitutionStroke) {
-      node.attributes.fill = substitutionStroke;
+      node.attributes.stroke = substitutionStroke;
     }
   });
 
