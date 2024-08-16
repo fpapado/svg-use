@@ -1,30 +1,19 @@
-import * as arrowSvg from './arrow.svg?svgUse';
-import { createRoot } from 'react-dom/client';
-import { createThemedExternalSvg } from '@svg-use/react';
-import {
-  AlertCircle,
-  AlertTriangle,
-  Archive,
-  ArrowRight,
-} from 'shared-library';
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import App from './App.tsx';
+import { configContext, type Config } from '@svg-use/react';
 
-const InlineArrowSvg = createThemedExternalSvg({
-  id: arrowSvg.id,
-  url: arrowSvg.url,
-  viewBox: arrowSvg.viewBox,
-});
+const svgUseConfig: Config = {
+  runtimeChecksEnabled: process.env.NODE_ENV === 'development',
+};
 
-const rootEl = document.createElement('div');
-document.body.appendChild(rootEl);
+const root = document.createElement('div');
+document.body.appendChild(root);
 
-createRoot(rootEl).render(
-  <div>
-    <InlineArrowSvg />
-    {/* FIXME: add types for this */}
-    {/* <arrowSvg.Component /> */}
-    <ArrowRight />
-    <AlertCircle />
-    <AlertTriangle />
-    <Archive />
-  </div>,
+ReactDOM.createRoot(root).render(
+  <React.StrictMode>
+    <configContext.Provider value={svgUseConfig}>
+      <App />
+    </configContext.Provider>
+  </React.StrictMode>,
 );

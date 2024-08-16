@@ -1,6 +1,41 @@
 import type { CSSProperties, HTMLAttributes } from 'react';
-import { forwardRef } from 'react';
+import {
+  createContext,
+  forwardRef,
+  useContext,
+  useEffect,
+  useMemo,
+} from 'react';
 import { runtimeChecks } from './runtimeChecks.dev.js';
+
+export type Config = {
+  /**
+   * Used to rewrite paths at runtime. This is most useful to account for
+   * hosting your assets on a CDN.
+   *
+   * Because svg[use] does not support CORS, it is not possible to reference
+   * external SVGs from a CDN. Hosting static assets and scripts separately from
+   * an application origin is relatively common. One possible workaround is to
+   * proxy the SVGs via your origin to the CDN. In order to achieve that, you
+   * need a way to rewrite the URLs.
+   *
+   * Note: This does not set up any proxying; your application/server code is
+   * responsible for that.
+   */
+  rewritePath?: (pathOrHref: string) => string;
+
+  /**
+   * Toggles runtime checks, which help catch common pitfalls with using external
+   * SVGs, such as needing to be on the same origin.
+   *
+   * @default `true` if the `development` export condition is met, `false` otherwise
+   */
+  runtimeChecksEnabled?: boolean;
+};
+
+export const configContext = createContext<Config>({
+  runtimeChecksEnabled: true,
+});
 
 export interface ThemeProps {
   stroke?: string;
@@ -26,7 +61,7 @@ export interface BaseProps {
 
 export type Props = BaseProps & ThemeProps & HTMLAttributes<SVGSVGElement>;
 
-export const ThemedSvg = forwardRef<SVGSVGElement, Props>(
+export const ThemedExternalSvg = forwardRef<SVGSVGElement, Props>(
   (
     {
       iconUrl,
@@ -43,7 +78,18 @@ export const ThemedSvg = forwardRef<SVGSVGElement, Props>(
     },
     ref,
   ) => {
-    runtimeChecks(iconUrl);
+    const config = useContext(configContext);
+
+    const transformedUrl = useMemo(
+      () => (config.rewritePath ? config.rewritePath(iconUrl) : iconUrl),
+      [config.rewritePath, iconUrl],
+    );
+
+    useEffect(() => {
+      if (config.runtimeChecksEnabled) {
+        runtimeChecks(transformedUrl);
+      }
+    }, [config.runtimeChecksEnabled, transformedUrl]);
 
     const hrefWithId = `${iconUrl}#${iconId}`;
 
@@ -51,7 +97,7 @@ export const ThemedSvg = forwardRef<SVGSVGElement, Props>(
      * These are all tied to the default theme. It might be beneficial to define
      * the theme as types, for posterity.
      */
-    const styleWithCustomProps = {
+    const styleWithCustomProperties = {
       ...style,
       '--use-href-stroke-primary': stroke,
       '--use-href-stroke-secondary': strokeSecondary,
@@ -62,7 +108,12 @@ export const ThemedSvg = forwardRef<SVGSVGElement, Props>(
     } as CSSProperties;
 
     return (
-      <svg {...rest} viewBox={viewBox} style={styleWithCustomProps} ref={ref}>
+      <svg
+        {...rest}
+        viewBox={viewBox}
+        style={styleWithCustomProperties}
+        ref={ref}
+      >
         <use href={hrefWithId} />
       </svg>
     );
@@ -78,5 +129,5 @@ export type FactoryProps = { url: string; id: string; viewBox: string };
 export const createThemedExternalSvg =
   ({ url, id, viewBox }: FactoryProps) =>
   (props: ThemeProps & HTMLAttributes<SVGSVGElement>): JSX.Element => (
-    <ThemedSvg {...props} iconUrl={url} iconId={id} viewBox={viewBox} />
+    <ThemedExternalSvg {...props} iconUrl={url} iconId={id} viewBox={viewBox} />
   );

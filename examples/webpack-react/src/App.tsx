@@ -5,8 +5,7 @@ import {
   Archive,
   ArrowRight,
 } from 'shared-library';
-import * as arrowSvg from './assets/arrow.svg?svgUse';
-import './App.css';
+import * as arrowSvg from './arrow.svg?svgUse';
 
 const LocalArrowSvg = createThemedExternalSvg({
   id: arrowSvg.id,
