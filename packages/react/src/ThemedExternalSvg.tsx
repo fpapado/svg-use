@@ -33,7 +33,9 @@ type Config = {
   runtimeChecksEnabled?: boolean;
 };
 
-export const configContext = createContext<Config>({});
+export const configContext = createContext<Config>({
+  runtimeChecksEnabled: true,
+});
 
 export interface ThemeProps {
   stroke?: string;

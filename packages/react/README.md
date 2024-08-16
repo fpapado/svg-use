@@ -66,9 +66,9 @@ const AppRoot = () => {
 
 Default: `undefined`
 
-#### `runtimeChecks`: `boolean`
+#### `runtimeChecksEnabled`: `boolean`
 
-Default: `true` if the `development` export condition is met, `false` otherwise
+Default: `true`
 
 Toggles runtime checks, which help catch common pitfalls with using external
 SVGs, such as needing to be on the same origin.
