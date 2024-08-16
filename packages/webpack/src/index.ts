@@ -20,7 +20,7 @@ export type LoaderOptions = Partial<
        * Uses the same syntax/replacements as webpack's native assetModuleFilename
        * and Rule.generator.filename.
        *
-       * @default '[name]-[contenthash].[ext]' to the public directory
+       * @defaultValue '[name]-[contenthash].[ext]' to the public directory
        *
        * @see https://webpack.js.org/guides/asset-modules/#custom-output-filename
        * @see https://webpack.js.org/configuration/output/#outputassetmodulefilename

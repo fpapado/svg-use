@@ -1,6 +1,7 @@
 import eslint from '@eslint/js';
 import tseslint from 'typescript-eslint';
 import vitest from 'eslint-plugin-vitest';
+import tsdoc from 'eslint-plugin-tsdoc';
 
 export default tseslint.config(
   eslint.configs.recommended,
@@ -11,6 +12,15 @@ export default tseslint.config(
         projectService: true,
         tsconfigRootDir: import.meta.dirname,
       },
+    },
+  },
+  {
+    files: ['**/*.{ts,tsx,mts,cts}'],
+    plugins: {
+      tsdoc,
+    },
+    rules: {
+      'tsdoc/syntax': 'error',
     },
   },
   {

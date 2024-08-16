@@ -34,7 +34,7 @@ export type ComponentFactory = {
    * An ES module import path, that the factory function will be imported from (as a named import).
    *
    * @example
-   * "@svg-use/react"
+   * "\@svg-use/react"
    */
   importFrom: string;
 };

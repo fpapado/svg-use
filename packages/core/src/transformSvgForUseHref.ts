@@ -90,7 +90,7 @@ export type TransformOptions = {
    * plugin](https://svgo.dev/docs/plugins/prefix-ids/) prior to this loader, if
    * you want more robust id generation.
    *
-   * @default id attribute if present, static 'use-href-target' otherwise
+   * @defaultValue id attribute if present, static 'use-href-target' otherwise
    */
   getSvgIdAttribute: GetSvgIdFunction;
   /**
@@ -113,7 +113,7 @@ export type TransformOptions = {
    * different URL query, that uses `null` for the theme function. Refer to the
    * library documentation for guidance.
    *
-   * @default {@link defaultThemeSubstitution}
+   * @defaultValue {@link defaultThemeSubstitution}
    */
   getThemeSubstitutions: GetThemeSubstitutionFunction | null;
 };

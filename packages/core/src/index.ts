@@ -5,6 +5,7 @@ export {
 export {
   type ComponentFactory,
   type ComponentFactoryFunction,
+  type ModuleFactoryParams,
   type ModuleFactoryOptions,
   createJsModule,
   defaultComponentFactory,
