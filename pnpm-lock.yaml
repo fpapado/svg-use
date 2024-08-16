@@ -78,8 +78,8 @@ importers:
         specifier: workspace:*
         version: link:../../packages/core
       '@svg-use/react':
-        specifier: ^0.1.0
-        version: 0.1.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        specifier: workspace:*
+        version: link:../../packages/react
       react:
         specifier: ^18
         version: 18.3.1
@@ -1014,15 +1014,6 @@ packages:
   '@sindresorhus/merge-streams@2.3.0':
     resolution: {integrity: sha512-LtoMMhxAlorcGhmFYI+LhPgbPZCkgP6ra1YL604EeF6U98pLlQ3iWIGMdWSC+vWmPBWBNgmDBAhnAobLROJmwg==}
     engines: {node: '>=18'}
-
-  '@svg-use/react@0.1.0':
-    resolution: {integrity: sha512-ZVpZTJRWslnKNgzZSDDiVkgk1HQ1AHOdyxzE9NghE05gqjcKSpJbI5dI8v3VyggRc12vYVkpONzDfjyQOgoHeg==}
-    peerDependencies:
-      react: ^18
-      react-dom: ^18
-    peerDependenciesMeta:
-      react:
-        optional: true
 
   '@swc-node/core@1.13.3':
     resolution: {integrity: sha512-OGsvXIid2Go21kiNqeTIn79jcaX4l0G93X2rAnas4LFoDyA9wAwVK7xZdm+QsKoMn5Mus2yFLCc4OtX2dD/PWA==}
@@ -4812,12 +4803,6 @@ snapshots:
   '@sindresorhus/is@4.6.0': {}
 
   '@sindresorhus/merge-streams@2.3.0': {}
-
-  '@svg-use/react@0.1.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
-    dependencies:
-      react-dom: 18.3.1(react@18.3.1)
-    optionalDependencies:
-      react: 18.3.1
 
   '@swc-node/core@1.13.3(@swc/core@1.7.6)(@swc/types@0.1.12)':
     dependencies:
