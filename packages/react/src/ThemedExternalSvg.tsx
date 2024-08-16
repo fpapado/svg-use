@@ -8,7 +8,7 @@ import {
 } from 'react';
 import { runtimeChecks } from './runtimeChecks.dev.js';
 
-type Config = {
+export type Config = {
   /**
    * Used to rewrite paths at runtime. This is most useful to account for
    * hosting your assets on a CDN.
