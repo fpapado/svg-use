@@ -17,6 +17,12 @@ const substituteCustomProperty = (
   fallbackValue: string,
 ) => (property ? `var(--${property}, ${fallbackValue})` : fallbackValue);
 
+/**
+ * The default theme function. Substitutes up to three sizes and strokes with
+ * custom properties. Preserves existing properties as fallbacks.
+ *
+ * @category Primary function defaults
+ */
 export const defaultThemeSubstitution: GetThemeSubstitutionFunction = ({
   fills,
   strokes,

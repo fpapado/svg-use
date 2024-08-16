@@ -15,6 +15,9 @@
   codepen, to demonstrate.
 - Consider providing the defaults for svg-use/core functions directly in the
   functions themselves.
+- Improve the tsdoc for svg-use/core, especially for the main two exports.
+  Should use some `@inheritdoc` magic to ensure that the options and the
+  function both get nice documentation.
 
 ## For later
 
@@ -23,5 +26,4 @@
   - Rollup-only is OK for now,
   - Perhaps it is ok to only do checks, but return the original asset, and leave
     the rest to a ClI
-- Create a CLI, or explicitly decide against one (e.g. following esbuild's
-  mentality)
+- Create a CLI, or explicitly decide against one.

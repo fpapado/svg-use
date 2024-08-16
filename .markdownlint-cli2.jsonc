@@ -4,5 +4,5 @@
     "line-length": false,
   },
   "gitignore": true,
-  "ignores": [".changeset"],
+  "ignores": [".changeset", "**/api-docs/*"],
 }

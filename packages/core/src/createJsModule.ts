@@ -26,28 +26,33 @@ export type ComponentFactory = {
    * The name of the component factory function. Should conform to the
    * {@link ComponentFactoryFunction} interface.
    *
-   * @example
-   * "createThemedExternalSvg"
+   * @example "createThemedExternalSvg"
    */
   functionName: string;
   /**
    * An ES module import path, that the factory function will be imported from (as a named import).
    *
-   * @example
-   * "@svg-use/react"
+   * @example "\@svg-use/react"
    */
   importFrom: string;
 };
 
+/**
+ * @category Primary function defaults
+ */
 export const defaultComponentFactory: ComponentFactory = {
   functionName: `createThemedExternalSvg`,
   importFrom: `@svg-use/react`,
 };
 
 /**
- * Creates a JS module (as a string), that exposes all relevant information to
- * embed the SVG via use[href]. Also exposes a component, for convenience. This
- * module is what the runtime eventually sees.
+ * Takes a descriptor for an external SVG, and returns a JS module string, that
+ * exposes all relevant information to embed the SVG via `use[href]`. Also
+ * exposes a component (via a factory), for convenience.
+ *
+ * This module is what a runtime would see eventually.
+ *
+ * @category Primary functions
  */
 export const createJsModule = (
   { url, id, viewBox }: ModuleFactoryParams,

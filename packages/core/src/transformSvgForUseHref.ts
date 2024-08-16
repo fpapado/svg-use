@@ -26,7 +26,7 @@ const ensureRootId = (getSvgId: GetSvgIdFunction): CustomPlugin => ({
   }),
 });
 
-type UseHrefInfo = {
+export type UseHrefInfo = {
   id: string;
   viewBox: string;
 };
@@ -90,7 +90,7 @@ export type TransformOptions = {
    * plugin](https://svgo.dev/docs/plugins/prefix-ids/) prior to this loader, if
    * you want more robust id generation.
    *
-   * @default id attribute if present, static 'use-href-target' otherwise
+   * @defaultValue id attribute if present, static 'use-href-target' otherwise
    */
   getSvgIdAttribute: GetSvgIdFunction;
   /**
@@ -113,11 +113,23 @@ export type TransformOptions = {
    * different URL query, that uses `null` for the theme function. Refer to the
    * library documentation for guidance.
    *
-   * @default {@link defaultThemeSubstitution}
+   * @defaultValue {@link defaultThemeSubstitution}
    */
   getThemeSubstitutions: GetThemeSubstitutionFunction | null;
 };
 
+/**
+ * Transform an SVG, such that it can be referenced by `svg > use[href]`.
+ * Returns the transformed SVG contents, as well as any extracted information
+ * for referencing it.
+ *
+ * The main transformations are:
+ * - ensuring an id
+ * - ensuring a viewBox
+ * - making styles themeable, by substituting hardcoded values
+ *
+ * @category Primary functions
+ */
 export function transformSvgForUseHref(
   contents: string,
   { getSvgIdAttribute, getThemeSubstitutions }: TransformOptions,

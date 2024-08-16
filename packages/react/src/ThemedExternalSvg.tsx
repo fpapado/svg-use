@@ -28,7 +28,7 @@ export type Config = {
    * Toggles runtime checks, which help catch common pitfalls with using external
    * SVGs, such as needing to be on the same origin.
    *
-   * @default `true` if the `development` export condition is met, `false` otherwise
+   * @defaultValue `true` if the `development` export condition is met, `false` otherwise
    */
   runtimeChecksEnabled?: boolean;
 };
@@ -48,7 +48,7 @@ export interface ThemeProps {
 
 export interface BaseProps {
   /**
-   * The URL of the SVG, to be included in svg > use[href]. Note that this URL
+   * The URL of the SVG, to be included in `svg > use[href]`. Note that this URL
    * must be on the same origin as the site, otherwise no SVG will be displayed.
    * There is no mechanism for cross-origin svg[use].
    */

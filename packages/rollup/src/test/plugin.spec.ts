@@ -1,6 +1,3 @@
-/**
- * @vitest-environment node
- */
 import { test, expect, describe } from 'vitest';
 
 import { build } from './compiler.js';
