@@ -15,11 +15,11 @@
   "type": "module",
   "scripts": {
     "build": "pnpm --recursive run build",
+    "changeset:release": "changeset tag && pnpm --recursive publish",
     "check-types": "pnpm --recursive run check-types",
     "preinstall": "npx only-allow pnpm",
     "lint": "pnpm --recursive lint",
     "prepare": "husky",
-    "release": "changeset tag && pnpm --recursive publish",
     "test": "vitest",
     "test:coverage": "vitest --coverage"
   },
