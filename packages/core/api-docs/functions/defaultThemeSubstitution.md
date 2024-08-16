@@ -30,4 +30,4 @@
 
 ## Defined in
 
-[theme/defaultTheme.ts:20](https://github.com/fpapado/svg-use/blob/3b00347120e4d16a0b5896e0c16c3dc896a7bab1/packages/core/src/theme/defaultTheme.ts#L20)
+[theme/defaultTheme.ts:20](https://github.com/fpapado/svg-use/blob/cfb17d16e4effa2c9dcbf7f704dead47a35e60aa/packages/core/src/theme/defaultTheme.ts#L20)

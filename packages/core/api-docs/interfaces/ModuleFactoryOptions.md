@@ -10,7 +10,7 @@
 
 ### componentFactory
 
-> **componentFactory**: `null` \|
+> **componentFactory**: `null` \| >
 > [`ComponentFactory`](../type-aliases/ComponentFactory.md)
 
 Configuration for the "Component" export. Pass null to skip the factory
@@ -18,4 +18,4 @@ altogether.
 
 #### Defined in
 
-[createJsModule.ts:12](https://github.com/fpapado/svg-use/blob/3b00347120e4d16a0b5896e0c16c3dc896a7bab1/packages/core/src/createJsModule.ts#L12)
+[createJsModule.ts:12](https://github.com/fpapado/svg-use/blob/cfb17d16e4effa2c9dcbf7f704dead47a35e60aa/packages/core/src/createJsModule.ts#L12)
