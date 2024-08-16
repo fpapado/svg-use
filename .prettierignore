@@ -9,3 +9,4 @@ package.json
 
 # auto-generated
 examples/shared-library/src/icons
+examples/shared-library/src/index.ts
