@@ -1,7 +1,7 @@
 {
   "private": "true",
   "name": "shared-library",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "",
   "license": "MIT",
   "author": "Fotis Papadogeorgopoulos <fotis@fpapado.com> (https://fotis.xyz)",
@@ -24,7 +24,7 @@
   },
   "dependencies": {
     "@svg-use/core": "workspace:*",
-    "@svg-use/react": "^0.1.0"
+    "@svg-use/react": "^0.2.0"
   },
   "peerDependencies": {
     "react": "^18"
