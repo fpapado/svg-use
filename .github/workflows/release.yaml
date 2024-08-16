@@ -25,7 +25,6 @@ jobs:
         with:
           # This makes Actions fetch all Git history so that Changesets can
           # generate changelogs with the correct commits
-          # Changesets requries
           fetch-depth: 0
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -40,7 +39,7 @@ jobs:
           # We use a recursive pnpm script under the hood, to ensure that
           # publishing runs topologically. Changesets does not do this out of
           # the box. @see: https://github.com/changesets/changesets/issues/238
-          publish: pnpm release
+          publish: pnpm changeset:release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_CONFIG_PROVENANCE: true
