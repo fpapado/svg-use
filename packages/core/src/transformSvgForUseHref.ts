@@ -26,7 +26,7 @@ const ensureRootId = (getSvgId: GetSvgIdFunction): CustomPlugin => ({
   }),
 });
 
-type UseHrefInfo = {
+export type UseHrefInfo = {
   id: string;
   viewBox: string;
 };

@@ -1,5 +1,6 @@
 export {
   type TransformOptions,
+  type UseHrefInfo,
   transformSvgForUseHref,
 } from './transformSvgForUseHref.js';
 export {
@@ -16,5 +17,8 @@ export {
 } from './getSvgIdAttribute.js';
 export { type Result } from './result.js';
 export { defaultThemeSubstitution } from './theme/defaultTheme.js';
-export { xastMakeThemeable } from './theme/makeThemeable.js';
+export {
+  type GetThemeSubstitutionFunction,
+  xastMakeThemeable,
+} from './theme/makeThemeable.js';
 export { svgoMakeThemeable } from './theme/svgoMakeThemeable.js';

@@ -14,6 +14,7 @@
   },
   "type": "module",
   "scripts": {
+    "api-docs": "pnpm --recursive api-docs",
     "build": "pnpm --recursive run build",
     "changeset:release": "changeset tag && pnpm --recursive publish",
     "check-types": "pnpm --recursive run check-types",
@@ -44,6 +45,7 @@
     "rimraf": "6.0.1",
     "tshy": "3.0.2",
     "typedoc": "0.26.5",
+    "typedoc-plugin-markdown": "4.2.5",
     "typescript": "5.5.4",
     "typescript-eslint": "8.1.0",
     "vitest": "2.0.5"
