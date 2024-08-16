@@ -22,4 +22,4 @@ SVGO-compatible version of [xastMakeThemeable](xastMakeThemeable.md)
 
 ## Defined in
 
-[theme/svgoMakeThemeable.ts:11](https://github.com/fpapado/svg-use/blob/cfb17d16e4effa2c9dcbf7f704dead47a35e60aa/packages/core/src/theme/svgoMakeThemeable.ts#L11)
+[theme/svgoMakeThemeable.ts:11](https://github.com/fpapado/svg-use/blob/31bdbf817fed6f833319eb6d8ff0a7093c11f6f2/packages/core/src/theme/svgoMakeThemeable.ts#L11)

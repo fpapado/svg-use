@@ -8,6 +8,9 @@
 
 > **defaultThemeSubstitution**(`counts`): `object`
 
+The default theme function. Substitutes up to three sizes and strokes with
+custom properties. Preserves existing properties as fallbacks.
+
 ## Parameters
 
 • **counts**
@@ -30,4 +33,4 @@
 
 ## Defined in
 
-[theme/defaultTheme.ts:20](https://github.com/fpapado/svg-use/blob/cfb17d16e4effa2c9dcbf7f704dead47a35e60aa/packages/core/src/theme/defaultTheme.ts#L20)
+[theme/defaultTheme.ts:26](https://github.com/fpapado/svg-use/blob/31bdbf817fed6f833319eb6d8ff0a7093c11f6f2/packages/core/src/theme/defaultTheme.ts#L26)

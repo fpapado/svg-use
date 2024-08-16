@@ -62,4 +62,4 @@ documentation for guidance.
 
 ## Defined in
 
-[transformSvgForUseHref.ts:79](https://github.com/fpapado/svg-use/blob/cfb17d16e4effa2c9dcbf7f704dead47a35e60aa/packages/core/src/transformSvgForUseHref.ts#L79)
+[transformSvgForUseHref.ts:79](https://github.com/fpapado/svg-use/blob/31bdbf817fed6f833319eb6d8ff0a7093c11f6f2/packages/core/src/transformSvgForUseHref.ts#L79)

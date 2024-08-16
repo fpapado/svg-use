@@ -4,13 +4,28 @@
 
 # @svg-use/core
 
-## Interfaces
+## Primary functions
+
+These are the main transformation functions. You would typically use these when
+implementing bundler plugins or codegen.
+
+- [createJsModule](functions/createJsModule.md)
+- [transformSvgForUseHref](functions/transformSvgForUseHref.md)
+
+## Primary function defaults
+
+The default / quick-start config for the primary functions. It is recommended
+that you use these defaults if you are implementing a generic bundler plugin.
+You can of course deviate from them for more bespoke use-cases.
+
+- [defaultComponentFactory](variables/defaultComponentFactory.md)
+- [defaultGetSvgIdAttribute](functions/defaultGetSvgIdAttribute.md)
+- [defaultThemeSubstitution](functions/defaultThemeSubstitution.md)
+
+## Other
 
 - [ModuleFactoryOptions](interfaces/ModuleFactoryOptions.md)
 - [ModuleFactoryParams](interfaces/ModuleFactoryParams.md)
-
-## Type Aliases
-
 - [ComponentFactory](type-aliases/ComponentFactory.md)
 - [ComponentFactoryFunction](type-aliases/ComponentFactoryFunction.md)
 - [GetSvgIdFunction](type-aliases/GetSvgIdFunction.md)
@@ -18,16 +33,5 @@
 - [Result](type-aliases/Result.md)
 - [TransformOptions](type-aliases/TransformOptions.md)
 - [UseHrefInfo](type-aliases/UseHrefInfo.md)
-
-## Variables
-
-- [defaultComponentFactory](variables/defaultComponentFactory.md)
-
-## Functions
-
-- [createJsModule](functions/createJsModule.md)
-- [defaultGetSvgIdAttribute](functions/defaultGetSvgIdAttribute.md)
-- [defaultThemeSubstitution](functions/defaultThemeSubstitution.md)
 - [svgoMakeThemeable](functions/svgoMakeThemeable.md)
-- [transformSvgForUseHref](functions/transformSvgForUseHref.md)
 - [xastMakeThemeable](functions/xastMakeThemeable.md)

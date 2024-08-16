@@ -8,9 +8,11 @@
 
 > **createJsModule**(`__namedParameters`, `__namedParameters`): `string`
 
-Creates a JS module (as a string), that exposes all relevant information to
-embed the SVG via use[href]. Also exposes a component, for convenience. This
-module is what the runtime eventually sees.
+Takes a descriptor for an external SVG, and returns a JS module string, that
+exposes all relevant information to embed the SVG via `use[href]`. Also exposes
+a component (via a factory), for convenience.
+
+This module is what a runtime would see eventually.
 
 ## Parameters
 
@@ -26,4 +28,4 @@ module is what the runtime eventually sees.
 
 ## Defined in
 
-[createJsModule.ts:52](https://github.com/fpapado/svg-use/blob/cfb17d16e4effa2c9dcbf7f704dead47a35e60aa/packages/core/src/createJsModule.ts#L52)
+[createJsModule.ts:59](https://github.com/fpapado/svg-use/blob/31bdbf817fed6f833319eb6d8ff0a7093c11f6f2/packages/core/src/createJsModule.ts#L59)

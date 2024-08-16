@@ -34,7 +34,7 @@
     "dist/**/*"
   ],
   "scripts": {
-    "api-docs": "typedoc src/index.ts --plugin typedoc-plugin-markdown --out ./api-docs --readme none && prettier api-docs --write",
+    "api-docs": "typedoc && prettier api-docs --write",
     "build": "pnpm build:lib",
     "build:lib": "tsc -p tsconfig.build.json",
     "build:lib:watch": "tsc --watch -p tsconfig.build.json",

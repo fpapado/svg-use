@@ -118,6 +118,18 @@ export type TransformOptions = {
   getThemeSubstitutions: GetThemeSubstitutionFunction | null;
 };
 
+/**
+ * Transform an SVG, such that it can be referenced by `svg > use[href]`.
+ * Returns the transformed SVG contents, as well as any extracted information
+ * for referencing it.
+ *
+ * The main transformations are:
+ * - ensuring an id
+ * - ensuring a viewBox
+ * - making styles themeable, by substituting hardcoded values
+ *
+ * @category Primary functions
+ */
 export function transformSvgForUseHref(
   contents: string,
   { getSvgIdAttribute, getThemeSubstitutions }: TransformOptions,
