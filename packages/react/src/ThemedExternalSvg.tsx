@@ -61,7 +61,7 @@ export interface BaseProps {
 
 export type Props = BaseProps & ThemeProps & HTMLAttributes<SVGSVGElement>;
 
-export const ThemedSvg = forwardRef<SVGSVGElement, Props>(
+export const ThemedExternalSvg = forwardRef<SVGSVGElement, Props>(
   (
     {
       iconUrl,
@@ -129,5 +129,5 @@ export type FactoryProps = { url: string; id: string; viewBox: string };
 export const createThemedExternalSvg =
   ({ url, id, viewBox }: FactoryProps) =>
   (props: ThemeProps & HTMLAttributes<SVGSVGElement>): JSX.Element => (
-    <ThemedSvg {...props} iconUrl={url} iconId={id} viewBox={viewBox} />
+    <ThemedExternalSvg {...props} iconUrl={url} iconId={id} viewBox={viewBox} />
   );

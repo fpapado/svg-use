@@ -10,7 +10,7 @@ pnpm i @svg-use/react
 ```
 
 ```tsx
-import { createThemedExternalSvg, ThemedSvg } from '@svg-use/react';
+import { createThemedExternalSvg, ThemedExternalSvg } from '@svg-use/react';
 
 // Assuming you have {url, id, viewBox} in scope, for example from a loader or a priori information
 
@@ -20,7 +20,7 @@ const MyComponent = () => {
   return (
     <>
       <MyIcon />
-      <ThemedSvg iconUrl={url} iconId={id} viewBox={viewBox} />
+      <ThemedExternalSvg iconUrl={url} iconId={id} viewBox={viewBox} />
     </>
   );
 };
@@ -28,7 +28,7 @@ const MyComponent = () => {
 
 ## API Reference
 
-### `ThemedSvg`
+### `ThemedExternalSvg`
 
 The main React component, which wires up `svg > use[href]`, as well as the
 default theme (custom properties) from `@svg-use/core`. Accepts props for
@@ -36,15 +36,16 @@ setting the color.
 
 ### `createThemedExternalSvg`
 
-A component factory for `ThemedSvg`. Takes the `{url, id, viewBox}` record, and
-returns a ready-to-use component. Useful for module organisation, and as a
-target for `@svg-use/core`'s `createJsModule`.
+A component factory for `ThemedExternalSvg`. Takes the `{url, id, viewBox}`
+record, and returns a ready-to-use component. Useful for module organisation,
+and as a target for `@svg-use/core`'s `createJsModule`.
 
 ### `configContext`: `Context<Config>`
 
-A context that you can use to customise the runtime behavior of `ThemedSvg`.
-Because `ThemedSvg` is usually a compilation target, this allows you to inject
-configuration without changing the signature of modules.
+A context that you can use to customise the runtime behavior of
+`ThemedExternalSvg`. Because `ThemedExternalSvg` is usually a compilation
+target, this allows you to inject configuration without changing the signature
+of modules.
 
 ```tsx
 import { configContext, type Config } from '@svg-use/react';
