@@ -46,6 +46,7 @@
     "tshy": "3.0.2",
     "typedoc": "0.26.5",
     "typedoc-plugin-markdown": "4.2.5",
+    "typedoc-plugin-mdn-links": "3.2.8",
     "typescript": "5.5.4",
     "typescript-eslint": "8.1.0",
     "vitest": "2.0.5"

@@ -22,7 +22,7 @@ module organisation, and as a target for `@svg-use/core`'s `createJsModule`.
 ### Parameters
 
 • **props**: [`ThemeProps`](../interfaces/ThemeProps.md) &
-`HTMLAttributes`\<`SVGSVGElement`\>
+`HTMLAttributes`\<[`SVGSVGElement`](https://developer.mozilla.org/docs/Web/API/SVGSVGElement)\>
 
 ### Returns
 
@@ -30,4 +30,4 @@ module organisation, and as a target for `@svg-use/core`'s `createJsModule`.
 
 ## Defined in
 
-[packages/react/src/ThemedExternalSvg.tsx:164](https://github.com/fpapado/svg-use/blob/ff656698129b7434fca4a9539e22e83ad215512f/packages/react/src/ThemedExternalSvg.tsx#L164)
+[packages/react/src/ThemedExternalSvg.tsx:164](https://github.com/fpapado/svg-use/blob/ed147d738c29bc30049f3b58e4a0f7f121b6c345/packages/react/src/ThemedExternalSvg.tsx#L164)

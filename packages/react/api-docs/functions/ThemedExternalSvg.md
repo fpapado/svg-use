@@ -16,7 +16,9 @@ setting the color.
 
 • **props**: [`BaseProps`](../interfaces/BaseProps.md) &
 [`ThemeProps`](../interfaces/ThemeProps.md) &
-`HTMLAttributes`\<`SVGSVGElement`\> & `RefAttributes`\<`SVGSVGElement`\>
+`HTMLAttributes`\<[`SVGSVGElement`](https://developer.mozilla.org/docs/Web/API/SVGSVGElement)\>
+&
+`RefAttributes`\<[`SVGSVGElement`](https://developer.mozilla.org/docs/Web/API/SVGSVGElement)\>
 
 ## Returns
 
@@ -24,4 +26,4 @@ setting the color.
 
 ## Defined in
 
-[packages/react/src/ThemedExternalSvg.tsx:96](https://github.com/fpapado/svg-use/blob/ff656698129b7434fca4a9539e22e83ad215512f/packages/react/src/ThemedExternalSvg.tsx#L96)
+[packages/react/src/ThemedExternalSvg.tsx:96](https://github.com/fpapado/svg-use/blob/ed147d738c29bc30049f3b58e4a0f7f121b6c345/packages/react/src/ThemedExternalSvg.tsx#L96)
