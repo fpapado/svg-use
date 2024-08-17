@@ -49,7 +49,11 @@
     "@svg-use/core": "workspace:*",
     "rollup": "4.20.0"
   },
+  "peerDependencies": {
+    "@svg-use/react": "workspace:^"
+  },
   "devDependencies": {
+    "@svg-use/react": "workspace:^",
     "@types/node": "20.14.14"
   },
   "keywords": [

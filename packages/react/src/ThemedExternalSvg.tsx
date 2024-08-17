@@ -155,8 +155,9 @@ export const ThemedExternalSvg = forwardRef<SVGSVGElement, Props>(
 export type FactoryProps = { url: string; id: string; viewBox: string };
 
 /**
- * A component factory for {@link ThemedExternalSvg}. Useful for module organisation,
- * and as a target for `@svg-use/core`'s `createJsModule`.
+ * A component factory for a specific {@link ThemedExternalSvg}, which bakes in
+ * its url, id and viewBox. Useful for module organisation, and as a target for
+ * `@svg-use/core`'s `createJsModule`.
  *
  * @category Primary exports
  */

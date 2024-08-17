@@ -48,7 +48,11 @@
     "@svg-use/core": "workspace:*",
     "loader-utils": "^3.3.1"
   },
+  "peerDependencies": {
+    "@svg-use/react": "workspace:^"
+  },
   "devDependencies": {
+    "@svg-use/react": "workspace:^",
     "@types/loader-utils": "2.0.6",
     "@types/node": "20.14.14",
     "@types/webpack": "^5.28.5",

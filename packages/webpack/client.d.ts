@@ -1,8 +1,18 @@
-/** Ambient declarations for the rollup plugin, using a path prefix */
+/**
+ * Ambient declarations for the webpack plugin, using the default query setup.
+ */
 declare module '*?svgUse' {
   export const url: string;
   export const id: string;
   export const viewBox: string;
-  // TODO: figure out how to type this
-  // export const Component: string;
+
+  /**
+   * A ready-to-use react component, that references the SVG.
+   *
+   * This assumes the default factory function. Feel free to override this in
+   * your own module declaration, if using a different factory.
+   */
+  export const Component: ReturnType<
+    typeof import('@svg-use/react').createThemedExternalSvg
+  >;
 }
