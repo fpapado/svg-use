@@ -25,7 +25,7 @@ jobs:
         with:
           node-version-file: ".nvmrc"
       - run: corepack enable
-      - run: pnpm install --frozen-lockfile
+      - run: pnpm install
         id: install
       - name: Build all
         run: pnpm run -r build

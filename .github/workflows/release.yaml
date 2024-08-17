@@ -31,7 +31,7 @@ jobs:
         with:
           node-version-file: ".nvmrc"
       - run: corepack enable
-      - run: pnpm install --frozen-lockfile
+      - run: pnpm install
       - name: Create Release Pull Request or Publish to npm
         id: changesets
         uses: changesets/action@v1

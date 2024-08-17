@@ -1,0 +1,41 @@
+name: Generate API docs
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    paths: ["typedoc.json", "packages/**/src/*", "packages/**/typedoc.json"]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: write # read for actions/checkout, write for commiting
+
+jobs:
+  api-docs:
+    name: API docs
+    runs-on: ubuntu-latest
+    # do not run on forks
+    if: github.repository == 'fpapado/svg-use'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          repository: ${{ github.event.pull_request.head.repo.full_name }}
+          ref: ${{ github.event.pull_request.head.ref }}
+      - name: Setup node
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: ".nvmrc"
+      - run: corepack enable
+      - run: pnpm install
+        id: install
+      - name: Build API docs
+        run: pnpm api-docs
+      - name: Add & Commit
+        uses: EndBug/add-and-commit@v9
+        with:
+          add: "packages/**/api-docs"
+          pathspec_error_handling: ignore
+          default_author:
