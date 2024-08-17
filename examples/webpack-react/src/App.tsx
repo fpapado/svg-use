@@ -5,26 +5,26 @@ import {
   Archive,
   ArrowRight,
 } from 'shared-library';
-import * as arrowSvg from './arrow.svg?svgUse';
+import {
+  Component as ArrowSvg,
+  id,
+  url,
+  viewBox,
+} from './assets/arrow.svg?svgUse';
 
 const LocalArrowSvg = createThemedExternalSvg({
-  id: arrowSvg.id,
-  url: arrowSvg.url,
-  viewBox: arrowSvg.viewBox,
+  id: id,
+  url: url,
+  viewBox: viewBox,
 });
 
 function App() {
   return (
     <>
-      <p>Component export</p>
-      {/* @ts-expect-error -- We do not have types for Component yet */}
-      <arrowSvg.Component />
+      <p>Named Component export</p>
+      <ArrowSvg />
       <p>ThemedExternalSvg</p>
-      <ThemedExternalSvg
-        iconId={arrowSvg.id}
-        iconUrl={arrowSvg.url}
-        viewBox={arrowSvg.viewBox}
-      />
+      <ThemedExternalSvg iconId={id} iconUrl={url} viewBox={viewBox} />
       <p>createThemedExternalSvg</p>
       <LocalArrowSvg />
       <p>External icon demos</p>

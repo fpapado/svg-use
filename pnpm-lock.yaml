@@ -254,6 +254,9 @@ importers:
         specifier: 4.20.0
         version: 4.20.0
     devDependencies:
+      '@svg-use/react':
+        specifier: workspace:^
+        version: link:../react
       '@types/node':
         specifier: 20.14.14
         version: 20.14.14
@@ -267,6 +270,9 @@ importers:
         specifier: ^3.3.1
         version: 3.3.1
     devDependencies:
+      '@svg-use/react':
+        specifier: workspace:^
+        version: link:../react
       '@types/loader-utils':
         specifier: 2.0.6
         version: 2.0.6
