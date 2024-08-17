@@ -6,7 +6,7 @@ theme config. Also includes utilities for creating your own wrappers.
 ## Quick start
 
 ```shell
-pnpm i @svg-use/react
+pnpm install @svg-use/react
 ```
 
 ```tsx
