@@ -16,7 +16,6 @@
   codepen, to demonstrate.
 - Consider providing the defaults for svg-use/core functions directly in the
   functions themselves.
-- Ensure that peerDependencies are set up everywhere, as intended
 - Shipping the default theme and the consumer function in two separate packages
   is a bit annoying
   - Perhaps we can ship two separate .d.ts. files: /client and /client/react
