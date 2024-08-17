@@ -24,4 +24,4 @@ Traverse an SVG as xast, and substitute hardcoded color values with other ones
 
 ## Defined in
 
-[theme/makeThemeable.ts:16](https://github.com/fpapado/svg-use/blob/31bdbf817fed6f833319eb6d8ff0a7093c11f6f2/packages/core/src/theme/makeThemeable.ts#L16)
+[theme/makeThemeable.ts:16](https://github.com/fpapado/svg-use/blob/585a805df232df52047b5d894dcd94635b4f932c/packages/core/src/theme/makeThemeable.ts#L16)

@@ -30,4 +30,4 @@ module organisation, and as a target for `@svg-use/core`'s `createJsModule`.
 
 ## Defined in
 
-[packages/react/src/ThemedExternalSvg.tsx:164](https://github.com/fpapado/svg-use/blob/ed147d738c29bc30049f3b58e4a0f7f121b6c345/packages/react/src/ThemedExternalSvg.tsx#L164)
+[packages/react/src/ThemedExternalSvg.tsx:164](https://github.com/fpapado/svg-use/blob/585a805df232df52047b5d894dcd94635b4f932c/packages/react/src/ThemedExternalSvg.tsx#L164)

@@ -18,4 +18,4 @@ altogether.
 
 #### Defined in
 
-[createJsModule.ts:12](https://github.com/fpapado/svg-use/blob/31bdbf817fed6f833319eb6d8ff0a7093c11f6f2/packages/core/src/createJsModule.ts#L12)
+[createJsModule.ts:12](https://github.com/fpapado/svg-use/blob/585a805df232df52047b5d894dcd94635b4f932c/packages/core/src/createJsModule.ts#L12)

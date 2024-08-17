@@ -15,9 +15,13 @@ custom properties. Preserves existing properties as fallbacks.
 
 • **counts**
 
-• **counts.fills**: `Map`\<`string`, `number`\>
+• **counts.fills**:
+[`Map`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Map)\<`string`,
+`number`\>
 
-• **counts.strokes**: `Map`\<`string`, `number`\>
+• **counts.strokes**:
+[`Map`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Map)\<`string`,
+`number`\>
 
 ## Returns
 
@@ -25,12 +29,16 @@ custom properties. Preserves existing properties as fallbacks.
 
 ### fills
 
-> **fills**: `Map`\<`string`, `string`\>
+> **fills**:
+> [`Map`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Map)\<`string`,
+> `string`\>
 
 ### strokes
 
-> **strokes**: `Map`\<`string`, `string`\>
+> **strokes**:
+> [`Map`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Map)\<`string`,
+> `string`\>
 
 ## Defined in
 
-[theme/defaultTheme.ts:26](https://github.com/fpapado/svg-use/blob/31bdbf817fed6f833319eb6d8ff0a7093c11f6f2/packages/core/src/theme/defaultTheme.ts#L26)
+[theme/defaultTheme.ts:26](https://github.com/fpapado/svg-use/blob/585a805df232df52047b5d894dcd94635b4f932c/packages/core/src/theme/defaultTheme.ts#L26)
