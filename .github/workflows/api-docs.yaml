@@ -37,5 +37,4 @@ jobs:
         uses: EndBug/add-and-commit@v9
         with:
           add: "packages/**/api-docs"
-          pathspec_error_handling: ignore
-          default_author:
+          pathspec_error_handling: ignore # this is default; left for posterity
