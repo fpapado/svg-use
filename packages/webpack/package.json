@@ -52,7 +52,7 @@
     "@svg-use/react": "workspace:^"
   },
   "peerDependenciesMeta": {
-    "react": {
+    "@svg-use/react": {
       "optional": true
     }
   },
