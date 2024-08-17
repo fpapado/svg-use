@@ -34,4 +34,4 @@ The main transformations are:
 
 ## Defined in
 
-[transformSvgForUseHref.ts:133](https://github.com/fpapado/svg-use/blob/31bdbf817fed6f833319eb6d8ff0a7093c11f6f2/packages/core/src/transformSvgForUseHref.ts#L133)
+[transformSvgForUseHref.ts:133](https://github.com/fpapado/svg-use/blob/main/packages/core/src/transformSvgForUseHref.ts#L133)

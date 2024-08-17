@@ -40,4 +40,4 @@ named import).
 
 ## Defined in
 
-[createJsModule.ts:24](https://github.com/fpapado/svg-use/blob/31bdbf817fed6f833319eb6d8ff0a7093c11f6f2/packages/core/src/createJsModule.ts#L24)
+[createJsModule.ts:24](https://github.com/fpapado/svg-use/blob/main/packages/core/src/createJsModule.ts#L24)

@@ -15,9 +15,9 @@ export type Config = {
    *
    * Because svg[use] does not support CORS, it is not possible to reference
    * external SVGs from a CDN. Hosting static assets and scripts separately from
-   * an application origin is relatively common. One possible workaround is to
-   * proxy the SVGs via your origin to the CDN. In order to achieve that, you
-   * need a way to rewrite the URLs.
+   * an application origin is relatively common, so this poses a problem. One
+   * possible workaround is to proxy the SVGs via your origin to the CDN. In
+   * order to achieve that, you need a way to rewrite the URLs.
    *
    * Note: This does not set up any proxying; your application/server code is
    * responsible for that.
@@ -28,11 +28,36 @@ export type Config = {
    * Toggles runtime checks, which help catch common pitfalls with using external
    * SVGs, such as needing to be on the same origin.
    *
-   * @defaultValue `true` if the `development` export condition is met, `false` otherwise
+   * @defaultValue true
    */
   runtimeChecksEnabled?: boolean;
 };
 
+/**
+ * A context that you can use to customise the runtime behavior of
+ * `ThemedExternalSvg`. Because `ThemedExternalSvg` is usually a compilation
+ * target, this allows you to inject configuration without changing the signature
+ * of modules.
+ *
+ * @category Primary exports
+ *
+ * @example
+ * ```tsx
+ * import { configContext, type Config } from '@svg-use/react';
+ *
+ * const config: Config = {
+ *   // Add any config options here
+ * };
+ *
+ * const AppRoot = () => {
+ *   return (
+ *     <configContext.Provider value={config}>
+ *       {\/* The rest of the application *\/}
+ *     </configContext.Provider>
+ *   );
+ * };
+ * ```
+ */
 export const configContext = createContext<Config>({
   runtimeChecksEnabled: true,
 });
@@ -61,6 +86,13 @@ export interface BaseProps {
 
 export type Props = BaseProps & ThemeProps & HTMLAttributes<SVGSVGElement>;
 
+/**
+ * The main React component, which wires up `svg > use[href]`, as well as the
+ * default theme (custom properties) from `@svg-use/core`. Accepts props for
+ * setting the color.
+ *
+ * @category Primary exports
+ */
 export const ThemedExternalSvg = forwardRef<SVGSVGElement, Props>(
   (
     {
@@ -123,8 +155,10 @@ export const ThemedExternalSvg = forwardRef<SVGSVGElement, Props>(
 export type FactoryProps = { url: string; id: string; viewBox: string };
 
 /**
- * Component factory for ThemedExternalSvg. You can use this to organise
- * modules.
+ * A component factory for {@link ThemedExternalSvg}. Useful for module organisation,
+ * and as a target for `@svg-use/core`'s `createJsModule`.
+ *
+ * @category Primary exports
  */
 export const createThemedExternalSvg =
   ({ url, id, viewBox }: FactoryProps) =>
