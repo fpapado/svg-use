@@ -49,4 +49,4 @@ true;
 
 ## Defined in
 
-[packages/react/src/ThemedExternalSvg.tsx:11](https://github.com/fpapado/svg-use/blob/585a805df232df52047b5d894dcd94635b4f932c/packages/react/src/ThemedExternalSvg.tsx#L11)
+[packages/react/src/ThemedExternalSvg.tsx:11](https://github.com/fpapado/svg-use/blob/main/packages/react/src/ThemedExternalSvg.tsx#L11)

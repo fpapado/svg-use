@@ -24,4 +24,4 @@ inlining SVGs in the document.
 
 ## Defined in
 
-[getSvgIdAttribute.ts:14](https://github.com/fpapado/svg-use/blob/585a805df232df52047b5d894dcd94635b4f932c/packages/core/src/getSvgIdAttribute.ts#L14)
+[getSvgIdAttribute.ts:14](https://github.com/fpapado/svg-use/blob/main/packages/core/src/getSvgIdAttribute.ts#L14)

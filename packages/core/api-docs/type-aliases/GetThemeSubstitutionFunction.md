@@ -38,4 +38,4 @@
 
 ## Defined in
 
-[theme/makeThemeable.ts:4](https://github.com/fpapado/svg-use/blob/585a805df232df52047b5d894dcd94635b4f932c/packages/core/src/theme/makeThemeable.ts#L4)
+[theme/makeThemeable.ts:4](https://github.com/fpapado/svg-use/blob/main/packages/core/src/theme/makeThemeable.ts#L4)

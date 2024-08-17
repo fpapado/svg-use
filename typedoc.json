@@ -2,6 +2,6 @@
   "$schema": "https://typedoc-plugin-markdown.org/schema.json",
   "readme": "none",
   "categoryOrder": ["Primary exports", "*"],
-  "logLevel": "Verbose",
+  "gitRevision": "main",
   "plugin": ["typedoc-plugin-markdown", "typedoc-plugin-mdn-links"]
 }

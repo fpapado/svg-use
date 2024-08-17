@@ -28,4 +28,4 @@ This module is what a runtime would see eventually.
 
 ## Defined in
 
-[createJsModule.ts:57](https://github.com/fpapado/svg-use/blob/585a805df232df52047b5d894dcd94635b4f932c/packages/core/src/createJsModule.ts#L57)
+[createJsModule.ts:57](https://github.com/fpapado/svg-use/blob/main/packages/core/src/createJsModule.ts#L57)

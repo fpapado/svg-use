@@ -24,4 +24,4 @@
 
 ## Defined in
 
-[createJsModule.ts:15](https://github.com/fpapado/svg-use/blob/585a805df232df52047b5d894dcd94635b4f932c/packages/core/src/createJsModule.ts#L15)
+[createJsModule.ts:15](https://github.com/fpapado/svg-use/blob/main/packages/core/src/createJsModule.ts#L15)

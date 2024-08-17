@@ -14,7 +14,7 @@
 
 #### Defined in
 
-[packages/react/src/ThemedExternalSvg.tsx:69](https://github.com/fpapado/svg-use/blob/585a805df232df52047b5d894dcd94635b4f932c/packages/react/src/ThemedExternalSvg.tsx#L69)
+[packages/react/src/ThemedExternalSvg.tsx:69](https://github.com/fpapado/svg-use/blob/main/packages/react/src/ThemedExternalSvg.tsx#L69)
 
 ---
 
@@ -24,7 +24,7 @@
 
 #### Defined in
 
-[packages/react/src/ThemedExternalSvg.tsx:70](https://github.com/fpapado/svg-use/blob/585a805df232df52047b5d894dcd94635b4f932c/packages/react/src/ThemedExternalSvg.tsx#L70)
+[packages/react/src/ThemedExternalSvg.tsx:70](https://github.com/fpapado/svg-use/blob/main/packages/react/src/ThemedExternalSvg.tsx#L70)
 
 ---
 
@@ -34,7 +34,7 @@
 
 #### Defined in
 
-[packages/react/src/ThemedExternalSvg.tsx:71](https://github.com/fpapado/svg-use/blob/585a805df232df52047b5d894dcd94635b4f932c/packages/react/src/ThemedExternalSvg.tsx#L71)
+[packages/react/src/ThemedExternalSvg.tsx:71](https://github.com/fpapado/svg-use/blob/main/packages/react/src/ThemedExternalSvg.tsx#L71)
 
 ---
 
@@ -44,7 +44,7 @@
 
 #### Defined in
 
-[packages/react/src/ThemedExternalSvg.tsx:66](https://github.com/fpapado/svg-use/blob/585a805df232df52047b5d894dcd94635b4f932c/packages/react/src/ThemedExternalSvg.tsx#L66)
+[packages/react/src/ThemedExternalSvg.tsx:66](https://github.com/fpapado/svg-use/blob/main/packages/react/src/ThemedExternalSvg.tsx#L66)
 
 ---
 
@@ -54,7 +54,7 @@
 
 #### Defined in
 
-[packages/react/src/ThemedExternalSvg.tsx:67](https://github.com/fpapado/svg-use/blob/585a805df232df52047b5d894dcd94635b4f932c/packages/react/src/ThemedExternalSvg.tsx#L67)
+[packages/react/src/ThemedExternalSvg.tsx:67](https://github.com/fpapado/svg-use/blob/main/packages/react/src/ThemedExternalSvg.tsx#L67)
 
 ---
 
@@ -64,4 +64,4 @@
 
 #### Defined in
 
-[packages/react/src/ThemedExternalSvg.tsx:68](https://github.com/fpapado/svg-use/blob/585a805df232df52047b5d894dcd94635b4f932c/packages/react/src/ThemedExternalSvg.tsx#L68)
+[packages/react/src/ThemedExternalSvg.tsx:68](https://github.com/fpapado/svg-use/blob/main/packages/react/src/ThemedExternalSvg.tsx#L68)
