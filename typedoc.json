@@ -1,0 +1,6 @@
+{
+  "$schema": "https://typedoc-plugin-markdown.org/schema.json",
+  "readme": "none",
+  "categoryOrder": ["Primary exports", "*"],
+  "plugin": ["typedoc-plugin-markdown"]
+}

@@ -34,6 +34,8 @@
     "env.webpack.d.ts"
   ],
   "scripts": {
+    "api-docs": "typedoc && prettier api-docs --write",
+    "api-docs:watch": "typedoc --watch",
     "build": "pnpm build:lib",
     "build:lib": "tshy",
     "build:lib:watch": "tshy --watch",
