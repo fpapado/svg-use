@@ -41,7 +41,7 @@
     "lint": "npm-run-all \"lint:*\"",
     "lint:prettier": "pnpm prettier --check .",
     "lint:scripts": "eslint src --report-unused-disable-directives --no-warn-ignored --max-warnings 0",
-    "prepublishOnly": "pnpm build publint && attw --config-path ./.attw.json --pack",
+    "prepublishOnly": "pnpm build && publint && attw --config-path ./.attw.json --pack",
     "test": "vitest"
   },
   "dependencies": {
