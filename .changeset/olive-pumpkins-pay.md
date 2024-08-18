@@ -1,5 +1,4 @@
 ---
-'shared-library': minor
 '@svg-use/webpack': minor
 '@svg-use/rollup': minor
 '@svg-use/core': minor

@@ -7,5 +7,6 @@
   "access": "public",
   "baseBranch": "main",
   "updateInternalDependencies": "minor",
+  "bumpVersionsWithWorkspaceProtocolOnly": true,
   "ignore": ["shared-library", "webpack-react", "vite-react"]
 }

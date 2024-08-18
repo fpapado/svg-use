@@ -1,6 +1,4 @@
 ---
-'webpack-react': minor
-'vite-react': minor
 '@svg-use/webpack': minor
 '@svg-use/rollup': minor
 '@svg-use/react': minor
