@@ -23,14 +23,14 @@ test('converts *.svg import into valid React component with svg[use], using defa
 
   const svgAsset = findAsset(output, svgFixturePath);
   expect(svgAsset?.source).toMatchInlineSnapshot(
-    `"<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="var(--use-href-stroke-primary, currentColor)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right" id="use-href-target"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>"`,
+    `"<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="var(--svg-use-color-primary, currentColor)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right" id="use-href-target"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>"`,
   );
 
   const jsChunk = findEntryChunk(output);
   expect(jsChunk.code).toMatchInlineSnapshot(`
     "import { createThemedExternalSvg } from '@svg-use/react';
 
-    const url = new URL('assets/arrow-DlLBTcCP.svg', import.meta.url).href;
+    const url = new URL('assets/arrow-BsgLFTQk.svg', import.meta.url).href;
     const id = "use-href-target";
     const viewBox = "0 0 24 24";
 
@@ -46,14 +46,14 @@ test('converts *.svg import when imported from JS', async () => {
 
   const svgAsset = findAsset(output, svgFixturePath);
   expect(svgAsset?.source).toMatchInlineSnapshot(
-    `"<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="var(--use-href-stroke-primary, currentColor)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right" id="use-href-target"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>"`,
+    `"<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="var(--svg-use-color-primary, currentColor)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right" id="use-href-target"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>"`,
   );
 
   const jsChunk = findEntryChunk(output);
   expect(jsChunk.code).toMatchInlineSnapshot(`
     "import { createThemedExternalSvg } from '@svg-use/react';
 
-    const url = new URL('assets/arrow-DlLBTcCP.svg', import.meta.url).href;
+    const url = new URL('assets/arrow-BsgLFTQk.svg', import.meta.url).href;
     const id = "use-href-target";
     const viewBox = "0 0 24 24";
 
@@ -87,14 +87,14 @@ describe('plugin options', () => {
 
     const svgAsset = findAsset(output, svgFixturePath);
     expect(svgAsset?.source).toMatchInlineSnapshot(
-      `"<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="var(--use-href-stroke-primary, currentColor)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right" id="my-id"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>"`,
+      `"<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="var(--svg-use-color-primary, currentColor)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right" id="my-id"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>"`,
     );
 
     const jsChunk = findEntryChunk(output);
     expect(jsChunk.code).toMatchInlineSnapshot(`
       "import { createThemedExternalSvg } from '@svg-use/react';
 
-      const url = new URL('assets/arrow-De_UpHeA.svg', import.meta.url).href;
+      const url = new URL('assets/arrow-UUU4Y5Sw.svg', import.meta.url).href;
       const id = "my-id";
       const viewBox = "0 0 24 24";
 
@@ -146,7 +146,7 @@ describe('plugin options', () => {
     expect(jsChunk.code).toMatchInlineSnapshot(`
       "import { createMyThemedSvg } from 'my-library/svg';
 
-      const url = new URL('assets/arrow-DlLBTcCP.svg', import.meta.url).href;
+      const url = new URL('assets/arrow-BsgLFTQk.svg', import.meta.url).href;
       const id = "use-href-target";
       const viewBox = "0 0 24 24";
 

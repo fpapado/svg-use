@@ -63,12 +63,9 @@ export const configContext = createContext<Config>({
 });
 
 export interface ThemeProps {
-  stroke?: string;
-  strokeSecondary?: string;
-  strokeTertiary?: string;
-  fill?: string;
-  fillSecondary?: string;
-  fillTertiary?: string;
+  color?: string;
+  colorSecondary?: string;
+  colorTertiary?: string;
 }
 
 export interface BaseProps {
@@ -99,12 +96,9 @@ export const ThemedExternalSvg = forwardRef<SVGSVGElement, Props>(
       iconUrl,
       iconId,
       viewBox,
-      stroke,
-      strokeSecondary: strokeSecondary,
-      strokeTertiary: strokeTertiary,
-      fill,
-      fillSecondary,
-      fillTertiary,
+      color,
+      colorSecondary,
+      colorTertiary,
       style,
       ...rest
     },
@@ -131,12 +125,9 @@ export const ThemedExternalSvg = forwardRef<SVGSVGElement, Props>(
      */
     const styleWithCustomProperties = {
       ...style,
-      '--use-href-stroke-primary': stroke,
-      '--use-href-stroke-secondary': strokeSecondary,
-      '--use-href-stroke-tertiary': strokeTertiary,
-      '--use-href-fill-primary': fill,
-      '--use-href-fill-secondary': fillSecondary,
-      '--use-href-fill-tertiary': fillTertiary,
+      '--svg-use-color-primary': color,
+      '--svg-use-color-secondary': colorSecondary,
+      '--svg-use-color-tertiary': colorTertiary,
     } as CSSProperties;
 
     return (
