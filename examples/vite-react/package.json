@@ -9,14 +9,14 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@svg-use/react": "workspace:^0",
+    "@svg-use/react": "workspace:^0.3.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "shared-library": "workspace:*"
   },
   "devDependencies": {
-    "@svg-use/react": "workspace:^0",
-    "@svg-use/rollup": "workspace:^0",
+    "@svg-use/react": "workspace:^0.3.0",
+    "@svg-use/rollup": "workspace:^0.3.0",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "@vitejs/plugin-react": "^4.3.1",
