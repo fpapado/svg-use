@@ -16,8 +16,8 @@
     "react-dom": "^18.3.1"
   },
   "devDependencies": {
-    "@svg-use/react": "workspace:^0.3.0",
-    "@svg-use/webpack": "workspace:^0.3.0",
+    "@svg-use/react": "workspace:^0",
+    "@svg-use/webpack": "workspace:^0",
     "@swc-node/register": "1.10.9",
     "@swc/core": "^1.7.6",
     "@types/node": "20.14.14",
