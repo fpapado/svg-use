@@ -18,7 +18,7 @@ const findAsset = (output: RollupOutput['output'], originalFileName: string) =>
     (v) => v.type === 'asset' && v.originalFileName?.endsWith(originalFileName),
   ) as OutputAsset | undefined;
 
-test('converts *.svg import into valid React component with svg[use], using defaults', async () => {
+test('converts *.svg?svgUse import into valid React component with svg[use], using defaults', async () => {
   const output = await build(svgFixturePathWithSuffix, {});
 
   const svgAsset = findAsset(output, svgFixturePath);
@@ -41,7 +41,7 @@ test('converts *.svg import into valid React component with svg[use], using defa
   `);
 });
 
-test('converts *.svg import when imported from JS', async () => {
+test('converts *.svg?svgUse import when imported from JS', async () => {
   const output = await build('__fixtures__/input.js', {});
 
   const svgAsset = findAsset(output, svgFixturePath);
@@ -54,6 +54,29 @@ test('converts *.svg import when imported from JS', async () => {
     "import { createThemedExternalSvg } from '@svg-use/react';
 
     const url = new URL('assets/arrow-BsgLFTQk.svg', import.meta.url).href;
+    const id = "use-href-target";
+    const viewBox = "0 0 24 24";
+
+    const Component = createThemedExternalSvg({url, id, viewBox});
+
+    export { Component as default };
+    "
+  `);
+});
+
+test('converts *.svg?svgUse&noTheme import when imported from JS, without touching the theme', async () => {
+  const output = await build('__fixtures__/inputNoTheme.js', {});
+
+  const svgAsset = findAsset(output, svgFixturePath);
+  expect(svgAsset?.source).toMatchInlineSnapshot(
+    `"<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right" id="use-href-target"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>"`,
+  );
+
+  const jsChunk = findEntryChunk(output);
+  expect(jsChunk.code).toMatchInlineSnapshot(`
+    "import { createThemedExternalSvg } from '@svg-use/react';
+
+    const url = new URL('assets/arrow-CHDfodaD.svg', import.meta.url).href;
     const id = "use-href-target";
     const viewBox = "0 0 24 24";
 

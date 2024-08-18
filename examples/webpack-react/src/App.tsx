@@ -11,6 +11,7 @@ import {
   url,
   viewBox,
 } from './assets/arrow.svg?svgUse';
+import { Component as UnthemedArrowSvg } from './assets/arrow.svg?svgUse&noTheme';
 
 const LocalArrowSvg = createThemedExternalSvg({
   id: id,
@@ -22,11 +23,18 @@ function App() {
   return (
     <>
       <p>Named Component export</p>
-      <ArrowSvg />
+      <ArrowSvg color="green" />
       <p>ThemedExternalSvg</p>
-      <ThemedExternalSvg iconId={id} iconUrl={url} viewBox={viewBox} />
+      <ThemedExternalSvg
+        color="blue"
+        iconId={id}
+        iconUrl={url}
+        viewBox={viewBox}
+      />
       <p>createThemedExternalSvg</p>
-      <LocalArrowSvg />
+      <LocalArrowSvg color="purple" />
+      <p>Unthemed</p>
+      <UnthemedArrowSvg color="purple" />
       <p>External icon demos</p>
       <AlertCircle color="orange" role="img" aria-label="Warning" />
       <AlertTriangle />

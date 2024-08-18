@@ -3,15 +3,7 @@
 ## v1
 
 - Spell out all options for the bundler plugins
-- Implement "unthemed" mode
-  - Add `unthemed` parameter in the recommended webpack config
-  - Add `unthemed` parameter in the rollup plugin
-  - Corollary: maybe we need to customise the query parameter in the rollup
-    plugin, to alow people to create their own defaults
 - Unit test the rest of svg-use/core, for consistency
-- Investigate removing the `viewBox` requirement, or provide the rationale for
-  it. SVGs keep their intrinsic size based on some default. Should make a
-  codepen, to demonstrate.
 - Consider providing the defaults for svg-use/core functions directly in the
   functions themselves.
 - Shipping the default theme and the consumer function in two separate packages
@@ -20,7 +12,10 @@
 
 ## For later
 
+- Corollary: maybe we need to customise the query parameter in the rollup
+  plugin, to alow people to create their own defaults
 - Smoke test `examples`
+- Create a "vanilla" rollup example
 - Create a separate Vite plugin
   - Rollup-only is OK for now,
   - Perhaps it is ok to only do checks, but return the original asset, and leave

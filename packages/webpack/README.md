@@ -18,25 +18,52 @@ In your webpack config file (typically `webpack.config.js`):
 
 ```ts
 {
-  // Make assets such as `arrow.svg?svgUse` compatible with `svg >
-  // use[href]`. Emit an the transformed asset, and returned a JS module
-  // with all the relevant information.
-  test: /\.svg$/i,
-  resourceQuery: /svgUse/,
-  // This loader chain ultimately returns JS code, and emits an asset
-  type: 'javascript/auto',
-  use: [
-    {
-      loader: '@svg-use/webpack',
-      options: {
-        svgAssetFilename: 'svgAssets/[name]-[contenthash].[ext]',
+  module: {
+    rules: [
+      {
+        // Match assets such as `arrow.svg?svgUse`, making them compatible with `svg >
+        // use[href]`. Emit a transformed SVG asset, and return a JS module
+        // with all the relevant information.
+        test: /\.svg$/i,
+        resourceQuery: {
+          and: [/svgUse/i, { not: [/noTheme/i] }],
+        },
+        // This loader chain ultimately returns JS code, and emits an asset
+        type: 'javascript/auto',
+        use: [
+          {
+            loader: '@svg-use/webpack',
+            options: {
+              // Customise to your heart's content
+              svgAssetFilename: 'svgAssets/[name]-[contenthash].[ext]',
+            },
+          },
+        ],
       },
-    },
-  ],
-},
+      {
+        // Assets without a theme, such as country flags.
+        // Referenced as `icon.svg?svgUse&noTheme`
+        test: /\.svg$/i,
+        resourceQuery: {
+          and: [/svgUse/i, /noTheme/i],
+        },
+        type: 'javascript/auto',
+        use: [
+          {
+            loader: '@svg-use/webpack',
+            options: {
+              getThemeSubstitutions: null,
+              svgAssetFilename: 'svgAssets/[name]-[contenthash].[ext]',
+            },
+          },
+        ],
+      },
+    ];
+  }
+}
 ```
 
-### Configure TypeScript
+### Optional: Configure TypeScript
 
 If you are using TypeScript, you can get types for the default config by adding
 the following in a `.d.ts` file in your project. For example, you can include
@@ -73,11 +100,13 @@ In `client.d.ts`:
 
 ```tsx
 import { Component as Arrow } from './arrow.svg?svgUse';
+import { Component as ArrowNoTheme } from './arrow.svg?svgUse&noTheme';
 
 const MyComponent = () => (
-  <button>
-    <Arrow color="currentColor" role="img" aria-label="Continue" />
-  </button>
+  <div>
+    <Arrow color="currentColor" />
+    <ArrowNoTheme />
+  </div>
 );
 ```
 
@@ -90,6 +119,13 @@ import { createThemedExternalSvg } from '@svg-use/react';
 
 export const Arrow = createThemedExternalSvg({ url, id });
 ```
+
+## Worked example
+
+[Consult examples/webpack-react for a worked example.](/examples/webpack-react/)
+You can use this as a playground for understanding the transformations, as well
+as the different moving parts, isolated from your own application's
+configuration.
 
 ## Options
 

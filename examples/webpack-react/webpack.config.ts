@@ -29,18 +29,38 @@ const config: Configuration = {
   module: {
     rules: [
       {
-        // Make assets such as `arrow.svg?svgUse` compatible with `svg >
-        // use[href]`. Emit an the transformed asset, and returned a JS module
+        // Match assets such as `arrow.svg?svgUse`, making them compatible with `svg >
+        // use[href]`. Emit a transformed SVG asset, and return a JS module
         // with all the relevant information.
         test: /\.svg$/i,
-        resourceQuery: /svgUse/,
+        resourceQuery: {
+          and: [/svgUse/i, { not: [/noTheme/i] }],
+        },
         // This loader chain ultimately returns JS code, and emits an asset
         type: 'javascript/auto',
         use: [
           {
             loader: '@svg-use/webpack',
             options: {
-              // customize to your heart's content
+              // Customise to your heart's content
+              svgAssetFilename: 'svgAssets/[name]-[contenthash].[ext]',
+            },
+          },
+        ],
+      },
+      {
+        // Assets without a theme, such as country flags.
+        // Referenced as `icon.svg?svgUse&noTheme`
+        test: /\.svg$/i,
+        resourceQuery: {
+          and: [/svgUse/i, /noTheme/i],
+        },
+        type: 'javascript/auto',
+        use: [
+          {
+            loader: '@svg-use/webpack',
+            options: {
+              getThemeSubstitutions: null,
               svgAssetFilename: 'svgAssets/[name]-[contenthash].[ext]',
             },
           },
