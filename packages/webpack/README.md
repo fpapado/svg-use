@@ -100,11 +100,13 @@ In `client.d.ts`:
 
 ```tsx
 import { Component as Arrow } from './arrow.svg?svgUse';
+import { Component as ArrowNoTheme } from './arrow.svg?svgUse&noTheme';
 
 const MyComponent = () => (
-  <button>
-    <Arrow color="currentColor" role="img" aria-label="Continue" />
-  </button>
+  <div>
+    <Arrow color="currentColor" />
+    <ArrowNoTheme />
+  </div>
 );
 ```
 

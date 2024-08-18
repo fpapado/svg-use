@@ -29,6 +29,11 @@ const isRelevant = (id: string) => {
   return originalPath.endsWith('.svg') && query?.split('&').includes('svgUse');
 };
 
+const hasNoTheme = (id: string) => {
+  const [, query] = splitQuery(id);
+  return query?.split('&').includes('noTheme');
+};
+
 const defaultOptions = {
   componentFactory: defaultComponentFactory,
   getSvgIdAttribute: defaultGetSvgIdAttribute,
@@ -72,7 +77,9 @@ function svgUsePlugin(userOptions: PluginOptions): Plugin {
         // augment the existing function, with extra (filename) context
         getSvgIdAttribute: ({ existingId }) =>
           options.getSvgIdAttribute({ existingId, filename: basename }),
-        getThemeSubstitutions: options.getThemeSubstitutions,
+        getThemeSubstitutions: hasNoTheme(id)
+          ? null
+          : options.getThemeSubstitutions,
       });
 
       if (res.type === 'failure') {
