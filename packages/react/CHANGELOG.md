@@ -1,5 +1,14 @@
 # @svg-use/react
 
+## 0.3.0
+
+### Minor Changes
+
+- e068089: Breaking change: The default theme has been updated. ThemeProps now
+  accept color/colorSecondary/colorTertiary, instead of separating fills and
+  strokes.
+- 989deef: Export the default Component in bundler ambient type declarations.
+
 ## 0.2.0
 
 ### Minor Changes
