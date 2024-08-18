@@ -14,7 +14,8 @@ Then, refer to these links:
 
 - Refer to [@svg-use/webpack](./packages/webpack) for the webpack loader
 - Refer to [@svg-use/rollup](./packages/rollup) for the rollup plugin
-- Refer to [@svg-use/core](./packages/core) for the core logic
+- Refer to [@svg-use/core](./packages/core) for the core logic, which powers the
+  bundler plugins
 - Refer to [@svg-use/react](./packages/react) for the default React wrapper
   component
 - Refer to [the examples directory](./examples/) for examples of usage with
