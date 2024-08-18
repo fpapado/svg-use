@@ -18,14 +18,14 @@ describe('defaultThemeSubstitution', () => {
       }),
     ).toEqual({
       fills: new Map([
-        ['#123', 'var(--use-href-fill-primary, #123)'],
-        ['red', 'var(--use-href-fill-secondary, red)'],
-        ['blue', 'var(--use-href-fill-tertiary, blue)'],
+        ['#123', 'var(--svg-use-color-primary, #123)'],
+        ['red', 'var(--svg-use-color-secondary, red)'],
+        ['blue', 'var(--svg-use-color-tertiary, blue)'],
       ]),
       strokes: new Map([
-        ['#123', 'var(--use-href-stroke-primary, #123)'],
-        ['red', 'var(--use-href-stroke-secondary, red)'],
-        ['blue', 'var(--use-href-stroke-tertiary, blue)'],
+        ['#123', 'var(--svg-use-color-primary, #123)'],
+        ['red', 'var(--svg-use-color-secondary, red)'],
+        ['blue', 'var(--svg-use-color-tertiary, blue)'],
       ]),
     });
   });
@@ -47,7 +47,7 @@ describe('defaultThemeSubstitution', () => {
         ]),
       }),
     ).toThrowErrorMatchingInlineSnapshot(
-      `[Error: Cannot substitute theme for SVGs with more than 3 colors. Please use a resource query to mark this SVG as unthemed.]`,
+      `[Error: Cannot substitute theme for SVGs with more than 3 colors. Use a resource query to mark this SVG as unthemed.]`,
     );
   });
 });

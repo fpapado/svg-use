@@ -2,8 +2,6 @@
 
 ## v1
 
-- Default theme: Instead of separating strokes/fills just replace the values
-  verbatim.
 - Spell out all options for the bundler plugins
 - Implement "unthemed" mode
   - Add `unthemed` parameter in the recommended webpack config

@@ -1,15 +1,9 @@
 import type { GetThemeSubstitutionFunction } from './makeThemeable.js';
 
-const fillCustomProperties = [
-  'use-href-fill-primary',
-  'use-href-fill-secondary',
-  'use-href-fill-tertiary',
-];
-
-const strokeCustomProperties = [
-  'use-href-stroke-primary',
-  'use-href-stroke-secondary',
-  'use-href-stroke-tertiary',
+const customProperties = [
+  'svg-use-color-primary',
+  'svg-use-color-secondary',
+  'svg-use-color-tertiary',
 ];
 
 const substituteCustomProperty = (
@@ -27,30 +21,30 @@ export const defaultThemeSubstitution: GetThemeSubstitutionFunction = ({
   fills,
   strokes,
 }) => {
-  if (fills.size > 3 || strokes.size > 3) {
+  // We treat identical values the same, regardless of the attribute that they
+  // are used for
+  const mergedColors = Array.from(
+    [...fills.entries(), ...strokes.entries()]
+      .reduce((acc, [color, count]) => {
+        acc.set(color, (acc.get(color) ?? 0) + count);
+        return acc;
+      }, new Map<string, number>())
+      .entries(),
+  ).sort((a, b) => (a[1] = b[1]));
+
+  if (mergedColors.length > 3) {
     throw new Error(
-      'Cannot substitute theme for SVGs with more than 3 colors. Please use a resource query to mark this SVG as unthemed.',
+      'Cannot substitute theme for SVGs with more than 3 colors. Use a resource query to mark this SVG as unthemed.',
     );
   }
 
-  const substitutedFills = Array.from(fills.entries()).map(
-    ([fill], i) =>
-      [
-        fill,
-        substituteCustomProperty(fillCustomProperties.at(i), fill),
-      ] as const,
-  );
-
-  const substitutedStrokes = Array.from(strokes.entries()).map(
-    ([stroke], i) =>
-      [
-        stroke,
-        substituteCustomProperty(strokeCustomProperties.at(i), stroke),
-      ] as const,
+  const substitutions = mergedColors.map(
+    ([color], i) =>
+      [color, substituteCustomProperty(customProperties.at(i), color)] as const,
   );
 
   return {
-    fills: new Map(substitutedFills),
-    strokes: new Map(substitutedStrokes),
+    fills: new Map(substitutions),
+    strokes: new Map(substitutions),
   };
 };
