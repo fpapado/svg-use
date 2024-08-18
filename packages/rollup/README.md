@@ -24,7 +24,7 @@ export default {
 }
 ```
 
-### Configure TypeScript
+### Optional: Configure TypeScript
 
 If you are using TypeScript, you can get types for the default config by adding
 the following in a `.d.ts` file in your project. For example, you can include
@@ -78,6 +78,13 @@ import { createThemedExternalSvg } from '@svg-use/react';
 
 export const Arrow = createThemedExternalSvg({ url, id });
 ```
+
+## Worked example
+
+[Consult examples/vite-react for a worked example](/examples/webpack-react/)
+(vite uses rollup configuration). You can use this as a playground for
+understanding the transformations, as well as the different moving parts,
+isolated from your own application's configuration.
 
 ## Options
 
