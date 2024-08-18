@@ -172,6 +172,8 @@ or simpler approach, depending on your loading patterns. I do not claim that
 this library will solve everything, but even if it leads to 80% of the SVGs no
 longer being inlined "by default", it will be a good step.
 
+[Refer to FUTURE.md for developments that might make this approach more ergonomic](./FUTURE.md)
+
 > [!NOTE]  
 > The rest of this document is about diving in to the details, and contributing.
 > Consider [where to go next](#where-to-go-from-here), for links to the concrete
