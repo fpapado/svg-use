@@ -23,8 +23,8 @@
     "build": "tsx generate-icon-modules.mts && tshy && cp src/icons/*.svg dist/esm/icons"
   },
   "dependencies": {
-    "@svg-use/core": "workspace:^0.3.0",
-    "@svg-use/react": "workspace:^0.3.0"
+    "@svg-use/core": "workspace:^0",
+    "@svg-use/react": "workspace:^0"
   },
   "peerDependencies": {
     "react": "^18"
