@@ -12,9 +12,9 @@ This is the repository root. To get started, consider
 
 Then, refer to these links:
 
-- Refer to [@svg-use/core](./packages/core) for the core logic
 - Refer to [@svg-use/webpack](./packages/webpack) for the webpack loader
 - Refer to [@svg-use/rollup](./packages/rollup) for the rollup plugin
+- Refer to [@svg-use/core](./packages/core) for the core logic
 - Refer to [@svg-use/react](./packages/react) for the default React wrapper
   component
 - Refer to [the examples directory](./examples/) for examples of usage with
@@ -25,15 +25,17 @@ Then, refer to these links:
 ## The core problem
 
 A common technique in the JS (and especially React) ecosystem is converting SVG
-icons to components, so that they can be imported by JS code. One common library
-for this task is `svgr`, which provides bundler plugins to facilitate converting
-SVG to JSX. Let's call this SVG-in-JS, for the sake of simplicity.
+icons to components, so that they can be imported by JS code.
+[One common library for this task is svgr](https://github.com/gregberge/svgr/),
+which provides bundler plugins to facilitate converting SVG to JSX. Let's call
+this approach SVG-in-JS, for the sake of comparison.
 
 The SVG-in-JS approach is contrasted with referencing the SVG as an asset, and
 using it in `img[href]` or in `svg > use[href]`. This library provides one such
 alternative.
 
 At its core, the SVG-in-JS solves a few different issues, in a convenient way.
+Alternatives to it would have to take this problem space.
 
 The first issue is **theming**. By including the SVG inline, one can use regular
 HTML attributes and CSS selectors, and inherit custom properties easily. Most
@@ -64,15 +66,15 @@ By inlining SVGs in JS, we are incurring a number of runtime costs.
 
 In short:
 
-- Each component's code is parsed multiple times: first as JS, then as SVG when
-  inserted into the document.
+- Each component's code is parsed multiple times: first as JS, then as HTML/SVG
+  when inserted into the document.
 - Each SVG icon is duplicated in the DOM for every separate instance, bloating
   the DOM size, and taking time to parse.
-- The size of the SVG icon is added to the JS bundle size. Some common SVG icons
-  can be large, for example country flags with intricate designs. This delays
-  meaningful interactivity, when the loading of icons could be done lazily.
+- The size of the SVG icon adds to the JS bundle size. Some common SVG icons can
+  be large, for example country flags with intricate designs. It is easy to
+  accidentally inline large SVGs. This delays meaningful interactivity metrics.
 
-[This article by Jacob 'Kurt' Groß dives into the different drawbacks of SVG-in-JS, as well as different alternatives](https://kurtextrem.de/)
+[This article by Jacob 'Kurt' Groß dives into the different drawbacks of SVG-in-JS, as well as different alternatives.](https://kurtextrem.de/)
 
 I believe that the runtime costs are big enough for many common cases, to
 warrant an alternative.
@@ -82,7 +84,7 @@ warrant an alternative.
 [SVG provides the `<use>` element](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/use),
 which can reference same-origin external SVGs via the `href` attribute.
 
-Simple usage of `use` looks like this:
+If we were to write out an SVG with `use`, it would look like this:
 
 ```html
 <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -90,8 +92,10 @@ Simple usage of `use` looks like this:
 </svg>
 ```
 
-In JS, we would use this structure, to create components that can be consumed
-like this:
+This library considers the above structure as the compilation target.
+
+In JS, developers would use this structure, to create components that can be
+consumed like this:
 
 ```tsx
 // Using a colocated SVG
@@ -124,9 +128,16 @@ To make the above work, we need a few moving parts:
 - if a CDN is used to host static assets, it gets a bit more complicated, and we
   need a mechanism to rewrite the URLs, to enable proxying.
 
-The packages here all facilitate doing exactly the above. They are composable
-and easy to extend. Additionally, type safety and user convenience are key; this
-should be as (or nearly as) convenient as SVG-in-JS.
+The core thesis is that the above setup is desirable in terms of its runtime
+characteristics, but is more tedious to set up than SVG-in-JS, due to the lack
+of a dedicated toolchain.
+
+**`@svg-use` is meant to be exactly that toolchain**, so that developers do not
+have to worry about the setup.
+
+The packages are composable and easy to extend. Additionally, type safety and
+user convenience are key; this should be as (or nearly as) convenient as
+SVG-in-JS.
 
 ### Pros and cons of this approach
 
@@ -135,19 +146,25 @@ bundle size costs; we only need to ship a URL and some metadata, as well as a
 wrapper component. We are also reducing the DOM size, since a single `use` is
 smaller than most icons (and involves fewer elements).
 
-Themeability is achieved by the themeing transform, and can often be as simple
-as passing down `currentColor`. The themeing is done statically, and has no
-runtime cost.
+**Themeability** is achieved by the themeing transform, and can often be as
+simple as passing down `currentColor`. The themeing is done statically, and has
+no runtime cost.
 
-One downside, is the lack of CORS for SVG `use`. This is a real issue, that can
-only be reliably solved at the specification level. However, many SVG-in-JS
-apply local or shared-library SVG use-cases, which are self-hosted. In case you
-use a CDN for your application assets (including JS), the default components
-provide functions to rewrite the URLs at runtime, to point them to a proxy.
+The **portability** of this approach is good, because you can use the resulting
+SVGs directly, and not just in React. You could even write out the `use[href]`
+manually if you wanted, or create your own wrapper component, in your framework
+of choice.
 
-Delivery of shared libraries can be reliable, using the
+**Delivery** of shared libraries can be reliable, using the
 `new URL('path/to/svg', import.meta.url)` pattern.
 [An example with notes is provided for these cases](./examples/shared-library/README.md).
+
+One downside, is the **lack of CORS** for SVG `use[href]` references. This is a
+real issue, that can only be reliably solved at the specification level.
+However, many SVG-in-JS apply local or shared-library SVG use-cases, which are
+self-hosted. In case you use a CDN for your application assets (including JS),
+the default components provide functions to rewrite the URLs at runtime, to
+point them to a proxy.
 
 All that said, there are certainly cases where inlining the SVGs is the better
 or simpler approach, depending on your loading patterns. I do not claim that
@@ -202,7 +219,7 @@ import { createThemedExternalSvg } from '@svg-use/react';
 
 export const id = 'use-href-target';
 export const href = new URL('/assets/some-icon-1234.svg', import.meta.url).href;
-export const viewBox = "0 0 32 32'
+export const viewBox = '0 0 32 32';
 
 /* createThemedExternalSvg is a component factory function */
 export const Component = createThemedExternalSvg({ href, id, viewBox });
