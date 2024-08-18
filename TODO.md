@@ -4,6 +4,7 @@
 
 - Default theme: Instead of separating strokes/fills just replace the values
   verbatim.
+- Spell out all options for the bundler plugins
 - Implement "unthemed" mode
   - Add `unthemed` parameter in the recommended webpack config
   - Add `unthemed` parameter in the rollup plugin
@@ -15,9 +16,9 @@
   codepen, to demonstrate.
 - Consider providing the defaults for svg-use/core functions directly in the
   functions themselves.
-- Improve the tsdoc for svg-use/core, especially for the main two exports.
-  Should use some `@inheritdoc` magic to ensure that the options and the
-  function both get nice documentation.
+- Shipping the default theme and the consumer function in two separate packages
+  is a bit annoying
+  - Perhaps we can ship two separate .d.ts. files: /client and /client/react
 
 ## For later
 

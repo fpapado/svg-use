@@ -8,7 +8,8 @@ around [@svg-use/core](../core/README.md).
 First, install the plugin, and the default React wrapper:
 
 ```shell
-pnpm install --dev @svg-use/rollup @svg-use/react
+pnpm install --dev @svg-use/webpack
+pnpm install @svg-use/react
 ```
 
 ### Configure Rollup
@@ -43,7 +44,9 @@ Specify your own definitions, such as `svg-use-overrides.d.ts`:
 
 ```ts
 declare module '*.svg' {
-  export const Component: React.FC<React.SVGProps<SVGElement>>;
+  export const Component: ReturnType<
+    typeof import('./path/to/my/factory').myFactoryName
+  >;
 }
 ```
 
@@ -77,6 +80,8 @@ export const Arrow = createThemedExternalSvg({ url, id });
 ```
 
 ## Options
+
+TODO: Spell these out
 
 ### All options from `@svg-use/core`
 

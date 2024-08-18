@@ -52,14 +52,6 @@
     "unist-util-visit": "^5.0.0",
     "xast-util-from-xml": "^4.0.0"
   },
-  "peerDependencies": {
-    "react": "^18"
-  },
-  "peerDependenciesMeta": {
-    "react": {
-      "optional": true
-    }
-  },
   "devDependencies": {
     "@types/node": "20.14.14",
     "@types/xast": "2.0.4"
