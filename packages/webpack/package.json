@@ -1,6 +1,6 @@
 {
   "name": "@svg-use/webpack",
-  "version": "0.3.0",
+  "version": "0.2.0",
   "description": "Tools and bundler plugins for loading SVG images via use[href], for use in components.",
   "license": "MIT",
   "author": "Fotis Papadogeorgopoulos <fotis@fpapado.com> (https://fotis.xyz)",
@@ -45,11 +45,11 @@
     "test": "vitest"
   },
   "dependencies": {
-    "@svg-use/core": "workspace:^0.3.0",
+    "@svg-use/core": "workspace:^0",
     "loader-utils": "^3.3.1"
   },
   "peerDependencies": {
-    "@svg-use/react": "workspace:^0.3.0"
+    "@svg-use/react": "workspace:^0"
   },
   "peerDependenciesMeta": {
     "@svg-use/react": {
