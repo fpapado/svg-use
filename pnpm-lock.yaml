@@ -87,10 +87,10 @@ importers:
   examples/shared-library:
     dependencies:
       '@svg-use/core':
-        specifier: workspace:*
+        specifier: workspace:^0
         version: link:../../packages/core
       '@svg-use/react':
-        specifier: workspace:*
+        specifier: workspace:^0
         version: link:../../packages/react
       react:
         specifier: ^18
@@ -125,10 +125,10 @@ importers:
         version: link:../shared-library
     devDependencies:
       '@svg-use/react':
-        specifier: workspace:*
+        specifier: workspace:^0
         version: link:../../packages/react
       '@svg-use/rollup':
-        specifier: workspace:*
+        specifier: workspace:^0
         version: link:../../packages/rollup
       '@types/react':
         specifier: ^18.3.3
@@ -159,10 +159,10 @@ importers:
         version: 18.3.1(react@18.3.1)
     devDependencies:
       '@svg-use/react':
-        specifier: workspace:*
+        specifier: workspace:^0
         version: link:../../packages/react
       '@svg-use/webpack':
-        specifier: workspace:*
+        specifier: workspace:^0
         version: link:../../packages/webpack
       '@swc-node/register':
         specifier: 1.10.9
@@ -245,15 +245,15 @@ importers:
         specifier: ^5.1.0
         version: 5.1.0(rollup@4.20.0)
       '@svg-use/core':
-        specifier: workspace:*
+        specifier: workspace:^0
         version: link:../core
+      '@svg-use/react':
+        specifier: workspace:^0
+        version: link:../react
       rollup:
         specifier: 4.20.0
         version: 4.20.0
     devDependencies:
-      '@svg-use/react':
-        specifier: workspace:^
-        version: link:../react
       '@types/node':
         specifier: 20.14.14
         version: 20.14.14
@@ -261,15 +261,15 @@ importers:
   packages/webpack:
     dependencies:
       '@svg-use/core':
-        specifier: workspace:*
+        specifier: workspace:^0
         version: link:../core
+      '@svg-use/react':
+        specifier: workspace:^0
+        version: link:../react
       loader-utils:
         specifier: ^3.3.1
         version: 3.3.1
     devDependencies:
-      '@svg-use/react':
-        specifier: workspace:^
-        version: link:../react
       '@types/loader-utils':
         specifier: 2.0.6
         version: 2.0.6

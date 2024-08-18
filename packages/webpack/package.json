@@ -45,11 +45,11 @@
     "test": "vitest"
   },
   "dependencies": {
-    "@svg-use/core": "workspace:*",
+    "@svg-use/core": "workspace:^0",
     "loader-utils": "^3.3.1"
   },
   "peerDependencies": {
-    "@svg-use/react": "workspace:^"
+    "@svg-use/react": "workspace:^0"
   },
   "peerDependenciesMeta": {
     "@svg-use/react": {
@@ -57,7 +57,6 @@
     }
   },
   "devDependencies": {
-    "@svg-use/react": "workspace:^",
     "@types/loader-utils": "2.0.6",
     "@types/node": "20.14.14",
     "@types/webpack": "^5.28.5",

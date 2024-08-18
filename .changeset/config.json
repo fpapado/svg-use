@@ -7,5 +7,9 @@
   "access": "public",
   "baseBranch": "main",
   "updateInternalDependencies": "minor",
+  "bumpVersionsWithWorkspaceProtocolOnly": true,
+  "___experimentalUnsafeOptions_WILL_CHANGE_IN_PATCH": {
+    "onlyUpdatePeerDependentsWhenOutOfRange": true
+  },
   "ignore": ["shared-library", "webpack-react", "vite-react"]
 }

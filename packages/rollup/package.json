@@ -46,11 +46,11 @@
   },
   "dependencies": {
     "@rollup/pluginutils": "^5.1.0",
-    "@svg-use/core": "workspace:*",
+    "@svg-use/core": "workspace:^0",
     "rollup": "4.20.0"
   },
   "peerDependencies": {
-    "@svg-use/react": "workspace:^"
+    "@svg-use/react": "workspace:^0"
   },
   "peerDependenciesMeta": {
     "@svg-use/react": {
@@ -58,7 +58,6 @@
     }
   },
   "devDependencies": {
-    "@svg-use/react": "workspace:^",
     "@types/node": "20.14.14"
   },
   "keywords": [
