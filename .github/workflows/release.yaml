@@ -36,6 +36,8 @@ jobs:
         id: changesets
         uses: changesets/action@v1
         with:
+          # Calls out to `changeset version`, and also updates the lockfile
+          version: pnpm changeset:version
           # We use a recursive pnpm script under the hood, to ensure that
           # publishing runs topologically. Changesets does not do this out of
           # the box. @see: https://github.com/changesets/changesets/issues/238
