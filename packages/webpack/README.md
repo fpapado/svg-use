@@ -129,21 +129,28 @@ configuration.
 
 ## Options
 
-TODO: Spell these out
+### svgAssetFilename?
 
-### `svgAssetFilename`
+> `optional` **svgAssetFilename**: `string`
 
 Default: `[name]-[contenthash].[ext]`
 
-The output filename for the .svg resource. Often useful if you are placing your
-assets under a specific path, for example to facilitate caching.
+The output filename for the transformed SVG asset. Often useful if you are
+placing your assets under a specific path, for example to facilitate caching.
 
 Uses the same syntax/replacements as
-[webpack's native assetModuleFilename](https://webpack.js.org/configuration/output/#outputassetmodulefilename)
-and Rule.generator.filename.
+[webpack's native `assetModuleFilename`](https://webpack.js.org/configuration/output/#outputassetmodulefilename).
 
-### All options from `@svg-use/core`
+### getSvgIdAttribute?
 
-[Refer to the documentation for `@svg-use-core`](../core/README.md#options) for
-all other options and defaults, such as customising the theme, id, and the
-component factory functions.
+> `optional` **getSvgIdAttribute**:
+> `(info: {filename?: string; existingId?: string;}) => string`;
+
+Specifies an id for the referenced `<svg>`, set as the `id` attribute on the
+root. An id is required in order for use[href] to work. A default is provided if
+this is not defined.
+
+### Options shared with `@svg-use/core`
+
+- [`getThemeSubstitutions`](/packages/core/api-docs/type-aliases/TransformOptions.md#getthemesubstitutions)
+- [`componentFactory`](/packages/core/api-docs/interfaces/ModuleFactoryOptions.md#componentfactory)

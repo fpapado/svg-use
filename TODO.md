@@ -2,7 +2,6 @@
 
 ## v1
 
-- Spell out all options for the bundler plugins
 - Unit test the rest of svg-use/core, for consistency
 - Consider providing the defaults for svg-use/core functions directly in the
   functions themselves.
