@@ -90,10 +90,16 @@ isolated from your own application's configuration.
 
 ## Options
 
-TODO: Spell these out
+### getSvgIdAttribute?
 
-### All options from `@svg-use/core`
+> `optional` **getSvgIdAttribute**:
+> `(info: {filename?: string; existingId?: string;}) => string`;
 
-[Refer to the documentation for `@svg-use-core`](../core/README.md#options) for
-all other options and defaults, such as customising the theme, id, and the
-component factory functions.
+Specifies an id for the referenced `<svg>`, set as the `id` attribute on the
+root. An id is required in order for use[href] to work. A default is provided if
+this is not defined.
+
+### Options shared with `@svg-use/core`
+
+- [`getThemeSubstitutions`](/packages/core/api-docs/type-aliases/TransformOptions.md#getthemesubstitutions)
+- [`componentFactory`](/packages/core/api-docs/interfaces/ModuleFactoryOptions.md#componentfactory)
