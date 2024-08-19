@@ -16,7 +16,8 @@
   "scripts": {
     "api-docs": "pnpm --recursive api-docs",
     "build": "pnpm --recursive run build",
-    "changeset:release": "changeset tag && pnpm --recursive publish",
+    "changeset:release": "pnpm build && changeset tag && pnpm --recursive publish",
+    "changeset:version": "changeset version && pnpm install --lockfile-only",
     "check-types": "pnpm --recursive run check-types",
     "preinstall": "npx only-allow pnpm",
     "lint": "pnpm --recursive lint",
