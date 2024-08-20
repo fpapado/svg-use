@@ -42,7 +42,7 @@
     "lint:prettier": "pnpm prettier --check .",
     "lint:scripts": "eslint src --report-unused-disable-directives --no-warn-ignored --max-warnings 0",
     "prepublishOnly": "pnpm build && publint && attw --config-path ./.attw.json --pack",
-    "test": "vitest"
+    "test": "vitest --pass-with-no-tests"
   },
   "dependencies": {
     "@svg-use/rollup": "workspace:^0.3.0"

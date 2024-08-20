@@ -9,20 +9,22 @@ server.
 First, install the plugin, and the default React wrapper:
 
 ```shell
-pnpm install --dev @svg-use/rollup
+pnpm install --dev @svg-use/vite
 pnpm install @svg-use/react
 ```
 
-### Configure Rollup
+### Configure Vite
 
-In your Rollup config file (`rollup.config.mjs`):
+In your Vite config file (`vite.config.js` or equivalent):
 
 ```ts
+import { defineConfig } from 'vite';
 import svgUse from '@svg-use/vite';
 
-export default {
-  plugins: [svgUse()];
-}
+// https://vitejs.dev/config/
+export default defineConfig({
+  plugins: [svgUse()],
+});
 ```
 
 ### Optional: Configure TypeScript
@@ -55,7 +57,7 @@ In `client.d.ts`:
 
 ```ts
 /// <reference types="./svg-use-overrides.d.ts" />
-/// <reference types="@svg-use/rollup/client" />
+/// <reference types="@svg-use/vite/client" />
 ```
 
 ### Use it in your components

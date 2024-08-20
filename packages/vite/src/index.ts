@@ -1,4 +1,4 @@
-import type { Plugin, ResolvedConfig } from 'vite';
+import { type Plugin, type ResolvedConfig } from 'vite';
 import svgUseRollup, { type PluginOptions } from '@svg-use/rollup';
 import stream from 'node:stream';
 
