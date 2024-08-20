@@ -117,7 +117,7 @@ function svgUsePlugin(
 
       let urlForJsModuleReference: string;
 
-      if (advancedOptions.emitSvgAsset) {
+      if (advancedOptions.emitSvgAsset !== undefined) {
         const emit = advancedOptions.emitSvgAsset({
           moduleId: id,
           content: transformedSvg.content,
