@@ -1,5 +1,5 @@
 /**
- * Ambient declarations for the rollup plugin, using the default query setup.
+ * Ambient declarations for the vite plugin, using the default query setup.
  */
 declare module '*?svgUse' {
   export const url: string;

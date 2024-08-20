@@ -31,7 +31,8 @@
   "files": [
     "dist/**/*",
     "env.rollup.d.ts",
-    "env.webpack.d.ts"
+    "env.webpack.d.ts",
+    "!dist/**/*.tsbuildinfo"
   ],
   "scripts": {
     "api-docs": "typedoc && prettier api-docs --write",

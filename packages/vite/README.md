@@ -86,10 +86,9 @@ export const Arrow = createThemedExternalSvg({ url, id });
 
 ## Worked example
 
-[Consult examples/vite-react for a worked example](/examples/vite-react/) (vite
-uses rollup configuration). You can use this as a playground for understanding
-the transformations, as well as the different moving parts, isolated from your
-own application's configuration.
+[Consult examples/vite-react for a worked example](/examples/vite-react/). You
+can use this as a playground for understanding the transformations, as well as
+the different moving parts, isolated from your own application's configuration.
 
 ## Options
 

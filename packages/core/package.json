@@ -31,7 +31,8 @@
     "./package.json": "./package.json"
   },
   "files": [
-    "dist/**/*"
+    "dist/**/*",
+    "!dist/**/*.tsbuildinfo"
   ],
   "scripts": {
     "api-docs": "typedoc && prettier api-docs --write",
