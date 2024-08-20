@@ -11,12 +11,8 @@
 
 ## For later
 
-- Corollary: maybe we need to customise the query parameter in the rollup
-  plugin, to alow people to create their own defaults
+- Maybe we need to customise the query parameter in the rollup plugin, to alow
+  people to create their own config
 - Smoke test `examples`
 - Create a "vanilla" rollup example
-- Create a separate Vite plugin
-  - Rollup-only is OK for now,
-  - Perhaps it is ok to only do checks, but return the original asset, and leave
-    the rest to a ClI
 - Create a CLI, or explicitly decide against one.
