@@ -22,6 +22,30 @@ export type PluginOptions = Partial<
     }
 >;
 
+type AdvancedOptions = {
+  /**
+   * A hook for changing the behaviour of how an SVG asset is emitted, and its
+   * URL resolved. Useful when implementing the Vite plugin, which does not
+   * implement Rollup's `emitFile` method.
+   *
+   * You most likely do not need to configure this yourself.
+   */
+  emitSvgAsset?: ({
+    moduleId,
+    content,
+  }: {
+    moduleId: string;
+    content: string;
+  }) => {
+    /**
+     * A string that will be substituted as JS code when referencing the
+     * asset's URL. NOTE: If you are returning a string literal, remember to
+     * JSON.stringify it, otherwise it will be included verbatim.
+     */
+    urlForJsModuleReference: string;
+  };
+};
+
 const splitQuery = (str: string) => str.split('?');
 
 const isRelevant = (id: string) => {
@@ -40,7 +64,10 @@ const defaultOptions = {
   getThemeSubstitutions: defaultThemeSubstitution,
 } satisfies PluginOptions;
 
-function svgUsePlugin(userOptions: PluginOptions): Plugin {
+function svgUsePlugin(
+  userOptions?: PluginOptions,
+  advancedOptions: AdvancedOptions = {},
+): Plugin {
   const options: Required<PluginOptions> = {
     ...defaultOptions,
     ...userOptions,
@@ -88,18 +115,33 @@ function svgUsePlugin(userOptions: PluginOptions): Plugin {
 
       const transformedSvg = res.data;
 
-      const referenceId = this.emitFile({
-        type: 'asset',
-        // Is provided as the [name] replacement in assetFilename
-        name: basename,
-        source: transformedSvg.content,
-        // originalFileName is an on-disk absolute path, by convention
-        originalFileName: absolutePath,
-      });
+      let urlForJsModuleReference: string;
+
+      if (advancedOptions.emitSvgAsset !== undefined) {
+        const emit = advancedOptions.emitSvgAsset({
+          moduleId: id,
+          content: transformedSvg.content,
+        });
+        urlForJsModuleReference = emit.urlForJsModuleReference;
+      } else {
+        const referenceId = this.emitFile({
+          type: 'asset',
+          // Is provided as the [name] replacement in assetFilename
+          name: basename,
+          source: transformedSvg.content,
+          // originalFileName is an on-disk absolute path, by convention
+          originalFileName: absolutePath,
+        });
+
+        /**
+         * @see https://rollupjs.org/plugin-development/#file-urls
+         */
+        urlForJsModuleReference = `import.meta.ROLLUP_FILE_URL_${referenceId}`;
+      }
 
       const jsModuleContent = createJsModule(
         {
-          url: `import.meta.ROLLUP_FILE_URL_${referenceId}`,
+          url: urlForJsModuleReference,
           id: JSON.stringify(transformedSvg.id),
           viewBox: JSON.stringify(transformedSvg.viewBox),
         },

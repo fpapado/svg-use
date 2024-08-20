@@ -29,7 +29,8 @@
   },
   "files": [
     "client.d.ts",
-    "dist/**/*"
+    "dist/**/*",
+    "!dist/**/*.tsbuildinfo"
   ],
   "scripts": {
     "build": "pnpm build:lib",

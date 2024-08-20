@@ -17,7 +17,8 @@
   },
   "module": "./dist/esm/index.js",
   "files": [
-    "dist"
+    "dist",
+    "!dist/**/*.tsbuildinfo"
   ],
   "scripts": {
     "build": "tsx generate-icon-modules.mts && tshy && cp src/icons/*.svg dist/esm/icons"

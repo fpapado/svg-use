@@ -29,7 +29,8 @@
   },
   "files": [
     "client.d.ts",
-    "dist/**/*"
+    "dist/**/*",
+    "!dist/**/*.tsbuildinfo"
   ],
   "scripts": {
     "build": "pnpm build:lib",
@@ -64,7 +65,6 @@
     "performance",
     "plugin",
     "rollup",
-    "svg",
-    "vite"
+    "svg"
   ]
 }

@@ -1,8 +1,65 @@
 # @svg-use
 
 Tools and bundler plugins, to load SVG icons as components in JavaScript, via
-SVG's `use[href]` mechanism. This offers a performant way to reference SVG in
-components, while keeping them themeable and easy to use.
+SVG's `<use href="...">` mechanism. This offers a performant way to reference
+SVG in components, while taking into account **themeing**, **portability**, and
+**ease of use**.
+
+## In a nutshell
+
+With an input file (`icon.svg`) like this:
+
+```html
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  fill="none"
+  stroke="#111"
+>
+  <line x1="5" y1="12" x2="19" y2="12"></line>
+  <polyline points="12 5 19 12 12 19"></polyline>
+</svg>
+```
+
+And a JS file like this, plus one of the bundler integrations
+([webpack](./packages/webpack/), [rollup](./packages/rollup/),
+[vite](./packages/vite)):
+
+```tsx
+import { Component as Arrow } from './icon.svg?svgUse';
+
+return <Component color="red" />;
+```
+
+You get a component with a performant output, that does not inline the SVG
+itself. This avoids duplication in a document, and keeps the SVG size out of
+your JS bundles:
+
+```html
+<svg viewBox="0 0 24 24">
+  <use
+    href="https://my-site.com/assets/icon-someHash.svg#use-href-target"
+    style="--svg-use-href-color: red"
+  ></use>
+</svg>
+```
+
+`icon-someHash.svg` becomes the equivalent of this, and is served as an SVG
+file:
+
+```html
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="var(--svg-use-href-color, #111)"
+  id="use-href-target"
+>
+  <line x1="5" y1="12" x2="19" y2="12"></line>
+  <polyline points="12 5 19 12 12 19"></polyline>
+</svg>
+```
 
 ## Where to go from here
 
@@ -13,7 +70,8 @@ This is the repository root. To get started, consider
 Then, refer to these links:
 
 - Refer to [@svg-use/webpack](./packages/webpack) for the webpack loader
-- Refer to [@svg-use/rollup](./packages/rollup) for the rollup plugin
+- Refer to [@svg-use/vite](./packages/vite) for the Vite plugin
+- Refer to [@svg-use/rollup](./packages/rollup) for the Rollup plugin
 - Refer to [@svg-use/core](./packages/core) for the core logic, which powers the
   bundler plugins
 - Refer to [@svg-use/react](./packages/react) for the default React wrapper
@@ -86,7 +144,7 @@ warrant an alternative.
 [SVG provides the `<use>` element](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/use),
 which can reference same-origin external SVGs via the `href` attribute.
 
-If we were to write out an SVG with `use`, it would look like this:
+If we were to reference an SVG with `use`, it would look like this:
 
 ```html
 <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -94,10 +152,10 @@ If we were to write out an SVG with `use`, it would look like this:
 </svg>
 ```
 
-This library considers the above structure as the compilation target.
+This library considers the above structure as the compilation target, and
+provides a toolchain for achieving it.
 
-In JS, developers would use this structure, to create components that can be
-consumed like this:
+In JS, developers would consume this structure like this:
 
 ```tsx
 // Using a colocated SVG
@@ -163,15 +221,17 @@ of choice.
 
 One downside, is the **lack of CORS** for SVG `use[href]` references. This is a
 real issue, that can only be reliably solved at the specification level.
-However, many SVG-in-JS apply local or shared-library SVG use-cases, which are
-self-hosted. In case you use a CDN for your application assets (including JS),
-the default components provide functions to rewrite the URLs at runtime, to
-point them to a proxy.
+However, SVG-in-JS is often used for local and shared-library SVG use-cases,
+which are self-hosted, so the lack of CORS is not an issue for replacing them.
+
+In case you use a CDN for your application assets (including JS), the default
+components provide configuration to rewrite the URLs at runtime, to point them
+to a proxy.
 
 All that said, there are certainly cases where inlining the SVGs is the better
 or simpler approach, depending on your loading patterns. I do not claim that
 this library will solve everything, but even if it leads to 80% of the SVGs no
-longer being inlined "by default", it will be a good step.
+longer being inlined in JS "by default", it will be a good step.
 
 [Refer to FUTURE.md for developments that might make this approach more ergonomic](./FUTURE.md)
 
@@ -199,7 +259,7 @@ const MyComponent = () => {
 ```
 
 A bundler-specific plugin ([webpack](./packages/webpack/),
-[rollup](./packages/rollup/)) does the following:
+[rollup](./packages/rollup/), [vite](./packages/vite)) does the following:
 
 - The plugin resolves `./some-icon.svg` and invokes
   [`@svg-use/core`](./packages/core)

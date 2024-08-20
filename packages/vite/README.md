@@ -1,27 +1,38 @@
-# `@svg-use/rollup`
+# `@svg-use/vite`
 
-A rollup plugin, for using SVG images via `use[href]` references. A thin wrapper
-around [@svg-use/core](../core/README.md).
+A vite plugin, for using SVG images via `use[href]` references. A thin wrapper
+around [@svg-use/rollup](../rollup/README.md), augmented to work with Vite's dev
+server.
 
 ## Quick start
 
 First, install the plugin, and the default React wrapper:
 
 ```shell
-pnpm install --dev @svg-use/rollup
+pnpm install --dev @svg-use/vite
 pnpm install @svg-use/react
 ```
 
-### Configure Rollup
+### Configure Vite
 
-In your Rollup config file (`rollup.config.mjs`):
+In your Vite config file (`vite.config.js` or equivalent):
 
 ```ts
-import svgUse from '@svg-use/rollup';
+import { defineConfig } from 'vite';
+import svgUse from '@svg-use/vite';
 
-export default {
-  plugins: [svgUse()];
-}
+// https://vitejs.dev/config/
+export default defineConfig({
+  plugins: [svgUse()],
+  build: {
+    assetsInlineLimit: (filePath) => {
+      // Do not inline SVG images as base64, because base64 is not a valid target for
+      // `use[href]`. If you can think of a more narrow check (such that it
+      // only targets assets relevant to `@svg-use`), do let us know!
+      return !filePath.endsWith('.svg');
+    },
+  },
+});
 ```
 
 ### Optional: Configure TypeScript
@@ -31,7 +42,7 @@ the following in a `.d.ts` file in your project. For example, you can include
 this in `src/client.d.ts`, or any other applicable place.
 
 ```ts
-/// <reference types="@svg-use/rollup/client" />
+/// <reference types="@svg-use/vite/client" />
 ```
 
 #### Overriding default types
@@ -54,7 +65,7 @@ In `client.d.ts`:
 
 ```ts
 /// <reference types="./svg-use-overrides.d.ts" />
-/// <reference types="@svg-use/rollup/client" />
+/// <reference types="@svg-use/vite/client" />
 ```
 
 ### Use it in your components
@@ -83,10 +94,9 @@ export const Arrow = createThemedExternalSvg({ url, id });
 
 ## Worked example
 
-[Consult examples/vite-react for a worked example](/examples/vite-react/) (vite
-uses rollup configuration). You can use this as a playground for understanding
-the transformations, as well as the different moving parts, isolated from your
-own application's configuration.
+[Consult examples/vite-react for a worked example](/examples/vite-react/). You
+can use this as a playground for understanding the transformations, as well as
+the different moving parts, isolated from your own application's configuration.
 
 ## Options
 
