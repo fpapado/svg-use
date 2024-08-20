@@ -18,6 +18,7 @@ jobs:
   checks:
     name: Checks
     runs-on: ubuntu-latest
+    timeout-minutes: 5
     steps:
       - uses: actions/checkout@v4
       - name: Setup node
@@ -27,6 +28,8 @@ jobs:
       - run: corepack enable
       - run: pnpm install
         id: install
+      - name: Install Playwright Browsers
+        run: pnpm exec playwright install --with-deps
       - name: Build all
         run: pnpm run -r build
       - name: Check types
@@ -38,3 +41,12 @@ jobs:
       - name: Test
         if: steps.install.conclusion == 'success' && !cancelled()
         run: pnpm test
+      - name: Run Playwright tests
+        if: steps.install.conclusion == 'success' && !cancelled()
+        run: pnpm test:e2e
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: playwright-report
+          path: "**/playwright-report/"
+          retention-days: 7
