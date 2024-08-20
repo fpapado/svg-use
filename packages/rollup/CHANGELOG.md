@@ -1,5 +1,11 @@
 # @svg-use/rollup
 
+## 0.4.0
+
+### Minor Changes
+
+- 4ccc16a: Introduce `emitFile` in `AdvancedOptions`, to support Vite wrappers.
+
 ## 0.3.0
 
 ### Minor Changes

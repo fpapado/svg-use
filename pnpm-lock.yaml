@@ -128,7 +128,7 @@ importers:
         version: link:../shared-library
     devDependencies:
       '@svg-use/vite':
-        specifier: workspace:^0.1.0
+        specifier: workspace:^0.1.1
         version: link:../../packages/vite
       '@types/node':
         specifier: ^20
@@ -267,7 +267,7 @@ importers:
         specifier: workspace:^0.3.0
         version: link:../react
       '@svg-use/rollup':
-        specifier: workspace:^0.3.0
+        specifier: workspace:^0.4.0
         version: link:../rollup
     devDependencies:
       '@types/node':
