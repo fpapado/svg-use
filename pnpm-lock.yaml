@@ -114,6 +114,9 @@ importers:
 
   examples/vite-react:
     dependencies:
+      '@svg-use/core':
+        specifier: workspace:^
+        version: link:../../packages/core
       '@svg-use/react':
         specifier: workspace:^0.3.0
         version: link:../../packages/react
