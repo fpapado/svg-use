@@ -1,19 +1,11 @@
 import { defineConfig } from 'vite';
 import inspect from 'vite-plugin-inspect';
 import react from '@vitejs/plugin-react';
-// import svgUse from '@svg-use/rollup';
-import svgUse from './viteSvgUsePlugin';
+import svgUse from '@svg-use/vite';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [
-    inspect(),
-    react(),
-    {
-      ...svgUse({}),
-      enforce: 'pre',
-    },
-  ],
+  plugins: [inspect(), react(), svgUse()],
   build: {
     assetsInlineLimit: (filePath) => {
       // Do not inline SVG images, because base64 is not a valid target for

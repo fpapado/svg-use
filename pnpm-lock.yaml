@@ -114,9 +114,6 @@ importers:
 
   examples/vite-react:
     dependencies:
-      '@svg-use/core':
-        specifier: workspace:^
-        version: link:../../packages/core
       '@svg-use/react':
         specifier: workspace:^0.3.0
         version: link:../../packages/react
@@ -130,9 +127,9 @@ importers:
         specifier: workspace:*
         version: link:../shared-library
     devDependencies:
-      '@svg-use/rollup':
-        specifier: workspace:^0.3.0
-        version: link:../../packages/rollup
+      '@svg-use/vite':
+        specifier: workspace:^0.1.0
+        version: link:../../packages/vite
       '@types/react':
         specifier: ^18.3.3
         version: 18.3.3
@@ -260,6 +257,22 @@ importers:
       '@types/node':
         specifier: 20.14.14
         version: 20.14.14
+
+  packages/vite:
+    dependencies:
+      '@svg-use/react':
+        specifier: workspace:^0.3.0
+        version: link:../react
+      '@svg-use/rollup':
+        specifier: workspace:^0.3.0
+        version: link:../rollup
+    devDependencies:
+      '@types/node':
+        specifier: 20.14.14
+        version: 20.14.14
+      vite:
+        specifier: ^5.3.4
+        version: 5.3.5(@types/node@20.14.14)(terser@5.31.3)
 
   packages/webpack:
     dependencies:
@@ -8009,6 +8022,16 @@ snapshots:
     transitivePeerDependencies:
       - rollup
       - supports-color
+
+  vite@5.3.5(@types/node@20.14.14)(terser@5.31.3):
+    dependencies:
+      esbuild: 0.21.5
+      postcss: 8.4.40
+      rollup: 4.20.0
+    optionalDependencies:
+      '@types/node': 20.14.14
+      fsevents: 2.3.3
+      terser: 5.31.3
 
   vite@5.3.5(@types/node@22.1.0)(terser@5.31.3):
     dependencies:

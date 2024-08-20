@@ -1,7 +1,8 @@
-# `@svg-use/rollup`
+# `@svg-use/vite`
 
-A rollup plugin, for using SVG images via `use[href]` references. A thin wrapper
-around [@svg-use/core](../core/README.md).
+A vite plugin, for using SVG images via `use[href]` references. A thin wrapper
+around [@svg-use/rollup](../rollup/README.md), augmented to work with Vite's dev
+server.
 
 ## Quick start
 
@@ -17,7 +18,7 @@ pnpm install @svg-use/react
 In your Rollup config file (`rollup.config.mjs`):
 
 ```ts
-import svgUse from '@svg-use/rollup';
+import svgUse from '@svg-use/vite';
 
 export default {
   plugins: [svgUse()];
@@ -31,7 +32,7 @@ the following in a `.d.ts` file in your project. For example, you can include
 this in `src/client.d.ts`, or any other applicable place.
 
 ```ts
-/// <reference types="@svg-use/rollup/client" />
+/// <reference types="@svg-use/vite/client" />
 ```
 
 #### Overriding default types
