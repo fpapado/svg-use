@@ -115,8 +115,8 @@ jobs:
           It looks like some of the Playwright tests failed. 
 
           If you made changes to the frontend UI without updating snapshots, this might be the cause. 
-          - [Artifact with a patch of all the updated snapshots]("$PATCH_ARTIFACT_URL") (might not be available). You can apply it with `git apply`.
-          - [Artifact with the Playwright report]("$REPORT_ARTIFACT_URL"). You can unzip it and inspect it with <https://trace.playwright.dev/>.
+          - [Artifact with a patch of all the updated snapshots]($PATCH_ARTIFACT_URL) (might not be available). You can apply it with \`git apply\`.
+          - [Artifact with the Playwright report]($REPORT_ARTIFACT_URL). You can unzip it and inspect it with <https://trace.playwright.dev/>.
           $EOF
           HEREDOC
           )
