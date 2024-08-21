@@ -44,9 +44,9 @@ jobs:
         if: ${{!cancelled()}}
         run: |
           pwd
-          git status
-          cd $GITHUB_WORKSPACE
+          cd "$GITHUB_WORKSPACE"
           pwd
+          git config --global --add safe.directory "$GITHUB_WORKSPACE"
           git status
           git diff --binary --name-only
           diff_names="$(git diff --binary --name-only)"
