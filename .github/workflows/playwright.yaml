@@ -24,7 +24,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 2
+          fetch-depth: 0
       - name: Setup node
         uses: actions/setup-node@v4
         with:
@@ -32,7 +32,7 @@ jobs:
       - run: corepack enable
       - run: pnpm install
       - name: Install Playwright Browsers
-        run: pnpx playwright install --with-deps
+        run: pnpx playwright install chromium --with-deps
       - name: Build all
         run: pnpm run -r build
       - name: Run Playwright tests
@@ -43,6 +43,7 @@ jobs:
       - name: Check for snapshot changes, and fail if needed
         if: ${{!cancelled()}}
         run: |
+          git diff --binary --name-only
           diff_names="$(git diff --binary --name-only)"
 
           if [ -n "$diff_names" ]; then
