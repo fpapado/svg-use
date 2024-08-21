@@ -8,7 +8,9 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack",
-    "dev": "webpack serve --open"
+    "dev": "webpack serve --open",
+    "preview": "serve dist/",
+    "test:e2e": "playwright test"
   },
   "dependencies": {
     "@svg-use/react": "workspace:^0.3.0",
@@ -25,6 +27,7 @@
     "@types/react-dom": "18.3.0",
     "@types/webpack": "^5.28.5",
     "html-webpack-plugin": "5.6.0",
+    "serve": "14.2.3",
     "shared-library": "workspace:*",
     "swc-loader": "^0.2.6",
     "ts-node": "10.9.2",

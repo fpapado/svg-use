@@ -16,7 +16,6 @@
     "shared-library": "workspace:*"
   },
   "devDependencies": {
-    "@playwright/test": "^1.46.1",
     "@svg-use/vite": "workspace:^0.1.1",
     "@types/node": "^20",
     "@types/react": "^18.3.3",

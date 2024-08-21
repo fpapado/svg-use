@@ -10,5 +10,5 @@
     "strict": true,
     "noEmit": true
   },
-  "include": ["webpack.config.ts"]
+  "include": ["vite.config.ts", "playwright.config.ts", "e2e/**/*.ts"]
 }
