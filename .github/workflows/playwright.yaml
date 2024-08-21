@@ -13,6 +13,7 @@ concurrency:
 
 permissions:
   contents: read # for actions/checkout
+  pull-requests: write # for find-comment and create-or-update-comment
 
 jobs:
   playwright:
@@ -112,8 +113,19 @@ jobs:
           )
           echo "$MESSAGE" | tee "$GITHUB_OUTPUT"
 
-      - uses: peter-evans/create-or-update-comment@v4
-        id: create-comment
+      - name: Find Comment
+        uses: peter-evans/find-comment@v3
+        id: find-comment
         with:
           issue-number: ${{ github.event.pull_request.number }}
+          comment-author: "github-actions[bot]"
+          body-includes: "Playwright failure test results"
+
+      - name: Create or update comment
+        uses: peter-evans/create-or-update-comment@v4
+        id: create-comment
+        with:
+          comment-id: ${{ steps.find-comment.outputs.comment-id }}
+          issue-number: ${{ github.event.pull_request.number }}
           body: ${{ steps.help-body.outputs.body }}
+          edit-mode: replace
