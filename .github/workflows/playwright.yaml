@@ -19,31 +19,28 @@ jobs:
     name: Playwright
     runs-on: ubuntu-latest
     timeout-minutes: 5
-    container:
-      image: mcr.microsoft.com/playwright:v1.46.1-jammy
+    # container:
+    #   image: mcr.microsoft.com/playwright:v1.46.1-jammy
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 0
-          set-safe-directory: "$GITHUB_WORKSPACE"
+          fetch-depth: 2
       - name: Setup node
         uses: actions/setup-node@v4
         with:
           node-version-file: ".nvmrc"
       - run: corepack enable
       - run: pnpm install
-        id: install
+      - name: Install Playwright Browsers
+        run: pnpx playwright install --with-deps
       - name: Build all
         run: pnpm run -r build
       - name: Run Playwright tests
-        env:
-          HOME: /root
         # This always updates the snapshots, so we can provide them to the user
-        # as artifacts
+        # as artifacts. Because --update-snapshots exits with code 0 even with updates, we use
+        # we use an extra step to fail the check manually.
         run: pnpm test:e2e --update-snapshots
       - name: Check for snapshot changes, and fail if needed
-        # Because --update-snapshots exits with code 0 even with updates, we use
-        # this step to fail the check manually
         if: ${{!cancelled()}}
         run: |
           diff_names="$(git diff --binary --name-only)"
