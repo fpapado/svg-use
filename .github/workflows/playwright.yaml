@@ -15,8 +15,8 @@ permissions:
   contents: read # for actions/checkout
 
 jobs:
-  checks:
-    name: Checks
+  playwright:
+    name: Playwright
     runs-on: ubuntu-latest
     timeout-minutes: 5
     container:
@@ -33,10 +33,77 @@ jobs:
       - name: Build all
         run: pnpm run -r build
       - name: Run Playwright tests
-        run: pnpm test:e2e
+        # This always updates the snapshots, so we can provide them to the user
+        # as artifacts
+        run: pnpm test:e2e --update-snapshots
+      - name: Check for snapshot changes, and fail if needed
+        # Because --update-snapshots exits with code 0 even with updates, we use this step to fail the check
+        if: !cancelled()
+        run: |
+          diff_names="$(git diff --binary --name-only)"
+
+          if [ -n "$diff_names" ]; then
+              git add . && git diff --staged --binary >/tmp/snapshot_diff.patch
+              echo "snapshots_changed=true" | tee "$GITHUB_OUTPUT"
+              printf "The following snapshots were updated:\n"
+              while IFS=$(read -r filename); do
+                  printf "\t- %s\n" "$filename"
+              done <<<"$diff_names"
+              exit 1
+          else
+              echo "snapshots_changed=false" | tee "$GITHUB_OUTPUT"
+          fi
+
+      - uses: actions/upload-artifact@v4
+        if: failure() && steps.check_snapshots_changed.outputs.snapshots_changed == 'true'
+        id: snapshot-patch
+        with:
+          name: playwright-snapshot-diff
+          path: /tmp/snapshot_diff.patch
+
       - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: playwright-report
           path: "**/playwright-report/"
           retention-days: 7
+
+  playwright-test-failure-comment:
+    name: Post Playwright test debugging instructions
+    # Do not leave a comment on forks, or for renovate branches
+    if: |
+      !cancelled() &&
+      github.event_name == 'pull_request' &&
+      github.event.pull_request.head.repo.name == 'fpapado/svg-use' &&
+      github.actor != 'renovate[bot]' &&
+      needs.playwright.result != ''
+    runs-on: ubuntu-latest
+    needs:
+      - playwright
+
+    steps:
+      - name: Build help body
+        if: needs.playwright.result == 'failure'
+        id: help-body
+        env:
+          REPOSITORY: "${{github.repository}}"
+          RUN_ID: "${{github.run_id}}"
+
+        run: |
+          EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64) # Security hardening: https://docs.github.com/en/actions/security-guides/security-hardening-for-github-actions#understanding-the-risk-of-script-injections
+          MESSAGE=$(cat <<HEREDOC
+          body<<$EOF
+          **Playwright failure test results**: <https://github.com/$REPOSITORY/actions/runs/$RUN_ID>
+
+          It looks like some of the Playwright tests failed. 
+          If you made changes to the frontend UI without updating snapshots, this might be the cause. You can download zipped patches containing the updated snapshots alongside a general trace of the tests under the "Artifacts" section in the above page. They're named in the form \`*-snapshot-diff\` and \`*playwright-report\` respectively.
+          $EOF
+          HEREDOC
+          )
+          echo "$MESSAGE" | tee "$GITHUB_OUTPUT"
+
+      - uses: peter-evans/create-or-update-comment@v4
+        id: create-comment
+        with:
+          issue-number: ${{ github.event.pull_request.number }}
+          body: ${{ steps.help-body.outputs.body }}
