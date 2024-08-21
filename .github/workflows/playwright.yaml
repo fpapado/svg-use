@@ -43,7 +43,7 @@ jobs:
       - name: Check for snapshot changes, and fail if needed
         if: ${{!cancelled()}}
         run: |
-          git config --global --add safe.directory $GITHUB_WORKSPACE"
+          git config --global --add safe.directory "$GITHUB_WORKSPACE"
           git diff --binary --name-only
           diff_names="$(git diff --binary --name-only)"
 
