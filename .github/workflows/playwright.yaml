@@ -45,6 +45,9 @@ jobs:
         # this step to fail the check manually
         if: ${{!cancelled()}}
         run: |
+          pwd
+          cd $HOME
+          pwd
           diff_names="$(git diff --binary --name-only)"
 
           if [ -n "$diff_names" ]; then
