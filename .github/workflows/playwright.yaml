@@ -19,8 +19,8 @@ jobs:
     name: Playwright
     runs-on: ubuntu-latest
     timeout-minutes: 5
-    # container:
-    #   image: mcr.microsoft.com/playwright:v1.46.1-jammy
+    container:
+      image: mcr.microsoft.com/playwright:v1.46.1-jammy
     steps:
       - uses: actions/checkout@v4
         with:
@@ -31,8 +31,8 @@ jobs:
           node-version-file: ".nvmrc"
       - run: corepack enable
       - run: pnpm install
-      - name: Install Playwright Browsers
-        run: pnpx playwright install chromium --with-deps
+      # - name: Install Playwright Browsers
+      #   run: pnpx playwright install chromium --with-deps
       - name: Build all
         run: pnpm run -r build
       - name: Run Playwright tests
@@ -43,6 +43,7 @@ jobs:
       - name: Check for snapshot changes, and fail if needed
         if: ${{!cancelled()}}
         run: |
+          cd $GITHUB_WORKSPACE
           git diff --binary --name-only
           diff_names="$(git diff --binary --name-only)"
 
