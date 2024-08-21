@@ -50,14 +50,14 @@ jobs:
 
           if [ -n "$diff_names" ]; then
               git diff --staged --binary >/tmp/snapshot_diff.patch
-              echo "snapshots_changed=true"
+              echo "snapshots_changed=true" >> "$GITHUB_OUTPUT"
               printf "The following snapshots were updated:\n"
               while IFS= read -r filename; do
                   printf "%s\n" "$filename"
               done <<<"$diff_names"
               exit 1
           else
-              echo "snapshots_changed=false"
+              echo "snapshots_changed=false" >> "$GITHUB_OUTPUT"
           fi
 
       - uses: actions/upload-artifact@v4
