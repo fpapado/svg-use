@@ -33,6 +33,8 @@ jobs:
       - name: Build all
         run: pnpm run -r build
       - name: Run Playwright tests
+        env:
+          HOME: /root
         # This always updates the snapshots, so we can provide them to the user
         # as artifacts
         run: pnpm test:e2e --update-snapshots
