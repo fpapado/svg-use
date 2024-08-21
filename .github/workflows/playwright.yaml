@@ -23,6 +23,8 @@ jobs:
       image: mcr.microsoft.com/playwright:v1.46.1-jammy
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
       - name: Setup node
         uses: actions/setup-node@v4
         with:
