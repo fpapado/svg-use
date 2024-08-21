@@ -37,8 +37,9 @@ jobs:
         # as artifacts
         run: pnpm test:e2e --update-snapshots
       - name: Check for snapshot changes, and fail if needed
-        # Because --update-snapshots exits with code 0 even with updates, we use this step to fail the check
-        if: !cancelled()
+        # Because --update-snapshots exits with code 0 even with updates, we use
+        # this step to fail the check manually
+        if: ${{!cancelled()}}
         run: |
           diff_names="$(git diff --binary --name-only)"
 
