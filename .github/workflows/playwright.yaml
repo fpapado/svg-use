@@ -22,6 +22,9 @@ jobs:
     timeout-minutes: 5
     container:
       image: mcr.microsoft.com/playwright:v1.46.1-jammy
+    outputs:
+      snapshotPatchArtifactUrl: ${{steps.upload-snapshot-patch-artifact.outputs.artifact-url}}
+      reportArtifactUrl: ${{steps.upload-report-artifact.outputs.artifact-url}}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -67,13 +70,14 @@ jobs:
 
       - uses: actions/upload-artifact@v4
         if: failure() && steps.check-snapshots-changed.outputs.snapshots_changed == 'true'
-        id: snapshot-patch
+        id: upload-snapshot-patch-artifact
         with:
           name: playwright-snapshot-diff
           path: /tmp/snapshot_diff.patch
 
       - uses: actions/upload-artifact@v4
         if: always()
+        id: upload-report-artifact
         with:
           name: playwright-report
           path: "**/playwright-report/"
@@ -99,6 +103,8 @@ jobs:
         env:
           REPOSITORY: "${{github.repository}}"
           RUN_ID: "${{github.run_id}}"
+          PATCH_ARTIFACT_URL: "${{needs.playwright.outputs.snapshotPatchArtifactUrl}}"
+          REPORT_ARTIFACT_URL: "${{needs.playwright.outputs.snapshotPatchArtifactUrl}}"
 
         run: |
           EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64) # Security hardening: https://docs.github.com/en/actions/security-guides/security-hardening-for-github-actions#understanding-the-risk-of-script-injections
@@ -107,7 +113,10 @@ jobs:
           **Playwright failure test results**: <https://github.com/$REPOSITORY/actions/runs/$RUN_ID>
 
           It looks like some of the Playwright tests failed. 
-          If you made changes to the frontend UI without updating snapshots, this might be the cause. You can download zipped patches containing the updated snapshots alongside a general trace of the tests under the "Artifacts" section in the above page. They're named in the form \`*-snapshot-diff\` and \`*playwright-report\` respectively.
+
+          If you made changes to the frontend UI without updating snapshots, this might be the cause. 
+          - [Artifact with a patch of all the updated snapshots]("$PATCH_ARTIFACT_URL") (might not be available). You can apply it with `git apply`.
+          - [Artifact with the Playwright report]("$REPORT_ARTIFACT_URL"). You can unzip it and inspect it with <https://trace.playwright.dev/>.
           $EOF
           HEREDOC
           )
