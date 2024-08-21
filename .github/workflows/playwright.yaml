@@ -43,17 +43,21 @@ jobs:
         run: pnpm test:e2e --update-snapshots
       - name: Check for snapshot changes, and fail if needed
         if: ${{!cancelled()}}
+        shell: bash
         run: |
-          git status
-          git config --global --add safe.directory "$GITHUB_WORKSPACE"
-          diff_names="$(git diff --binary --name-only)"
+          git add "*.png"
+          diff_names="$(git diff --staged --binary --name-only)"
 
           if [ -n "$diff_names" ]; then
-              git add . && git diff --staged --binary >/tmp/snapshot_diff.patch
-              echo "snapshots_changed=true" | tee "$GITHUB_OUTPUT"
+              git diff --staged --binary >/tmp/snapshot_diff.patch
+              echo "snapshots_changed=true"
+              printf "The following snapshots were updated:\n"
+              while IFS= read -r filename; do
+                  printf "%s\n" "$filename"
+              done <<<"$diff_names"
               exit 1
           else
-              echo "snapshots_changed=false" | tee "$GITHUB_OUTPUT"
+              echo "snapshots_changed=false"
           fi
 
       - uses: actions/upload-artifact@v4
