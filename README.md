@@ -1,9 +1,9 @@
 # @svg-use
 
 Tools and bundler plugins, to load SVG icons as components in JavaScript, via
-SVG's `<use href="...">` mechanism. This offers a performant way to reference
-SVG in components, while taking into account **themeing**, **portability**, and
-**ease of use**.
+SVG's `<use href>` mechanism. This offers a performant way to reference SVG in
+components, while taking into account **themeing**, **portability**, and **ease
+of use**.
 
 ## In a nutshell
 
