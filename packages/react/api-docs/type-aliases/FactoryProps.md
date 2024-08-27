@@ -24,4 +24,4 @@
 
 ## Defined in
 
-[packages/react/src/ThemedExternalSvg.tsx:155](https://github.com/fpapado/svg-use/blob/main/packages/react/src/ThemedExternalSvg.tsx#L155)
+[packages/react/src/ThemedExternalSvg.tsx:148](https://github.com/fpapado/svg-use/blob/main/packages/react/src/ThemedExternalSvg.tsx#L148)

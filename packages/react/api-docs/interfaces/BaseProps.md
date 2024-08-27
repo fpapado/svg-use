@@ -16,7 +16,7 @@ The id of the referent icon, in the destination SVG.
 
 #### Defined in
 
-[packages/react/src/ThemedExternalSvg.tsx:82](https://github.com/fpapado/svg-use/blob/main/packages/react/src/ThemedExternalSvg.tsx#L82)
+[packages/react/src/ThemedExternalSvg.tsx:81](https://github.com/fpapado/svg-use/blob/main/packages/react/src/ThemedExternalSvg.tsx#L81)
 
 ---
 
@@ -30,7 +30,7 @@ no mechanism for cross-origin svg[use].
 
 #### Defined in
 
-[packages/react/src/ThemedExternalSvg.tsx:80](https://github.com/fpapado/svg-use/blob/main/packages/react/src/ThemedExternalSvg.tsx#L80)
+[packages/react/src/ThemedExternalSvg.tsx:79](https://github.com/fpapado/svg-use/blob/main/packages/react/src/ThemedExternalSvg.tsx#L79)
 
 ---
 
@@ -42,4 +42,4 @@ The viewBox of the referent SVG; used to ensure the same scaling.
 
 #### Defined in
 
-[packages/react/src/ThemedExternalSvg.tsx:84](https://github.com/fpapado/svg-use/blob/main/packages/react/src/ThemedExternalSvg.tsx#L84)
+[packages/react/src/ThemedExternalSvg.tsx:83](https://github.com/fpapado/svg-use/blob/main/packages/react/src/ThemedExternalSvg.tsx#L83)
