@@ -91,7 +91,7 @@ which provides bundler plugins to facilitate converting SVG to JSX. Let's call
 this approach SVG-in-JS, for the sake of comparison.
 
 The SVG-in-JS approach is contrasted with referencing the SVG as an asset, and
-using it in `img[href]` or in `svg > use[href]`. This library provides one such
+using it in `img[src]` or in `svg > use[href]`. This library provides one such
 alternative.
 
 At its core, the SVG-in-JS solves a few different issues, in a convenient way.
