@@ -2,10 +2,8 @@
 
 ## v1
 
-- Add `{monochromeBehavior?: 'use-currentColor-fallback'}` to default theme
-  transform
 - Consider customising the prefix of custom properties, both in the default
-  theme and in react
+  theme and in react components.
 - Unit test the rest of svg-use/core, for consistency
 - Consider providing the defaults for svg-use/core functions directly in the
   functions themselves.

@@ -8,8 +8,8 @@
 
 > **Props**: [`BaseProps`](../interfaces/BaseProps.md) &
 > [`ThemeProps`](../interfaces/ThemeProps.md) &
-> `HTMLAttributes`\<[`SVGSVGElement`](https://developer.mozilla.org/docs/Web/API/SVGSVGElement)\>
+> `SVGAttributes`\<[`SVGSVGElement`](https://developer.mozilla.org/docs/Web/API/SVGSVGElement)\>
 
 ## Defined in
 
-[packages/react/src/ThemedExternalSvg.tsx:87](https://github.com/fpapado/svg-use/blob/main/packages/react/src/ThemedExternalSvg.tsx#L87)
+[packages/react/src/ThemedExternalSvg.tsx:86](https://github.com/fpapado/svg-use/blob/main/packages/react/src/ThemedExternalSvg.tsx#L86)

@@ -8,9 +8,19 @@
 
 ## Properties
 
-### fill?
+### color?
 
-> `optional` **fill**: `string`
+> `optional` **color**: `string`
+
+#### Defined in
+
+[packages/react/src/ThemedExternalSvg.tsx:68](https://github.com/fpapado/svg-use/blob/main/packages/react/src/ThemedExternalSvg.tsx#L68)
+
+---
+
+### colorSecondary?
+
+> `optional` **colorSecondary**: `string`
 
 #### Defined in
 
@@ -18,50 +28,10 @@
 
 ---
 
-### fillSecondary?
+### colorTertiary?
 
-> `optional` **fillSecondary**: `string`
+> `optional` **colorTertiary**: `string`
 
 #### Defined in
 
 [packages/react/src/ThemedExternalSvg.tsx:70](https://github.com/fpapado/svg-use/blob/main/packages/react/src/ThemedExternalSvg.tsx#L70)
-
----
-
-### fillTertiary?
-
-> `optional` **fillTertiary**: `string`
-
-#### Defined in
-
-[packages/react/src/ThemedExternalSvg.tsx:71](https://github.com/fpapado/svg-use/blob/main/packages/react/src/ThemedExternalSvg.tsx#L71)
-
----
-
-### stroke?
-
-> `optional` **stroke**: `string`
-
-#### Defined in
-
-[packages/react/src/ThemedExternalSvg.tsx:66](https://github.com/fpapado/svg-use/blob/main/packages/react/src/ThemedExternalSvg.tsx#L66)
-
----
-
-### strokeSecondary?
-
-> `optional` **strokeSecondary**: `string`
-
-#### Defined in
-
-[packages/react/src/ThemedExternalSvg.tsx:67](https://github.com/fpapado/svg-use/blob/main/packages/react/src/ThemedExternalSvg.tsx#L67)
-
----
-
-### strokeTertiary?
-
-> `optional` **strokeTertiary**: `string`
-
-#### Defined in
-
-[packages/react/src/ThemedExternalSvg.tsx:68](https://github.com/fpapado/svg-use/blob/main/packages/react/src/ThemedExternalSvg.tsx#L68)

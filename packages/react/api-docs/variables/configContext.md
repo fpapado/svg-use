@@ -20,6 +20,8 @@ import { configContext, type Config } from '@svg-use/react';
 
 const config: Config = {
   // Add any config options here
+  rewritePath: (pathOrHref) => pathOrHref,
+  runtimeChecksEnabled: process.env.NODE_ENV !== 'production',
 };
 
 const AppRoot = () => {
@@ -33,4 +35,4 @@ const AppRoot = () => {
 
 ## Defined in
 
-[packages/react/src/ThemedExternalSvg.tsx:61](https://github.com/fpapado/svg-use/blob/main/packages/react/src/ThemedExternalSvg.tsx#L61)
+[packages/react/src/ThemedExternalSvg.tsx:63](https://github.com/fpapado/svg-use/blob/main/packages/react/src/ThemedExternalSvg.tsx#L63)

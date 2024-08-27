@@ -1,4 +1,4 @@
-import type { CSSProperties, HTMLAttributes } from 'react';
+import type { CSSProperties, HTMLAttributes, SVGAttributes } from 'react';
 import {
   createContext,
   forwardRef,
@@ -25,8 +25,8 @@ export type Config = {
   rewritePath?: (pathOrHref: string) => string;
 
   /**
-   * Toggles runtime checks, which help catch common pitfalls with using external
-   * SVGs, such as needing to be on the same origin.
+   * Toggles runtime checks, which help catch common pitfalls with using
+   * external SVGs, such as needing to be on the same origin.
    *
    * @defaultValue true
    */
@@ -36,8 +36,8 @@ export type Config = {
 /**
  * A context that you can use to customise the runtime behavior of
  * `ThemedExternalSvg`. Because `ThemedExternalSvg` is usually a compilation
- * target, this allows you to inject configuration without changing the signature
- * of modules.
+ * target, this allows you to inject configuration without changing the
+ * signature of modules.
  *
  * @category Primary exports
  *
@@ -47,6 +47,8 @@ export type Config = {
  *
  * const config: Config = {
  *   // Add any config options here
+ *   rewritePath: (pathOrHref) => pathOrHref,
+ *   runtimeChecksEnabled: process.env.NODE_ENV !== 'production',
  * };
  *
  * const AppRoot = () => {
@@ -81,7 +83,7 @@ export interface BaseProps {
   viewBox: string;
 }
 
-export type Props = BaseProps & ThemeProps & HTMLAttributes<SVGSVGElement>;
+export type Props = BaseProps & ThemeProps & SVGAttributes<SVGSVGElement>;
 
 /**
  * The main React component, which wires up `svg > use[href]`, as well as the
@@ -148,7 +150,7 @@ export type FactoryProps = { url: string; id: string; viewBox: string };
 /**
  * A component factory for a specific {@link ThemedExternalSvg}, which bakes in
  * its url, id and viewBox. Useful for module organisation, and as a target for
- * `@svg-use/core`'s `createJsModule`.
+ * `@svg-use/core`'s `createJsModule` factory function.
  *
  * @category Primary exports
  */
