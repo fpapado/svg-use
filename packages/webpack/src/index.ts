@@ -37,7 +37,7 @@ const defaultOptions = {
   svgAssetFilename: '[name]-[contenthash].[ext]',
   componentFactory: defaultComponentFactory,
   getSvgIdAttribute: defaultGetSvgIdAttribute,
-  getThemeSubstitutions: defaultThemeSubstitution,
+  getThemeSubstitutions: defaultThemeSubstitution(),
 } satisfies LoaderOptions;
 
 export default function svgUseLoader(

@@ -4,7 +4,7 @@ import { defaultThemeSubstitution } from './defaultTheme.js';
 describe('defaultThemeSubstitution', () => {
   it('returns the expected substitutions, in sorted order', () => {
     expect(
-      defaultThemeSubstitution({
+      defaultThemeSubstitution()({
         fills: new Map([
           ['#123', 3],
           ['red', 2],
@@ -30,9 +30,23 @@ describe('defaultThemeSubstitution', () => {
     });
   });
 
+  it('provides an option to fall back to currentColor for monochrome icons', () => {
+    expect(
+      defaultThemeSubstitution({ monochromeCssVarFallback: 'currentColor' })({
+        fills: new Map([['#123', 3]]),
+        strokes: new Map([['#123', 3]]),
+      }),
+    ).toEqual({
+      fills: new Map([['#123', 'var(--svg-use-color-primary, currentColor)']]),
+      strokes: new Map([
+        ['#123', 'var(--svg-use-color-primary, currentColor)'],
+      ]),
+    });
+  });
+
   it('throws when there are more than three colors', () => {
     expect(() =>
-      defaultThemeSubstitution({
+      defaultThemeSubstitution()({
         fills: new Map([
           ['#123', 3],
           ['red', 2],

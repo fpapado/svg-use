@@ -88,7 +88,7 @@ jobs:
     # Do not leave a comment on forks, or for renovate branches
     if: |
       !cancelled() &&
-      needs.playwright.result != '' &&
+      needs.playwright.result == 'failure' &&
       github.event_name == 'pull_request' &&
       github.event.pull_request.head.repo.full_name == 'fpapado/svg-use' &&
       github.actor != 'renovate[bot]'
@@ -98,7 +98,6 @@ jobs:
 
     steps:
       - name: Build help body
-        if: needs.playwright.result == 'failure'
         id: help-body
         env:
           REPOSITORY: "${{github.repository}}"

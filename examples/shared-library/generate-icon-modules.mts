@@ -38,7 +38,7 @@ async function processFile(filePath: string) {
 
   const transformResult = transformSvgForUseHref(initialContent, {
     getSvgIdAttribute: defaultGetSvgIdAttribute,
-    getThemeSubstitutions: defaultThemeSubstitution,
+    getThemeSubstitutions: defaultThemeSubstitution(),
   });
 
   if (transformResult.type === 'failure') {

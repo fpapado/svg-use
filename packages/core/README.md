@@ -33,7 +33,7 @@ import {
 function transformAndWriteModule(content: string) {
   const transformResult = transformSvgForUseHref(content, {
     getSvgIdAttribute: defaultGetSvgIdAttribute,
-    getThemeSubstitutions: defaultThemeSubstitution,
+    getThemeSubstitutions: defaultThemeSubstitution(),
   });
 
   if (transformResult.type === 'failure') {
