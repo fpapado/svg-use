@@ -1,5 +1,22 @@
 # @svg-use/core
 
+## 0.4.0
+
+### Minor Changes
+
+- 0ea4fd9: Breaking: `defaultThemeSubstitution` now takes an option object, so
+  its signature has changed to a factory:
+
+  ```diff-js
+  const options = {
+  -  getThemeSubstitutions: defaultThemeSubstitution
+  +  getThemeSubstitutions: defaultThemeSubstitution()
+  }
+  ```
+
+  `defaultThemeSubstitution` now provides a `monochromeCssVarFallback` option,
+  to allow passing `currentColor` as the `var()` fallback.
+
 ## 0.3.0
 
 ### Minor Changes
