@@ -1,4 +1,4 @@
-import type { CSSProperties, HTMLAttributes } from 'react';
+import type { CSSProperties, HTMLAttributes, SVGAttributes } from 'react';
 import {
   createContext,
   forwardRef,
@@ -83,7 +83,7 @@ export interface BaseProps {
   viewBox: string;
 }
 
-export type Props = BaseProps & ThemeProps & HTMLAttributes<SVGSVGElement>;
+export type Props = BaseProps & ThemeProps & SVGAttributes<SVGSVGElement>;
 
 /**
  * The main React component, which wires up `svg > use[href]`, as well as the
