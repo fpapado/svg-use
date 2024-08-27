@@ -59,7 +59,7 @@
     }
   },
   "devDependencies": {
-    "@types/node": "20.14.14"
+    "@types/node": "20.16.1"
   },
   "keywords": [
     "performance",

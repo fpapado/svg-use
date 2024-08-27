@@ -60,7 +60,7 @@
     }
   },
   "devDependencies": {
-    "@types/react": "18.3.3"
+    "@types/react": "18.3.4"
   },
   "keywords": [
     "loader",
