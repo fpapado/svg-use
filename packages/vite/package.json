@@ -48,14 +48,6 @@
   "dependencies": {
     "@svg-use/rollup": "workspace:^0.4.0"
   },
-  "peerDependencies": {
-    "@svg-use/react": "workspace:^0.3.0"
-  },
-  "peerDependenciesMeta": {
-    "@svg-use/react": {
-      "optional": true
-    }
-  },
   "devDependencies": {
     "@types/node": "20.16.1",
     "vite": "^5.4.2"
