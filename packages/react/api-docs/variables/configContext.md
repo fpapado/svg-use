@@ -20,6 +20,8 @@ import { configContext, type Config } from '@svg-use/react';
 
 const config: Config = {
   // Add any config options here
+  rewritePath: (pathOrHref) => pathOrHref,
+  runtimeChecksEnabled: process.env.NODE_ENV !== 'production',
 };
 
 const AppRoot = () => {

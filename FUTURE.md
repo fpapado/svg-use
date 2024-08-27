@@ -25,7 +25,7 @@ implemented.
 ## CSS Linked Parameters
 
 If [CSS Linked Parameters](https://drafts.csswg.org/css-link-params/) lands, you
-will be able to pass custom properties to SVGs inside of `img[href]`.
+will be able to pass custom properties to SVGs inside of `img[src]`.
 
 This avoids the setup with `svg > use[href]`, in favour of the much simpler
 `img` element. An `img` can already be loaded cross-origin, so this also avoids

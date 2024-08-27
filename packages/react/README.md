@@ -26,6 +26,26 @@ const MyComponent = () => {
 };
 ```
 
+Optionally, in your application root, you can pass config via context:
+
+```tsx
+import { configContext, type Config } from '@svg-use/react';
+
+const config: Config = {
+  // Add any config options here
+  rewritePath: (pathOrHref) => pathOrHref,
+  runtimeChecksEnabled: process.env.NODE_ENV !== 'production',
+};
+
+const AppRoot = () => {
+  return (
+    <configContext.Provider value={config}>
+      {/* The rest of your application */}
+    </configContext.Provider>
+  );
+};
+```
+
 ## API Reference
 
 [Find the full API reference](./api-docs/README.md)
