@@ -61,7 +61,7 @@ const hasNoTheme = (id: string) => {
 const defaultOptions = {
   componentFactory: defaultComponentFactory,
   getSvgIdAttribute: defaultGetSvgIdAttribute,
-  getThemeSubstitutions: defaultThemeSubstitution,
+  getThemeSubstitutions: defaultThemeSubstitution(),
 } satisfies PluginOptions;
 
 function svgUsePlugin(
