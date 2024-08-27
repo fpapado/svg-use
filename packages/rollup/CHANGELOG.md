@@ -1,5 +1,15 @@
 # @svg-use/rollup
 
+## 0.4.1
+
+### Patch Changes
+
+- 5f6340e: Make `@svg-use/react` a dependency of plugins.
+- Updated dependencies [0ea4fd9]
+- Updated dependencies [05fa11e]
+  - @svg-use/core@0.4.0
+  - @svg-use/react@0.4.0
+
 ## 0.4.0
 
 ### Minor Changes

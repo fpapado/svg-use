@@ -1,5 +1,14 @@
 # @svg-use/react
 
+## 0.4.0
+
+### Minor Changes
+
+- 05fa11e: Breaking change: `Props` now extend `SVGAttributes<SVGSVGElement>`
+  instead of `HTMLAttributes<SVGSVGElement>`. This should be _more_ permissive
+  in most practical SVG cases, but it might cause type errors with existing uses
+  of `ThemedExternalSvg`.
+
 ## 0.3.0
 
 ### Minor Changes
