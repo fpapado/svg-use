@@ -18,7 +18,7 @@ importers:
         specifier: 9.9.1
         version: 9.9.1
       '@playwright/test':
-        specifier: ^1.46.1
+        specifier: 1.46.1
         version: 1.46.1
       '@tsconfig/node20':
         specifier: 20.1.4
@@ -277,7 +277,7 @@ importers:
         specifier: 20.16.1
         version: 20.16.1
       vite:
-        specifier: ^5.4.2
+        specifier: 5.4.2
         version: 5.4.2(@types/node@20.16.1)(terser@5.31.3)
 
   packages/webpack:
@@ -299,10 +299,10 @@ importers:
         specifier: 20.16.1
         version: 20.16.1
       '@types/webpack':
-        specifier: ^5.28.5
+        specifier: 5.28.5
         version: 5.28.5
       memfs:
-        specifier: ^4.8.0
+        specifier: 4.11.1
         version: 4.11.1
       webpack:
         specifier: 5.94.0
