@@ -1,5 +1,11 @@
 # @svg-use/react
 
+## 0.4.1
+
+### Patch Changes
+
+- 757b946: Fix `createThemedExternalSvg` props to reference SVGAttributes
+
 ## 0.4.0
 
 ### Minor Changes
