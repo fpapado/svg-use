@@ -1,4 +1,4 @@
-import type { CSSProperties, HTMLAttributes, SVGAttributes } from 'react';
+import type { CSSProperties, SVGAttributes } from 'react';
 import {
   createContext,
   forwardRef,
@@ -156,6 +156,6 @@ export type FactoryProps = { url: string; id: string; viewBox: string };
  */
 export const createThemedExternalSvg =
   ({ url, id, viewBox }: FactoryProps) =>
-  (props: ThemeProps & HTMLAttributes<SVGSVGElement>): JSX.Element => (
+  (props: ThemeProps & SVGAttributes<SVGSVGElement>): JSX.Element => (
     <ThemedExternalSvg {...props} iconUrl={url} iconId={id} viewBox={viewBox} />
   );
