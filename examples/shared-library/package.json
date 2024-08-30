@@ -25,7 +25,7 @@
   },
   "dependencies": {
     "@svg-use/core": "workspace:^0.4.0",
-    "@svg-use/react": "workspace:^0.4.1"
+    "@svg-use/react": "workspace:^0.4.2"
   },
   "peerDependencies": {
     "react": "^18"

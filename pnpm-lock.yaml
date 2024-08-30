@@ -93,7 +93,7 @@ importers:
         specifier: workspace:^0.4.0
         version: link:../../packages/core
       '@svg-use/react':
-        specifier: workspace:^0.4.1
+        specifier: workspace:^0.4.2
         version: link:../../packages/react
       react:
         specifier: ^18
@@ -118,7 +118,7 @@ importers:
   examples/vite-react:
     dependencies:
       '@svg-use/react':
-        specifier: workspace:^0.4.1
+        specifier: workspace:^0.4.2
         version: link:../../packages/react
       react:
         specifier: ^18.3.1
@@ -158,7 +158,7 @@ importers:
   examples/webpack-react:
     dependencies:
       '@svg-use/react':
-        specifier: workspace:^0.4.1
+        specifier: workspace:^0.4.2
         version: link:../../packages/react
       react:
         specifier: ^18.3.1
