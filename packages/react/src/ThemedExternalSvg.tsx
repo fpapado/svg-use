@@ -119,7 +119,7 @@ export const ThemedExternalSvg = forwardRef<SVGSVGElement, Props>(
       }
     }, [config.runtimeChecksEnabled, transformedUrl]);
 
-    const hrefWithId = `${iconUrl}#${iconId}`;
+    const hrefWithId = `${transformedUrl}#${iconId}`;
 
     /**
      * These are all tied to the default theme. It might be beneficial to define
