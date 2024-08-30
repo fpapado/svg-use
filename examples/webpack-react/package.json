@@ -13,12 +13,12 @@
     "test:e2e": "playwright test"
   },
   "dependencies": {
-    "@svg-use/react": "workspace:^0.4.1",
+    "@svg-use/react": "workspace:^0.4.2",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },
   "devDependencies": {
-    "@svg-use/react": "workspace:^0.4.1",
+    "@svg-use/react": "workspace:^0.4.2",
     "@svg-use/webpack": "workspace:^0.3.1",
     "@swc-node/register": "1.10.9",
     "@swc/core": "^1.7.6",

@@ -1,5 +1,12 @@
 # @svg-use/react
 
+## 0.4.2
+
+### Patch Changes
+
+- efa4f32: Fix: ensure that the result of `config.rewritePath` gets passed down
+  to the inner SVG.
+
 ## 0.4.1
 
 ### Patch Changes
