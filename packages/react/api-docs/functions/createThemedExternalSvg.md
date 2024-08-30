@@ -23,7 +23,7 @@ target for `@svg-use/core`'s `createJsModule` factory function.
 ### Parameters
 
 • **props**: [`ThemeProps`](../interfaces/ThemeProps.md) &
-`HTMLAttributes`\<[`SVGSVGElement`](https://developer.mozilla.org/docs/Web/API/SVGSVGElement)\>
+`SVGAttributes`\<[`SVGSVGElement`](https://developer.mozilla.org/docs/Web/API/SVGSVGElement)\>
 
 ### Returns
 
