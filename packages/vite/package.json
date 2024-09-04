@@ -46,6 +46,7 @@
     "test": "vitest --pass-with-no-tests"
   },
   "dependencies": {
+    "@svg-use/react": "workspace:^0.4.0",
     "@svg-use/rollup": "workspace:^0.4.1"
   },
   "devDependencies": {
