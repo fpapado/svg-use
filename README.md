@@ -29,7 +29,7 @@ And a JS file like this, plus one of the bundler integrations
 ```tsx
 import { Component as Arrow } from './icon.svg?svgUse';
 
-return <Component color="red" />;
+return <Arrow color="red" />;
 ```
 
 You get a component with a performant output, that does not inline the SVG
