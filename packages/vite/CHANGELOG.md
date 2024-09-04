@@ -1,5 +1,11 @@
 # @svg-use/vite
 
+## 0.1.3
+
+### Patch Changes
+
+- 3e7af4f: Fix reference to @svg-use/react types in client dts reference.
+
 ## 0.1.2
 
 ### Patch Changes
