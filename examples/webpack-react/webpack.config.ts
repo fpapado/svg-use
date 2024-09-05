@@ -29,40 +29,43 @@ const config: Configuration = {
   module: {
     rules: [
       {
-        // Match assets such as `arrow.svg?svgUse`, making them compatible with `svg >
-        // use[href]`. Emit a transformed SVG asset, and return a JS module
-        // with all the relevant information.
+        // Match assets such as `arrow.svg?svgUse`, making them compatible with
+        // `svg > use[href]`. Emit a transformed SVG asset, and return a JS
+        // module with all the relevant information.
         test: /\.svg$/i,
-        resourceQuery: {
-          and: [/svgUse/i, { not: [/noTheme/i] }],
-        },
-        // This loader chain ultimately returns JS code, and emits an asset
-        type: 'javascript/auto',
-        use: [
+        resourceQuery: /svgUse/i,
+        oneOf: [
           {
-            loader: '@svg-use/webpack',
-            options: {
-              // Customise to your heart's content
-              svgAssetFilename: 'svgAssets/[name]-[contenthash].[ext]',
-            },
+            // Assets without a theme, such as country flags. Referenced as
+            // `icon.svg?svgUse&noTheme`
+            //
+            // Note: Instead of this rule, you could decide to load these SVGs
+            // as 'asset/resource', in order to use their URL string in img[src]
+            test: /\.svg$/i,
+            resourceQuery: /noTheme/i,
+            type: 'javascript/auto',
+            use: [
+              {
+                loader: '@svg-use/webpack',
+                options: {
+                  getThemeSubstitutions: null, // no theme for these ones
+                  // Customise to your heart's content
+                  svgAssetFilename: 'svgAssets/[name]-[contenthash].[ext]',
+                },
+              },
+            ],
           },
-        ],
-      },
-      {
-        // Assets without a theme, such as country flags.
-        // Referenced as `icon.svg?svgUse&noTheme`
-        test: /\.svg$/i,
-        resourceQuery: {
-          and: [/svgUse/i, /noTheme/i],
-        },
-        type: 'javascript/auto',
-        use: [
           {
-            loader: '@svg-use/webpack',
-            options: {
-              getThemeSubstitutions: null,
-              svgAssetFilename: 'svgAssets/[name]-[contenthash].[ext]',
-            },
+            type: 'javascript/auto',
+            use: [
+              {
+                loader: '@svg-use/webpack',
+                options: {
+                  // Customise to your heart's content
+                  svgAssetFilename: 'svgAssets/[name]-[contenthash].[ext]',
+                },
+              },
+            ],
           },
         ],
       },
