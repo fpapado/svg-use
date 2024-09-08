@@ -50,8 +50,8 @@
     "@svg-use/rollup": "workspace:^0.4.1"
   },
   "devDependencies": {
-    "@types/node": "20.16.3",
-    "vite": "5.4.2"
+    "@types/node": "20.16.5",
+    "vite": "5.4.3"
   },
   "keywords": [
     "performance",
