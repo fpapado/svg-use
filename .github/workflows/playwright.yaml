@@ -68,14 +68,14 @@ jobs:
               echo "snapshots_changed=false" >> "$GITHUB_OUTPUT"
           fi
 
-      - uses: actions/upload-artifact@834a144ee995460fba8ed112a2fc961b36a5ec5a # v4
+      - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874 # v4
         if: failure() && steps.check-snapshots-changed.outputs.snapshots_changed == 'true'
         id: upload-snapshot-patch-artifact
         with:
           name: playwright-snapshot-diff
           path: /tmp/snapshot_diff.patch
 
-      - uses: actions/upload-artifact@834a144ee995460fba8ed112a2fc961b36a5ec5a # v4
+      - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874 # v4
         if: always()
         id: upload-report-artifact
         with:
