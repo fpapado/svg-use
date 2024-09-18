@@ -51,7 +51,7 @@
   },
   "devDependencies": {
     "@types/node": "20.16.5",
-    "vite": "5.4.3"
+    "vite": "5.4.6"
   },
   "keywords": [
     "performance",
