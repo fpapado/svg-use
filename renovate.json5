@@ -16,7 +16,7 @@
     "schedule:weekly"
   ],
   "timezone": "Europe/Helsinki",
-  "labels": ["dependencies", "dependencybot"],
+  "labels": ["dependencies"],
   "prConcurrentLimit": 10,
   "postUpdateOptions": ["pnpmDedupe"],
   // Regenerate the lockfile; this ensures that locked transitive
@@ -38,7 +38,6 @@
       "automerge": true
     },
     {
-      // Group all semver-compatible devDependencies together.
       "groupName": "semver-compatible devDependencies",
       "matchManagers": ["npm"],
       "matchDepTypes": ["devDependencies"],
