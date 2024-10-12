@@ -10,7 +10,7 @@
     "test:e2e": "playwright test"
   },
   "dependencies": {
-    "@svg-use/react": "workspace:^0.4.2",
+    "@svg-use/react": "workspace:^0.4.3",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "shared-library": "workspace:*"

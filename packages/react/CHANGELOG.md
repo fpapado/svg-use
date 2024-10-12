@@ -1,5 +1,12 @@
 # @svg-use/react
 
+## 0.4.3
+
+### Patch Changes
+
+- f917214: Use URL.parse() as a progressive enhancement in dev-only checks,
+  using new URL() otherwise.
+
 ## 0.4.2
 
 ### Patch Changes
