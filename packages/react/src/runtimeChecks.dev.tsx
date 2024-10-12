@@ -18,10 +18,10 @@ export const runtimeChecks = (href: string) => {
 };
 
 const urlParse = (href: string, base?: string): URL | null => {
-  if ('parse' in URL) {
-    //@ts-expect-error TS does not know about URL.parse yet
+  const hasUrlParse = 'parse' in URL;
+  if (hasUrlParse) {
     //@see https://developer.mozilla.org/en-US/docs/Web/API/URL/parse_static
-    return URL.parse(href, base) as URL | null;
+    return URL.parse(href, base);
   }
 
   try {
