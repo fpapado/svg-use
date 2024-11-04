@@ -47,7 +47,7 @@
     "publint": "0.2.11",
     "rimraf": "6.0.1",
     "tshy": "3.0.2",
-    "typedoc": "0.26.10",
+    "typedoc": "0.26.11",
     "typedoc-plugin-markdown": "4.2.9",
     "typedoc-plugin-mdn-links": "3.3.5",
     "typescript": "5.6.3",
