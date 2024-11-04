@@ -44,7 +44,7 @@
     "npm-run-all2": "6.2.6",
     "prettier": "3.3.3",
     "prettier-package-json": "2.8.0",
-    "publint": "0.2.11",
+    "publint": "0.2.12",
     "rimraf": "6.0.1",
     "tshy": "3.0.2",
     "typedoc": "0.26.10",
