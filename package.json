@@ -27,7 +27,7 @@
     "test:e2e": "pnpm --recursive test:e2e"
   },
   "devDependencies": {
-    "@arethetypeswrong/cli": "0.17.0",
+    "@arethetypeswrong/cli": "0.17.1",
     "@changesets/cli": "2.27.9",
     "@eslint/js": "9.13.0",
     "@playwright/test": "1.48.2",
