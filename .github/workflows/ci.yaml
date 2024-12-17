@@ -29,11 +29,11 @@ jobs:
       - run: pnpm install
         id: install
       # TODO: let's parallelise these checks eventually
-      - name: Build all
-        run: pnpm run -r build
       - name: Check types
         if: steps.install.conclusion == 'success' && !cancelled()
         run: pnpm check-types
+      - name: Build all
+        run: pnpm run -r build
       - name: Lint
         if: steps.install.conclusion == 'success' && !cancelled()
         run: pnpm lint
