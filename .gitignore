@@ -135,3 +135,4 @@ dist/
 
 # playwright
 playwright-report/
+.last-run.json

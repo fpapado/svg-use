@@ -28,8 +28,7 @@ jobs:
       - run: corepack enable
       - run: pnpm install
         id: install
-      - name: Install Playwright Browsers
-        run: pnpm exec playwright install --with-deps
+      # TODO: let's parallelise these checks eventually
       - name: Build all
         run: pnpm run -r build
       - name: Check types
