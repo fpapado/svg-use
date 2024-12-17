@@ -28,7 +28,8 @@ jobs:
       - run: corepack enable
       - run: pnpm install
         id: install
-      # TODO: let's parallelise these checks eventually
+      # Build is required so that types from workspace packages will be
+      # referenceable
       - name: Build all
         run: pnpm run -r build
       - name: Check types

@@ -34,7 +34,7 @@
   ],
   "scripts": {
     "build": "pnpm build:lib",
-    "build:lib": "tsc -p tsconfig.build.json",
+    "build:lib": "tsc -p tsconfig.build.json --noCheck",
     "build:lib:watch": "tsc --watch -p tsconfig.build.json",
     "check-types": "tsc --noEmit",
     "check-types:watch": "tsc --noEmit --watch",
