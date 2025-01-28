@@ -50,7 +50,7 @@
     "@svg-use/rollup": "workspace:^0.4.1"
   },
   "devDependencies": {
-    "@types/node": "20.17.10",
+    "@types/node": "20.17.16",
     "vite": "5.4.11"
   },
   "keywords": [
