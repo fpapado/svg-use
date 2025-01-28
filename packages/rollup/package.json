@@ -52,7 +52,7 @@
     "rollup": "4.27.4"
   },
   "devDependencies": {
-    "@types/node": "20.17.16"
+    "@types/node": "22.12.0"
   },
   "keywords": [
     "performance",
