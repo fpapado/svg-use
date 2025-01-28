@@ -1,4 +1,4 @@
-[**@svg-use/core**](../README.md) • **Docs**
+[**@svg-use/core**](../README.md)
 
 ---
 
@@ -7,6 +7,9 @@
 # Type Alias: ComponentFactory
 
 > **ComponentFactory**: `object`
+
+Defined in:
+[createJsModule.ts:24](https://github.com/fpapado/svg-use/blob/main/packages/core/src/createJsModule.ts#L24)
 
 Configuration for the "Component" export.
 
@@ -37,7 +40,3 @@ named import).
 ```ts
 '@svg-use/react';
 ```
-
-## Defined in
-
-[createJsModule.ts:24](https://github.com/fpapado/svg-use/blob/main/packages/core/src/createJsModule.ts#L24)

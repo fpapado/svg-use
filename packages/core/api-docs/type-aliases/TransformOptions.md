@@ -1,4 +1,4 @@
-[**@svg-use/core**](../README.md) • **Docs**
+[**@svg-use/core**](../README.md)
 
 ---
 
@@ -7,6 +7,9 @@
 # Type Alias: TransformOptions
 
 > **TransformOptions**: `object`
+
+Defined in:
+[transformSvgForUseHref.ts:79](https://github.com/fpapado/svg-use/blob/main/packages/core/src/transformSvgForUseHref.ts#L79)
 
 ## Type declaration
 
@@ -59,7 +62,3 @@ documentation for guidance.
 #### Default Value
 
 [defaultThemeSubstitution](../functions/defaultThemeSubstitution.md)
-
-## Defined in
-
-[transformSvgForUseHref.ts:79](https://github.com/fpapado/svg-use/blob/main/packages/core/src/transformSvgForUseHref.ts#L79)

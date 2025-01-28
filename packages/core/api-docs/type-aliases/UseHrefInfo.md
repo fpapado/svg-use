@@ -1,4 +1,4 @@
-[**@svg-use/core**](../README.md) • **Docs**
+[**@svg-use/core**](../README.md)
 
 ---
 
@@ -7,6 +7,9 @@
 # Type Alias: UseHrefInfo
 
 > **UseHrefInfo**: `object`
+
+Defined in:
+[transformSvgForUseHref.ts:29](https://github.com/fpapado/svg-use/blob/main/packages/core/src/transformSvgForUseHref.ts#L29)
 
 ## Type declaration
 
@@ -17,7 +20,3 @@
 ### viewBox
 
 > **viewBox**: `string`
-
-## Defined in
-
-[transformSvgForUseHref.ts:29](https://github.com/fpapado/svg-use/blob/main/packages/core/src/transformSvgForUseHref.ts#L29)

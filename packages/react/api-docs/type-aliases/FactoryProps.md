@@ -1,4 +1,4 @@
-[**@svg-use/react**](../README.md) • **Docs**
+[**@svg-use/react**](../README.md)
 
 ---
 
@@ -7,6 +7,9 @@
 # Type Alias: FactoryProps
 
 > **FactoryProps**: `object`
+
+Defined in:
+[packages/react/src/ThemedExternalSvg.tsx:148](https://github.com/fpapado/svg-use/blob/main/packages/react/src/ThemedExternalSvg.tsx#L148)
 
 ## Type declaration
 
@@ -21,7 +24,3 @@
 ### viewBox
 
 > **viewBox**: `string`
-
-## Defined in
-
-[packages/react/src/ThemedExternalSvg.tsx:148](https://github.com/fpapado/svg-use/blob/main/packages/react/src/ThemedExternalSvg.tsx#L148)

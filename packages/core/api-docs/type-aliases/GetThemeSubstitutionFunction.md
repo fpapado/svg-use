@@ -1,4 +1,4 @@
-[**@svg-use/core**](../README.md) • **Docs**
+[**@svg-use/core**](../README.md)
 
 ---
 
@@ -8,15 +8,20 @@
 
 > **GetThemeSubstitutionFunction**: (`counts`) => `object`
 
+Defined in:
+[theme/makeThemeable.ts:4](https://github.com/fpapado/svg-use/blob/main/packages/core/src/theme/makeThemeable.ts#L4)
+
 ## Parameters
 
-• **counts**
+### counts
 
-• **counts.fills**:
+#### fills
+
 [`Map`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Map)\<`string`,
 `number`\>
 
-• **counts.strokes**:
+#### strokes
+
 [`Map`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Map)\<`string`,
 `number`\>
 
@@ -35,7 +40,3 @@
 > **strokes**:
 > [`Map`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Map)\<`string`,
 > `string`\>
-
-## Defined in
-
-[theme/makeThemeable.ts:4](https://github.com/fpapado/svg-use/blob/main/packages/core/src/theme/makeThemeable.ts#L4)

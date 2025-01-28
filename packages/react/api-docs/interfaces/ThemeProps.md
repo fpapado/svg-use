@@ -1,4 +1,4 @@
-[**@svg-use/react**](../README.md) • **Docs**
+[**@svg-use/react**](../README.md)
 
 ---
 
@@ -6,14 +6,16 @@
 
 # Interface: ThemeProps
 
+Defined in:
+[packages/react/src/ThemedExternalSvg.tsx:67](https://github.com/fpapado/svg-use/blob/main/packages/react/src/ThemedExternalSvg.tsx#L67)
+
 ## Properties
 
 ### color?
 
 > `optional` **color**: `string`
 
-#### Defined in
-
+Defined in:
 [packages/react/src/ThemedExternalSvg.tsx:68](https://github.com/fpapado/svg-use/blob/main/packages/react/src/ThemedExternalSvg.tsx#L68)
 
 ---
@@ -22,8 +24,7 @@
 
 > `optional` **colorSecondary**: `string`
 
-#### Defined in
-
+Defined in:
 [packages/react/src/ThemedExternalSvg.tsx:69](https://github.com/fpapado/svg-use/blob/main/packages/react/src/ThemedExternalSvg.tsx#L69)
 
 ---
@@ -32,6 +33,5 @@
 
 > `optional` **colorTertiary**: `string`
 
-#### Defined in
-
+Defined in:
 [packages/react/src/ThemedExternalSvg.tsx:70](https://github.com/fpapado/svg-use/blob/main/packages/react/src/ThemedExternalSvg.tsx#L70)

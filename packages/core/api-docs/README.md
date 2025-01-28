@@ -1,4 +1,4 @@
-**@svg-use/core** • **Docs**
+**@svg-use/core**
 
 ---
 

@@ -1,4 +1,4 @@
-[**@svg-use/react**](../README.md) • **Docs**
+[**@svg-use/react**](../README.md)
 
 ---
 
@@ -7,6 +7,9 @@
 # Type Alias: Config
 
 > **Config**: `object`
+
+Defined in:
+[packages/react/src/ThemedExternalSvg.tsx:11](https://github.com/fpapado/svg-use/blob/main/packages/react/src/ThemedExternalSvg.tsx#L11)
 
 ## Type declaration
 
@@ -28,7 +31,9 @@ responsible for that.
 
 #### Parameters
 
-• **pathOrHref**: `string`
+##### pathOrHref
+
+`string`
 
 #### Returns
 
@@ -46,7 +51,3 @@ SVGs, such as needing to be on the same origin.
 ```ts
 true;
 ```
-
-## Defined in
-
-[packages/react/src/ThemedExternalSvg.tsx:11](https://github.com/fpapado/svg-use/blob/main/packages/react/src/ThemedExternalSvg.tsx#L11)
