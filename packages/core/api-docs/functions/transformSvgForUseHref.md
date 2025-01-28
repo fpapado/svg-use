@@ -1,4 +1,4 @@
-[**@svg-use/core**](../README.md) • **Docs**
+[**@svg-use/core**](../README.md)
 
 ---
 
@@ -9,6 +9,9 @@
 > **transformSvgForUseHref**(`contents`, `__namedParameters`):
 > [`Result`](../type-aliases/Result.md)\<[`UseHrefInfo`](../type-aliases/UseHrefInfo.md)
 > & `object`, `string`\>
+
+Defined in:
+[transformSvgForUseHref.ts:133](https://github.com/fpapado/svg-use/blob/main/packages/core/src/transformSvgForUseHref.ts#L133)
 
 Transform an SVG, such that it can be referenced by `svg > use[href]`. Returns
 the transformed SVG contents, as well as any extracted information for
@@ -22,16 +25,15 @@ The main transformations are:
 
 ## Parameters
 
-• **contents**: `string`
+### contents
 
-• **\_\_namedParameters**:
+`string`
+
+### \_\_namedParameters
+
 [`TransformOptions`](../type-aliases/TransformOptions.md)
 
 ## Returns
 
 [`Result`](../type-aliases/Result.md)\<[`UseHrefInfo`](../type-aliases/UseHrefInfo.md)
 & `object`, `string`\>
-
-## Defined in
-
-[transformSvgForUseHref.ts:133](https://github.com/fpapado/svg-use/blob/main/packages/core/src/transformSvgForUseHref.ts#L133)

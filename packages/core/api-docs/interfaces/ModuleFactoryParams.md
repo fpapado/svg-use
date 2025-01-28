@@ -1,4 +1,4 @@
-[**@svg-use/core**](../README.md) • **Docs**
+[**@svg-use/core**](../README.md)
 
 ---
 
@@ -6,14 +6,16 @@
 
 # Interface: ModuleFactoryParams
 
+Defined in:
+[createJsModule.ts:1](https://github.com/fpapado/svg-use/blob/main/packages/core/src/createJsModule.ts#L1)
+
 ## Properties
 
 ### id
 
 > **id**: `string`
 
-#### Defined in
-
+Defined in:
 [createJsModule.ts:3](https://github.com/fpapado/svg-use/blob/main/packages/core/src/createJsModule.ts#L3)
 
 ---
@@ -22,8 +24,7 @@
 
 > **url**: `string`
 
-#### Defined in
-
+Defined in:
 [createJsModule.ts:2](https://github.com/fpapado/svg-use/blob/main/packages/core/src/createJsModule.ts#L2)
 
 ---
@@ -32,6 +33,5 @@
 
 > **viewBox**: `string`
 
-#### Defined in
-
+Defined in:
 [createJsModule.ts:4](https://github.com/fpapado/svg-use/blob/main/packages/core/src/createJsModule.ts#L4)

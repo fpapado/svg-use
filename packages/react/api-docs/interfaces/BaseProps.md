@@ -1,4 +1,4 @@
-[**@svg-use/react**](../README.md) • **Docs**
+[**@svg-use/react**](../README.md)
 
 ---
 
@@ -6,17 +6,19 @@
 
 # Interface: BaseProps
 
+Defined in:
+[packages/react/src/ThemedExternalSvg.tsx:73](https://github.com/fpapado/svg-use/blob/main/packages/react/src/ThemedExternalSvg.tsx#L73)
+
 ## Properties
 
 ### iconId
 
 > **iconId**: `string`
 
-The id of the referent icon, in the destination SVG.
-
-#### Defined in
-
+Defined in:
 [packages/react/src/ThemedExternalSvg.tsx:81](https://github.com/fpapado/svg-use/blob/main/packages/react/src/ThemedExternalSvg.tsx#L81)
+
+The id of the referent icon, in the destination SVG.
 
 ---
 
@@ -24,13 +26,12 @@ The id of the referent icon, in the destination SVG.
 
 > **iconUrl**: `string`
 
+Defined in:
+[packages/react/src/ThemedExternalSvg.tsx:79](https://github.com/fpapado/svg-use/blob/main/packages/react/src/ThemedExternalSvg.tsx#L79)
+
 The URL of the SVG, to be included in `svg > use[href]`. Note that this URL must
 be on the same origin as the site, otherwise no SVG will be displayed. There is
 no mechanism for cross-origin svg[use].
-
-#### Defined in
-
-[packages/react/src/ThemedExternalSvg.tsx:79](https://github.com/fpapado/svg-use/blob/main/packages/react/src/ThemedExternalSvg.tsx#L79)
 
 ---
 
@@ -38,8 +39,7 @@ no mechanism for cross-origin svg[use].
 
 > **viewBox**: `string`
 
-The viewBox of the referent SVG; used to ensure the same scaling.
-
-#### Defined in
-
+Defined in:
 [packages/react/src/ThemedExternalSvg.tsx:83](https://github.com/fpapado/svg-use/blob/main/packages/react/src/ThemedExternalSvg.tsx#L83)
+
+The viewBox of the referent SVG; used to ensure the same scaling.

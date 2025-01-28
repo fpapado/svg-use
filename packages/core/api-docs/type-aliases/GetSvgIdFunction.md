@@ -1,4 +1,4 @@
-[**@svg-use/core**](../README.md) • **Docs**
+[**@svg-use/core**](../README.md)
 
 ---
 
@@ -8,16 +8,19 @@
 
 > **GetSvgIdFunction**: (`{   existingId, }`) => `string`
 
+Defined in:
+[getSvgIdAttribute.ts:1](https://github.com/fpapado/svg-use/blob/main/packages/core/src/getSvgIdAttribute.ts#L1)
+
 ## Parameters
 
-• **\{ existingId, \}**
+### \{
 
-• **\{ existingId, \}.existingId?**: `string`
+existingId, \}
+
+#### existingId
+
+`string`
 
 ## Returns
 
 `string`
-
-## Defined in
-
-[getSvgIdAttribute.ts:1](https://github.com/fpapado/svg-use/blob/main/packages/core/src/getSvgIdAttribute.ts#L1)
