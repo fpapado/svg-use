@@ -54,7 +54,7 @@
     "xast-util-from-xml": "^4.0.0"
   },
   "devDependencies": {
-    "@types/node": "20.17.10",
+    "@types/node": "20.17.16",
     "@types/xast": "2.0.4"
   },
   "keywords": [
