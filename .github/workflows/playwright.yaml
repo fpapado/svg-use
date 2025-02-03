@@ -21,7 +21,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     container:
-      image: mcr.microsoft.com/playwright:v1.50.0-jammy@sha256:86d37a5870b524ad1359121ad76a4268410d034e2a3864aaeec8c34c4c8f0ee7
+      image: mcr.microsoft.com/playwright:v1.50.1-jammy@sha256:8845c40cdade98fd7a6cd32df75bfc234cd52b3278f9cd1f9fe8d6291e48ea03
     outputs:
       snapshotPatchArtifactUrl: ${{steps.upload-snapshot-patch-artifact.outputs.artifact-url}}
       reportArtifactUrl: ${{steps.upload-report-artifact.outputs.artifact-url}}
