@@ -37,6 +37,10 @@ jobs:
         uses: actions/setup-node@39370e3970a6d050c480ffad4ff0ed4d3fdee5af # v4
         with:
           node-version-file: ".nvmrc"
+      # Need to bootstrap corepack separately, because of a key rotation issue,
+      # and that issue not being fixed in the corepack version that ships with
+      # node at the time of writing
+      - run: npm install --global corepack
       - run: corepack enable
       - run: pnpm install
       # - name: Install Playwright Browsers
