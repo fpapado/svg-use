@@ -45,6 +45,16 @@
       // 0.x versions can have breaking changes in minor versions
       "matchCurrentVersion": ">=1.0.0",
       "automerge": true
+    },
+    {
+      // Playwright versions must be in sync, across docker and npm
+      "groupName": "Playwright",
+      "matchDatasources": ["docker", "npm"],
+      "matchPackageNames": [
+        "@playwright/test",
+        "playwright",
+        "mcr.microsoft.com/playwright"
+      ]
     }
     // major versions are left ungrouped
   ],
