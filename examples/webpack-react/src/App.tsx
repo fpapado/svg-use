@@ -4,6 +4,7 @@ import {
   AlertTriangle,
   Archive,
   ArrowRight,
+  Settings,
 } from 'shared-library';
 import {
   Component as ArrowSvg,
@@ -40,6 +41,7 @@ function App() {
       <AlertTriangle />
       <Archive />
       <ArrowRight />
+      <Settings color="cyan" />
     </>
   );
 }

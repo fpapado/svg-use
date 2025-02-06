@@ -1,4 +1,4 @@
-import { CONTINUE, visit } from 'unist-util-visit';
+import { CONTINUE, EXIT, visit } from 'unist-util-visit';
 import type { Root } from 'xast';
 
 export type GetThemeSubstitutionFunction = (counts: {
@@ -40,6 +40,26 @@ export function xastMakeThemeable(
       fixedStrokeRefs.set(stroke, (fixedStrokeRefs.get(stroke) ?? 0) + 1);
     }
   });
+
+  // If no elements have a fill or stroke, then SVG will default to black
+  if (!fixedFillRefs.size && !fixedStrokeRefs.size) {
+    let hasBeenVisited = false;
+    visit(root, (node) => {
+      if (node.type === 'element' && node.name === 'svg') {
+        if (!node.attributes.fill && !node.attributes.stroke) {
+          node.attributes.fill = '#000';
+          hasBeenVisited = true;
+        }
+        return EXIT;
+      }
+
+      return CONTINUE;
+    });
+
+    if (hasBeenVisited) {
+      return xastMakeThemeable(root, getThemeSubstitutions);
+    }
+  }
 
   const sortedFills = new Map(
     Array.from(fixedFillRefs.entries()).sort(([, a], [, b]) => a - b),
