@@ -30,7 +30,7 @@
     "@arethetypeswrong/cli": "0.17.3",
     "@changesets/cli": "2.27.12",
     "@eslint/js": "9.19.0",
-    "@playwright/test": "1.50.0",
+    "@playwright/test": "1.50.1",
     "@tsconfig/node20": "20.1.4",
     "@types/eslint__js": "8.42.3",
     "@vitejs/plugin-react": "4.3.4",
