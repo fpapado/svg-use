@@ -6,7 +6,7 @@
 
 # Function: xastMakeThemeable()
 
-> **xastMakeThemeable**(`root`, `getThemeSubstitutions`): `Root`
+> **xastMakeThemeable**(`root`, `getThemeSubstitutions`, `options`): `Root`
 
 Traverse an SVG as xast, and substitute hardcoded color values with other ones
 (usually custom properties).
@@ -17,6 +17,9 @@ Traverse an SVG as xast, and substitute hardcoded color values with other ones
 
 • **getThemeSubstitutions**:
 [`GetThemeSubstitutionFunction`](../type-aliases/GetThemeSubstitutionFunction.md)
+
+• **options**: `XastMakeThemeableOptions`
+[`XastMakeThemeableOptions`](../interfaces/XastMakeThemeableOptions.md)
 
 ## Returns
 
