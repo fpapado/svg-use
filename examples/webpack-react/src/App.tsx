@@ -5,6 +5,7 @@ import {
   Archive,
   ArrowRight,
   Settings,
+  SettingsWithFillOptions,
 } from 'shared-library';
 import {
   Component as ArrowSvg,
@@ -41,7 +42,10 @@ function App() {
       <AlertTriangle />
       <Archive />
       <ArrowRight />
-      <Settings color="cyan" />
+      <p>Icon without fill</p>
+      <Settings color="slateblue" />
+      <p>Icon without fill but with forced fill</p>
+      <SettingsWithFillOptions color="slateblue" />
     </>
   );
 }
