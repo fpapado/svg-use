@@ -6,10 +6,11 @@
 
 # Function: xastMakeThemeable()
 
-> **xastMakeThemeable**(`root`, `getThemeSubstitutions`, `options`): `Root`
+> **xastMakeThemeable**(`root`, `getThemeSubstitutions`, `themableOptions`?):
+> `Root`
 
 Defined in:
-[theme/makeThemeable.ts:16](https://github.com/fpapado/svg-use/blob/main/packages/core/src/theme/makeThemeable.ts#L16)
+[theme/makeThemeable.ts:20](https://github.com/fpapado/svg-use/blob/main/packages/core/src/theme/makeThemeable.ts#L20)
 
 Traverse an SVG as xast, and substitute hardcoded color values with other ones
 (usually custom properties).
@@ -24,8 +25,9 @@ Traverse an SVG as xast, and substitute hardcoded color values with other ones
 
 [`GetThemeSubstitutionFunction`](../type-aliases/GetThemeSubstitutionFunction.md)
 
-• **options**: `XastMakeThemeableOptions`
-[`XastMakeThemeableOptions`](../interfaces/XastMakeThemeableOptions.md)
+### themableOptions?
+
+[`XastMakeThemeableOptions`](../type-aliases/XastMakeThemeableOptions.md)
 
 ## Returns
 

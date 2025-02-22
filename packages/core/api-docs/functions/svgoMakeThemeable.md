@@ -6,10 +6,11 @@
 
 # Function: svgoMakeThemeable()
 
-> **svgoMakeThemeable**(`themeSubstitutionFunction`): `CustomPlugin`
+> **svgoMakeThemeable**(`themeSubstitutionFunction`, `themableOptions`):
+> `CustomPlugin`
 
 Defined in:
-[theme/svgoMakeThemeable.ts:11](https://github.com/fpapado/svg-use/blob/main/packages/core/src/theme/svgoMakeThemeable.ts#L11)
+[theme/svgoMakeThemeable.ts:12](https://github.com/fpapado/svg-use/blob/main/packages/core/src/theme/svgoMakeThemeable.ts#L12)
 
 Substitute hardcoded color values with other ones (usually custom properties).
 SVGO-compatible version of [xastMakeThemeable](xastMakeThemeable.md)
@@ -19,6 +20,10 @@ SVGO-compatible version of [xastMakeThemeable](xastMakeThemeable.md)
 ### themeSubstitutionFunction
 
 [`GetThemeSubstitutionFunction`](../type-aliases/GetThemeSubstitutionFunction.md)
+
+### themableOptions
+
+[`XastMakeThemeableOptions`](../type-aliases/XastMakeThemeableOptions.md)
 
 ## Returns
 
