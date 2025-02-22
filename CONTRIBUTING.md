@@ -132,3 +132,21 @@ dependencies:
 ```shell
 pnpm --filter "core..." run build
 ```
+
+## Updating snapshots
+
+When you make a feature addition or change, Playwright end-to-end tests might
+fail due to outdated snapshots.
+
+You should update snapshots in your PR, by running a command locally on your
+machine. We have automated this process, but note that you will need Docker, in
+order to update snapshots targetting Linux Chromium.
+
+From the monorepo root, run:
+
+```shell
+pnpm test:e2e:update-snapshots
+```
+
+After a few minutes, snapshots should be written in their respective
+directories. Simply commit and push!

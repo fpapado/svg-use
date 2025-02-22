@@ -29,56 +29,16 @@ jobs:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
         with:
           fetch-depth: 0
-      # actions/checkout claims to do this automatically, but git status / git
-      # diff complains later on. This does not happen when running directly on
-      # the host. A mystery for another day, perhaps.
-      - run: git config --global --add safe.directory "$GITHUB_WORKSPACE"
       - name: Setup node
         uses: actions/setup-node@1d0ff469b7ec7b3cb9d8673fde0c81c44821de2a # v4
         with:
           node-version-file: ".nvmrc"
-      # Need to bootstrap corepack separately, because of a key rotation issue,
-      # and that issue not being fixed in the corepack version that ships with
-      # node at the time of writing
-      - run: npm install --global corepack
       - run: corepack enable
       - run: pnpm install
-      # - name: Install Playwright Browsers
-      #   run: pnpx playwright install chromium --with-deps
       - name: Build all
-        run: pnpm run -r build
+        run: pnpm run --recursive build
       - name: Run Playwright tests
-        # This always updates the snapshots, so we can provide them to the user
-        # as artifacts. Because --update-snapshots exits with code 0 even with updates, we use
-        # we use an extra step to fail the check manually.
-        run: pnpm test:e2e --update-snapshots
-      - name: Check for snapshot changes, and fail if needed
-        id: check-snapshots-changed
-        if: ${{!cancelled()}}
-        shell: bash
-        run: |
-          git add "*.png"
-          diff_names="$(git diff --staged --binary --name-only)"
-
-          if [ -n "$diff_names" ]; then
-              git diff --staged --binary >/tmp/snapshot_diff.patch
-              echo "snapshots_changed=true" >> "$GITHUB_OUTPUT"
-              printf "The following snapshots were updated:\n"
-              while IFS= read -r filename; do
-                  printf "%s\n" "$filename"
-              done <<<"$diff_names"
-              exit 1
-          else
-              echo "snapshots_changed=false" >> "$GITHUB_OUTPUT"
-          fi
-
-      - uses: actions/upload-artifact@65c4c4a1ddee5b72f698fdd19549f0f0fb45cf08 # v4
-        if: failure() && steps.check-snapshots-changed.outputs.snapshots_changed == 'true'
-        id: upload-snapshot-patch-artifact
-        with:
-          name: playwright-snapshot-diff
-          path: /tmp/snapshot_diff.patch
-
+        run: pnpm test:e2e
       - uses: actions/upload-artifact@65c4c4a1ddee5b72f698fdd19549f0f0fb45cf08 # v4
         if: always()
         id: upload-report-artifact
@@ -106,7 +66,6 @@ jobs:
         env:
           REPOSITORY: "${{github.repository}}"
           RUN_ID: "${{github.run_id}}"
-          PATCH_ARTIFACT_URL: "${{needs.playwright.outputs.snapshotPatchArtifactUrl}}"
           REPORT_ARTIFACT_URL: "${{needs.playwright.outputs.snapshotPatchArtifactUrl}}"
 
         run: |
@@ -117,9 +76,12 @@ jobs:
 
           It looks like some of the Playwright tests failed. 
 
-          If you made changes to the frontend UI without updating snapshots, this might be the cause. 
-          - [Artifact with a patch of all the updated snapshots]($PATCH_ARTIFACT_URL) (might not be available). You can apply it with \`git apply\`.
+          Debugging:
+
           - [Artifact with the Playwright report]($REPORT_ARTIFACT_URL). You can unzip it and inspect it with <https://trace.playwright.dev/>.
+          - If you made changes to the frontend UI without updating snapshots, this might be the cause. 
+          You can update all snapshots locally by running pnpm test:e2e:update-snapshots. You will need Docker, in order to update the Linux-based snapshots.
+
           $EOF
           HEREDOC
           )

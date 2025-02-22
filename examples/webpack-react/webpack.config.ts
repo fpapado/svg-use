@@ -1,4 +1,5 @@
 import type { Configuration } from 'webpack';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import HTMLWebpackPlugin from 'html-webpack-plugin';
 import * as path from 'node:path';
 // FIXME: This does not work atm, due to being in CJS instead of ESM
@@ -25,7 +26,8 @@ const config: Configuration = {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',
   },
-  plugins: [new HTMLWebpackPlugin()],
+   
+  plugins: [new HTMLWebpackPlugin(), new MiniCssExtractPlugin()],
   module: {
     rules: [
       {
@@ -73,6 +75,11 @@ const config: Configuration = {
         test: /\.[jt]sx?$/,
         exclude: /(node_modules)/,
         use: [{ loader: 'swc-loader', options: swcOptions }],
+      },
+      {
+        test: /\.css$/i,
+         
+        use: [MiniCssExtractPlugin.loader, 'css-loader'],
       },
     ],
   },

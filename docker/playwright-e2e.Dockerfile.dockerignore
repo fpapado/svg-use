@@ -1,0 +1,8 @@
+# Do not copy these over from the host to the container, as their architectures
+# might not be compatible
+node_modules/
+
+# No need for git history either
+.git/
+
+# Just leave everything else, for simplicity

@@ -24,7 +24,12 @@
     "prepare": "husky",
     "test": "vitest",
     "test:coverage": "vitest --coverage",
-    "test:e2e": "pnpm --recursive test:e2e"
+    "test:e2e": "pnpm --recursive test:e2e",
+    "test:e2e:docker:build": "docker build --file docker/playwright-e2e.Dockerfile --tag svg-use-playwright-e2e .",
+    "test:e2e:docker:update-snapshots": "docker run --rm -it --volume ./examples/webpack-react/e2e:/app/examples/webpack-react/e2e --volume ./examples/vite-react/e2e:/app/examples/vite-react/e2e svg-use-playwright-e2e /bin/bash -c 'pnpm test:e2e:update-local-snapshots'",
+    "test:e2e:update-linux-snapshots": "pnpm test:e2e:docker:build && pnpm test:e2e:docker:update-snapshots",
+    "test:e2e:update-local-snapshots": "pnpm --recursive test:e2e --update-snapshots",
+    "test:e2e:update-snapshots": "pnpm test:e2e:update-local-snapshots && pnpm test:e2e:update-linux-snapshots"
   },
   "devDependencies": {
     "@arethetypeswrong/cli": "0.17.3",
