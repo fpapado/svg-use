@@ -33,5 +33,6 @@ You can of course deviate from them for more bespoke use-cases.
 - [Result](type-aliases/Result.md)
 - [TransformOptions](type-aliases/TransformOptions.md)
 - [UseHrefInfo](type-aliases/UseHrefInfo.md)
+- [XastMakeThemeableOptions](type-aliases/XastMakeThemeableOptions.md)
 - [svgoMakeThemeable](functions/svgoMakeThemeable.md)
 - [xastMakeThemeable](functions/xastMakeThemeable.md)

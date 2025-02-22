@@ -11,7 +11,7 @@
 > & `object`, `string`\>
 
 Defined in:
-[transformSvgForUseHref.ts:133](https://github.com/fpapado/svg-use/blob/main/packages/core/src/transformSvgForUseHref.ts#L133)
+[transformSvgForUseHref.ts:142](https://github.com/fpapado/svg-use/blob/main/packages/core/src/transformSvgForUseHref.ts#L142)
 
 Transform an SVG, such that it can be referenced by `svg > use[href]`. Returns
 the transformed SVG contents, as well as any extracted information for

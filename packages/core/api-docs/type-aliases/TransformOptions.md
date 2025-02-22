@@ -9,7 +9,7 @@
 > **TransformOptions**: `object`
 
 Defined in:
-[transformSvgForUseHref.ts:79](https://github.com/fpapado/svg-use/blob/main/packages/core/src/transformSvgForUseHref.ts#L79)
+[transformSvgForUseHref.ts:82](https://github.com/fpapado/svg-use/blob/main/packages/core/src/transformSvgForUseHref.ts#L82)
 
 ## Type declaration
 
@@ -62,3 +62,15 @@ documentation for guidance.
 #### Default Value
 
 [defaultThemeSubstitution](../functions/defaultThemeSubstitution.md)
+
+### themableOptions?
+
+> `optional` **themableOptions**:
+> [`XastMakeThemeableOptions`](XastMakeThemeableOptions.md) \| `null`
+
+Options for the theming transform.
+
+- `fallbackRootFill`: If no fills or strokes are found in the SVG, then the
+  `fill="#000"` attribute will be added to the root SVG element. This is useful
+  for SVGs that do not specify a fill or stroke, and would otherwise default to
+  black. [xastMakeThemeable](../functions/xastMakeThemeable.md).

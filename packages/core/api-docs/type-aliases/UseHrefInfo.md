@@ -9,7 +9,7 @@
 > **UseHrefInfo**: `object`
 
 Defined in:
-[transformSvgForUseHref.ts:29](https://github.com/fpapado/svg-use/blob/main/packages/core/src/transformSvgForUseHref.ts#L29)
+[transformSvgForUseHref.ts:32](https://github.com/fpapado/svg-use/blob/main/packages/core/src/transformSvgForUseHref.ts#L32)
 
 ## Type declaration
 
