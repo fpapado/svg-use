@@ -26,7 +26,6 @@ export default defineConfig({
       // https://github.com/microsoft/playwright/issues/20097#issuecomment-1382672908
       //@ts-expect-error experimental
       _comparator: 'ssim-cie94',
-      maxDiffPixelRatio: 0.001,
     },
   },
 

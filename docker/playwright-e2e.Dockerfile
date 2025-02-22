@@ -18,6 +18,8 @@ WORKDIR /app
 RUN corepack enable
 RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install
 
+RUN pnpm install --recursive build
+
 # All our tests run in chromium (the new headless mode), so no need for other
 # browsers or the outdated chromium headless shell
 RUN pnpm exec playwright install --with-deps chromium --no-shell
