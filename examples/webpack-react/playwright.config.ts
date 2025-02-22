@@ -35,6 +35,7 @@ export default defineConfig({
       name: 'dev server',
       use: {
         ...devices['Desktop Chrome'],
+        channel: 'chromium',
         baseURL: 'http://localhost:8080/',
       },
     },
@@ -42,6 +43,7 @@ export default defineConfig({
       name: 'prod build',
       use: {
         ...devices['Desktop Chrome'],
+        channel: 'chromium',
         baseURL: 'http://localhost:3000',
       },
     },

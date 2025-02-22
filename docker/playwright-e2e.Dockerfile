@@ -18,7 +18,8 @@ WORKDIR /app
 RUN corepack enable
 RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install
 
-FROM mcr.microsoft.com/playwright:v1.50.0 AS playwright
+# All our tests run in chromium (the new headless mode), so no need for other
+# browsers or the outdated chromium headless shell
+RUN pnpm exec playwright install --with-deps chromium --no-shell
 
-COPY --from=base /app /app
-WORKDIR /app
+# Ready to run!
