@@ -21,6 +21,14 @@ export default defineConfig({
     trace: 'on-first-retry',
   },
 
+  expect: {
+    toHaveScreenshot: {
+      // https://github.com/microsoft/playwright/issues/20097#issuecomment-1382672908
+      //@ts-expect-error experimental
+      _comparator: 'ssim-cie94',
+    },
+  },
+
   /* Configure projects for major browsers */
   projects: [
     {
