@@ -52,7 +52,7 @@ export default defineConfig({
   /* It's a bit silly that we start these in parallel, but ok */
   webServer: [
     {
-      command: 'pnpm run dev',
+      command: 'pnpm run dev --no-open',
       url: 'http://localhost:8080/',
       reuseExistingServer: !process.env.CI,
     },
