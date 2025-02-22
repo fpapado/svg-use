@@ -13,7 +13,7 @@ import process from 'node:process';
 import fs from 'node:fs/promises';
 
 export type PluginOptions = Partial<
-  Pick<TransformOptions, 'getThemeSubstitutions'> &
+  Pick<TransformOptions, 'getThemeSubstitutions' | 'themableOptions'> &
     ModuleFactoryOptions & {
       getSvgIdAttribute: (info: {
         filename?: string;
@@ -24,7 +24,7 @@ export type PluginOptions = Partial<
 
 type AdvancedOptions = {
   /**
-   * A hook for changing the behaviour of how an SVG asset is emitted, and its
+   * A hook for changing the behavior of how an SVG asset is emitted, and its
    * URL resolved. Useful when implementing the Vite plugin, which does not
    * implement Rollup's `emitFile` method.
    *
@@ -62,6 +62,7 @@ const defaultOptions = {
   componentFactory: defaultComponentFactory,
   getSvgIdAttribute: defaultGetSvgIdAttribute,
   getThemeSubstitutions: defaultThemeSubstitution(),
+  themableOptions: null,
 } satisfies PluginOptions;
 
 function svgUsePlugin(
@@ -107,6 +108,7 @@ function svgUsePlugin(
         getThemeSubstitutions: hasNoTheme(id)
           ? null
           : options.getThemeSubstitutions,
+        themableOptions: options.themableOptions,
       });
 
       if (res.type === 'failure') {

@@ -6,6 +6,7 @@ import {
   defaultComponentFactory,
   defaultGetSvgIdAttribute,
   defaultThemeSubstitution,
+  XastMakeThemeableOptions,
 } from '@svg-use/core';
 import { globby } from 'globby';
 import { pascalCase } from 'change-case';
@@ -22,7 +23,10 @@ const OUT_DIR = 'src/icons';
 const ensureLeadingDotSlash = (str: string) =>
   str.startsWith('./') ? str : `./${str}`;
 
-async function processFile(filePath: string) {
+async function processFile(
+  filePath: string,
+  themableOptions: XastMakeThemeableOptions | null = null,
+) {
   const parsedPath = path.parse(filePath);
 
   // Write to the output directory in a flat structure, and colocate JS modules
@@ -39,6 +43,7 @@ async function processFile(filePath: string) {
   const transformResult = transformSvgForUseHref(initialContent, {
     getSvgIdAttribute: defaultGetSvgIdAttribute,
     getThemeSubstitutions: defaultThemeSubstitution(),
+    themableOptions,
   });
 
   if (transformResult.type === 'failure') {
@@ -93,9 +98,24 @@ async function writeIndexFile(indexPath: string, paths: Array<string>) {
 }
 
 async function main() {
-  const svgFilePaths = await globby(`${INPUT_DIR}/**/*.svg`);
+  // svgs without fill options
+  const svgFilePaths = await globby([
+    `${INPUT_DIR}/**/*.svg`,
+    `!${INPUT_DIR}/**/*-with-fill-options.svg`,
+  ]);
+  // svgs with fill options
+  const svgOptionsFilePaths = await globby(
+    `${INPUT_DIR}/**/*-with-fill-options.svg`,
+  );
 
-  const paths = await Promise.all(svgFilePaths.map(processFile));
+  const paths = [
+    ...(await Promise.all(svgFilePaths.map((file) => processFile(file)))),
+    ...(await Promise.all(
+      svgOptionsFilePaths.map((file) =>
+        processFile(file, { fallbackRootFill: '#000' }),
+      ),
+    )),
+  ];
 
   await writeIndexFile(
     INDEX_FILEPATH,

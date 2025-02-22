@@ -33,6 +33,7 @@ export { type Result } from './result.js';
 export { defaultThemeSubstitution } from './theme/defaultTheme.js';
 export {
   type GetThemeSubstitutionFunction,
+  type XastMakeThemeableOptions,
   xastMakeThemeable,
 } from './theme/makeThemeable.js';
 export { svgoMakeThemeable } from './theme/svgoMakeThemeable.js';

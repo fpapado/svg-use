@@ -4,7 +4,10 @@ import type { Result } from './result.js';
 import { XastRoot } from 'svgo/lib/types.js';
 import { visit } from 'unist-util-visit';
 import { fromXml } from 'xast-util-from-xml';
-import { GetThemeSubstitutionFunction } from './theme/makeThemeable.js';
+import {
+  GetThemeSubstitutionFunction,
+  XastMakeThemeableOptions,
+} from './theme/makeThemeable.js';
 import { GetSvgIdFunction } from './getSvgIdAttribute.js';
 import { svgoMakeThemeable } from './theme/svgoMakeThemeable.js';
 
@@ -116,6 +119,12 @@ export type TransformOptions = {
    * @defaultValue {@link defaultThemeSubstitution}
    */
   getThemeSubstitutions: GetThemeSubstitutionFunction | null;
+  /**
+   * Options for the theming transform.
+   * - `fallbackRootFill`: If no fills or strokes are found in the SVG, then the `fill="#000"` attribute will be added to the root SVG element. This is useful for SVGs that do not specify a fill or stroke, and would otherwise default to black.
+   * {@link xastMakeThemeable}.
+   */
+  themableOptions?: XastMakeThemeableOptions | null;
 };
 
 /**
@@ -132,7 +141,11 @@ export type TransformOptions = {
  */
 export function transformSvgForUseHref(
   contents: string,
-  { getSvgIdAttribute, getThemeSubstitutions }: TransformOptions,
+  {
+    getSvgIdAttribute,
+    getThemeSubstitutions,
+    themableOptions,
+  }: TransformOptions,
 ): Result<UseHrefInfo & { content: string }, string> {
   const transformed = svgo.optimize(contents, {
     plugins: [
@@ -144,7 +157,7 @@ export function transformSvgForUseHref(
       // transform, which only looks at attributes
       getThemeSubstitutions !== null ? 'convertStyleToAttrs' : undefined,
       getThemeSubstitutions !== null
-        ? svgoMakeThemeable(getThemeSubstitutions)
+        ? svgoMakeThemeable(getThemeSubstitutions, themableOptions ?? {})
         : undefined,
     ].filter((a) => a !== undefined) as PluginConfig[],
   });

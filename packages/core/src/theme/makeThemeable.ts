@@ -1,4 +1,4 @@
-import { CONTINUE, visit } from 'unist-util-visit';
+import { CONTINUE, EXIT, visit } from 'unist-util-visit';
 import type { Root } from 'xast';
 
 export type GetThemeSubstitutionFunction = (counts: {
@@ -9,6 +9,10 @@ export type GetThemeSubstitutionFunction = (counts: {
   strokes: Map<string, string>;
 };
 
+export type XastMakeThemeableOptions = {
+  fallbackRootFill?: string;
+};
+
 /**
  * Traverse an SVG as xast, and substitute hardcoded color values with other
  * ones (usually custom properties).
@@ -16,6 +20,7 @@ export type GetThemeSubstitutionFunction = (counts: {
 export function xastMakeThemeable(
   root: Root,
   getThemeSubstitutions: GetThemeSubstitutionFunction,
+  themableOptions?: XastMakeThemeableOptions,
 ): Root {
   const fixedFillRefs = new Map<string, number>();
   const fixedStrokeRefs = new Map<string, number>();
@@ -40,6 +45,30 @@ export function xastMakeThemeable(
       fixedStrokeRefs.set(stroke, (fixedStrokeRefs.get(stroke) ?? 0) + 1);
     }
   });
+
+  // If no elements have a fill or stroke, then SVG will default to black
+  if (
+    !!themableOptions?.fallbackRootFill &&
+    !fixedFillRefs.size &&
+    !fixedStrokeRefs.size
+  ) {
+    let hasBeenVisited = false;
+    visit(root, (node) => {
+      if (node.type === 'element' && node.name === 'svg') {
+        if (!node.attributes.fill && !node.attributes.stroke) {
+          node.attributes.fill = themableOptions.fallbackRootFill;
+          hasBeenVisited = true;
+        }
+        return EXIT;
+      }
+
+      return CONTINUE;
+    });
+
+    if (hasBeenVisited) {
+      return xastMakeThemeable(root, getThemeSubstitutions, themableOptions);
+    }
+  }
 
   const sortedFills = new Map(
     Array.from(fixedFillRefs.entries()).sort(([, a], [, b]) => a - b),
