@@ -80,7 +80,7 @@ jobs:
 
           - [Artifact with the Playwright report]($REPORT_ARTIFACT_URL). You can unzip it and inspect it with <https://trace.playwright.dev/>.
           - If you made changes to the frontend UI without updating snapshots, this might be the cause. 
-          You can update all snapshots locally by running `pnpm test:e2e:update-snapshots`. You will need Docker, in order to update the linux-based snapshots.
+          You can update all snapshots locally by running pnpm test:e2e:update-snapshots. You will need Docker, in order to update the Linux-based snapshots.
 
           $EOF
           HEREDOC
