@@ -9,7 +9,7 @@
 > `const` **configContext**: `Context`\<[`Config`](../type-aliases/Config.md)\>
 
 Defined in:
-[packages/react/src/ThemedExternalSvg.tsx:63](https://github.com/fpapado/svg-use/blob/main/packages/react/src/ThemedExternalSvg.tsx#L63)
+[ThemedExternalSvg.tsx:63](https://github.com/fpapado/svg-use/blob/main/packages/react/src/ThemedExternalSvg.tsx#L63)
 
 A context that you can use to customise the runtime behavior of
 `ThemedExternalSvg`. Because `ThemedExternalSvg` is usually a compilation

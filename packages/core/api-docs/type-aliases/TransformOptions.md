@@ -6,16 +6,34 @@
 
 # Type Alias: TransformOptions
 
-> **TransformOptions**: `object`
+> **TransformOptions** = `object`
 
 Defined in:
 [transformSvgForUseHref.ts:82](https://github.com/fpapado/svg-use/blob/main/packages/core/src/transformSvgForUseHref.ts#L82)
 
-## Type declaration
+## Properties
+
+### fallbackRootFill?
+
+> `optional` **fallbackRootFill**:
+> [`XastMakeThemeableOptions`](XastMakeThemeableOptions.md)\[`"fallbackRootFill"`\]
+
+Defined in:
+[transformSvgForUseHref.ts:128](https://github.com/fpapado/svg-use/blob/main/packages/core/src/transformSvgForUseHref.ts#L128)
+
+If no fills or strokes are found in the SVG, then this specified fill will be
+added to the root SVG element. This is useful for SVGs that do not specify a
+fill or stroke, and would otherwise default to black. This addition is done
+prior to the `getThemeSubstitutions` transform.
+
+---
 
 ### getSvgIdAttribute
 
 > **getSvgIdAttribute**: [`GetSvgIdFunction`](GetSvgIdFunction.md)
+
+Defined in:
+[transformSvgForUseHref.ts:98](https://github.com/fpapado/svg-use/blob/main/packages/core/src/transformSvgForUseHref.ts#L98)
 
 Specifies an id for the referenced <svg>, set as the id attribute on the root.
 ids are required in order for use[href] to work.
@@ -35,10 +53,15 @@ prior to this loader, if you want more robust id generation.
 id attribute if present, static 'use-href-target' otherwise
 ```
 
+---
+
 ### getThemeSubstitutions
 
 > **getThemeSubstitutions**:
 > [`GetThemeSubstitutionFunction`](GetThemeSubstitutionFunction.md) \| `null`
+
+Defined in:
+[transformSvgForUseHref.ts:121](https://github.com/fpapado/svg-use/blob/main/packages/core/src/transformSvgForUseHref.ts#L121)
 
 A function that is used to substituted hardcoded color attributes with different
 ones (usually custom properties). Receives a sorted map of fills and strokes.
@@ -62,15 +85,3 @@ documentation for guidance.
 #### Default Value
 
 [defaultThemeSubstitution](../functions/defaultThemeSubstitution.md)
-
-### themableOptions?
-
-> `optional` **themableOptions**:
-> [`XastMakeThemeableOptions`](XastMakeThemeableOptions.md) \| `null`
-
-Options for the theming transform.
-
-- `fallbackRootFill`: If no fills or strokes are found in the SVG, then the
-  `fill="#000"` attribute will be added to the root SVG element. This is useful
-  for SVGs that do not specify a fill or stroke, and would otherwise default to
-  black. [xastMakeThemeable](../functions/xastMakeThemeable.md).

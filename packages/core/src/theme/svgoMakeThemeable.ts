@@ -11,7 +11,7 @@ import {
  */
 export const svgoMakeThemeable = (
   themeSubstitutionFunction: GetThemeSubstitutionFunction,
-  themableOptions: XastMakeThemeableOptions,
+  options?: XastMakeThemeableOptions,
 ): CustomPlugin => ({
   name: 'make-themeable',
   fn: (root) => {
@@ -19,7 +19,7 @@ export const svgoMakeThemeable = (
     // roots, so the cast is safe. makeThemeable does its own visiting of the
     // tree (in two passes), so we do not use SVGO's visitor.
     // @ts-expect-error -- the types do not line up, as above
-    xastMakeThemeable(root, themeSubstitutionFunction, themableOptions);
+    xastMakeThemeable(root, themeSubstitutionFunction, options);
     return null;
   },
 });

@@ -10,6 +10,12 @@ export type GetThemeSubstitutionFunction = (counts: {
 };
 
 export type XastMakeThemeableOptions = {
+  /**
+   * If no fills or strokes are found in the SVG, then this specified fill will
+   * be added to the root SVG element. This is useful for SVGs that do not
+   * specify a fill or stroke, and would otherwise default to black. This
+   * addition is done prior to the `getThemeSubstitutions` transform.
+   */
   fallbackRootFill?: string;
 };
 
@@ -20,7 +26,7 @@ export type XastMakeThemeableOptions = {
 export function xastMakeThemeable(
   root: Root,
   getThemeSubstitutions: GetThemeSubstitutionFunction,
-  themableOptions?: XastMakeThemeableOptions,
+  options?: XastMakeThemeableOptions,
 ): Root {
   const fixedFillRefs = new Map<string, number>();
   const fixedStrokeRefs = new Map<string, number>();
@@ -46,17 +52,18 @@ export function xastMakeThemeable(
     }
   });
 
-  // If no elements have a fill or stroke, then SVG will default to black
+  // If no elements have a fill or stroke, then set any specified fallback
+  // fill on the root
   if (
-    !!themableOptions?.fallbackRootFill &&
-    !fixedFillRefs.size &&
-    !fixedStrokeRefs.size
+    options?.fallbackRootFill !== undefined &&
+    fixedFillRefs.size === 0 &&
+    fixedStrokeRefs.size === 0
   ) {
     let hasBeenVisited = false;
     visit(root, (node) => {
       if (node.type === 'element' && node.name === 'svg') {
         if (!node.attributes.fill && !node.attributes.stroke) {
-          node.attributes.fill = themableOptions.fallbackRootFill;
+          node.attributes.fill = options.fallbackRootFill;
           hasBeenVisited = true;
         }
         return EXIT;
@@ -66,7 +73,7 @@ export function xastMakeThemeable(
     });
 
     if (hasBeenVisited) {
-      return xastMakeThemeable(root, getThemeSubstitutions, themableOptions);
+      return xastMakeThemeable(root, getThemeSubstitutions, options);
     }
   }
 

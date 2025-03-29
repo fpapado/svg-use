@@ -6,7 +6,7 @@
 
 # Type Alias: ComponentFactoryFunction()
 
-> **ComponentFactoryFunction**: (`props`) => `unknown`
+> **ComponentFactoryFunction** = (`props`) => `unknown`
 
 Defined in:
 [createJsModule.ts:15](https://github.com/fpapado/svg-use/blob/main/packages/core/src/createJsModule.ts#L15)

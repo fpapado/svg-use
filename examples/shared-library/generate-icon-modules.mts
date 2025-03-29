@@ -25,7 +25,7 @@ const ensureLeadingDotSlash = (str: string) =>
 
 async function processFile(
   filePath: string,
-  themableOptions: XastMakeThemeableOptions | null = null,
+  themableOptions?: XastMakeThemeableOptions,
 ) {
   const parsedPath = path.parse(filePath);
 
@@ -43,7 +43,7 @@ async function processFile(
   const transformResult = transformSvgForUseHref(initialContent, {
     getSvgIdAttribute: defaultGetSvgIdAttribute,
     getThemeSubstitutions: defaultThemeSubstitution(),
-    themableOptions,
+    fallbackRootFill: themableOptions?.fallbackRootFill,
   });
 
   if (transformResult.type === 'failure') {

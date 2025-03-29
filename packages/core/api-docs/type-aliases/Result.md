@@ -6,14 +6,18 @@
 
 # Type Alias: Result\<TData, TError\>
 
-> **Result**\<`TData`, `TError`\>: \{ `data`: `TData`; `type`: `"success"`; \} >
-> \| \{ `error`: `TError`; `type`: `"failure"`; \}
+> **Result**\<`TData`, `TError`\> = \{ `data`: `TData`; `type`: `"success"`;
+> \} > \| \{ `error`: `TError`; `type`: `"failure"`; \}
 
 Defined in:
 [result.ts:1](https://github.com/fpapado/svg-use/blob/main/packages/core/src/result.ts#L1)
 
 ## Type Parameters
 
-• **TData**
+### TData
 
-• **TError**
+`TData`
+
+### TError
+
+`TError`

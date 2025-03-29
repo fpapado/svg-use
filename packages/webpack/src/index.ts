@@ -12,7 +12,7 @@ import {
 } from '@svg-use/core';
 
 export type LoaderOptions = Partial<
-  Pick<TransformOptions, 'getThemeSubstitutions'> &
+  Pick<TransformOptions, 'getThemeSubstitutions' | 'fallbackRootFill'> &
     ModuleFactoryOptions & {
       /**
        * The output filename for the .svg resource.
@@ -47,7 +47,8 @@ export default function svgUseLoader(
   const callback = this.async();
 
   // TODO: validate options with schema-utils
-  const options: Required<LoaderOptions> = {
+  const options: Required<Omit<LoaderOptions, 'fallbackRootFill'>> &
+    Partial<Pick<LoaderOptions, 'fallbackRootFill'>> = {
     ...defaultOptions,
     ...this.getOptions(),
   };

@@ -6,16 +6,19 @@
 
 # Type Alias: Config
 
-> **Config**: `object`
+> **Config** = `object`
 
 Defined in:
-[packages/react/src/ThemedExternalSvg.tsx:11](https://github.com/fpapado/svg-use/blob/main/packages/react/src/ThemedExternalSvg.tsx#L11)
+[ThemedExternalSvg.tsx:11](https://github.com/fpapado/svg-use/blob/main/packages/react/src/ThemedExternalSvg.tsx#L11)
 
-## Type declaration
+## Properties
 
 ### rewritePath()?
 
 > `optional` **rewritePath**: (`pathOrHref`) => `string`
+
+Defined in:
+[ThemedExternalSvg.tsx:25](https://github.com/fpapado/svg-use/blob/main/packages/react/src/ThemedExternalSvg.tsx#L25)
 
 Used to rewrite paths at runtime. This is most useful to account for hosting
 your assets on a CDN.
@@ -39,9 +42,14 @@ responsible for that.
 
 `string`
 
+---
+
 ### runtimeChecksEnabled?
 
 > `optional` **runtimeChecksEnabled**: `boolean`
+
+Defined in:
+[ThemedExternalSvg.tsx:33](https://github.com/fpapado/svg-use/blob/main/packages/react/src/ThemedExternalSvg.tsx#L33)
 
 Toggles runtime checks, which help catch common pitfalls with using external
 SVGs, such as needing to be on the same origin.

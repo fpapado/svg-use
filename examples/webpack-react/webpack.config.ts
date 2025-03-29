@@ -2,8 +2,7 @@ import type { Configuration } from 'webpack';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import HTMLWebpackPlugin from 'html-webpack-plugin';
 import * as path from 'node:path';
-// FIXME: This does not work atm, due to being in CJS instead of ESM
-// import type { LoaderOptions as SvgUseOptions } from '@svg-use/webpack';
+import type { LoaderOptions as SvgUseOptions } from '@svg-use/webpack';
 import { Config } from '@swc/core';
 
 const swcOptions: Config = {
@@ -26,7 +25,7 @@ const config: Configuration = {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',
   },
-   
+
   plugins: [new HTMLWebpackPlugin(), new MiniCssExtractPlugin()],
   module: {
     rules: [
@@ -65,7 +64,7 @@ const config: Configuration = {
                 options: {
                   // Customise to your heart's content
                   svgAssetFilename: 'svgAssets/[name]-[contenthash].[ext]',
-                },
+                } satisfies SvgUseOptions,
               },
             ],
           },
@@ -78,7 +77,6 @@ const config: Configuration = {
       },
       {
         test: /\.css$/i,
-         
         use: [MiniCssExtractPlugin.loader, 'css-loader'],
       },
     ],

@@ -6,21 +6,34 @@
 
 # Type Alias: FactoryProps
 
-> **FactoryProps**: `object`
+> **FactoryProps** = `object`
 
 Defined in:
-[packages/react/src/ThemedExternalSvg.tsx:148](https://github.com/fpapado/svg-use/blob/main/packages/react/src/ThemedExternalSvg.tsx#L148)
+[ThemedExternalSvg.tsx:148](https://github.com/fpapado/svg-use/blob/main/packages/react/src/ThemedExternalSvg.tsx#L148)
 
-## Type declaration
+## Properties
 
 ### id
 
 > **id**: `string`
 
+Defined in:
+[ThemedExternalSvg.tsx:148](https://github.com/fpapado/svg-use/blob/main/packages/react/src/ThemedExternalSvg.tsx#L148)
+
+---
+
 ### url
 
 > **url**: `string`
 
+Defined in:
+[ThemedExternalSvg.tsx:148](https://github.com/fpapado/svg-use/blob/main/packages/react/src/ThemedExternalSvg.tsx#L148)
+
+---
+
 ### viewBox
 
 > **viewBox**: `string`
+
+Defined in:
+[ThemedExternalSvg.tsx:148](https://github.com/fpapado/svg-use/blob/main/packages/react/src/ThemedExternalSvg.tsx#L148)

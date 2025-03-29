@@ -13,7 +13,7 @@ import process from 'node:process';
 import fs from 'node:fs/promises';
 
 export type PluginOptions = Partial<
-  Pick<TransformOptions, 'getThemeSubstitutions' | 'themableOptions'> &
+  Pick<TransformOptions, 'getThemeSubstitutions' | 'fallbackRootFill'> &
     ModuleFactoryOptions & {
       getSvgIdAttribute: (info: {
         filename?: string;
@@ -62,14 +62,14 @@ const defaultOptions = {
   componentFactory: defaultComponentFactory,
   getSvgIdAttribute: defaultGetSvgIdAttribute,
   getThemeSubstitutions: defaultThemeSubstitution(),
-  themableOptions: null,
 } satisfies PluginOptions;
 
 function svgUsePlugin(
   userOptions?: PluginOptions,
   advancedOptions: AdvancedOptions = {},
 ): Plugin {
-  const options: Required<PluginOptions> = {
+  const options: Required<Omit<PluginOptions, 'fallbackRootFill'>> &
+    Partial<Pick<PluginOptions, 'fallbackRootFill'>> = {
     ...defaultOptions,
     ...userOptions,
   };
@@ -108,7 +108,7 @@ function svgUsePlugin(
         getThemeSubstitutions: hasNoTheme(id)
           ? null
           : options.getThemeSubstitutions,
-        themableOptions: options.themableOptions,
+        fallbackRootFill: options.fallbackRootFill,
       });
 
       if (res.type === 'failure') {
