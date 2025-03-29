@@ -6,7 +6,7 @@
 
 # Type Alias: GetSvgIdFunction()
 
-> **GetSvgIdFunction**: (`{   existingId, }`) => `string`
+> **GetSvgIdFunction** = (`{   existingId, }`) => `string`
 
 Defined in:
 [getSvgIdAttribute.ts:1](https://github.com/fpapado/svg-use/blob/main/packages/core/src/getSvgIdAttribute.ts#L1)
@@ -17,7 +17,7 @@ Defined in:
 
 existingId, \}
 
-#### existingId
+#### existingId?
 
 `string`
 

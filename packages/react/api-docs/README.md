@@ -10,8 +10,8 @@ These are the main exports of this package. You would typically use these when
 creating SVGs with the default theme configuration.
 
 - [configContext](variables/configContext.md)
+- [ThemedExternalSvg](variables/ThemedExternalSvg.md)
 - [createThemedExternalSvg](functions/createThemedExternalSvg.md)
-- [ThemedExternalSvg](functions/ThemedExternalSvg.md)
 
 ## Other
 

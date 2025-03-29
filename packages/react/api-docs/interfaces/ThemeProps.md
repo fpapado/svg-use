@@ -7,7 +7,7 @@
 # Interface: ThemeProps
 
 Defined in:
-[packages/react/src/ThemedExternalSvg.tsx:67](https://github.com/fpapado/svg-use/blob/main/packages/react/src/ThemedExternalSvg.tsx#L67)
+[ThemedExternalSvg.tsx:67](https://github.com/fpapado/svg-use/blob/main/packages/react/src/ThemedExternalSvg.tsx#L67)
 
 ## Properties
 
@@ -16,7 +16,7 @@ Defined in:
 > `optional` **color**: `string`
 
 Defined in:
-[packages/react/src/ThemedExternalSvg.tsx:68](https://github.com/fpapado/svg-use/blob/main/packages/react/src/ThemedExternalSvg.tsx#L68)
+[ThemedExternalSvg.tsx:68](https://github.com/fpapado/svg-use/blob/main/packages/react/src/ThemedExternalSvg.tsx#L68)
 
 ---
 
@@ -25,7 +25,7 @@ Defined in:
 > `optional` **colorSecondary**: `string`
 
 Defined in:
-[packages/react/src/ThemedExternalSvg.tsx:69](https://github.com/fpapado/svg-use/blob/main/packages/react/src/ThemedExternalSvg.tsx#L69)
+[ThemedExternalSvg.tsx:69](https://github.com/fpapado/svg-use/blob/main/packages/react/src/ThemedExternalSvg.tsx#L69)
 
 ---
 
@@ -34,4 +34,4 @@ Defined in:
 > `optional` **colorTertiary**: `string`
 
 Defined in:
-[packages/react/src/ThemedExternalSvg.tsx:70](https://github.com/fpapado/svg-use/blob/main/packages/react/src/ThemedExternalSvg.tsx#L70)
+[ThemedExternalSvg.tsx:70](https://github.com/fpapado/svg-use/blob/main/packages/react/src/ThemedExternalSvg.tsx#L70)

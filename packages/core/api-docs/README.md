@@ -19,7 +19,7 @@ that you use these defaults if you are implementing a generic bundler plugin.
 You can of course deviate from them for more bespoke use-cases.
 
 - [defaultComponentFactory](variables/defaultComponentFactory.md)
-- [defaultGetSvgIdAttribute](functions/defaultGetSvgIdAttribute.md)
+- [defaultGetSvgIdAttribute](variables/defaultGetSvgIdAttribute.md)
 - [defaultThemeSubstitution](functions/defaultThemeSubstitution.md)
 
 ## Other

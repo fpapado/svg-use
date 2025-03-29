@@ -6,8 +6,7 @@
 
 # Function: svgoMakeThemeable()
 
-> **svgoMakeThemeable**(`themeSubstitutionFunction`, `themableOptions`):
-> `CustomPlugin`
+> **svgoMakeThemeable**(`themeSubstitutionFunction`, `options`?): `CustomPlugin`
 
 Defined in:
 [theme/svgoMakeThemeable.ts:12](https://github.com/fpapado/svg-use/blob/main/packages/core/src/theme/svgoMakeThemeable.ts#L12)
@@ -21,7 +20,7 @@ SVGO-compatible version of [xastMakeThemeable](xastMakeThemeable.md)
 
 [`GetThemeSubstitutionFunction`](../type-aliases/GetThemeSubstitutionFunction.md)
 
-### themableOptions
+### options?
 
 [`XastMakeThemeableOptions`](../type-aliases/XastMakeThemeableOptions.md)
 
