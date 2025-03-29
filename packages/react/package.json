@@ -55,7 +55,10 @@
     "react-dom": "^18 || ^19"
   },
   "devDependencies": {
-    "@types/react": "19.0.12"
+    "@testing-library/jest-dom": "6.6.3",
+    "@testing-library/react": "16.2.0",
+    "@types/react": "19.0.12",
+    "happy-dom": "17.4.4"
   },
   "keywords": [
     "loader",

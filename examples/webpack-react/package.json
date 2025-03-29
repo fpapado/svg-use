@@ -16,7 +16,8 @@
   "dependencies": {
     "@svg-use/react": "workspace:^",
     "react": "19.1.0",
-    "react-dom": "19.1.0"
+    "react-dom": "19.1.0",
+    "shared-library": "workspace:*"
   },
   "devDependencies": {
     "@svg-use/react": "workspace:^0.4.3",
@@ -31,7 +32,6 @@
     "html-webpack-plugin": "5.6.3",
     "mini-css-extract-plugin": "2.9.2",
     "serve": "14.2.4",
-    "shared-library": "workspace:*",
     "swc-loader": "^0.2.6",
     "ts-node": "10.9.2",
     "typescript": "catalog:dev",

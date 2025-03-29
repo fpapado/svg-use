@@ -108,15 +108,16 @@ export type TransformOptions = {
    * fallback, such as fill="var(--use-href-fill-primary, #123123)".
    *
    * When using a custom function, a prefix is recommended for the properties,
-   * to avoid accidentally inheriting styles from the host document (unless
-   * that is intended).
+   * to avoid accidentally inheriting styles from the host document (unless that
+   * is intended).
    *
    * For SVGs that are meant to be unthemeable (e.g. country flags), or that mix
    * themed values with static ones, you should configure the loader with a
    * different URL query, that uses `null` for the theme function. Refer to the
    * library documentation for guidance.
    *
-   * @defaultValue {@link defaultThemeSubstitution}
+   * The recommended default is the result of calling
+   * `getDefaultThemeSubstitutionFunction` from this module.
    */
   getThemeSubstitutions: GetThemeSubstitutionFunction | null;
   /**
@@ -124,8 +125,10 @@ export type TransformOptions = {
    * be added to the root SVG element. This is useful for SVGs that do not
    * specify a fill or stroke, and would otherwise default to black. This
    * addition is done prior to the `getThemeSubstitutions` transform.
+   *
+   * The recommended default is `defaultFallbackRootFill` from this module.
    */
-  fallbackRootFill?: XastMakeThemeableOptions['fallbackRootFill'];
+  fallbackRootFill: XastMakeThemeableOptions['fallbackRootFill'] | null;
 };
 
 /**
@@ -159,7 +162,7 @@ export function transformSvgForUseHref(
       getThemeSubstitutions !== null ? 'convertStyleToAttrs' : undefined,
       getThemeSubstitutions !== null
         ? svgoMakeThemeable(getThemeSubstitutions, {
-            fallbackRootFill,
+            fallbackRootFill: fallbackRootFill ?? undefined,
           })
         : undefined,
     ].filter((a) => a !== undefined) as PluginConfig[],

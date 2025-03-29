@@ -25,7 +25,6 @@
     "check-types": "tsc --noEmit"
   },
   "dependencies": {
-    "@svg-use/core": "workspace:^",
     "@svg-use/react": "workspace:^"
   },
   "peerDependencies": {
@@ -33,6 +32,7 @@
     "react-dom": "^18 || ^19"
   },
   "devDependencies": {
+    "@svg-use/core": "workspace:^",
     "@types/node": "22.13.14",
     "@types/react": "19.0.12",
     "change-case": "5.4.4",

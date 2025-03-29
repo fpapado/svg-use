@@ -20,7 +20,7 @@ You can of course deviate from them for more bespoke use-cases.
 
 - [defaultComponentFactory](variables/defaultComponentFactory.md)
 - [defaultGetSvgIdAttribute](variables/defaultGetSvgIdAttribute.md)
-- [defaultThemeSubstitution](functions/defaultThemeSubstitution.md)
+- [getDefaultThemeSubstitutionFunction](functions/getDefaultThemeSubstitutionFunction.md)
 
 ## Other
 
@@ -34,5 +34,6 @@ You can of course deviate from them for more bespoke use-cases.
 - [TransformOptions](type-aliases/TransformOptions.md)
 - [UseHrefInfo](type-aliases/UseHrefInfo.md)
 - [XastMakeThemeableOptions](type-aliases/XastMakeThemeableOptions.md)
+- [defaultFallbackRootFill](variables/defaultFallbackRootFill.md)
 - [svgoMakeThemeable](functions/svgoMakeThemeable.md)
 - [xastMakeThemeable](functions/xastMakeThemeable.md)

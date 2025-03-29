@@ -30,7 +30,10 @@ export {
   defaultGetSvgIdAttribute,
 } from './getSvgIdAttribute.js';
 export { type Result } from './result.js';
-export { defaultThemeSubstitution } from './theme/defaultTheme.js';
+export {
+  getDefaultThemeSubstitutionFunction,
+  defaultFallbackRootFill,
+} from './theme/defaultTheme.js';
 export {
   type GetThemeSubstitutionFunction,
   type XastMakeThemeableOptions,

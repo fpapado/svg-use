@@ -1,10 +1,10 @@
 import { describe, expect, it } from 'vitest';
-import { defaultThemeSubstitution } from './defaultTheme.js';
+import { getDefaultThemeSubstitutionFunction } from './defaultTheme.js';
 
-describe('defaultThemeSubstitution', () => {
+describe('getDefaultThemeSubstitutionFunction', () => {
   it('returns the expected substitutions, in sorted order', () => {
     expect(
-      defaultThemeSubstitution()({
+      getDefaultThemeSubstitutionFunction()({
         fills: new Map([
           ['#123', 3],
           ['red', 2],
@@ -32,7 +32,9 @@ describe('defaultThemeSubstitution', () => {
 
   it('provides an option to fall back to currentColor for monochrome icons', () => {
     expect(
-      defaultThemeSubstitution({ monochromeCssVarFallback: 'currentColor' })({
+      getDefaultThemeSubstitutionFunction({
+        monochromeCssVarFallback: 'currentColor',
+      })({
         fills: new Map([['#123', 3]]),
         strokes: new Map([['#123', 3]]),
       }),
@@ -46,7 +48,7 @@ describe('defaultThemeSubstitution', () => {
 
   it('throws when there are more than three colors', () => {
     expect(() =>
-      defaultThemeSubstitution()({
+      getDefaultThemeSubstitutionFunction()({
         fills: new Map([
           ['#123', 3],
           ['red', 2],

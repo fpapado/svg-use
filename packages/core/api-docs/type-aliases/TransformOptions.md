@@ -13,18 +13,21 @@ Defined in:
 
 ## Properties
 
-### fallbackRootFill?
+### fallbackRootFill
 
-> `optional` **fallbackRootFill**:
-> [`XastMakeThemeableOptions`](XastMakeThemeableOptions.md)\[`"fallbackRootFill"`\]
+> **fallbackRootFill**:
+> [`XastMakeThemeableOptions`](XastMakeThemeableOptions.md)\[`"fallbackRootFill"`\] >
+> \| `null`
 
 Defined in:
-[transformSvgForUseHref.ts:128](https://github.com/fpapado/svg-use/blob/main/packages/core/src/transformSvgForUseHref.ts#L128)
+[transformSvgForUseHref.ts:131](https://github.com/fpapado/svg-use/blob/main/packages/core/src/transformSvgForUseHref.ts#L131)
 
 If no fills or strokes are found in the SVG, then this specified fill will be
 added to the root SVG element. This is useful for SVGs that do not specify a
 fill or stroke, and would otherwise default to black. This addition is done
 prior to the `getThemeSubstitutions` transform.
+
+The recommended default is `defaultFallbackRootFill` from this module.
 
 ---
 
@@ -61,7 +64,7 @@ id attribute if present, static 'use-href-target' otherwise
 > [`GetThemeSubstitutionFunction`](GetThemeSubstitutionFunction.md) \| `null`
 
 Defined in:
-[transformSvgForUseHref.ts:121](https://github.com/fpapado/svg-use/blob/main/packages/core/src/transformSvgForUseHref.ts#L121)
+[transformSvgForUseHref.ts:122](https://github.com/fpapado/svg-use/blob/main/packages/core/src/transformSvgForUseHref.ts#L122)
 
 A function that is used to substituted hardcoded color attributes with different
 ones (usually custom properties). Receives a sorted map of fills and strokes.
@@ -82,6 +85,5 @@ themed values with static ones, you should configure the loader with a different
 URL query, that uses `null` for the theme function. Refer to the library
 documentation for guidance.
 
-#### Default Value
-
-[defaultThemeSubstitution](../functions/defaultThemeSubstitution.md)
+The recommended default is the result of calling
+`getDefaultThemeSubstitutionFunction` from this module.
