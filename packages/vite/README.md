@@ -9,8 +9,8 @@ server.
 First, install the plugin, and the default React wrapper:
 
 ```shell
-pnpm install --dev @svg-use/vite
-pnpm install @svg-use/react
+pnpm add --save-dev @svg-use/vite
+pnpm add @svg-use/react
 ```
 
 ### Configure Vite

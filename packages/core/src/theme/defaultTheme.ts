@@ -74,3 +74,5 @@ export const defaultThemeSubstitution =
       strokes: new Map(substitutions),
     };
   };
+
+export const defaultFallbackRootFill = '#000';

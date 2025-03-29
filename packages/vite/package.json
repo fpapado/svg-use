@@ -46,8 +46,15 @@
     "test": "vitest --pass-with-no-tests"
   },
   "dependencies": {
-    "@svg-use/react": "workspace:^",
     "@svg-use/rollup": "workspace:^"
+  },
+  "peerDependencies": {
+    "@svg-use/react": "workspace:^"
+  },
+  "peerDependenciesMeta": {
+    "@svg-use/react": {
+      "optional": true
+    }
   },
   "devDependencies": {
     "@types/node": "22.13.14",

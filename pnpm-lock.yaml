@@ -89,9 +89,6 @@ importers:
 
   examples/shared-library:
     dependencies:
-      '@svg-use/core':
-        specifier: workspace:^
-        version: link:../../packages/core
       '@svg-use/react':
         specifier: workspace:^
         version: link:../../packages/react
@@ -102,6 +99,9 @@ importers:
         specifier: ^18 || ^19
         version: 19.1.0(react@19.1.0)
     devDependencies:
+      '@svg-use/core':
+        specifier: workspace:^
+        version: link:../../packages/core
       '@types/node':
         specifier: 22.13.14
         version: 22.13.14
@@ -172,6 +172,9 @@ importers:
       react-dom:
         specifier: 19.1.0
         version: 19.1.0(react@19.1.0)
+      shared-library:
+        specifier: workspace:*
+        version: link:../shared-library
     devDependencies:
       '@svg-use/webpack':
         specifier: workspace:^
@@ -206,9 +209,6 @@ importers:
       serve:
         specifier: 14.2.4
         version: 14.2.4
-      shared-library:
-        specifier: workspace:*
-        version: link:../shared-library
       swc-loader:
         specifier: ^0.2.6
         version: 0.2.6(@swc/core@1.11.13)(webpack@5.98.0)

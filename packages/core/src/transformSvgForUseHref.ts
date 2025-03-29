@@ -124,8 +124,10 @@ export type TransformOptions = {
    * be added to the root SVG element. This is useful for SVGs that do not
    * specify a fill or stroke, and would otherwise default to black. This
    * addition is done prior to the `getThemeSubstitutions` transform.
+   *
+   * @defaultValue {@link defaultFallbackRootFill}
    */
-  fallbackRootFill?: XastMakeThemeableOptions['fallbackRootFill'];
+  fallbackRootFill: XastMakeThemeableOptions['fallbackRootFill'] | null;
 };
 
 /**
@@ -159,7 +161,7 @@ export function transformSvgForUseHref(
       getThemeSubstitutions !== null ? 'convertStyleToAttrs' : undefined,
       getThemeSubstitutions !== null
         ? svgoMakeThemeable(getThemeSubstitutions, {
-            fallbackRootFill,
+            fallbackRootFill: fallbackRootFill ?? undefined,
           })
         : undefined,
     ].filter((a) => a !== undefined) as PluginConfig[],

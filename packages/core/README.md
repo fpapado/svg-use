@@ -16,7 +16,7 @@ application), or as a codegen step (instead of bundler plugins), then
 ## Quick start
 
 ```shell
-pnpm install --save-dev @svg-use/core
+pnpm add --save-dev @svg-use/core
 ```
 
 Here are the basic transformations, assuming some SVG content in scope:

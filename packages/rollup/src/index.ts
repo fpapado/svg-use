@@ -1,7 +1,7 @@
 import type { Plugin } from 'rollup';
 import {
   createJsModule,
-  transformSvgForUseHref as transformSvg,
+  transformSvgForUseHref,
   type TransformOptions,
   type ModuleFactoryOptions,
   defaultComponentFactory,
@@ -62,14 +62,14 @@ const defaultOptions = {
   componentFactory: defaultComponentFactory,
   getSvgIdAttribute: defaultGetSvgIdAttribute,
   getThemeSubstitutions: defaultThemeSubstitution(),
+  fallbackRootFill: '#000',
 } satisfies PluginOptions;
 
 function svgUsePlugin(
   userOptions?: PluginOptions,
   advancedOptions: AdvancedOptions = {},
 ): Plugin {
-  const options: Required<Omit<PluginOptions, 'fallbackRootFill'>> &
-    Partial<Pick<PluginOptions, 'fallbackRootFill'>> = {
+  const options: Required<PluginOptions> = {
     ...defaultOptions,
     ...userOptions,
   };
@@ -101,7 +101,7 @@ function svgUsePlugin(
       const absolutePath = path.resolve(process.cwd(), filepath);
       const source = await fs.readFile(filepath, 'utf-8');
 
-      const res = transformSvg(source, {
+      const res = transformSvgForUseHref(source, {
         // augment the existing function, with extra (filename) context
         getSvgIdAttribute: ({ existingId }) =>
           options.getSvgIdAttribute({ existingId, filename: basename }),

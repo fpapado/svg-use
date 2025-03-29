@@ -8,8 +8,8 @@ wrapper around [@svg-use/core](../core/README.md).
 First, install the plugin, and the default React wrapper:
 
 ```shell
-pnpm install --dev @svg-use/webpack
-pnpm install @svg-use/react
+pnpm add --save-dev @svg-use/webpack
+pnpm add @svg-use/react
 ```
 
 ### Configure webpack

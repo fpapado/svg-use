@@ -13,18 +13,23 @@ Defined in:
 
 ## Properties
 
-### fallbackRootFill?
+### fallbackRootFill
 
-> `optional` **fallbackRootFill**:
-> [`XastMakeThemeableOptions`](XastMakeThemeableOptions.md)\[`"fallbackRootFill"`\]
+> **fallbackRootFill**:
+> [`XastMakeThemeableOptions`](XastMakeThemeableOptions.md)\[`"fallbackRootFill"`\] >
+> \| `null`
 
 Defined in:
-[transformSvgForUseHref.ts:128](https://github.com/fpapado/svg-use/blob/main/packages/core/src/transformSvgForUseHref.ts#L128)
+[transformSvgForUseHref.ts:130](https://github.com/fpapado/svg-use/blob/main/packages/core/src/transformSvgForUseHref.ts#L130)
 
 If no fills or strokes are found in the SVG, then this specified fill will be
 added to the root SVG element. This is useful for SVGs that do not specify a
 fill or stroke, and would otherwise default to black. This addition is done
 prior to the `getThemeSubstitutions` transform.
+
+#### Default Value
+
+[defaultFallbackRootFill](../variables/defaultFallbackRootFill.md)
 
 ---
 

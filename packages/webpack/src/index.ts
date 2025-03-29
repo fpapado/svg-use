@@ -3,7 +3,7 @@ import type { LoaderContext } from 'webpack';
 import { interpolateName } from 'loader-utils';
 import {
   createJsModule,
-  transformSvgForUseHref as transformSvg,
+  transformSvgForUseHref,
   type TransformOptions,
   type ModuleFactoryOptions,
   defaultComponentFactory,
@@ -38,6 +38,7 @@ const defaultOptions = {
   componentFactory: defaultComponentFactory,
   getSvgIdAttribute: defaultGetSvgIdAttribute,
   getThemeSubstitutions: defaultThemeSubstitution(),
+  fallbackRootFill: '#000',
 } satisfies LoaderOptions;
 
 export default function svgUseLoader(
@@ -47,18 +48,18 @@ export default function svgUseLoader(
   const callback = this.async();
 
   // TODO: validate options with schema-utils
-  const options: Required<Omit<LoaderOptions, 'fallbackRootFill'>> &
-    Partial<Pick<LoaderOptions, 'fallbackRootFill'>> = {
+  const options: Required<LoaderOptions> = {
     ...defaultOptions,
     ...this.getOptions(),
   };
 
   const basename = path.basename(this.resourcePath);
 
-  const res = transformSvg(contents, {
+  const res = transformSvgForUseHref(contents, {
     getSvgIdAttribute: ({ existingId }) =>
       options.getSvgIdAttribute({ filename: basename, existingId }),
     getThemeSubstitutions: options.getThemeSubstitutions,
+    fallbackRootFill: options.fallbackRootFill,
   });
 
   if (res.type === 'failure') {

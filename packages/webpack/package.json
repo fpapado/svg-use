@@ -47,8 +47,15 @@
   },
   "dependencies": {
     "@svg-use/core": "workspace:^",
-    "@svg-use/react": "workspace:^",
     "loader-utils": "^3.3.1"
+  },
+  "peerDependencies": {
+    "@svg-use/react": "workspace:^"
+  },
+  "peerDependenciesMeta": {
+    "@svg-use/react": {
+      "optional": true
+    }
   },
   "devDependencies": {
     "@types/loader-utils": "2.0.6",

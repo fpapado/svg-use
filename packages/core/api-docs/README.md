@@ -34,5 +34,6 @@ You can of course deviate from them for more bespoke use-cases.
 - [TransformOptions](type-aliases/TransformOptions.md)
 - [UseHrefInfo](type-aliases/UseHrefInfo.md)
 - [XastMakeThemeableOptions](type-aliases/XastMakeThemeableOptions.md)
+- [defaultFallbackRootFill](variables/defaultFallbackRootFill.md)
 - [svgoMakeThemeable](functions/svgoMakeThemeable.md)
 - [xastMakeThemeable](functions/xastMakeThemeable.md)
