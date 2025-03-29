@@ -90,7 +90,7 @@ importers:
   examples/shared-library:
     dependencies:
       '@svg-use/core':
-        specifier: workspace:^0.5.0
+        specifier: workspace:^0.4.0
         version: link:../../packages/core
       '@svg-use/react':
         specifier: workspace:^0.4.3
@@ -131,7 +131,7 @@ importers:
         version: link:../shared-library
     devDependencies:
       '@svg-use/vite':
-        specifier: workspace:^0.2.0
+        specifier: workspace:^0.1.3
         version: link:../../packages/vite
       '@types/node':
         specifier: 22.12.0
@@ -168,7 +168,7 @@ importers:
         version: 18.3.1(react@18.3.1)
     devDependencies:
       '@svg-use/webpack':
-        specifier: workspace:^0.4.0
+        specifier: workspace:^0.3.1
         version: link:../../packages/webpack
       '@swc-node/register':
         specifier: 1.10.9
@@ -260,7 +260,7 @@ importers:
         specifier: ^5.1.0
         version: 5.1.4(rollup@4.27.4)
       '@svg-use/core':
-        specifier: workspace:^0.5.0
+        specifier: workspace:^0.4.0
         version: link:../core
       '@svg-use/react':
         specifier: workspace:^0.4.0
@@ -279,7 +279,7 @@ importers:
         specifier: workspace:^0.4.0
         version: link:../react
       '@svg-use/rollup':
-        specifier: workspace:^0.5.0
+        specifier: workspace:^0.4.1
         version: link:../rollup
     devDependencies:
       '@types/node':
@@ -292,7 +292,7 @@ importers:
   packages/webpack:
     dependencies:
       '@svg-use/core':
-        specifier: workspace:^0.5.0
+        specifier: workspace:^0.4.0
         version: link:../core
       '@svg-use/react':
         specifier: workspace:^0.4.0
