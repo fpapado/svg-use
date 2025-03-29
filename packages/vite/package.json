@@ -1,6 +1,6 @@
 {
   "name": "@svg-use/vite",
-  "version": "0.1.3",
+  "version": "0.2.0",
   "description": "Tools and bundler plugins for loading SVG images via use[href], for use in components.",
   "license": "MIT",
   "author": "Fotis Papadogeorgopoulos <fotis@fpapado.com> (https://fotis.xyz)",
@@ -47,7 +47,7 @@
   },
   "dependencies": {
     "@svg-use/react": "workspace:^0.4.0",
-    "@svg-use/rollup": "workspace:^0.4.1"
+    "@svg-use/rollup": "workspace:^0.5.0"
   },
   "devDependencies": {
     "@types/node": "22.12.0",
