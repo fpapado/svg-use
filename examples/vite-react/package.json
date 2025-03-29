@@ -16,7 +16,7 @@
     "shared-library": "workspace:*"
   },
   "devDependencies": {
-    "@svg-use/vite": "workspace:^0.1.3",
+    "@svg-use/vite": "workspace:^0.2.0",
     "@types/node": "22.12.0",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
