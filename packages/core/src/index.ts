@@ -31,7 +31,7 @@ export {
 } from './getSvgIdAttribute.js';
 export { type Result } from './result.js';
 export {
-  defaultThemeSubstitution,
+  getDefaultThemeSubstitutionFunction,
   defaultFallbackRootFill,
 } from './theme/defaultTheme.js';
 export {

@@ -30,12 +30,13 @@ export type DefaultThemeOptions = {
 };
 
 /**
- * The default theme function. Substitutes up to three sizes and strokes with
- * custom properties. Preserves existing properties as fallbacks.
+ * A getter for the default theme substitution function. Substitutes up to three
+ * sizes and strokes with custom properties. Preserves existing properties as
+ * fallbacks. The behavior of monochrome fallbacks can be customised.
  *
  * @category Primary function defaults
  */
-export const defaultThemeSubstitution =
+export const getDefaultThemeSubstitutionFunction =
   ({
     monochromeCssVarFallback = 'existingValue',
   }: DefaultThemeOptions = {}): GetThemeSubstitutionFunction =>

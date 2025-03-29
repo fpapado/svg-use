@@ -5,7 +5,7 @@ import {
   transformSvgForUseHref,
   defaultComponentFactory,
   defaultGetSvgIdAttribute,
-  defaultThemeSubstitution,
+  getDefaultThemeSubstitutionFunction,
   type XastMakeThemeableOptions,
 } from '@svg-use/core';
 import { globby } from 'globby';
@@ -42,7 +42,7 @@ async function processFile(
 
   const transformResult = transformSvgForUseHref(initialContent, {
     getSvgIdAttribute: defaultGetSvgIdAttribute,
-    getThemeSubstitutions: defaultThemeSubstitution(),
+    getThemeSubstitutions: getDefaultThemeSubstitutionFunction(),
     fallbackRootFill: themableOptions?.fallbackRootFill,
   });
 

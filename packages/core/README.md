@@ -26,14 +26,14 @@ import {
   transformSvgForUseHref,
   createJsModule,
   defaultGetSvgIdAttribute,
-  defaultThemeSubstitution,
   defaultComponentFactory,
+  getDefaultThemeSubstitutionFunction,
 } from '@svg-use/core';
 
 function transformAndWriteModule(content: string) {
   const transformResult = transformSvgForUseHref(content, {
     getSvgIdAttribute: defaultGetSvgIdAttribute,
-    getThemeSubstitutions: defaultThemeSubstitution(),
+    getThemeSubstitutions: getDefaultThemeSubstitutionFunction(),
   });
 
   if (transformResult.type === 'failure') {

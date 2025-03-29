@@ -6,7 +6,8 @@ import {
   type ModuleFactoryOptions,
   defaultComponentFactory,
   defaultGetSvgIdAttribute,
-  defaultThemeSubstitution,
+  getDefaultThemeSubstitutionFunction,
+  defaultFallbackRootFill,
 } from '@svg-use/core';
 import path from 'node:path';
 import process from 'node:process';
@@ -61,8 +62,8 @@ const hasNoTheme = (id: string) => {
 const defaultOptions = {
   componentFactory: defaultComponentFactory,
   getSvgIdAttribute: defaultGetSvgIdAttribute,
-  getThemeSubstitutions: defaultThemeSubstitution(),
-  fallbackRootFill: '#000',
+  getThemeSubstitutions: getDefaultThemeSubstitutionFunction(),
+  fallbackRootFill: defaultFallbackRootFill,
 } satisfies PluginOptions;
 
 function svgUsePlugin(

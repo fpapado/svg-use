@@ -20,7 +20,7 @@ You can of course deviate from them for more bespoke use-cases.
 
 - [defaultComponentFactory](variables/defaultComponentFactory.md)
 - [defaultGetSvgIdAttribute](variables/defaultGetSvgIdAttribute.md)
-- [defaultThemeSubstitution](functions/defaultThemeSubstitution.md)
+- [getDefaultThemeSubstitutionFunction](functions/getDefaultThemeSubstitutionFunction.md)
 
 ## Other
 

@@ -9,4 +9,4 @@
 > `const` **defaultFallbackRootFill**: `"#000"` = `'#000'`
 
 Defined in:
-[theme/defaultTheme.ts:78](https://github.com/fpapado/svg-use/blob/main/packages/core/src/theme/defaultTheme.ts#L78)
+[theme/defaultTheme.ts:79](https://github.com/fpapado/svg-use/blob/main/packages/core/src/theme/defaultTheme.ts#L79)

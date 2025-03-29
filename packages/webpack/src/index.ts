@@ -8,7 +8,8 @@ import {
   type ModuleFactoryOptions,
   defaultComponentFactory,
   defaultGetSvgIdAttribute,
-  defaultThemeSubstitution,
+  getDefaultThemeSubstitutionFunction,
+  defaultFallbackRootFill,
 } from '@svg-use/core';
 
 export type LoaderOptions = Partial<
@@ -37,8 +38,8 @@ const defaultOptions = {
   svgAssetFilename: '[name]-[contenthash].[ext]',
   componentFactory: defaultComponentFactory,
   getSvgIdAttribute: defaultGetSvgIdAttribute,
-  getThemeSubstitutions: defaultThemeSubstitution(),
-  fallbackRootFill: '#000',
+  getThemeSubstitutions: getDefaultThemeSubstitutionFunction(),
+  fallbackRootFill: defaultFallbackRootFill,
 } satisfies LoaderOptions;
 
 export default function svgUseLoader(
