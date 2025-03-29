@@ -46,12 +46,12 @@
     "test": "vitest --pass-with-no-tests"
   },
   "dependencies": {
-    "@svg-use/react": "workspace:^0.4.0",
-    "@svg-use/rollup": "workspace:^0.5.0"
+    "@svg-use/react": "workspace:^",
+    "@svg-use/rollup": "workspace:^"
   },
   "devDependencies": {
     "@types/node": "22.13.14",
-    "vite": "5.4.12"
+    "vite": "6.2.3"
   },
   "keywords": [
     "performance",

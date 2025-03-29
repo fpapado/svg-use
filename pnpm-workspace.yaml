@@ -4,3 +4,7 @@ packages:
 onlyBuiltDependencies:
   - "@swc/core"
   - esbuild
+
+catalogs:
+  dev:
+    typescript: 5.8.2

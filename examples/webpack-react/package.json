@@ -8,35 +8,36 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack",
+    "check-types": "tsc --noEmit",
     "dev": "webpack serve --open",
     "preview": "serve dist/",
     "test:e2e": "playwright test"
   },
   "dependencies": {
-    "@svg-use/react": "workspace:^0.4.3",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "@svg-use/react": "workspace:^",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
   },
   "devDependencies": {
     "@svg-use/react": "workspace:^0.4.3",
-    "@svg-use/webpack": "workspace:^0.4.0",
-    "@swc-node/register": "1.10.9",
-    "@swc/core": "^1.7.6",
-    "@types/node": "22.12.0",
-    "@types/react": "18.3.3",
-    "@types/react-dom": "18.3.0",
+    "@svg-use/webpack": "workspace:^",
+    "@swc-node/register": "1.10.10",
+    "@swc/core": "^1.11.13",
+    "@types/node": "22.13.14",
+    "@types/react": "19.0.12",
+    "@types/react-dom": "19.0.4",
     "@types/webpack": "^5.28.5",
     "css-loader": "7.1.2",
-    "html-webpack-plugin": "5.6.0",
+    "html-webpack-plugin": "5.6.3",
     "mini-css-extract-plugin": "2.9.2",
-    "serve": "14.2.3",
+    "serve": "14.2.4",
     "shared-library": "workspace:*",
     "swc-loader": "^0.2.6",
     "ts-node": "10.9.2",
-    "typescript": "5.8.2",
-    "webpack": "5.93.0",
-    "webpack-cli": "5.1.4",
-    "webpack-dev-server": "5.0.4"
+    "typescript": "catalog:dev",
+    "webpack": "5.98.0",
+    "webpack-cli": "6.0.1",
+    "webpack-dev-server": "5.2.1"
   },
   "keywords": []
 }

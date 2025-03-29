@@ -7,6 +7,7 @@ import {
   useMemo,
 } from 'react';
 import { runtimeChecks } from './runtimeChecks.dev.js';
+import { JSX } from 'react';
 
 export type Config = {
   /**
