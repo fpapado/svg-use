@@ -21,21 +21,24 @@
     "!dist/**/*.tsbuildinfo"
   ],
   "scripts": {
-    "build": "tsx generate-icon-modules.mts && tshy && cp src/icons/*.svg dist/esm/icons"
+    "build": "tsx generate-icon-modules.mts && tshy && cp src/icons/*.svg dist/esm/icons",
+    "check-types": "tsc --noEmit"
   },
   "dependencies": {
-    "@svg-use/core": "workspace:^0.5.0",
-    "@svg-use/react": "workspace:^0.4.3"
+    "@svg-use/core": "workspace:^",
+    "@svg-use/react": "workspace:^"
   },
   "peerDependencies": {
-    "react": "^18"
+    "react": "^18 || ^19",
+    "react-dom": "^18 || ^19"
   },
   "devDependencies": {
-    "@types/node": "22.12.0",
-    "@types/react": "18.3.3",
+    "@types/node": "22.13.14",
+    "@types/react": "19.0.12",
     "change-case": "5.4.4",
-    "globby": "14.0.2",
-    "tsx": "4.17.0"
+    "globby": "14.1.0",
+    "tsx": "4.19.3",
+    "typescript": "catalog:dev"
   },
   "keywords": [],
   "tshy": {

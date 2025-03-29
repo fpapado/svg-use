@@ -1,4 +1,4 @@
-import type { CSSProperties, SVGAttributes } from 'react';
+import type { CSSProperties, SVGAttributes, JSX } from 'react';
 import {
   createContext,
   forwardRef,

@@ -46,13 +46,13 @@
     "test": "vitest"
   },
   "dependencies": {
-    "@rollup/pluginutils": "^5.1.0",
-    "@svg-use/core": "workspace:^0.5.0",
-    "@svg-use/react": "workspace:^0.4.0",
-    "rollup": "4.27.4"
+    "@rollup/pluginutils": "^5.1.4",
+    "@svg-use/core": "workspace:^",
+    "@svg-use/react": "workspace:^",
+    "rollup": "4.38.0"
   },
   "devDependencies": {
-    "@types/node": "22.12.0"
+    "@types/node": "22.13.14"
   },
   "keywords": [
     "performance",

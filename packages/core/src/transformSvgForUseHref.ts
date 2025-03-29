@@ -1,14 +1,14 @@
 import svgo, { type CustomPlugin, type PluginConfig } from 'svgo';
 
 import type { Result } from './result.js';
-import { XastRoot } from 'svgo/lib/types.js';
+import type { XastRoot } from 'svgo/lib/types.js';
 import { visit } from 'unist-util-visit';
 import { fromXml } from 'xast-util-from-xml';
-import {
+import type {
   GetThemeSubstitutionFunction,
   XastMakeThemeableOptions,
 } from './theme/makeThemeable.js';
-import { GetSvgIdFunction } from './getSvgIdAttribute.js';
+import type { GetSvgIdFunction } from './getSvgIdAttribute.js';
 import { svgoMakeThemeable } from './theme/svgoMakeThemeable.js';
 
 /** An ad-hoc SVGO plugin, to ensure that the root SVG element has an id. */

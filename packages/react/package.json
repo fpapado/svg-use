@@ -51,16 +51,11 @@
   },
   "types": "./dist/commonjs/index.d.ts",
   "peerDependencies": {
-    "react": "^18",
-    "react-dom": "^18"
-  },
-  "peerDependenciesMeta": {
-    "react": {
-      "optional": true
-    }
+    "react": "^18 || ^19",
+    "react-dom": "^18 || ^19"
   },
   "devDependencies": {
-    "@types/react": "18.3.18"
+    "@types/react": "19.0.12"
   },
   "keywords": [
     "loader",

@@ -6,7 +6,7 @@ import {
   defaultComponentFactory,
   defaultGetSvgIdAttribute,
   defaultThemeSubstitution,
-  XastMakeThemeableOptions,
+  type XastMakeThemeableOptions,
 } from '@svg-use/core';
 import { globby } from 'globby';
 import { pascalCase } from 'change-case';
