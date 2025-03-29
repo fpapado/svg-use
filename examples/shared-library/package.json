@@ -29,7 +29,8 @@
     "@svg-use/react": "workspace:^"
   },
   "peerDependencies": {
-    "react": "^18 || ^19"
+    "react": "^18 || ^19",
+    "react-dom": "^18 || ^19"
   },
   "devDependencies": {
     "@types/node": "22.13.14",

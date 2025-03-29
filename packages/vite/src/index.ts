@@ -1,4 +1,4 @@
-import { PluginOption, type Plugin } from 'vite';
+import type { PluginOption, Plugin } from 'vite';
 import svgUseRollup, { type PluginOptions } from '@svg-use/rollup';
 import stream from 'node:stream';
 

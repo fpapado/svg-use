@@ -36,7 +36,6 @@
     "@changesets/cli": "2.28.1",
     "@eslint/js": "9.23.0",
     "@playwright/test": "1.51.1",
-    "@tsconfig/node22": "22.0.1",
     "@vitejs/plugin-react": "4.3.4",
     "@vitest/coverage-v8": "3.0.9",
     "@vitest/eslint-plugin": "1.1.38",

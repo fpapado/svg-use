@@ -1,4 +1,4 @@
-import type { CSSProperties, SVGAttributes } from 'react';
+import type { CSSProperties, SVGAttributes, JSX } from 'react';
 import {
   createContext,
   forwardRef,
@@ -7,7 +7,6 @@ import {
   useMemo,
 } from 'react';
 import { runtimeChecks } from './runtimeChecks.dev.js';
-import { JSX } from 'react';
 
 export type Config = {
   /**

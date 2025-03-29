@@ -16,6 +16,13 @@
 
     // These are better covered by typescript-eslint, with auto-fix
     "noUnusedLocals": false,
-    "noUnusedParameters": false
+    "noUnusedParameters": false,
+
+    // Unambiguous syntax
+    "verbatimModuleSyntax": true,
+
+    // type-stripping compatibility
+    "rewriteRelativeImportExtensions": true,
+    "erasableSyntaxOnly": true
   }
 }
