@@ -17,3 +17,6 @@ strokes declared.
 This step is performed prior to the themeing transform, so existing transforms
 will keep working. We recommend that you set this option to an appropriate
 value, but for now it is optional in order to avoid breaking changes.
+
+Originally contributed by @mcler in
+[#105](https://github.com/fpapado/svg-use/pull/105).
