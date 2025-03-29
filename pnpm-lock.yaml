@@ -81,7 +81,7 @@ importers:
         specifier: 5.0.1
         version: 5.0.1(typedoc@0.28.1(typescript@5.8.2))
       typescript:
-        specifier: 5.8.2
+        specifier: catalog:dev
         version: 5.8.2
       typescript-eslint:
         specifier: 8.28.0
