@@ -15,5 +15,7 @@ export default defineProject({
   },
   test: {
     testTimeout: 1000,
+    environment: 'happy-dom',
+    setupFiles: ['./vitest-setup.ts'],
   },
 });
