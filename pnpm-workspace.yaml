@@ -7,4 +7,4 @@ onlyBuiltDependencies:
 
 catalogs:
   dev:
-    typescript: 5.8.2
+    typescript: 5.8.3
