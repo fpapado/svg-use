@@ -7,6 +7,7 @@
     "build": "tsc -b && vite build",
     "check-types": "tsc --noEmit",
     "dev": "vite",
+    "dev:based": "vite --base=/vite-react",
     "preview": "vite preview",
     "test:e2e": "playwright test"
   },
