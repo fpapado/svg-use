@@ -1,4 +1,4 @@
-#syntax=docker/dockerfile:1.14@sha256:4c68376a702446fc3c79af22de146a148bc3367e73c25a5803d453b6b3f722fb 
+#syntax=docker/dockerfile:1.16@sha256:e2dd261f92e4b763d789984f6eab84be66ab4f5f08052316d8eb8f173593acf7 
 
 # This file is responsible for building the apps locally, and running playwright
 # on them. Used primarily to update Linux snapshots (matching the GitHub Actions
