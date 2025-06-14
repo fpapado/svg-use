@@ -32,7 +32,7 @@
     "test:e2e:update-snapshots": "pnpm test:e2e:update-local-snapshots && pnpm test:e2e:update-linux-snapshots"
   },
   "devDependencies": {
-    "@arethetypeswrong/cli": "0.17.4",
+    "@arethetypeswrong/cli": "0.18.2",
     "@changesets/cli": "2.28.1",
     "@eslint/js": "9.23.0",
     "@playwright/test": "1.51.1",
