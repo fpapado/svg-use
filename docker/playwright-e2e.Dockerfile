@@ -4,7 +4,7 @@
 # on them. Used primarily to update Linux snapshots (matching the GitHub Actions
 # runners) on other OSes and architectures. This matches what we do in
 # .github/worfklows/playwright.yaml, but locally.
-FROM node:22.14@sha256:e5ddf893cc6aeab0e5126e4edae35aa43893e2836d1d246140167ccc2616f5d7 AS base
+FROM node:22.21@sha256:dcf06103a9d4087e3244a51697adbbb85331dcb7161dbe994ca1cd07dd32e2a5 AS base
 
 ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
