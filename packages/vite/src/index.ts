@@ -1,11 +1,13 @@
 import type { PluginOption, Plugin } from 'vite';
 import svgUseRollup, { type PluginOptions } from '@svg-use/rollup';
+import path from 'node:path';
 import stream from 'node:stream';
 
 export type { PluginOptions } from '@svg-use/rollup';
 
 const DEV_PREFIX = '/@svg-use/';
-const devPrefixedId = (id: string) => DEV_PREFIX + id;
+const devPrefixedId = (id: string, serverBase: string = '') =>
+  path.join(serverBase, DEV_PREFIX, id);
 
 /**
  * A dev-only svg-use plugin, that serves transformed assets from memory, via
@@ -13,12 +15,15 @@ const devPrefixedId = (id: string) => DEV_PREFIX + id;
  */
 function svgUseDevPlugin(userOptions?: PluginOptions): Plugin {
   const svgAssets: Map<string, string> = new Map();
+  let serverBase: string | undefined;
 
   return {
     // Run before Vite's default plugins, which handle SVG files in a different way
     apply: 'serve',
     enforce: 'pre',
     configureServer(server) {
+      serverBase = server.config.base;
+
       server.middlewares.use((req, res, next) => {
         const knownAsset = req.url && svgAssets.get(req.url);
 
@@ -40,7 +45,7 @@ function svgUseDevPlugin(userOptions?: PluginOptions): Plugin {
       emitSvgAsset: ({ moduleId, content }) => {
         // emitFile is not available in Vite dev mode, so we must serve
         // the transformed SVG manually from memory
-        const prefixedId = devPrefixedId(moduleId);
+        const prefixedId = devPrefixedId(moduleId, serverBase);
 
         svgAssets.set(prefixedId, content);
 
