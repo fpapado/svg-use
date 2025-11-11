@@ -49,7 +49,8 @@
     "@svg-use/rollup": "workspace:^"
   },
   "peerDependencies": {
-    "@svg-use/react": "workspace:^"
+    "@svg-use/react": "workspace:^",
+    "vite": "^6 || ^7"
   },
   "peerDependenciesMeta": {
     "@svg-use/react": {
@@ -58,7 +59,7 @@
   },
   "devDependencies": {
     "@types/node": "22.13.14",
-    "vite": "6.2.6"
+    "vite": "7.2.2"
   },
   "keywords": [
     "performance",

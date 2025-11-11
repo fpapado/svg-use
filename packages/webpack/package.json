@@ -50,7 +50,8 @@
     "loader-utils": "^3.3.1"
   },
   "peerDependencies": {
-    "@svg-use/react": "workspace:^"
+    "@svg-use/react": "workspace:^",
+    "webpack": "^5"
   },
   "peerDependenciesMeta": {
     "@svg-use/react": {

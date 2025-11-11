@@ -21,9 +21,9 @@
     "@types/node": "22.13.14",
     "@types/react": "^19.0.12",
     "@types/react-dom": "^19.0.4",
-    "@vitejs/plugin-react": "^4.3.4",
+    "@vitejs/plugin-react": "5.1.0",
     "typescript": "catalog:dev",
-    "vite": "^6.2.3",
-    "vite-plugin-inspect": "11.0.0"
+    "vite": "7.2.2",
+    "vite-plugin-inspect": "11.3.3"
   }
 }

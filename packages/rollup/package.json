@@ -47,11 +47,11 @@
   },
   "dependencies": {
     "@rollup/pluginutils": "^5.1.4",
-    "@svg-use/core": "workspace:^",
-    "rollup": "4.53.2"
+    "@svg-use/core": "workspace:^"
   },
   "peerDependencies": {
-    "@svg-use/react": "workspace:^"
+    "@svg-use/react": "workspace:^",
+    "rollup": "^4"
   },
   "peerDependenciesMeta": {
     "@svg-use/react": {
@@ -59,7 +59,8 @@
     }
   },
   "devDependencies": {
-    "@types/node": "22.13.14"
+    "@types/node": "22.13.14",
+    "rollup": "4.53.2"
   },
   "keywords": [
     "performance",
