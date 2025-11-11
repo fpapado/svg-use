@@ -1,5 +1,11 @@
 # @svg-use/webpack
 
+## 1.1.0
+
+### Minor Changes
+
+- 4ed0272: Correctly declare the respective bundlers as peers
+
 ## 1.0.0
 
 ### Major Changes
