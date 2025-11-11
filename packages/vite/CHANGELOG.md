@@ -1,5 +1,16 @@
 # @svg-use/vite
 
+## 1.1.0
+
+### Minor Changes
+
+- 4ed0272: Correctly declare the respective bundlers as peers
+
+### Patch Changes
+
+- Updated dependencies [4ed0272]
+  - @svg-use/rollup@1.1.0
+
 ## 1.0.0
 
 ### Major Changes
