@@ -48,7 +48,7 @@
   "dependencies": {
     "@rollup/pluginutils": "^5.1.4",
     "@svg-use/core": "workspace:^",
-    "rollup": "4.40.1"
+    "rollup": "4.53.2"
   },
   "peerDependencies": {
     "@svg-use/react": "workspace:^"
