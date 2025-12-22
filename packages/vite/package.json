@@ -1,6 +1,6 @@
 {
   "name": "@svg-use/vite",
-  "version": "1.1.0",
+  "version": "1.0.0",
   "description": "Tools and bundler plugins for loading SVG images via use[href], for use in components.",
   "license": "MIT",
   "author": "Fotis Papadogeorgopoulos <fotis@fpapado.com> (https://fotis.xyz)",
