@@ -5,8 +5,10 @@ import { render, screen } from '@testing-library/react';
 import {
   ThemedExternalSvg,
   configContext,
+  createThemedExternalSvg,
   type Config,
 } from './ThemedExternalSvg.js';
+import { createRef } from 'react';
 
 describe('ThemedExternalSVG', () => {
   it('can render an SVG via an id and href', () => {
@@ -24,6 +26,54 @@ describe('ThemedExternalSVG', () => {
     expect(
       screen.getByRole('img', { name: 'Confirm' }).querySelector('use'),
     ).toHaveAttribute('href', '/my-icon.svg#my-id');
+  });
+
+  it('can pass ref to SVG', () => {
+    const ref = createRef<SVGSVGElement>();
+
+    render(
+      <ThemedExternalSvg
+        role="presentation"
+        aria-label="Confirm"
+        iconId="my-id"
+        iconUrl="/my-icon.svg"
+        viewBox="0 0 24 24"
+        ref={ref}
+      />,
+    );
+
+    expect(ref.current).toBeDefined();
+  });
+});
+
+describe('createThemedExternalSvg', () => {
+  it('can render an SVG via an id and href', () => {
+    const Component = createThemedExternalSvg({
+      id: 'my-id',
+      url: '/my-icon.svg',
+      viewBox: '0 0 24 24',
+    });
+
+    render(<Component role="img" aria-label="Confirm" />);
+
+    expect(screen.getByRole('img', { name: 'Confirm' })).toBeInTheDocument();
+    expect(
+      screen.getByRole('img', { name: 'Confirm' }).querySelector('use'),
+    ).toHaveAttribute('href', '/my-icon.svg#my-id');
+  });
+
+  it('can pass ref to SVG', () => {
+    const ref = createRef<SVGSVGElement>();
+
+    const Component = createThemedExternalSvg({
+      id: 'my-id',
+      url: '/my-icon.svg',
+      viewBox: '0 0 24 24',
+    });
+
+    render(<Component role="img" aria-label="Confirm" ref={ref} />);
+
+    expect(ref.current).toBeDefined();
   });
 });
 
