@@ -154,8 +154,15 @@ export type FactoryProps = { url: string; id: string; viewBox: string };
  *
  * @category Primary exports
  */
-export const createThemedExternalSvg =
-  ({ url, id, viewBox }: FactoryProps) =>
-  (props: ThemeProps & SVGAttributes<SVGSVGElement>): JSX.Element => (
-    <ThemedExternalSvg {...props} iconUrl={url} iconId={id} viewBox={viewBox} />
+export const createThemedExternalSvg = ({ url, id, viewBox }: FactoryProps) =>
+  forwardRef<SVGSVGElement, ThemeProps & SVGAttributes<SVGSVGElement>>(
+    (props, ref): JSX.Element => (
+      <ThemedExternalSvg
+        {...props}
+        iconUrl={url}
+        iconId={id}
+        viewBox={viewBox}
+        ref={ref}
+      />
+    ),
   );

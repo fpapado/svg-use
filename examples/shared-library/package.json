@@ -37,6 +37,8 @@
     "@types/react": "19.0.12",
     "change-case": "5.4.4",
     "globby": "14.1.0",
+    "react": "catalog:dev",
+    "react-dom": "catalog:dev",
     "tsx": "4.19.3",
     "typescript": "catalog:dev"
   },

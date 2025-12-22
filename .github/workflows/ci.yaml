@@ -19,6 +19,9 @@ jobs:
     name: Checks
     runs-on: ubuntu-latest
     timeout-minutes: 5
+    strategy:
+      matrix:
+        react: ["current", "18.3.1"]
     steps:
       - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
       - name: Setup node
@@ -30,6 +33,11 @@ jobs:
       # node at the time of writing
       - run: npm install --global corepack
       - run: corepack enable
+      - name: Set React version
+        if: matrix.react != 'current'
+        run: |
+          yq eval '.catalogs.dev.react = "${{matrix.react}}"' -i pnpm-workspace.yaml
+          yq eval '.catalogs.dev["react-dom"] = "${{matrix.react}}"' -i pnpm-workspace.yaml
       - run: pnpm install
         id: install
       # Build is required so that types from workspace packages will be

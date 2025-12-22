@@ -58,7 +58,9 @@
     "@testing-library/jest-dom": "6.6.3",
     "@testing-library/react": "16.2.0",
     "@types/react": "19.0.12",
-    "happy-dom": "20.0.2"
+    "happy-dom": "20.0.2",
+    "react": "catalog:dev",
+    "react-dom": "catalog:dev"
   },
   "keywords": [
     "loader",
