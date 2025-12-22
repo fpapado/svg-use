@@ -66,9 +66,6 @@
     "vite",
     "webpack"
   ],
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com/"
-  },
   "lint-staged": {
     "*.{js,jsx,mjs,cjs,ts,tsx,mts,cts}": "eslint --fix",
     "!(.changeset)/*.md": "markdownlint-cli2 --fix",
