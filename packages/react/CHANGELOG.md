@@ -1,12 +1,5 @@
 # @svg-use/react
 
-## 1.1.0
-
-### Minor Changes
-
-- 97bb310: Ensure that createThemedExternalSvg forwards refs, so that refs can
-  be assigned in React 18.
-
 ## 1.0.0
 
 ### Major Changes

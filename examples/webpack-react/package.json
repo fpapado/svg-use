@@ -20,7 +20,7 @@
     "shared-library": "workspace:*"
   },
   "devDependencies": {
-    "@svg-use/react": "workspace:^1.1.0",
+    "@svg-use/react": "workspace:^1.0.0",
     "@svg-use/webpack": "workspace:^",
     "@swc-node/register": "1.10.10",
     "@swc/core": "^1.11.13",
