@@ -40,7 +40,7 @@ importers:
         version: 9.23.0
       eslint-plugin-tsdoc:
         specifier: 0.5.0
-        version: 0.5.0(eslint@9.23.0)(typescript@5.8.3)
+        version: 0.5.0(eslint@9.23.0)(typescript@5.9.3)
       husky:
         specifier: 9.1.7
         version: 9.1.7
@@ -6548,11 +6548,11 @@ snapshots:
 
   escape-string-regexp@4.0.0: {}
 
-  eslint-plugin-tsdoc@0.5.0(eslint@9.23.0)(typescript@5.8.3):
+  eslint-plugin-tsdoc@0.5.0(eslint@9.23.0)(typescript@5.9.3):
     dependencies:
       '@microsoft/tsdoc': 0.16.0
       '@microsoft/tsdoc-config': 0.18.0
-      '@typescript-eslint/utils': 8.46.4(eslint@9.23.0)(typescript@5.8.3)
+      '@typescript-eslint/utils': 8.46.4(eslint@9.23.0)(typescript@5.9.3)
     transitivePeerDependencies:
       - eslint
       - supports-color
