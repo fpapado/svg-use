@@ -1,5 +1,16 @@
 # @svg-use/rollup
 
+## 1.1.0
+
+### Minor Changes
+
+- 4ed0272: Correctly declare the respective bundlers as peers
+
+### Patch Changes
+
+- Updated dependencies [97bb310]
+  - @svg-use/react@1.1.0
+
 ## 1.0.0
 
 ### Major Changes
