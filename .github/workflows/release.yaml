@@ -30,6 +30,7 @@ jobs:
         uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
         with:
           node-version-file: ".nvmrc"
+          registry-url: "https://npm.pkg.github.com"
       # Need to bootstrap corepack separately, because of a key rotation issue,
       # and that issue not being fixed in the corepack version that ships with
       # node at the time of writing
@@ -47,6 +48,5 @@ jobs:
           # the box. @see: https://github.com/changesets/changesets/issues/238
           publish: pnpm changeset:release
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_CONFIG_PROVENANCE: true
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
