@@ -21,7 +21,7 @@ jobs:
     timeout-minutes: 5
     strategy:
       matrix:
-        react-strategy: ["current", "18.3.1"]
+        react: ["current", "18.3.1"]
     steps:
       - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
       - name: Setup node
@@ -33,18 +33,11 @@ jobs:
       # node at the time of writing
       - run: npm install --global corepack
       - run: corepack enable
-      - name: Install yq
-        if: matrix.react-strategy != 'current'
+      - name: Set React version
+        if: matrix.react != 'current'
         run: |
-          if ! command -v yq &> /dev/null; then
-            wget -qO /usr/local/bin/yq https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64
-            chmod +x /usr/local/bin/yq
-          fi
-      - name: Update React version for strategy
-        if: matrix.react-strategy == 'current'
-        run: |
-          yq eval '.catalogs.dev.react = "18.3.1"' -i pnpm-workspace.yaml
-          yq eval '.catalogs.dev["react-dom"] = "18.3.1"' -i pnpm-workspace.yaml
+          yq eval '.catalogs.dev.react = "${{matrix.react}}"' -i pnpm-workspace.yaml
+          yq eval '.catalogs.dev["react-dom"] = "${{matrix.react}}"' -i pnpm-workspace.yaml
       - run: pnpm install
         id: install
       # Build is required so that types from workspace packages will be
