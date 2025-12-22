@@ -1,5 +1,16 @@
 # @svg-use/webpack
 
+## 1.1.0
+
+### Minor Changes
+
+- 4f5f623: Correctly declare the respective bundlers as peers
+
+### Patch Changes
+
+- Updated dependencies [4f5f623]
+  - @svg-use/react@1.1.0
+
 ## 1.0.0
 
 ### Major Changes
