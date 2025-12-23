@@ -16,7 +16,6 @@
   Moreover, the default value for `fallbackRootFill` has been changed to `#000`.
 
   Changes since 0.x:
-
   - `@svg-use/react` correctly declares peer dependencies on react and
     react-dom. Both versions ^18 and ^19 are allowed.
   - `@svg-use/webpack`, `@svg-use/vite`, `@svg-use/rollup` correctly declare an

@@ -12,7 +12,6 @@
   Moreover, the default value for `fallbackRootFill` has been changed to `#000`.
 
   Changes since 0.x:
-
   - `@svg-use/react` correctly declares peer dependencies on react and
     react-dom. Both versions ^18 and ^19 are allowed.
   - `@svg-use/webpack`, `@svg-use/vite`, `@svg-use/rollup` correctly declare an
@@ -77,7 +76,6 @@
 
 - 86c4f14: Export all publicly-visible types
 - 86c4f14: Breaking change: The default theme has changed.
-
   - Instead of separating fills and strokes, equal colors are substituted in the
     same way. This makes it easier to support monotone/duotone/tritone themes,
     and reduces the output size.
