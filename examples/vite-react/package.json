@@ -19,12 +19,12 @@
   },
   "devDependencies": {
     "@svg-use/vite": "workspace:^",
-    "@types/node": "22.13.14",
+    "@types/node": "catalog:dev",
     "@types/react": "^19.0.12",
     "@types/react-dom": "^19.0.4",
     "@vitejs/plugin-react": "5.1.0",
     "typescript": "catalog:dev",
-    "vite": "7.2.2",
+    "vite": "catalog:dev",
     "vite-plugin-inspect": "11.3.3"
   }
 }
