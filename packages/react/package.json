@@ -55,10 +55,10 @@
     "react-dom": "^18 || ^19"
   },
   "devDependencies": {
-    "@testing-library/jest-dom": "6.6.3",
-    "@testing-library/react": "16.2.0",
-    "@types/react": "19.0.12",
-    "happy-dom": "20.0.2",
+    "@testing-library/jest-dom": "6.9.1",
+    "@testing-library/react": "16.3.1",
+    "@types/react": "19.2.7",
+    "happy-dom": "20.0.11",
     "react": "catalog:dev",
     "react-dom": "catalog:dev"
   },

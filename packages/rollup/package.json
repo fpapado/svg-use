@@ -59,8 +59,8 @@
     }
   },
   "devDependencies": {
-    "@types/node": "22.13.14",
-    "rollup": "4.53.2"
+    "@types/node": "22.19.3",
+    "rollup": "4.54.0"
   },
   "keywords": [
     "performance",
