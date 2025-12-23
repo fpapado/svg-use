@@ -33,7 +33,7 @@
   },
   "devDependencies": {
     "@svg-use/core": "workspace:^",
-    "@types/node": "22.13.14",
+    "@types/node": "catalog:dev",
     "@types/react": "19.0.12",
     "change-case": "5.4.4",
     "globby": "14.1.0",

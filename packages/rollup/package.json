@@ -59,7 +59,7 @@
     }
   },
   "devDependencies": {
-    "@types/node": "22.19.3",
+    "@types/node": "catalog:dev",
     "rollup": "4.54.0"
   },
   "keywords": [
