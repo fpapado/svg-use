@@ -1,6 +1,6 @@
 import type { PluginOption, Plugin } from 'vite';
 import svgUseRollup, { type PluginOptions } from '@svg-use/rollup';
-import path from 'node:path';
+import path from 'node:path/posix';
 import stream from 'node:stream';
 
 export type { PluginOptions } from '@svg-use/rollup';
