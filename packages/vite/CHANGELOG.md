@@ -4,7 +4,7 @@
 
 ### Patch Changes
 
-- bd9199d: Use POSIX path.join for generated SVG asset ids
+- bd9199d: Use POSIX path.join for generated SVG asset paths for the dev server
 
 ## 1.1.0
 
