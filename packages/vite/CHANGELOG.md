@@ -1,5 +1,11 @@
 # @svg-use/vite
 
+## 1.1.1
+
+### Patch Changes
+
+- bd9199d: Use POSIX path.join for generated SVG asset ids
+
 ## 1.1.0
 
 ### Minor Changes
