@@ -60,7 +60,7 @@
   },
   "devDependencies": {
     "@types/node": "catalog:dev",
-    "rollup": "4.54.0"
+    "rollup": "4.59.0"
   },
   "keywords": [
     "performance",
