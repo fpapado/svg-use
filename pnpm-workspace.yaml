@@ -10,5 +10,5 @@ catalogs:
     "@types/node": 24.10.4
     typescript: 5.9.3
     vite: 7.3.2
-    react: 19.2.3
-    react-dom: 19.2.3
+    react: 19.2.6
+    react-dom: 19.2.6
