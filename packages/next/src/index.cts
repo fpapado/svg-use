@@ -1,6 +1,7 @@
 import type {
   TransformOptions,
   ModuleFactoryOptions,
+  ComponentFactory,
 } from '@svg-use/core';
 import path from 'node:path';
 import fs from 'node:fs';
@@ -85,7 +86,6 @@ export default async function svgUseLoader(
   const {
     createJsModule,
     transformSvgForUseHref,
-    defaultComponentFactory,
     defaultGetSvgIdAttribute,
     getDefaultThemeSubstitutionFunction,
     defaultFallbackRootFill,
@@ -100,7 +100,14 @@ export default async function svgUseLoader(
   const publicPath = rawOptions.publicPath ?? '/_next/static/svgAssets/';
   const svgAssetFilename =
     rawOptions.svgAssetFilename ?? '[name]-[contenthash].[ext]';
-  const componentFactory = rawOptions.componentFactory ?? defaultComponentFactory;
+  // Default to the RSC-compatible factory from @svg-use/next/component.
+  // Unlike @svg-use/react's createThemedExternalSvg, it has no 'use client'
+  // directive and no hooks, so the generated module is safe in Server Components.
+  const defaultNextComponentFactory: ComponentFactory = {
+    functionName: 'createThemedSvgUse',
+    importFrom: '@svg-use/next/component',
+  };
+  const componentFactory = rawOptions.componentFactory ?? defaultNextComponentFactory;
   const getSvgIdAttribute = (rawOptions.getSvgIdAttribute ??
     defaultGetSvgIdAttribute) as (info: {
     filename?: string;

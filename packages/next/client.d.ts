@@ -9,12 +9,13 @@ declare module '*?extract' {
 
   /**
    * A ready-to-use React component that references the SVG.
+   * Uses `createThemedSvgUse` from `@svg-use/next/component` by default —
+   * an RSC-compatible factory with no hooks or context.
    *
-   * This assumes the default factory function. Feel free to override this in
-   * your own module declaration if using a different factory.
+   * Override this declaration in your own module if using a custom factory.
    */
   export const Component: ReturnType<
-    typeof import('@svg-use/react').createThemedExternalSvg
+    typeof import('@svg-use/next/component').createThemedSvgUse
   >;
 }
 
@@ -26,11 +27,8 @@ declare module '*?extract&unthemed' {
   /**
    * A ready-to-use React component that references the SVG without theme
    * substitution (useful for multi-colour assets like flags).
-   *
-   * This assumes the default factory function. Feel free to override this in
-   * your own module declaration if using a different factory.
    */
   export const Component: ReturnType<
-    typeof import('@svg-use/react').createThemedExternalSvg
+    typeof import('@svg-use/next/component').createThemedSvgUse
   >;
 }

@@ -20,6 +20,12 @@
         "default": "./dist/index.cjs"
       }
     },
+    "./component": {
+      "import": {
+        "types": "./dist/component.d.ts",
+        "default": "./dist/component.js"
+      }
+    },
     "./package.json": "./package.json",
     "./client": "./client.d.ts"
   },
@@ -46,7 +52,8 @@
   },
   "peerDependencies": {
     "@svg-use/react": "workspace:^",
-    "next": ">=15.3.0"
+    "next": ">=15.3.0",
+    "react": "^18 || ^19"
   },
   "peerDependenciesMeta": {
     "@svg-use/react": {
@@ -54,7 +61,8 @@
     }
   },
   "devDependencies": {
-    "@types/node": "catalog:dev"
+    "@types/node": "catalog:dev",
+    "@types/react": "19.2.14"
   },
   "keywords": [
     "loader",

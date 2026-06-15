@@ -304,10 +304,16 @@ importers:
       next:
         specifier: '>=15.3.0'
         version: 16.2.9(@babel/core@7.29.0)(@playwright/test@1.57.0)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
+      react:
+        specifier: ^18 || ^19
+        version: 19.2.6
     devDependencies:
       '@types/node':
         specifier: catalog:dev
         version: 24.10.4
+      '@types/react':
+        specifier: 19.2.14
+        version: 19.2.14
 
   packages/react:
     devDependencies:
