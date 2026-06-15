@@ -10,11 +10,11 @@ catalogs:
       specifier: 24.10.4
       version: 24.10.4
     react:
-      specifier: 19.2.6
-      version: 19.2.6
+      specifier: 19.2.7
+      version: 19.2.7
     react-dom:
-      specifier: 19.2.6
-      version: 19.2.6
+      specifier: 19.2.7
+      version: 19.2.7
     typescript:
       specifier: 5.9.3
       version: 5.9.3
@@ -122,10 +122,10 @@ importers:
         version: 14.1.0
       react:
         specifier: catalog:dev
-        version: 19.2.6
+        version: 19.2.7
       react-dom:
         specifier: catalog:dev
-        version: 19.2.6(react@19.2.6)
+        version: 19.2.7(react@19.2.7)
       tsx:
         specifier: 4.19.3
         version: 4.19.3
@@ -140,10 +140,10 @@ importers:
         version: link:../../packages/react
       react:
         specifier: catalog:dev
-        version: 19.2.6
+        version: 19.2.7
       react-dom:
         specifier: catalog:dev
-        version: 19.2.6(react@19.2.6)
+        version: 19.2.7(react@19.2.7)
       shared-library:
         specifier: workspace:*
         version: link:../shared-library
@@ -180,10 +180,10 @@ importers:
         version: link:../../packages/react
       react:
         specifier: catalog:dev
-        version: 19.2.6
+        version: 19.2.7
       react-dom:
         specifier: catalog:dev
-        version: 19.2.6(react@19.2.6)
+        version: 19.2.7(react@19.2.7)
       shared-library:
         specifier: workspace:*
         version: link:../shared-library
@@ -266,7 +266,7 @@ importers:
         version: 6.9.1
       '@testing-library/react':
         specifier: 16.3.2
-        version: 16.3.2(@testing-library/dom@10.4.0)(@types/react-dom@19.0.4(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
+        version: 16.3.2(@testing-library/dom@10.4.0)(@types/react-dom@19.0.4(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
       '@types/react':
         specifier: 19.2.14
         version: 19.2.14
@@ -275,10 +275,10 @@ importers:
         version: 20.8.9
       react:
         specifier: catalog:dev
-        version: 19.2.6
+        version: 19.2.7
       react-dom:
         specifier: catalog:dev
-        version: 19.2.6(react@19.2.6)
+        version: 19.2.7(react@19.2.7)
 
   packages/rollup:
     dependencies:
@@ -4000,10 +4000,10 @@ packages:
     resolution: {integrity: sha512-y3bGgqKj3QBdxLbLkomlohkvsA8gdAiUQlSBJnBhfn+BPxg4bc62d8TcBW15wavDfgexCgccckhcZvywyQYPOw==}
     hasBin: true
 
-  react-dom@19.2.6:
-    resolution: {integrity: sha512-0prMI+hvBbPjsWnxDLxlCGyM8PN6UuWjEUCYmZhO67xIV9Xasa/r/vDnq+Xyq4Lo27g8QSbO5YzARu0D1Sps3g==}
+  react-dom@19.2.7:
+    resolution: {integrity: sha512-t0BRVXvbiE/o20Hfw669rLbMCDWtYZLvmJigy2f0MxsXF+71pxhR3xOkspmsO8h3ZlNzyibAmtCa3l4lYKk6gQ==}
     peerDependencies:
-      react: ^19.2.6
+      react: ^19.2.7
 
   react-is@17.0.2:
     resolution: {integrity: sha512-w2GsyukL62IJnlaff/nRegPQR94C/XXamvMWmSHRJ4y7Ts/4ocGRmTHvOs8PSE6pB3dWOrD/nueuU5sduBsQ4w==}
@@ -4012,8 +4012,8 @@ packages:
     resolution: {integrity: sha512-QgT5//D3jfjJb6Gsjxv0Slpj23ip+HtOpnNgnb2S5zU3CB26G/IDPGoy4RJB42wzFE46DRsstbW6tKHoKbhAxw==}
     engines: {node: '>=0.10.0'}
 
-  react@19.2.6:
-    resolution: {integrity: sha512-sfWGGfavi0xr8Pg0sVsyHMAOziVYKgPLNrS7ig+ivMNb3wbCBw3KxtflsGBAwD3gYQlE/AEZsTLgToRrSCjb0Q==}
+  react@19.2.7:
+    resolution: {integrity: sha512-HNe9WslTbXmFK8o8cmwgAeJFSBvt1bPdHCVKtaaV+WlAN36mpT4hcRpwbf3fY56ar2oIXzsBpOAiIRHAdY0OlQ==}
     engines: {node: '>=0.10.0'}
 
   read-package-json-fast@4.0.0:
@@ -5984,12 +5984,12 @@ snapshots:
       picocolors: 1.1.1
       redent: 3.0.0
 
-  '@testing-library/react@16.3.2(@testing-library/dom@10.4.0)(@types/react-dom@19.0.4(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)':
+  '@testing-library/react@16.3.2(@testing-library/dom@10.4.0)(@types/react-dom@19.0.4(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)':
     dependencies:
       '@babel/runtime': 7.29.2
       '@testing-library/dom': 10.4.0
-      react: 19.2.6
-      react-dom: 19.2.6(react@19.2.6)
+      react: 19.2.7
+      react-dom: 19.2.7(react@19.2.7)
     optionalDependencies:
       '@types/react': 19.2.14
       '@types/react-dom': 19.0.4(@types/react@19.2.14)
@@ -8828,16 +8828,16 @@ snapshots:
       minimist: 1.2.8
       strip-json-comments: 2.0.1
 
-  react-dom@19.2.6(react@19.2.6):
+  react-dom@19.2.7(react@19.2.7):
     dependencies:
-      react: 19.2.6
+      react: 19.2.7
       scheduler: 0.27.0
 
   react-is@17.0.2: {}
 
   react-refresh@0.18.0: {}
 
-  react@19.2.6: {}
+  react@19.2.7: {}
 
   read-package-json-fast@4.0.0:
     dependencies:
