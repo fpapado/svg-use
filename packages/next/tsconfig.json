@@ -1,0 +1,12 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    // verbatimModuleSyntax is incompatible with .cts files: TypeScript must
+    // transform ESM import/export syntax to CJS require/exports.default, which
+    // verbatimModuleSyntax explicitly forbids. Disable it for this CJS-only package.
+    "verbatimModuleSyntax": false
+  },
+  "include": ["src", "vitest.config.ts"]
+}

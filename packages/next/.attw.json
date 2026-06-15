@@ -1,0 +1,4 @@
+{
+  "format": "ascii",
+  "ignoreRules": ["no-resolution", "cjs-resolves-to-esm"]
+}
