@@ -1,0 +1,25 @@
+{
+  "name": "next-react",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "check-types": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@svg-use/next": "workspace:^",
+    "@svg-use/react": "workspace:^",
+    "next": "^16.0.0-0",
+    "react": "catalog:dev",
+    "react-dom": "catalog:dev",
+    "shared-library": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/node": "catalog:dev",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "typescript": "catalog:dev"
+  }
+}

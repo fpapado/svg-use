@@ -99,6 +99,40 @@ importers:
         specifier: 3.2.4
         version: 3.2.4(@types/debug@4.1.12)(@types/node@24.10.4)(happy-dom@20.8.9)(terser@5.39.0)(tsx@4.19.3)(yaml@2.9.0)
 
+  examples/next-react:
+    dependencies:
+      '@svg-use/next':
+        specifier: workspace:^
+        version: link:../../packages/next
+      '@svg-use/react':
+        specifier: workspace:^
+        version: link:../../packages/react
+      next:
+        specifier: ^16.0.0-0
+        version: 16.2.9(@babel/core@7.29.0)(@playwright/test@1.57.0)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
+      react:
+        specifier: catalog:dev
+        version: 19.2.6
+      react-dom:
+        specifier: catalog:dev
+        version: 19.2.6(react@19.2.6)
+      shared-library:
+        specifier: workspace:*
+        version: link:../shared-library
+    devDependencies:
+      '@types/node':
+        specifier: catalog:dev
+        version: 24.10.4
+      '@types/react':
+        specifier: ^19.0.0
+        version: 19.2.14
+      '@types/react-dom':
+        specifier: ^19.0.0
+        version: 19.0.4(@types/react@19.2.14)
+      typescript:
+        specifier: catalog:dev
+        version: 5.9.3
+
   examples/shared-library:
     dependencies:
       '@svg-use/react':
