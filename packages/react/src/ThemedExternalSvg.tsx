@@ -1,3 +1,5 @@
+'use client'
+
 import type { CSSProperties, SVGAttributes, JSX } from 'react';
 import {
   createContext,
