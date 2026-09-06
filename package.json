@@ -55,7 +55,7 @@
     "typedoc-plugin-mdn-links": "5.1.1",
     "typescript": "catalog:dev",
     "typescript-eslint": "8.59.3",
-    "vitest": "3.2.4"
+    "vitest": "3.2.6"
   },
   "keywords": [
     "loader",
